@@ -54,6 +54,10 @@
 	
 	var _reactDom = __webpack_require__(34);
 	
+	var _fight = __webpack_require__(172);
+	
+	var _fight2 = _interopRequireDefault(_fight);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -62,9 +66,7 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	var Fight = __webpack_require__(176);
-	
-	__webpack_require__(177);
+	__webpack_require__(175);
 	
 	var App = function (_React$Component) {
 	  _inherits(App, _React$Component);
@@ -81,7 +83,7 @@
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'container' },
-	        _react2.default.createElement(Fight, null)
+	        _react2.default.createElement(_fight2.default, null)
 	      );
 	    }
 	  }]);
@@ -21463,24 +21465,28 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ },
-/* 172 */,
-/* 173 */,
-/* 174 */,
-/* 175 */,
-/* 176 */
+/* 172 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _fightStore = __webpack_require__(173);
+	
+	var _fightStore2 = _interopRequireDefault(_fightStore);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var React = __webpack_require__(1);
 	
 	var Fight = function (_React$Component) {
 	  _inherits(Fight, _React$Component);
@@ -21490,54 +21496,82 @@
 	
 	    var _this = _possibleConstructorReturn(this, (Fight.__proto__ || Object.getPrototypeOf(Fight)).call(this));
 	
-	    _this.state = {
-	      text: 'Click to begin!'
-	    };
+	    _this.state = _fightStore2.default.copyState();
+	
+	    _fightStore2.default.addListener(function (state) {
+	      _this.setState(state);
+	    });
 	    return _this;
 	  }
 	
 	  _createClass(Fight, [{
 	    key: '_clickFightTitle',
-	    value: function _clickFightTitle() {}
+	    value: function _clickFightTitle() {
+	      _fightStore2.default.actions.startFight();
+	    }
+	  }, {
+	    key: '_dodgeAttack',
+	    value: function _dodgeAttack(evt) {
+	      _fightStore2.default.actions.dodge(evt);
+	    }
 	  }, {
 	    key: 'render',
 	    value: function render() {
 	      var _this2 = this;
 	
-	      return React.createElement(
+	      return _react2.default.createElement(
 	        'div',
 	        null,
-	        React.createElement(
+	        _react2.default.createElement(
 	          'h1',
 	          { className: 'website-title' },
 	          'Type Fight'
 	        ),
-	        React.createElement(
+	        _react2.default.createElement(
 	          'h3',
 	          { className: 'tagline' },
 	          ' A fun and interactive way to learn how to type faster'
 	        ),
-	        React.createElement(
+	        _react2.default.createElement(
 	          'div',
 	          { className: 'fight-screen' },
-	          React.createElement(
+	          _react2.default.createElement(
 	            'p',
 	            { className: 'fight-title', onClick: function onClick() {
 	                return _this2._clickFightTitle();
 	              } },
 	            this.state.text
 	          ),
-	          '//after clicking, Type Fight will show //  ',
-	          React.createElement(
-	            'p',
-	            { className: 'fight-title' },
-	            ' Type Fight! '
+	          _react2.default.createElement('img', { className: 'player-sprite', src: './images/bradley.gif' }),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'player-stats-and-moves' },
+	            _react2.default.createElement(
+	              'p',
+	              { className: 'playerHP' },
+	              'HP:',
+	              this.state.playerHP
+	            ),
+	            'Enter Dodge: ',
+	            _react2.default.createElement('input', { onKeyUp: function onKeyUp(evt) {
+	                return _this2._dodgeAttack(evt);
+	              } })
 	          ),
-	          '//  Result of fight will be shown here too // ',
-	          React.createElement(
-	            'p',
-	            { className: 'fight-title' },
-	            ' You\'re a typing beast! '
+	          _react2.default.createElement('img', { className: 'cpu-sprite', src: './images/sasuke.gif' }),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'cpu-bubble' },
+	            _react2.default.createElement(
+	              'p',
+	              null,
+	              this.state.cpuAttack,
+	              ' '
+	            ),
+	            _react2.default.createElement(
+	              'p',
+	              null,
+	              this.state.dodgeString
+	            )
 	          )
 	        )
 	      );
@@ -21545,21 +21579,129 @@
 	  }]);
 	
 	  return Fight;
-	}(React.Component);
+	}(_react2.default.Component);
 	
 	module.exports = Fight;
 
 /***/ },
-/* 177 */
+/* 173 */
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	var intervalId;
+	
+	var cpuAttacks = ['Shuriken Throw!', 'Susano!', 'Fire ball!'];
+	
+	function randomCPUAttack() {
+	  var randomIndex = Math.floor(Math.random() * cpuAttacks.length);
+	  return cpuAttacks[randomIndex];
+	}
+	
+	function randomString(length, chars) {
+	  var string = '';
+	  if (chars.indexOf('a') > -1) string += 'abcdefghijklmnopqrstuvwxyz';
+	  if (chars.indexOf('A') > -1) string += 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+	  if (chars.indexOf('#') > -1) string += '0123456789';
+	  if (chars.indexOf('!') > -1) string += '`!@#$%&()_+-={}[]:";\'<>?,./|\\';
+	  var result = '';
+	  for (var i = length; i > 0; --i) {
+	    result += string[Math.round(Math.random() * (string.length - 1))];
+	  }return result;
+	}
+	
+	var state = {
+	  text: 'Click to begin',
+	  cpuAttack: '',
+	  playerHP: 10,
+	  dodgeString: ''
+	
+	};
+	
+	var store = {
+	  listeners: [],
+	  actions: {}
+	};
+	
+	store.addListener = function (listener) {
+	  store.listeners.push(listener);
+	};
+	
+	store.copyState = function () {
+	  return {
+	    text: state.text,
+	    cpuAttack: state.cpuAttack,
+	    playerHP: state.playerHP,
+	    dodgeString: state.dodgeString
+	  };
+	};
+	
+	function changed() {
+	  var copiedState = store.copyState();
+	  store.listeners.forEach(function (listener) {
+	    listener(copiedState);
+	  });
+	}
+	
+	//actions
+	
+	function fightRounds() {
+	
+	  state.cpuAttack = randomCPUAttack();
+	  state.dodgeString = randomString(8, 'aA!');
+	
+	  state.playerHP -= 3;
+	  if (state.playerHP < 8) {
+	    state.text = 'Caution!';
+	  }
+	  if (state.playerHP < 5) {
+	    state.text = 'Danger!';
+	  }
+	  if (state.playerHP < 1) {
+	    endFight();
+	  }
+	  changed();
+	}
+	
+	function endFight() {
+	  clearInterval(intervalId);
+	  state.text = "You must defeat my Sharingan to stand a chance.";
+	  changed();
+	}
+	
+	store.actions.startFight = function () {
+	  state.text = 'Type Fight!';
+	
+	  intervalId = setInterval(fightRounds, 1000);
+	  changed();
+	};
+	
+	// store.actions.dodge = function(evt) {
+	//   if(evt.keyCode === 13) {
+	//     if(evt.target.value === state.dodgeString) {
+	//       state.playerHP = state.playerHP;
+	//     }
+	//     else {
+	//       state.playerHP -= 3;
+	//     }
+	//   }
+	//   changed();
+	// }
+	
+	module.exports = store;
+
+/***/ },
+/* 174 */,
+/* 175 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(178);
+	var content = __webpack_require__(176);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(180)(content, {});
+	var update = __webpack_require__(178)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -21576,21 +21718,21 @@
 	}
 
 /***/ },
-/* 178 */
+/* 176 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(179)();
+	exports = module.exports = __webpack_require__(177)();
 	// imports
 	
 	
 	// module
-	exports.push([module.id, "/* http://meyerweb.com/eric/tools/css/reset/\r\n   v2.0 | 20110126\r\n   License: none (public domain)\r\n*/\nhtml, body, div, span, applet, object, iframe,\nh1, h2, h3, h4, h5, h6, p, blockquote, pre,\na, abbr, acronym, address, big, cite, code,\ndel, dfn, em, img, ins, kbd, q, s, samp,\nsmall, strike, strong, sub, sup, tt, var,\nb, u, i, center,\ndl, dt, dd, ol, ul, li,\nfieldset, form, label, legend,\ntable, caption, tbody, tfoot, thead, tr, th, td,\narticle, aside, canvas, details, embed,\nfigure, figcaption, footer, header, hgroup,\nmenu, nav, output, ruby, section, summary,\ntime, mark, audio, video {\n  margin: 0;\n  padding: 0;\n  border: 0;\n  font-size: 100%;\n  font: inherit;\n  vertical-align: baseline; }\n\n/* HTML5 display-role reset for older browsers */\narticle, aside, details, figcaption, figure,\nfooter, header, hgroup, menu, nav, section {\n  display: block; }\n\nbody {\n  line-height: 1; }\n\nol, ul {\n  list-style: none; }\n\nblockquote, q {\n  quotes: none; }\n\nblockquote:before, blockquote:after,\nq:before, q:after {\n  content: '';\n  content: none; }\n\ntable {\n  border-collapse: collapse;\n  border-spacing: 0; }\n\n.battle-title {\n  font-family: Brush Script MT; }\n\n.fight-screen {\n  border: 3px solid black;\n  background-color: lightblue;\n  max-width: 1000px;\n  height: 500px;\n  margin-bottom: 30px;\n  margin-top: 30px;\n  position: relative;\n  overflow: auto; }\n\n.sample-player-fight-sprite {\n  max-width: 150px;\n  margin-left: 10%;\n  float: left; }\n\n.sample-cpu-fight-sprite {\n  max-width: 150px;\n  margin-right: 10%;\n  float: right; }\n\n.player-identifier {\n  color: green;\n  font-size: 2em;\n  font-weight: bold;\n  font-style: italic; }\n\n.cpu-identifier {\n  color: green;\n  font-size: 2em;\n  font-weight: bold;\n  font-style: italic;\n  text-align: right;\n  margin-top: -30px; }\n\n.fight-title {\n  text-align: center;\n  font-size: 1.2em;\n  font-weight: bold; }\n\n.player-bubble {\n  text-align: center;\n  line-height: 2em;\n  position: relative;\n  margin-top: 10px;\n  width: 240px;\n  height: 40px;\n  padding: 0px;\n  color: #FFFFFF;\n  display: inline-block;\n  -webkit-border-radius: 10px;\n  -moz-border-radius: 10px;\n  border-radius: 10px;\n  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#9a1e5e+0,d82a92+19,ca2083+51,e87ebf+93 */\n  background: #9a1e5e;\n  /* Old browsers */\n  background: -moz-linear-gradient(top, #9a1e5e 0%, #d82a92 19%, #ca2083 51%, #e87ebf 93%);\n  /* FF3.6-15 */\n  background: -webkit-linear-gradient(top, #9a1e5e 0%, #d82a92 19%, #ca2083 51%, #e87ebf 93%);\n  /* Chrome10-25,Safari5.1-6 */\n  background: linear-gradient(to bottom, #9a1e5e 0%, #d82a92 19%, #ca2083 51%, #e87ebf 93%);\n  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */\n  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#9a1e5e', endColorstr='#e87ebf',GradientType=0 );\n  /* IE6-9 */ }\n\n.player-bubble:after {\n  content: '';\n  position: absolute;\n  border-style: solid;\n  border-width: 9px 34px 9px 0;\n  border-color: transparent #FFFFFF;\n  display: block;\n  width: 0;\n  z-index: 1;\n  left: -34px;\n  top: 11px; }\n\n.player-bubble:before {\n  content: '';\n  position: absolute;\n  border-style: solid;\n  border-width: 12px 37px 12px 0;\n  border-color: transparent #9a1e5e;\n  display: block;\n  width: 0;\n  z-index: 0;\n  left: -41px;\n  top: 8px; }\n\n.cpu-bubble {\n  text-align: center;\n  line-height: 2em;\n  display: inline-block;\n  float: right;\n  position: relative;\n  width: 240px;\n  height: 45px;\n  padding: 0px;\n  color: #FFFFFF;\n  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#9a491e+0,ca5020+13,e8987e+54 */\n  background: #9a491e;\n  /* Old browsers */\n  background: -moz-linear-gradient(top, #9a491e 0%, #ca5020 13%, #e8987e 54%);\n  /* FF3.6-15 */\n  background: -webkit-linear-gradient(top, #9a491e 0%, #ca5020 13%, #e8987e 54%);\n  /* Chrome10-25,Safari5.1-6 */\n  background: linear-gradient(to bottom, #9a491e 0%, #ca5020 13%, #e8987e 54%);\n  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */\n  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#9a491e', endColorstr='#e8987e',GradientType=0 );\n  /* IE6-9 */\n  -webkit-border-radius: 10px;\n  -moz-border-radius: 10px;\n  border-radius: 10px; }\n\n.cpu-bubble:after {\n  content: '';\n  position: absolute;\n  border-style: solid;\n  border-width: 9px 0 9px 34px;\n  border-color: transparent #FFFFFF;\n  display: block;\n  width: 0;\n  z-index: 1;\n  right: -34px;\n  top: 13px; }\n\n.cpu-bubble:before {\n  content: '';\n  position: absolute;\n  border-style: solid;\n  border-width: 12px 0 12px 37px;\n  border-color: transparent #9a491e;\n  display: block;\n  width: 0;\n  z-index: 0;\n  right: -41px;\n  top: 10px; }\n\n.player-stats-and-moves {\n  position: absolute;\n  bottom: 50px;\n  left: 50px; }\n\n.player-stats-and-moves p {\n  text-align: center;\n  font-size: 3em;\n  color: #9932cc;\n  font-weight: bold; }\n\n.player-stats-and-moves input {\n  padding: 10px; }\n\n.cpu-stats-and-moves {\n  position: absolute;\n  bottom: 50px;\n  right: 80px; }\n\n.cpu-stats-and-moves p {\n  text-align: center;\n  font-size: 3em;\n  color: #ff6347;\n  font-weight: bold; }\n\n.container {\n  max-width: 960px;\n  margin: 0 auto; }\n\n.website-title {\n  font-size: 3em;\n  font-weight: bold;\n  font-family: fantasy;\n  text-align: center;\n  margin-top: 400px; }\n\n.progress-title {\n  font-family: cursive; }\n\n.tagline {\n  font-size: 1.2em;\n  font-family: cursive;\n  text-align: center;\n  margin-top: 20px; }\n\n#google-signin {\n  max-width: 300px;\n  margin-left: 35%;\n  margin-top: 20px; }\n\n#stats-heading {\n  text-decoration: underline;\n  text-align: center;\n  font-size: 1.5em;\n  margin-top: 50px; }\n\n#stats-table {\n  width: 100%;\n  border-collapse: collapse; }\n\ntr:nth-of-type(odd) {\n  background-color: blue; }\n\ntr:nth-of-type(even) {\n  background-color: lightblue; }\n\n#HeadRow {\n  background-color: #DDD;\n  font-weight: bold; }\n\n#stats-table {\n  margin-bottom: 50px; }\n\n#stats-table td {\n  padding: 5px;\n  border: 1px solid black;\n  text-align: left; }\n\n.character-select-title {\n  font-family: monospace; }\n\n.character-select {\n  overflow: auto; }\n\n.player-select {\n  border: 1px solid blue;\n  padding: 80px;\n  width: 300px;\n  height: 300px;\n  border-radius: 50%;\n  float: left; }\n\n.cpu-select {\n  border: 1px solid red;\n  padding: 80px;\n  width: 300px;\n  height: 300px;\n  border-radius: 50%;\n  float: right; }\n\n.whose-character {\n  color: green;\n  text-align: center;\n  font-size: 2em;\n  font-weight: bold;\n  font-style: italic;\n  margin-top: -60px; }\n\n.sample-sprite {\n  max-width: 100px;\n  margin-left: 30%; }\n\n.character-name {\n  color: purple;\n  font-size: 1.8em;\n  font-weight: bold;\n  font-family: Didot;\n  text-align: center; }\n\n.move-list-title {\n  text-decoration: underline;\n  font-style: oblique;\n  font-family: Lucida, serif;\n  font-size: 1.3em;\n  text-align: center;\n  margin-bottom: 3px; }\n\n.move-list li {\n  text-align: center;\n  margin-top: 3px; }\n\n.attack-command {\n  font-weight: bold; }\n\n.super-move-description {\n  text-align: center;\n  font-size: .9em; }\n\n.cpu-difficulty-form {\n  text-align: center;\n  margin-bottom: 10px; }\n", "", {"version":3,"sources":["/./client/scss/client/scss/_reset.scss","/./client/scss/client/scss/_fight.scss","/./client/scss/client/scss/style.scss"],"names":[],"mappings":"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BAAkB,EACnB;;AAED;EACE,oBAAoB,EACrB;;AAED;EACE,aAAa;EACb,wBAAwB;EACxB,iBAAiB,EAClB;;AAED;EACE,uBAAuB,EACxB;;AAED;EACE,eAAe,EAChB;;AAED;EACE,uBAAuB;EACvB,cAAc;EACd,aAAa;EACb,cAAc;EACd,mBAAmB;EACnB,YAAY,EACb;;AAED;EACE,sBAAsB;EACtB,cAAc;EACd,aAAa;EACb,cAAc;EACd,mBAAmB;EACnB,aAAa,EACd;;AAED;EACE,aAAa;EACb,mBAAmB;EACnB,eAAe;EACf,kBAAkB;EAClB,mBAAmB;EACpB,kBAAkB,EAClB;;AAED;EACE,iBAAiB;EACjB,iBAAiB,EAClB;;AAED;EACC,cAAc;EACd,iBAAiB;EACjB,kBAAkB;EAClB,mBAAmB;EACnB,mBAAmB,EACnB;;AAED;EACC,2BAA2B;EAC3B,oBAAoB;EACpB,2BAA2B;EAC3B,iBAAiB;EACjB,mBAAmB;EACnB,mBAAmB,EACnB;;AAED;EACC,mBAAmB;EACnB,gBAAgB,EAChB;;AAED;EACC,kBAAkB,EAClB;;AAED;EACC,mBAAmB;EACnB,gBAAgB,EAChB;;AAED;EACC,mBAAmB;EACnB,oBAAoB,EACpB","file":"style.scss","sourcesContent":["/* http://meyerweb.com/eric/tools/css/reset/\r\n   v2.0 | 20110126\r\n   License: none (public domain)\r\n*/\r\n\r\nhtml, body, div, span, applet, object, iframe,\r\nh1, h2, h3, h4, h5, h6, p, blockquote, pre,\r\na, abbr, acronym, address, big, cite, code,\r\ndel, dfn, em, img, ins, kbd, q, s, samp,\r\nsmall, strike, strong, sub, sup, tt, var,\r\nb, u, i, center,\r\ndl, dt, dd, ol, ul, li,\r\nfieldset, form, label, legend,\r\ntable, caption, tbody, tfoot, thead, tr, th, td,\r\narticle, aside, canvas, details, embed,\r\nfigure, figcaption, footer, header, hgroup,\r\nmenu, nav, output, ruby, section, summary,\r\ntime, mark, audio, video {\r\n\tmargin: 0;\r\n\tpadding: 0;\r\n\tborder: 0;\r\n\tfont-size: 100%;\r\n\tfont: inherit;\r\n\tvertical-align: baseline;\r\n}\r\n/* HTML5 display-role reset for older browsers */\r\narticle, aside, details, figcaption, figure,\r\nfooter, header, hgroup, menu, nav, section {\r\n\tdisplay: block;\r\n}\r\nbody {\r\n\tline-height: 1;\r\n}\r\nol, ul {\r\n\tlist-style: none;\r\n}\r\nblockquote, q {\r\n\tquotes: none;\r\n}\r\nblockquote:before, blockquote:after,\r\nq:before, q:after {\r\n\tcontent: '';\r\n\tcontent: none;\r\n}\r\ntable {\r\n\tborder-collapse: collapse;\r\n\tborder-spacing: 0;\r\n}\r\n",".battle-title {\r\n\tfont-family: Brush Script MT;\r\n}\r\n\r\n\r\n.fight-screen {\r\n\tborder: 3px solid black;\r\n  background-color: lightblue;\r\n\t// background-position: center center;\r\n\tmax-width: 1000px;\r\n\theight: 500px;\r\n\tmargin-bottom: 30px;\r\n\tmargin-top: 30px;\r\n\tposition: relative;\r\n\toverflow: auto;\r\n}\r\n\r\n.sample-player-fight-sprite {\r\n\tmax-width: 150px;\r\n\tmargin-left: 10%;\r\n\tfloat: left;\r\n}\r\n\r\n.sample-cpu-fight-sprite {\r\n\tmax-width: 150px;\r\n\tmargin-right: 10%;\r\n\tfloat: right;\r\n}\r\n\r\n.player-identifier {\r\n\tcolor: green;\r\n\tfont-size: 2em;\r\n\tfont-weight: bold;\r\n\tfont-style: italic;\r\n\r\n}\r\n\r\n.cpu-identifier {\r\n\tcolor: green;\r\n\tfont-size: 2em;\r\n\tfont-weight: bold;\r\n\tfont-style: italic;\r\n\ttext-align: right;\r\n\tmargin-top: -30px;\r\n}\r\n\r\n.fight-title {\r\n\ttext-align: center;\r\n\tfont-size: 1.2em;\r\n\tfont-weight: bold;\r\n}\r\n\r\n.player-bubble {\r\n\ttext-align: center;\r\n\tline-height:  2em;\r\n\tposition: relative;\r\n\tmargin-top: 10px;\r\n\twidth: 240px;\r\n\theight: 40px;\r\n\tpadding: 0px;\r\n\tcolor: #FFFFFF;\r\n\tdisplay: inline-block;\r\n\t-webkit-border-radius: 10px;\r\n\t-moz-border-radius: 10px;\r\n\tborder-radius: 10px;\r\n\t/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#9a1e5e+0,d82a92+19,ca2083+51,e87ebf+93 */\r\n\tbackground: #9a1e5e; /* Old browsers */\r\n\tbackground: -moz-linear-gradient(top,  #9a1e5e 0%, #d82a92 19%, #ca2083 51%, #e87ebf 93%); /* FF3.6-15 */\r\n\tbackground: -webkit-linear-gradient(top,  #9a1e5e 0%,#d82a92 19%,#ca2083 51%,#e87ebf 93%); /* Chrome10-25,Safari5.1-6 */\r\n\tbackground: linear-gradient(to bottom,  #9a1e5e 0%,#d82a92 19%,#ca2083 51%,#e87ebf 93%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */\r\n\tfilter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#9a1e5e', endColorstr='#e87ebf',GradientType=0 ); /* IE6-9 */\r\n\r\n}\r\n\r\n.player-bubble:after {\r\n\tcontent: '';\r\n\tposition: absolute;\r\n\tborder-style: solid;\r\n\tborder-width: 9px 34px 9px 0;\r\n\tborder-color: transparent #FFFFFF;\r\n\tdisplay: block;\r\n\twidth: 0;\r\n\tz-index: 1;\r\n\tleft: -34px;\r\n\ttop: 11px;\r\n}\r\n\r\n.player-bubble:before {\r\n\tcontent: '';\r\n\tposition: absolute;\r\n\tborder-style: solid;\r\n\tborder-width: 12px 37px 12px 0;\r\n\tborder-color: transparent #9a1e5e;\r\n\tdisplay: block;\r\n\twidth: 0;\r\n\tz-index: 0;\r\n\tleft: -41px;\r\n\ttop: 8px;\r\n}\r\n\r\n.cpu-bubble {\r\n\ttext-align: center;\r\n\tline-height: 2em;\r\n\tdisplay: inline-block;\r\n\tfloat: right;\r\n  position: relative;\r\n  width: 240px;\r\n  height: 45px;\r\n  padding: 0px;\r\n  color: #FFFFFF;\r\n  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#9a491e+0,ca5020+13,e8987e+54 */\r\n  background: #9a491e; /* Old browsers */\r\n  background: -moz-linear-gradient(top,  #9a491e 0%, #ca5020 13%, #e8987e 54%); /* FF3.6-15 */\r\n  background: -webkit-linear-gradient(top,  #9a491e 0%,#ca5020 13%,#e8987e 54%); /* Chrome10-25,Safari5.1-6 */\r\n  background: linear-gradient(to bottom,  #9a491e 0%,#ca5020 13%,#e8987e 54%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */\r\n  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#9a491e', endColorstr='#e8987e',GradientType=0 ); /* IE6-9 */\r\n  -webkit-border-radius: 10px;\r\n  -moz-border-radius: 10px;\r\n  border-radius: 10px;\r\n}\r\n\r\n.cpu-bubble:after {\r\n  content: '';\r\n  position: absolute;\r\n  border-style: solid;\r\n  border-width: 9px 0 9px 34px;\r\n  border-color: transparent #FFFFFF;\r\n  display: block;\r\n  width: 0;\r\n  z-index: 1;\r\n  right: -34px;\r\n  top: 13px;\r\n}\r\n\r\n.cpu-bubble:before {\r\n  content: '';\r\n  position: absolute;\r\n  border-style: solid;\r\n  border-width: 12px 0 12px 37px;\r\n  border-color: transparent #9a491e;\r\n  display: block;\r\n  width: 0;\r\n  z-index: 0;\r\n  right: -41px;\r\n  top: 10px;\r\n}\r\n\r\n.player-stats-and-moves {\r\n\tposition: absolute;\r\n\tbottom: 50px;\r\n\tleft: 50px;\r\n}\r\n\r\n.player-stats-and-moves p {\r\n\ttext-align: center;\r\n\tfont-size: 3em;\r\n\tcolor: #9932cc;\r\n\tfont-weight: bold;\r\n}\r\n\r\n.player-stats-and-moves input{\r\n\tpadding: 10px;\r\n}\r\n\r\n.cpu-stats-and-moves {\r\n\tposition: absolute;\r\n\tbottom: 50px;\r\n\tright: 80px;\r\n}\r\n\r\n.cpu-stats-and-moves p {\r\n\ttext-align: center;\r\n\tfont-size: 3em;\r\n\tcolor: #ff6347;\r\n\tfont-weight: bold;\r\n}\r\n","@import 'reset';\r\n@import 'fight';\r\n\r\n.container {\r\n  max-width: 960px;\r\n  margin: 0 auto;\r\n}\r\n\r\n.website-title {\r\n  font-size: 3em;\r\n  font-weight: bold;\r\n  font-family: fantasy;\r\n  text-align: center;\r\n  margin-top: 400px;\r\n}\r\n\r\n.progress-title {\r\n  font-family: cursive;\r\n}\r\n\r\n.tagline {\r\n  font-size: 1.2em;\r\n  font-family:cursive;\r\n  text-align: center;\r\n  margin-top: 20px;\r\n}\r\n\r\n#google-signin {\r\n  max-width: 300px;\r\n  margin-left: 35%;\r\n  margin-top: 20px;\r\n}\r\n\r\n#stats-heading {\r\n  text-decoration: underline;\r\n  text-align: center;\r\n  font-size: 1.5em;\r\n  margin-top: 50px;\r\n}\r\n\r\n#stats-table {\r\n  width: 100%;\r\n  border-collapse: collapse;\r\n}\r\n\r\ntr:nth-of-type(odd) {\r\n  background-color: blue;\r\n}\r\n\r\ntr:nth-of-type(even) {\r\n  background-color: lightblue;\r\n}\r\n\r\n#HeadRow {\r\n  background-color: #DDD;\r\n  font-weight: bold;\r\n}\r\n\r\n#stats-table {\r\n  margin-bottom: 50px;\r\n}\r\n\r\n#stats-table td {\r\n  padding: 5px;\r\n  border: 1px solid black;\r\n  text-align: left;\r\n}\r\n\r\n.character-select-title {\r\n  font-family: monospace;\r\n}\r\n\r\n.character-select {\r\n  overflow: auto;\r\n}\r\n\r\n.player-select {\r\n  border: 1px solid blue;\r\n  padding: 80px;\r\n  width: 300px;\r\n  height: 300px;\r\n  border-radius: 50%;\r\n  float: left;\r\n}\r\n\r\n.cpu-select {\r\n  border: 1px solid red;\r\n  padding: 80px;\r\n  width: 300px;\r\n  height: 300px;\r\n  border-radius: 50%;\r\n  float: right;\r\n}\r\n\r\n.whose-character {\r\n  color: green;\r\n  text-align: center;\r\n  font-size: 2em;\r\n  font-weight: bold;\r\n  font-style: italic;\r\n\tmargin-top: -60px;\r\n}\r\n\r\n.sample-sprite {\r\n  max-width: 100px;\r\n  margin-left: 30%;\r\n}\r\n\r\n.character-name {\r\n\tcolor: purple;\r\n\tfont-size: 1.8em;\r\n\tfont-weight: bold;\r\n\tfont-family: Didot;\r\n\ttext-align: center;\r\n}\r\n\r\n.move-list-title {\r\n\ttext-decoration: underline;\r\n\tfont-style: oblique;\r\n\tfont-family: Lucida, serif;\r\n\tfont-size: 1.3em;\r\n\ttext-align: center;\r\n\tmargin-bottom: 3px;\r\n}\r\n\r\n.move-list li {\r\n\ttext-align: center;\r\n\tmargin-top: 3px;\r\n}\r\n\r\n.attack-command {\r\n\tfont-weight: bold;\r\n}\r\n\r\n.super-move-description {\r\n\ttext-align: center;\r\n\tfont-size: .9em;\r\n}\r\n\r\n.cpu-difficulty-form {\r\n\ttext-align: center;\r\n\tmargin-bottom: 10px;\r\n}\r\n\r\n\r\n// @media screen and (max-width: 800px) {\r\n//   #stats-table, #stats-table tbody, #stats-table tr, #stats-table td{\r\n//     display: block;\r\n//   }\r\n//\r\n//   #HeadRow {\r\n//     position: absolute;\r\n//     left: -9999px;\r\n//     top: -9999px;\r\n//   }\r\n//\r\n//   #stats-table td {\r\n//     border: none;\r\n//     position: relative;\r\n//     padding-left: 40%;\r\n//     white-space: normal;\r\n//     text-align: left;\r\n//   }\r\n//\r\n//   #stats-table td::before {\r\n//     position: absolute;\r\n//     top: 5px;\r\n//     left: 5px;\r\n//     width: 40%;\r\n//     padding-right: 10px;\r\n//     white-space: nowrap;\r\n//     text-align: left;\r\n//     font-weight: bold;\r\n//     content: attr(tableHeadData);\r\n//\r\n//   }\r\n// }\r\n"],"sourceRoot":"webpack://"}]);
+	exports.push([module.id, "/* http://meyerweb.com/eric/tools/css/reset/\r\n   v2.0 | 20110126\r\n   License: none (public domain)\r\n*/\nhtml, body, div, span, applet, object, iframe,\nh1, h2, h3, h4, h5, h6, p, blockquote, pre,\na, abbr, acronym, address, big, cite, code,\ndel, dfn, em, img, ins, kbd, q, s, samp,\nsmall, strike, strong, sub, sup, tt, var,\nb, u, i, center,\ndl, dt, dd, ol, ul, li,\nfieldset, form, label, legend,\ntable, caption, tbody, tfoot, thead, tr, th, td,\narticle, aside, canvas, details, embed,\nfigure, figcaption, footer, header, hgroup,\nmenu, nav, output, ruby, section, summary,\ntime, mark, audio, video {\n  margin: 0;\n  padding: 0;\n  border: 0;\n  font-size: 100%;\n  font: inherit;\n  vertical-align: baseline; }\n\n/* HTML5 display-role reset for older browsers */\narticle, aside, details, figcaption, figure,\nfooter, header, hgroup, menu, nav, section {\n  display: block; }\n\nbody {\n  line-height: 1; }\n\nol, ul {\n  list-style: none; }\n\nblockquote, q {\n  quotes: none; }\n\nblockquote:before, blockquote:after,\nq:before, q:after {\n  content: '';\n  content: none; }\n\ntable {\n  border-collapse: collapse;\n  border-spacing: 0; }\n\n.battle-title {\n  font-family: Brush Script MT; }\n\n.fight-screen {\n  border: 3px solid black;\n  background-color: lightblue;\n  max-width: 1000px;\n  height: 500px;\n  margin-bottom: 30px;\n  margin-top: 30px;\n  position: relative;\n  overflow: auto; }\n\n.player-sprite {\n  margin-top: 90px;\n  margin-left: 10%;\n  float: left; }\n\n.cpu-sprite {\n  margin-top: 90px;\n  margin-right: 10%;\n  float: right; }\n\n.player-identifier {\n  color: green;\n  font-size: 2em;\n  font-weight: bold;\n  font-style: italic; }\n\n.cpu-identifier {\n  color: green;\n  font-size: 2em;\n  font-weight: bold;\n  font-style: italic;\n  text-align: right;\n  margin-top: -30px; }\n\n.fight-title {\n  text-align: center;\n  font-size: 2em;\n  font-weight: bold; }\n\n.player-bubble {\n  text-align: center;\n  line-height: 2em;\n  position: relative;\n  margin-top: 10px;\n  width: 240px;\n  height: 40px;\n  padding: 0px;\n  color: #FFFFFF;\n  display: inline-block;\n  -webkit-border-radius: 10px;\n  -moz-border-radius: 10px;\n  border-radius: 10px;\n  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#9a1e5e+0,d82a92+19,ca2083+51,e87ebf+93 */\n  background: #9a1e5e;\n  /* Old browsers */\n  background: -moz-linear-gradient(top, #9a1e5e 0%, #d82a92 19%, #ca2083 51%, #e87ebf 93%);\n  /* FF3.6-15 */\n  background: -webkit-linear-gradient(top, #9a1e5e 0%, #d82a92 19%, #ca2083 51%, #e87ebf 93%);\n  /* Chrome10-25,Safari5.1-6 */\n  background: linear-gradient(to bottom, #9a1e5e 0%, #d82a92 19%, #ca2083 51%, #e87ebf 93%);\n  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */\n  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#9a1e5e', endColorstr='#e87ebf',GradientType=0 );\n  /* IE6-9 */ }\n\n.player-bubble:after {\n  content: '';\n  position: absolute;\n  border-style: solid;\n  border-width: 9px 34px 9px 0;\n  border-color: transparent #FFFFFF;\n  display: block;\n  width: 0;\n  z-index: 1;\n  left: -34px;\n  top: 11px; }\n\n.player-bubble:before {\n  content: '';\n  position: absolute;\n  border-style: solid;\n  border-width: 12px 37px 12px 0;\n  border-color: transparent #9a1e5e;\n  display: block;\n  width: 0;\n  z-index: 0;\n  left: -41px;\n  top: 8px; }\n\n.cpu-bubble {\n  text-align: center;\n  line-height: 2em;\n  float: right;\n  margin-top: 80px;\n  display: inline-block;\n  position: relative;\n  width: 180px;\n  height: 75px;\n  padding: 0px;\n  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#e5e696+18,d1d360+47 */\n  background: #e5e696;\n  /* Old browsers */\n  background: -moz-linear-gradient(top, #e5e696 18%, #d1d360 47%);\n  /* FF3.6-15 */\n  background: -webkit-linear-gradient(top, #e5e696 18%, #d1d360 47%);\n  /* Chrome10-25,Safari5.1-6 */\n  background: linear-gradient(to bottom, #e5e696 18%, #d1d360 47%);\n  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */\n  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e5e696', endColorstr='#d1d360',GradientType=0 );\n  /* IE6-9 */\n  -webkit-border-radius: 9px;\n  -moz-border-radius: 9px;\n  border-radius: 9px; }\n\n.cpu-bubble:after {\n  content: '';\n  position: absolute;\n  border-style: solid;\n  border-width: 13px 0 13px 30px;\n  border-color: transparent #e5e696;\n  display: block;\n  width: 0;\n  z-index: 1;\n  right: -30px;\n  top: 14px; }\n\n.player-stats-and-moves {\n  position: absolute;\n  bottom: 50px;\n  left: 50px; }\n\n.player-stats-and-moves p {\n  font-size: 3em;\n  color: green;\n  font-weight: bold; }\n\n.cautionHP {\n  font-size: 3em;\n  color: orange;\n  font-weight: bold; }\n\n.dangerHP {\n  font-size: 3em;\n  color: red;\n  font-weight: bold; }\n\n.player-stats-and-moves input {\n  padding: 10px; }\n\n.cpu-stats-and-moves {\n  position: absolute;\n  bottom: 50px;\n  right: 80px; }\n\n.cpu-stats-and-moves p {\n  text-align: center;\n  font-size: 3em;\n  color: #ff6347;\n  font-weight: bold; }\n\n.container {\n  max-width: 960px;\n  margin: 0 auto; }\n\n.website-title {\n  font-size: 3em;\n  font-weight: bold;\n  font-family: fantasy;\n  text-align: center;\n  margin-top: 400px; }\n\n.progress-title {\n  font-family: cursive; }\n\n.tagline {\n  font-size: 1.2em;\n  font-family: cursive;\n  text-align: center;\n  margin-top: 20px; }\n\n#google-signin {\n  max-width: 300px;\n  margin-left: 35%;\n  margin-top: 20px; }\n\n#stats-heading {\n  text-decoration: underline;\n  text-align: center;\n  font-size: 1.5em;\n  margin-top: 50px; }\n\n#stats-table {\n  width: 100%;\n  border-collapse: collapse; }\n\ntr:nth-of-type(odd) {\n  background-color: blue; }\n\ntr:nth-of-type(even) {\n  background-color: lightblue; }\n\n#HeadRow {\n  background-color: #DDD;\n  font-weight: bold; }\n\n#stats-table {\n  margin-bottom: 50px; }\n\n#stats-table td {\n  padding: 5px;\n  border: 1px solid black;\n  text-align: left; }\n\n.character-select-title {\n  font-family: monospace; }\n\n.character-select {\n  overflow: auto; }\n\n.player-select {\n  border: 1px solid blue;\n  padding: 80px;\n  width: 300px;\n  height: 300px;\n  border-radius: 50%;\n  float: left; }\n\n.cpu-select {\n  border: 1px solid red;\n  padding: 80px;\n  width: 300px;\n  height: 300px;\n  border-radius: 50%;\n  float: right; }\n\n.whose-character {\n  color: green;\n  text-align: center;\n  font-size: 2em;\n  font-weight: bold;\n  font-style: italic;\n  margin-top: -60px; }\n\n.sample-sprite {\n  max-width: 100px;\n  margin-left: 30%; }\n\n.character-name {\n  color: purple;\n  font-size: 1.8em;\n  font-weight: bold;\n  font-family: Didot;\n  text-align: center; }\n\n.move-list-title {\n  text-decoration: underline;\n  font-style: oblique;\n  font-family: Lucida, serif;\n  font-size: 1.3em;\n  text-align: center;\n  margin-bottom: 3px; }\n\n.move-list li {\n  text-align: center;\n  margin-top: 3px; }\n\n.attack-command {\n  font-weight: bold; }\n\n.super-move-description {\n  text-align: center;\n  font-size: .9em; }\n\n.cpu-difficulty-form {\n  text-align: center;\n  margin-bottom: 10px; }\n", "", {"version":3,"sources":["/./client/scss/client/scss/_reset.scss","/./client/scss/client/scss/_fight.scss","/./client/scss/client/scss/style.scss"],"names":[],"mappings":"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AAa;EACb,wBAAwB;EACxB,iBAAiB,EAClB;;AAED;EACE,uBAAuB,EACxB;;AAED;EACE,eAAe,EAChB;;AAED;EACE,uBAAuB;EACvB,cAAc;EACd,aAAa;EACb,cAAc;EACd,mBAAmB;EACnB,YAAY,EACb;;AAED;EACE,sBAAsB;EACtB,cAAc;EACd,aAAa;EACb,cAAc;EACd,mBAAmB;EACnB,aAAa,EACd;;AAED;EACE,aAAa;EACb,mBAAmB;EACnB,eAAe;EACf,kBAAkB;EAClB,mBAAmB;EACpB,kBAAkB,EAClB;;AAED;EACE,iBAAiB;EACjB,iBAAiB,EAClB;;AAED;EACC,cAAc;EACd,iBAAiB;EACjB,kBAAkB;EAClB,mBAAmB;EACnB,mBAAmB,EACnB;;AAED;EACC,2BAA2B;EAC3B,oBAAoB;EACpB,2BAA2B;EAC3B,iBAAiB;EACjB,mBAAmB;EACnB,mBAAmB,EACnB;;AAED;EACC,mBAAmB;EACnB,gBAAgB,EAChB;;AAED;EACC,kBAAkB,EAClB;;AAED;EACC,mBAAmB;EACnB,gBAAgB,EAChB;;AAED;EACC,mBAAmB;EACnB,oBAAoB,EACpB","file":"style.scss","sourcesContent":["/* http://meyerweb.com/eric/tools/css/reset/\r\n   v2.0 | 20110126\r\n   License: none (public domain)\r\n*/\r\n\r\nhtml, body, div, span, applet, object, iframe,\r\nh1, h2, h3, h4, h5, h6, p, blockquote, pre,\r\na, abbr, acronym, address, big, cite, code,\r\ndel, dfn, em, img, ins, kbd, q, s, samp,\r\nsmall, strike, strong, sub, sup, tt, var,\r\nb, u, i, center,\r\ndl, dt, dd, ol, ul, li,\r\nfieldset, form, label, legend,\r\ntable, caption, tbody, tfoot, thead, tr, th, td,\r\narticle, aside, canvas, details, embed,\r\nfigure, figcaption, footer, header, hgroup,\r\nmenu, nav, output, ruby, section, summary,\r\ntime, mark, audio, video {\r\n\tmargin: 0;\r\n\tpadding: 0;\r\n\tborder: 0;\r\n\tfont-size: 100%;\r\n\tfont: inherit;\r\n\tvertical-align: baseline;\r\n}\r\n/* HTML5 display-role reset for older browsers */\r\narticle, aside, details, figcaption, figure,\r\nfooter, header, hgroup, menu, nav, section {\r\n\tdisplay: block;\r\n}\r\nbody {\r\n\tline-height: 1;\r\n}\r\nol, ul {\r\n\tlist-style: none;\r\n}\r\nblockquote, q {\r\n\tquotes: none;\r\n}\r\nblockquote:before, blockquote:after,\r\nq:before, q:after {\r\n\tcontent: '';\r\n\tcontent: none;\r\n}\r\ntable {\r\n\tborder-collapse: collapse;\r\n\tborder-spacing: 0;\r\n}\r\n",".battle-title {\r\n\tfont-family: Brush Script MT;\r\n}\r\n\r\n\r\n.fight-screen {\r\n\tborder: 3px solid black;\r\n  background-color: lightblue;\r\n\t// background-position: center center;\r\n\tmax-width: 1000px;\r\n\theight: 500px;\r\n\tmargin-bottom: 30px;\r\n\tmargin-top: 30px;\r\n\tposition: relative;\r\n\toverflow: auto;\r\n}\r\n\r\n.player-sprite {\r\n\tmargin-top: 90px;\r\n\tmargin-left: 10%;\r\n\tfloat: left;\r\n}\r\n\r\n.cpu-sprite {\r\n\tmargin-top: 90px;\r\n\tmargin-right: 10%;\r\n\tfloat: right;\r\n}\r\n\r\n.player-identifier {\r\n\tcolor: green;\r\n\tfont-size: 2em;\r\n\tfont-weight: bold;\r\n\tfont-style: italic;\r\n\r\n}\r\n\r\n.cpu-identifier {\r\n\tcolor: green;\r\n\tfont-size: 2em;\r\n\tfont-weight: bold;\r\n\tfont-style: italic;\r\n\ttext-align: right;\r\n\tmargin-top: -30px;\r\n}\r\n\r\n.fight-title {\r\n\ttext-align: center;\r\n\tfont-size: 2em;\r\n\tfont-weight: bold;\r\n}\r\n\r\n.player-bubble {\r\n\ttext-align: center;\r\n\tline-height:  2em;\r\n\tposition: relative;\r\n\tmargin-top: 10px;\r\n\twidth: 240px;\r\n\theight: 40px;\r\n\tpadding: 0px;\r\n\tcolor: #FFFFFF;\r\n\tdisplay: inline-block;\r\n\t-webkit-border-radius: 10px;\r\n\t-moz-border-radius: 10px;\r\n\tborder-radius: 10px;\r\n\t/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#9a1e5e+0,d82a92+19,ca2083+51,e87ebf+93 */\r\n\tbackground: #9a1e5e; /* Old browsers */\r\n\tbackground: -moz-linear-gradient(top,  #9a1e5e 0%, #d82a92 19%, #ca2083 51%, #e87ebf 93%); /* FF3.6-15 */\r\n\tbackground: -webkit-linear-gradient(top,  #9a1e5e 0%,#d82a92 19%,#ca2083 51%,#e87ebf 93%); /* Chrome10-25,Safari5.1-6 */\r\n\tbackground: linear-gradient(to bottom,  #9a1e5e 0%,#d82a92 19%,#ca2083 51%,#e87ebf 93%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */\r\n\tfilter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#9a1e5e', endColorstr='#e87ebf',GradientType=0 ); /* IE6-9 */\r\n\r\n}\r\n\r\n.player-bubble:after {\r\n\tcontent: '';\r\n\tposition: absolute;\r\n\tborder-style: solid;\r\n\tborder-width: 9px 34px 9px 0;\r\n\tborder-color: transparent #FFFFFF;\r\n\tdisplay: block;\r\n\twidth: 0;\r\n\tz-index: 1;\r\n\tleft: -34px;\r\n\ttop: 11px;\r\n}\r\n\r\n.player-bubble:before {\r\n\tcontent: '';\r\n\tposition: absolute;\r\n\tborder-style: solid;\r\n\tborder-width: 12px 37px 12px 0;\r\n\tborder-color: transparent #9a1e5e;\r\n\tdisplay: block;\r\n\twidth: 0;\r\n\tz-index: 0;\r\n\tleft: -41px;\r\n\ttop: 8px;\r\n}\r\n\r\n.cpu-bubble\r\n{\r\n\ttext-align: center;\r\n\tline-height: 2em;\r\n\tfloat: right;\r\n\tmargin-top: 80px;\r\n\tdisplay: inline-block;\r\nposition: relative;\r\nwidth: 180px;\r\nheight: 75px;\r\npadding: 0px;\r\n/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#e5e696+18,d1d360+47 */\r\nbackground: #e5e696; /* Old browsers */\r\nbackground: -moz-linear-gradient(top,  #e5e696 18%, #d1d360 47%); /* FF3.6-15 */\r\nbackground: -webkit-linear-gradient(top,  #e5e696 18%,#d1d360 47%); /* Chrome10-25,Safari5.1-6 */\r\nbackground: linear-gradient(to bottom,  #e5e696 18%,#d1d360 47%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */\r\nfilter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e5e696', endColorstr='#d1d360',GradientType=0 ); /* IE6-9 */\r\n\r\n-webkit-border-radius: 9px;\r\n-moz-border-radius: 9px;\r\nborder-radius: 9px;\r\n}\r\n\r\n.cpu-bubble:after\r\n{\r\ncontent: '';\r\nposition: absolute;\r\nborder-style: solid;\r\nborder-width: 13px 0 13px 30px;\r\nborder-color: transparent #e5e696;\r\ndisplay: block;\r\nwidth: 0;\r\nz-index: 1;\r\nright: -30px;\r\ntop: 14px;\r\n}\r\n\r\n\r\n\r\n.player-stats-and-moves {\r\n\tposition: absolute;\r\n\tbottom: 50px;\r\n\tleft: 50px;\r\n}\r\n\r\n.player-stats-and-moves p {\r\n\tfont-size: 3em;\r\n\tcolor: green;\r\n\tfont-weight: bold;\r\n\r\n}\r\n\r\n.cautionHP {\r\n\tfont-size: 3em;\r\n\tcolor: orange;\r\n\tfont-weight: bold;\r\n}\r\n\r\n.dangerHP {\r\n\tfont-size: 3em;\r\n\tcolor: red;\r\n\tfont-weight: bold;\r\n\r\n}\r\n\r\n.player-stats-and-moves input{\r\n\tpadding: 10px;\r\n}\r\n\r\n.cpu-stats-and-moves {\r\n\tposition: absolute;\r\n\tbottom: 50px;\r\n\tright: 80px;\r\n}\r\n\r\n.cpu-stats-and-moves p {\r\n\ttext-align: center;\r\n\tfont-size: 3em;\r\n\tcolor: #ff6347;\r\n\tfont-weight: bold;\r\n}\r\n","@import 'reset';\r\n@import 'fight';\r\n\r\n.container {\r\n  max-width: 960px;\r\n  margin: 0 auto;\r\n}\r\n\r\n.website-title {\r\n  font-size: 3em;\r\n  font-weight: bold;\r\n  font-family: fantasy;\r\n  text-align: center;\r\n  margin-top: 400px;\r\n}\r\n\r\n.progress-title {\r\n  font-family: cursive;\r\n}\r\n\r\n.tagline {\r\n  font-size: 1.2em;\r\n  font-family:cursive;\r\n  text-align: center;\r\n  margin-top: 20px;\r\n}\r\n\r\n#google-signin {\r\n  max-width: 300px;\r\n  margin-left: 35%;\r\n  margin-top: 20px;\r\n}\r\n\r\n#stats-heading {\r\n  text-decoration: underline;\r\n  text-align: center;\r\n  font-size: 1.5em;\r\n  margin-top: 50px;\r\n}\r\n\r\n#stats-table {\r\n  width: 100%;\r\n  border-collapse: collapse;\r\n}\r\n\r\ntr:nth-of-type(odd) {\r\n  background-color: blue;\r\n}\r\n\r\ntr:nth-of-type(even) {\r\n  background-color: lightblue;\r\n}\r\n\r\n#HeadRow {\r\n  background-color: #DDD;\r\n  font-weight: bold;\r\n}\r\n\r\n#stats-table {\r\n  margin-bottom: 50px;\r\n}\r\n\r\n#stats-table td {\r\n  padding: 5px;\r\n  border: 1px solid black;\r\n  text-align: left;\r\n}\r\n\r\n.character-select-title {\r\n  font-family: monospace;\r\n}\r\n\r\n.character-select {\r\n  overflow: auto;\r\n}\r\n\r\n.player-select {\r\n  border: 1px solid blue;\r\n  padding: 80px;\r\n  width: 300px;\r\n  height: 300px;\r\n  border-radius: 50%;\r\n  float: left;\r\n}\r\n\r\n.cpu-select {\r\n  border: 1px solid red;\r\n  padding: 80px;\r\n  width: 300px;\r\n  height: 300px;\r\n  border-radius: 50%;\r\n  float: right;\r\n}\r\n\r\n.whose-character {\r\n  color: green;\r\n  text-align: center;\r\n  font-size: 2em;\r\n  font-weight: bold;\r\n  font-style: italic;\r\n\tmargin-top: -60px;\r\n}\r\n\r\n.sample-sprite {\r\n  max-width: 100px;\r\n  margin-left: 30%;\r\n}\r\n\r\n.character-name {\r\n\tcolor: purple;\r\n\tfont-size: 1.8em;\r\n\tfont-weight: bold;\r\n\tfont-family: Didot;\r\n\ttext-align: center;\r\n}\r\n\r\n.move-list-title {\r\n\ttext-decoration: underline;\r\n\tfont-style: oblique;\r\n\tfont-family: Lucida, serif;\r\n\tfont-size: 1.3em;\r\n\ttext-align: center;\r\n\tmargin-bottom: 3px;\r\n}\r\n\r\n.move-list li {\r\n\ttext-align: center;\r\n\tmargin-top: 3px;\r\n}\r\n\r\n.attack-command {\r\n\tfont-weight: bold;\r\n}\r\n\r\n.super-move-description {\r\n\ttext-align: center;\r\n\tfont-size: .9em;\r\n}\r\n\r\n.cpu-difficulty-form {\r\n\ttext-align: center;\r\n\tmargin-bottom: 10px;\r\n}\r\n\r\n\r\n// @media screen and (max-width: 800px) {\r\n//   #stats-table, #stats-table tbody, #stats-table tr, #stats-table td{\r\n//     display: block;\r\n//   }\r\n//\r\n//   #HeadRow {\r\n//     position: absolute;\r\n//     left: -9999px;\r\n//     top: -9999px;\r\n//   }\r\n//\r\n//   #stats-table td {\r\n//     border: none;\r\n//     position: relative;\r\n//     padding-left: 40%;\r\n//     white-space: normal;\r\n//     text-align: left;\r\n//   }\r\n//\r\n//   #stats-table td::before {\r\n//     position: absolute;\r\n//     top: 5px;\r\n//     left: 5px;\r\n//     width: 40%;\r\n//     padding-right: 10px;\r\n//     white-space: nowrap;\r\n//     text-align: left;\r\n//     font-weight: bold;\r\n//     content: attr(tableHeadData);\r\n//\r\n//   }\r\n// }\r\n"],"sourceRoot":"webpack://"}]);
 	
 	// exports
 
 
 /***/ },
-/* 179 */
+/* 177 */
 /***/ function(module, exports) {
 
 	/*
@@ -21646,7 +21788,7 @@
 
 
 /***/ },
-/* 180 */
+/* 178 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*

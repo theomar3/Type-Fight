@@ -15,14 +15,14 @@
 	overflow: auto;
 }
 
-.sample-player-fight-sprite {
-	max-width: 150px;
+.player-sprite {
+	margin-top: 90px;
 	margin-left: 10%;
 	float: left;
 }
 
-.sample-cpu-fight-sprite {
-	max-width: 150px;
+.cpu-sprite {
+	margin-top: 90px;
 	margin-right: 10%;
 	float: right;
 }
@@ -46,7 +46,7 @@
 
 .fight-title {
 	text-align: center;
-	font-size: 1.2em;
+	font-size: 2em;
 	font-weight: bold;
 }
 
@@ -98,52 +98,44 @@
 	top: 8px;
 }
 
-.cpu-bubble {
+.cpu-bubble
+{
 	text-align: center;
 	line-height: 2em;
-	display: inline-block;
 	float: right;
-  position: relative;
-  width: 240px;
-  height: 45px;
-  padding: 0px;
-  color: #FFFFFF;
-  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#9a491e+0,ca5020+13,e8987e+54 */
-  background: #9a491e; /* Old browsers */
-  background: -moz-linear-gradient(top,  #9a491e 0%, #ca5020 13%, #e8987e 54%); /* FF3.6-15 */
-  background: -webkit-linear-gradient(top,  #9a491e 0%,#ca5020 13%,#e8987e 54%); /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(to bottom,  #9a491e 0%,#ca5020 13%,#e8987e 54%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#9a491e', endColorstr='#e8987e',GradientType=0 ); /* IE6-9 */
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  border-radius: 10px;
+	margin-top: 80px;
+	display: inline-block;
+position: relative;
+width: 180px;
+height: 75px;
+padding: 0px;
+/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#e5e696+18,d1d360+47 */
+background: #e5e696; /* Old browsers */
+background: -moz-linear-gradient(top,  #e5e696 18%, #d1d360 47%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top,  #e5e696 18%,#d1d360 47%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom,  #e5e696 18%,#d1d360 47%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e5e696', endColorstr='#d1d360',GradientType=0 ); /* IE6-9 */
+
+-webkit-border-radius: 9px;
+-moz-border-radius: 9px;
+border-radius: 9px;
 }
 
-.cpu-bubble:after {
-  content: '';
-  position: absolute;
-  border-style: solid;
-  border-width: 9px 0 9px 34px;
-  border-color: transparent #FFFFFF;
-  display: block;
-  width: 0;
-  z-index: 1;
-  right: -34px;
-  top: 13px;
+.cpu-bubble:after
+{
+content: '';
+position: absolute;
+border-style: solid;
+border-width: 13px 0 13px 30px;
+border-color: transparent #e5e696;
+display: block;
+width: 0;
+z-index: 1;
+right: -30px;
+top: 14px;
 }
 
-.cpu-bubble:before {
-  content: '';
-  position: absolute;
-  border-style: solid;
-  border-width: 12px 0 12px 37px;
-  border-color: transparent #9a491e;
-  display: block;
-  width: 0;
-  z-index: 0;
-  right: -41px;
-  top: 10px;
-}
+
 
 .player-stats-and-moves {
 	position: absolute;
@@ -152,10 +144,23 @@
 }
 
 .player-stats-and-moves p {
-	text-align: center;
 	font-size: 3em;
-	color: #9932cc;
+	color: green;
 	font-weight: bold;
+
+}
+
+.cautionHP {
+	font-size: 3em;
+	color: orange;
+	font-weight: bold;
+}
+
+.dangerHP {
+	font-size: 3em;
+	color: red;
+	font-weight: bold;
+
 }
 
 .player-stats-and-moves input{

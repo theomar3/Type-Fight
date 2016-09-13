@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from 'react-dom';
 
-var Fight = require('./js/fight.jsx');
+import Fight from './js/fight.jsx';
 
 require("./scss/style.scss");
 
