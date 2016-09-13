@@ -20,6 +20,10 @@ class Fight extends React.Component {
     store.actions.dodge(evt);
   }
 
+  _playerAttack(evt) {
+    store.actions.attack(evt);
+  }
+
 
 
   render() {
@@ -35,11 +39,14 @@ class Fight extends React.Component {
             {this.state.text}
           </p>
           <img className="player-sprite" src="./images/bradley.gif" />
+          <div className='player-bubble'>
+             {this.state.playerAttack}
+           </div>
           <div className="player-stats-and-moves">
             <p className="playerHP">
               HP:{this.state.playerHP}
             </p>
-            {/*<input type="text" value="What's your move?" /> */}
+            Enter Attack: <input className='attack-input' onKeyUp={evt => this._playerAttack(evt)} />
             Enter Dodge: <input onKeyUp={evt => this._dodgeAttack(evt)} />
           </div>
 
@@ -48,6 +55,9 @@ class Fight extends React.Component {
           <div className="cpu-bubble">
             <p>{this.state.cpuAttack} </p>
             <p>{this.state.dodgeString}</p>
+          </div>
+          <div className="cpu-stats-and-moves">
+            <p>HP:{this.state.cpuHP}</p>
           </div>
 
 
