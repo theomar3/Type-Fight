@@ -1,0 +1,177 @@
+@import 'reset';
+@import 'fight';
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.website-title {
+  font-size: 3em;
+  font-weight: bold;
+  font-family: fantasy;
+  text-align: center;
+  margin-top: 400px;
+}
+
+.progress-title {
+  font-family: cursive;
+}
+
+.tagline {
+  font-size: 1.2em;
+  font-family:cursive;
+  text-align: center;
+  margin-top: 20px;
+}
+
+#google-signin {
+  max-width: 300px;
+  margin-left: 35%;
+  margin-top: 20px;
+}
+
+#stats-heading {
+  text-decoration: underline;
+  text-align: center;
+  font-size: 1.5em;
+  margin-top: 50px;
+}
+
+#stats-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+tr:nth-of-type(odd) {
+  background-color: blue;
+}
+
+tr:nth-of-type(even) {
+  background-color: lightblue;
+}
+
+#HeadRow {
+  background-color: #DDD;
+  font-weight: bold;
+}
+
+#stats-table {
+  margin-bottom: 50px;
+}
+
+#stats-table td {
+  padding: 5px;
+  border: 1px solid black;
+  text-align: left;
+}
+
+.character-select-title {
+  font-family: monospace;
+}
+
+.character-select {
+  overflow: auto;
+}
+
+.player-select {
+  border: 1px solid blue;
+  padding: 80px;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  float: left;
+}
+
+.cpu-select {
+  border: 1px solid red;
+  padding: 80px;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  float: right;
+}
+
+.whose-character {
+  color: green;
+  text-align: center;
+  font-size: 2em;
+  font-weight: bold;
+  font-style: italic;
+	margin-top: -60px;
+}
+
+.sample-sprite {
+  max-width: 100px;
+  margin-left: 30%;
+}
+
+.character-name {
+	color: purple;
+	font-size: 1.8em;
+	font-weight: bold;
+	font-family: Didot;
+	text-align: center;
+}
+
+.move-list-title {
+	text-decoration: underline;
+	font-style: oblique;
+	font-family: Lucida, serif;
+	font-size: 1.3em;
+	text-align: center;
+	margin-bottom: 3px;
+}
+
+.move-list li {
+	text-align: center;
+	margin-top: 3px;
+}
+
+.attack-command {
+	font-weight: bold;
+}
+
+.super-move-description {
+	text-align: center;
+	font-size: .9em;
+}
+
+.cpu-difficulty-form {
+	text-align: center;
+	margin-bottom: 10px;
+}
+
+
+// @media screen and (max-width: 800px) {
+//   #stats-table, #stats-table tbody, #stats-table tr, #stats-table td{
+//     display: block;
+//   }
+//
+//   #HeadRow {
+//     position: absolute;
+//     left: -9999px;
+//     top: -9999px;
+//   }
+//
+//   #stats-table td {
+//     border: none;
+//     position: relative;
+//     padding-left: 40%;
+//     white-space: normal;
+//     text-align: left;
+//   }
+//
+//   #stats-table td::before {
+//     position: absolute;
+//     top: 5px;
+//     left: 5px;
+//     width: 40%;
+//     padding-right: 10px;
+//     white-space: nowrap;
+//     text-align: left;
+//     font-weight: bold;
+//     content: attr(tableHeadData);
+//
+//   }
+// }

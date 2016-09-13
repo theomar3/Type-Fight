@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <title>Practice Page</title>
+    <link rel="stylesheet" href="practice-style.css" media="screen" title="no title">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+
+  <body>
+    <div class="container">
+      <header>
+        <h1 class='website-title'>Type Fight</h1>
+        <h3 class='tagline'> A fun and interactive way to learn how to type faster</h3>
+      </header>
+
+      <img id="google-signin" src='https://mymari_static.s3.amazonaws.com/mymari/img/icon-google.png'/>
+
+      <h1 class='website-title progress-title'>Your Progress</h1>
+      <h3 class='tagline'> Check how you're doing!</h3>
+
+      <h4 id="stats-heading"> Player Stats</h4>
+        <!-- Try to put username instead of "Player" -->
+
+      <table id="stats-table">
+        <tr id='HeadRow'>
+          <td> Character Name </td>
+          <td> W-L Record </td>
+          <td> CPU Difficulty </td>
+          <td> Words Per Minute</td> <!--is this easy to do? -->
+        </tr>
+
+        <tr>
+          <td tableHeadData = "Character Name"> Goku </td>
+          <td tableHeadData = 'W-L Record'> 3-0 </td>
+          <td tableHeadData = 'CPU Difficulty'> Easy </td>
+          <td tableHeadData = 'Words Per Minute'> 60 </td>
+        </tr>
+
+        <tr>
+          <td tableHeadData = "Character Name"> Vegeta </td>
+          <td tableHeadData = 'W-L Record'> 3-2 </td>
+          <td tableHeadData = 'CPU Difficulty'> Easy </td>
+          <td tableHeadData = 'Words Per Minute'> 40 </td>
+        </tr>
+
+        <tr>
+          <td tableHeadData = "Character Name"> Frieza </td>
+          <td tableHeadData = 'W-L Record'> 8-0 </td>
+          <td tableHeadData = 'CPU Difficulty'> Medium </td>
+          <td tableHeadData = 'Words Per Minute'> 80 </td>
+        </tr>
+
+        <tr>
+          <td tableHeadData = "Character Name"> Cell </td>
+          <td tableHeadData = 'W-L Record'> 3-1 </td>
+          <td tableHeadData = 'CPU Difficulty'> Hard </td>
+          <td tableHeadData = 'Words Per Minute'> 68 </td>
+        </tr>
+      </table>
+
+      <!-- On Progres page, has link to Character Select screen -->
+      <h1 class='website-title character-select-title'>Character Select</h1>
+      <h3 class='tagline'> Choose your hero!</h3>
+
+      <!-- might be a carousel of characters? -->
+      <div class="character-select">
+        <div class="player-select">
+          <h2 class="whose-character"> You </h2>
+          <img class="sample-character-select-sprite" src="./images/sample-buu.png" />
+          <p class="character-name"> Buu </p>
+          <p class='move-list-title'> Move List </p>
+          <ul class="move-list">
+            <li><span class="attack-command">Kmha</span> - Kamehameha attack</li>
+            <li><span class="attack-command">Chcl</span> - Chocolate beam</li>
+            <li><span class="attack-command">Regn</span> - Regenerating hp</li>
+            <li><span class="attack-command">*EarthBomb</span> - Earth destruction</li>
+          </ul>
+          <p class="super-move-description">* = super move. Need to "chrg" one round before using. You lose your charge if you get hit!</p>
+        </div>
+
+        <div class="cpu-select">
+          <h2 class="whose-character"> CPU </h2>
+          <img  class= 'sample-character-select-sprite' src="./images/sample-goku.png"/>
+          <p class="character-name"> Son Goku </p>
+          <p class='move-list-title'> CPU Difficulty </p>
+          <form class="cpu-difficulty-form">
+            <input type="radio"> Easy <br>
+            <input type="radio"> Medium <br>
+            <input type="radio"> Hard
+          </form>
+        </div>
+      </div>
+
+
+
+      <!-- links to FIGHT page -->
+      <h1 class='website-title battle-title'>FIGHT!</h1>
+      <h3 class='tagline'> Type it out!</h3>
+
+      <div class="fight-screen">
+        <p class='fight-title'> Click to begin! </p>
+        <!-- after clicking, Type Fight will show -->
+        <!-- <p class='fight-title'> Type Fight! </p> -->
+        <!-- Result of fight will be shown here too -->
+        <!-- <p class='fight-title'> You're a typing beast! </p> -->
+        <h2 class="player-identifier"> You </h2>
+        <img class="sample-player-fight-sprite" src="./images/sample-buu.png" />
+        <div class='player-bubble'> Chocolate Beam! </div>
+        <div class="player-stats-and-moves">
+          <p>HP: 10</p>
+          <input type="text" value="What's your move?">
+          <input type="text" value="Type to dodge here!">
+        </div>
+
+        <h2 class="cpu-identifier"> CPU </h2>
+        <img  class= 'sample-cpu-fight-sprite' src="./images/sample-goku.png"/>
+        <div class="cpu-bubble">
+          Kamehameha!
+          gIlM7vqp1
+        </div>
+        <div class="cpu-stats-and-moves">
+          <p>HP: 10</p>
+        </div>
+      </div>
+
+      <!-- The following will show after the battle -->
+      <h1 class='website-title battle-title'>Rematch!</h1>
+      <h1 class='website-title character-select-title'>Character Change</h1>
+      <h1 class='website-title progress-title'>Review Your Progress</h1>
+
+    </div>
+  </body>
+
+</html>

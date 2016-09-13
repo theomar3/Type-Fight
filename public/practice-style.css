@@ -1,0 +1,369 @@
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/*end of reset*/
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.website-title {
+  font-size: 3em;
+  font-weight: bold;
+  font-family: fantasy;
+  text-align: center;
+  margin-top: 400px;
+}
+
+.progress-title {
+  font-family: cursive;
+}
+
+.tagline {
+  font-size: 1.2em;
+  font-family:cursive;
+  text-align: center;
+  margin-top: 20px;
+}
+
+#google-signin {
+  max-width: 300px;
+  margin-left: 35%;
+  margin-top: 20px;
+}
+
+#stats-heading {
+  text-decoration: underline;
+  text-align: center;
+  font-size: 1.5em;
+  margin-top: 50px;
+}
+
+#stats-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+tr:nth-of-type(odd) {
+  background-color: blue;
+}
+
+tr:nth-of-type(even) {
+  background-color: lightblue;
+}
+
+#HeadRow {
+  background-color: #DDD;
+  font-weight: bold;
+}
+
+#stats-table {
+  margin-bottom: 50px;
+}
+
+#stats-table td {
+  padding: 5px;
+  border: 1px solid black;
+  text-align: left;
+}
+
+
+.character-select-title {
+  font-family: monospace;
+}
+
+.character-select {
+  overflow: auto;
+}
+
+.player-select {
+  border: 1px solid blue;
+  padding: 80px;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  float: left;
+}
+
+.cpu-select {
+  border: 1px solid red;
+  padding: 80px;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  float: right;
+}
+
+.whose-character {
+  color: green;
+  text-align: center;
+  font-size: 2em;
+  font-weight: bold;
+  font-style: italic;
+	margin-top: -60px;
+}
+
+.sample-character-select-sprite {
+  max-width: 100px;
+  margin-left: 30%;
+}
+
+.character-name {
+	color: purple;
+	font-size: 1.8em;
+	font-weight: bold;
+	font-family: Didot;
+	text-align: center;
+}
+
+.move-list-title {
+	text-decoration: underline;
+	font-style: oblique;
+	font-family: Lucida, serif;
+	font-size: 1.3em;
+	text-align: center;
+	margin-bottom: 3px;
+}
+
+.move-list li {
+	text-align: center;
+	margin-top: 3px;
+}
+
+.attack-command {
+	font-weight: bold;
+}
+
+.super-move-description {
+	text-align: center;
+	font-size: .9em;
+}
+
+.cpu-difficulty-form {
+	text-align: center;
+	margin-bottom: 10px;
+}
+
+
+.battle-title {
+	font-family: Brush Script MT;
+}
+
+.fight-screen {
+	border: 3px solid black;
+	background-image: url('./images/BabaArena.gif');
+	background-position: center center;
+	max-width: 1000px;
+	height: 500px;
+	margin-bottom: 30px;
+	margin-top: 30px;
+	position: relative;
+	overflow: auto;
+}
+
+.sample-player-fight-sprite {
+	max-width: 150px;
+	margin-left: 10%;
+	float: left;
+}
+
+.sample-cpu-fight-sprite {
+	max-width: 150px;
+	margin-right: 10%;
+	float: right;
+}
+
+.player-identifier {
+	color: green;
+	font-size: 2em;
+	font-weight: bold;
+	font-style: italic;
+
+}
+
+.cpu-identifier {
+	color: green;
+	font-size: 2em;
+	font-weight: bold;
+	font-style: italic;
+	text-align: right;
+	margin-top: -30px;
+}
+
+.fight-title {
+	text-align: center;
+	font-size: 1.2em;
+	font-weight: bold;
+}
+
+.player-bubble {
+	text-align: center;
+	line-height:  2em;
+	position: relative;
+	margin-top: 10px;
+	width: 240px;
+	height: 40px;
+	padding: 0px;
+	color: #FFFFFF;
+	display: inline-block;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#9a1e5e+0,d82a92+19,ca2083+51,e87ebf+93 */
+	background: #9a1e5e; /* Old browsers */
+	background: -moz-linear-gradient(top,  #9a1e5e 0%, #d82a92 19%, #ca2083 51%, #e87ebf 93%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top,  #9a1e5e 0%,#d82a92 19%,#ca2083 51%,#e87ebf 93%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom,  #9a1e5e 0%,#d82a92 19%,#ca2083 51%,#e87ebf 93%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#9a1e5e', endColorstr='#e87ebf',GradientType=0 ); /* IE6-9 */
+
+}
+
+.player-bubble:after {
+	content: '';
+	position: absolute;
+	border-style: solid;
+	border-width: 9px 34px 9px 0;
+	border-color: transparent #FFFFFF;
+	display: block;
+	width: 0;
+	z-index: 1;
+	left: -34px;
+	top: 11px;
+}
+
+.player-bubble:before {
+	content: '';
+	position: absolute;
+	border-style: solid;
+	border-width: 12px 37px 12px 0;
+	border-color: transparent #9a1e5e;
+	display: block;
+	width: 0;
+	z-index: 0;
+	left: -41px;
+	top: 8px;
+}
+
+.cpu-bubble {
+	text-align: center;
+	line-height: 2em;
+	display: inline-block;
+	float: right;
+position: relative;
+width: 240px;
+height: 45px;
+padding: 0px;
+color: #FFFFFF;
+/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#9a491e+0,ca5020+13,e8987e+54 */
+background: #9a491e; /* Old browsers */
+background: -moz-linear-gradient(top,  #9a491e 0%, #ca5020 13%, #e8987e 54%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top,  #9a491e 0%,#ca5020 13%,#e8987e 54%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom,  #9a491e 0%,#ca5020 13%,#e8987e 54%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#9a491e', endColorstr='#e8987e',GradientType=0 ); /* IE6-9 */
+-webkit-border-radius: 10px;
+-moz-border-radius: 10px;
+border-radius: 10px;
+}
+
+.cpu-bubble:after {
+content: '';
+position: absolute;
+border-style: solid;
+border-width: 9px 0 9px 34px;
+border-color: transparent #FFFFFF;
+display: block;
+width: 0;
+z-index: 1;
+right: -34px;
+top: 13px;
+}
+
+.cpu-bubble:before {
+content: '';
+position: absolute;
+border-style: solid;
+border-width: 12px 0 12px 37px;
+border-color: transparent #9a491e;
+display: block;
+width: 0;
+z-index: 0;
+right: -41px;
+top: 10px;
+}
+
+.player-stats-and-moves {
+	position: absolute;
+	bottom: 50px;
+	left: 50px;
+}
+
+.player-stats-and-moves p {
+	text-align: center;
+	font-size: 3em;
+	color: #9932cc;
+	font-weight: bold;
+}
+
+.player-stats-and-moves input{
+	padding: 10px;
+}
+
+.cpu-stats-and-moves {
+	position: absolute;
+	bottom: 50px;
+	right: 80px;
+}
+
+.cpu-stats-and-moves p {
+	text-align: center;
+	font-size: 3em;
+	color: #ff6347;
+	font-weight: bold;
+}
