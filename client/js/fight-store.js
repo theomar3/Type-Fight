@@ -12,11 +12,6 @@ function randomCPUAttack() {
   return cpuAttacks[randomIndex];
 }
 
-function hitOrMiss() {
-  var damage = Math.floor(Math.random() * 10);
-  return damage;
-}
-
 function randomString(length, chars) {
     var string = '';
     if (chars.indexOf('a') > -1) string += 'abcdefghijklmnopqrstuvwxyz';
@@ -35,7 +30,8 @@ var state = {
   playerAttack: '',
   playerHP: 10,
   cpuHP: 10,
-  dodgeString: ''
+  healString: '',
+  cpuTaunt: ''
 
 }
 
@@ -55,7 +51,8 @@ store.copyState = function() {
     playerAttack: state.playerAttack,
     playerHP: state.playerHP,
     cpuHP: state.cpuHP,
-    dodgeString: state.dodgeString
+    healString: state.healString,
+    cpuTaunt: state.cpuTaunt
   }
 }
 
@@ -73,9 +70,7 @@ function changed() {
 function fightRounds() {
 
   state.cpuAttack = randomCPUAttack();
-  state.dodgeString = randomString(8,'aA');
-
-
+  state.healString = randomString(8,'aA');
   state.playerHP -= 3;
 
   if(state.playerHP < 8) {
@@ -84,28 +79,37 @@ function fightRounds() {
   if(state.playerHP < 5) {
     state.text = 'Danger!';
   }
-  if(state.playerHP < 1) {
-    endFight();
+  if(state.playerHP < 1 || state.cpuHP < 1) {
+    endIntervalFight();
   }
   changed();
 }
 
-function endFight() {
+function endIntervalFight() {
   clearInterval(intervalId);
-  state.text = "You must defeat my Sharingan to stand a chance.";
+  if(state.playerHP < 1) {
+    state.text = "You must defeat my Sharingan to stand a chance.";
+  }
+  if(state.cpuHP < 1) {
+    state.text = 'You cannot keep up with the King Fuhrer.'
+  }
   changed();
+}
+
+function endInputFight() {
+
 }
 
 store.actions.startFight = function() {
   state.text = 'Type Fight!';
 
-  intervalId = setInterval(fightRounds, 7000);
+  intervalId = setInterval(fightRounds, 20000);
   changed();
 }
 
-store.actions.dodge = function(evt) {
+store.actions.heal = function(evt) {
   if(evt.keyCode === 13) {
-    if(evt.target.value === state.dodgeString) {
+    if(evt.target.value === state.healString) {
       state.playerHP += 3;
     }
     evt.target.value = '';
@@ -115,21 +119,38 @@ store.actions.dodge = function(evt) {
 
 store.actions.attack = function(evt) {
 
-
   if(evt.keyCode === 13) {
     var damage = Math.floor(Math.random() * 10);
+    state.cpuTaunt = '';
     if(evt.target.value === 'LightSlash') {
-      state.playerAttack = 'Lighting Slash!';
-      if(damage > 5)
-      state.cpuHP -= 3;
+      state.playerAttack = 'Lightning Slash!';
+      if(damage >= 4) {
+        state.cpuHP -= 3;
+      }
+      else {
+        state.cpuHP += 0;
+        state.cpuTaunt = 'Ha! You missed!';
+      }
     }
     else if(evt.target.value === 'TripStab') {
       state.playerAttack = 'Triple Stab!';
-      state.cpuHP -= 3;
+      if(damage >= 4) {
+        state.cpuHP -= 3;
+      }
+      else {
+        state.cpuHP += 0;
+        state.cpuTaunt = 'Ha! You missed!';
+      }
     }
     else if(evt.target.value === 'UpCut') {
       state.playerAttack = 'Upward Cut!';
-      state.cpuHP -= 3;
+      if(damage >= 4) {
+        state.cpuHP -= 3;
+      }
+      else {
+        state.cpuHP += 0;
+        state.cpuTaunt = 'Ha! You missed!';
+      }
     }
     else {
       state.playerAttack = 'That attack is beneath me, human.';

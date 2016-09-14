@@ -2,6 +2,25 @@
 	font-family: Brush Script MT;
 }
 
+.whose-character-player {
+  color: purple;
+  text-align: left;
+  font-size: 2em;
+  font-weight: bold;
+  font-style: italic;
+	margin-bottom: -40px;
+}
+
+.whose-character-cpu {
+	color: purple;
+  text-align: right;
+  font-size: 2em;
+  font-weight: bold;
+  font-style: italic;
+}
+
+
+
 
 .fight-screen {
 	border: 3px solid black;
@@ -123,6 +142,38 @@ right: -30px;
 top: 14px;
 }
 
+.miss-bubble
+{
+	text-align: center;
+	line-height: 2em;
+	float: right;
+	margin-top: 60px;
+	// margin-left: 1.%;
+	display: inline-block;
+position: relative;
+width: 165px;
+height: 55px;
+padding: 0px;
+background: #FFFFFF;
+-webkit-border-radius: 10px;
+-moz-border-radius: 10px;
+border-radius: 10px;
+}
+
+.miss-bubble:after
+{
+content: '';
+position: absolute;
+border-style: solid;
+border-width: 15px 0 15px 30px;
+border-color: transparent #FFFFFF;
+display: block;
+width: 0;
+z-index: 1;
+right: -30px;
+top: 12px;
+}
+
 
 
 .player-stats-and-moves {
@@ -139,8 +190,32 @@ top: 14px;
 }
 
 .player-stats-and-moves input {
-	display: block;
+	display:block;
+
 }
+
+.move-list {
+	display: inline-block;
+	margin-right: 10%;
+	margin-top: 200px;
+
+}
+
+.move-list-title {
+
+	text-decoration: underline;
+	font-style: oblique;
+	font-family: Lucida, serif;
+	font-size: 1.3em;
+	// text-align: center;
+	// margin-bottom: 3px;
+}
+
+// .move-list li {
+// 	text-align: center;
+// 	margin-top: 3px;
+// }
+
 
 .cautionHP {
 	font-size: 3em;
