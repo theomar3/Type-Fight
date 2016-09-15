@@ -3,21 +3,22 @@ var app = express();
 
 app.use(express.static('public'));
 
-var data = [];
-
 
 
 app.get('/api/progress', function(req, res) {
-  res.send(data);
+  res.send(
+    {
+      wins: winCount,
+      losses: loseCount
+    }
+  );
 });
 
-app.post('/api/progress', function(req, res) {
-  data.push({
-    wins: req.body.wins,
-    losses: req.body.losses
-  });
-  res.send(204);
+var winCount = 0;
+var loseCount = 0;
 
+app.post('/api/progress', function(req, res) {
+  res.sendStatus(204);
 });
 
 app.listen(5000, function() {
