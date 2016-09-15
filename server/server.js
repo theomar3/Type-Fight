@@ -3,19 +3,17 @@ var app = express();
 
 app.use(express.static('public'));
 
+var data = [
+  {
+    wins: 0,
+    losses: 0
+  }
+];
 
-
-app.get('/api/progress', function(req, res) {
-  res.send(
-    {
-      wins: winCount,
-      losses: loseCount
-    }
-  );
+app.get('/player-progress', function(req, res) {
+  res.send(data);
 });
 
-var winCount = 0;
-var loseCount = 0;
 
 app.post('/api/progress', function(req, res) {
   res.sendStatus(204);

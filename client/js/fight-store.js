@@ -1,7 +1,10 @@
-// import AudioFiles from './audio-files.js';
 var $ = require('jquery');
+
+
 var intervalId;
 var battleTheme;
+var danger;
+var warning;
 
 var cpuAttacks = [
   'Shuriken Throw!',
@@ -28,11 +31,14 @@ function randomString(length, chars) {
 
 
 var state = {
+  data: [],
   text: 'Click to begin',
   cpuAttack: '',
   playerAttack: '',
   playerHP: 12,
-  cpuHP: 18,
+  playerStatus: 'healthyHP',
+  cpuHP: 10,
+  cpuStatus: 'healthyHP',
   healString: '',
   cpuTaunt: ''
 
@@ -49,11 +55,14 @@ store.addListener = function(listener) {
 
 store.copyState = function() {
   return {
+    data : state.data,
     text : state.text,
     cpuAttack: state.cpuAttack,
     playerAttack: state.playerAttack,
     playerHP: state.playerHP,
+    playerStatus: state.playerStatus,
     cpuHP: state.cpuHP,
+    cpuStatus: state.cpuStatus,
     healString: state.healString,
     cpuTaunt: state.cpuTaunt
   }
@@ -71,16 +80,26 @@ function changed() {
 //actions
 
 function gameState() {
+  warning = document.getElementById('warning');
+  danger = document.getElementById('danger');
 
   if(state.playerHP < 8) {
     state.text = 'Warning!';
-    var warning = document.getElementById('warning');
+    state.playerStatus = 'warningHP';
     warning.play();
   }
   if(state.playerHP < 5) {
     state.text = 'Danger!';
-    var danger = document.getElementById('danger');
+    state.playerStatus = 'dangerHP';
     danger.play();
+  }
+
+  if(state.cpuHP < 8) {
+    state.cpuStatus = 'warningHP';
+  }
+
+  if(state.cpuHP < 5) {
+    state.cpuStatus = 'dangerHP';
   }
 
   if(state.playerHP < 1) {
@@ -117,16 +136,10 @@ function endFight() {
     state.cpuAttack = 'My Sharingan is superior!';
     state.healString = '';
     battleTheme.pause();
+    danger.pause();
+    warning.pause();
     var gameOver = document.getElementById('gameOver');
     gameOver.play();
-
-    $.ajax({
-      url: '/api/progress',
-      method: 'POST',
-      data: {
-        losses: losses+=1
-      }
-    });
 
   }
 
@@ -138,14 +151,6 @@ function endFight() {
     battleTheme.pause();
     var victory = document.getElementById('victory');
     victory.play();
-
-    $.ajax({
-      url: '/api/progress',
-      method: 'POST',
-      data: {
-        wins: wins+=1
-      }
-    });
   }
 
 
@@ -166,8 +171,8 @@ store.actions.startFight = function() {
 }
 
 store.actions.attack = function(evt) {
-  var missTaunt = document.getElementById('missTaunt');
   var cpuHit = document.getElementById('cpuHit');
+  var missTaunt = document.getElementById('missTaunt');
   if(evt.keyCode === 13) {
     var damage = Math.floor(Math.random() * 10);
     state.cpuTaunt = '';
@@ -201,6 +206,7 @@ store.actions.attack = function(evt) {
       if(damage >= 4) {
         state.cpuHP -= 3;
         cpuHit.play();
+
       }
       else {
         state.cpuHP += 0;
@@ -223,12 +229,19 @@ store.actions.attack = function(evt) {
 }
 
 store.actions.load = function() {
+  console.log('loading');
+
   $.ajax({
-    url: '/api/progress',
+    url: '/player-progress',
     method: 'GET'
   })
+  .done(function(data) {
+    console.log(data);
+    state.data = data;
+    console.log(state);
+    changed();
 
-  changed();
+  });
 }
 
 

@@ -6,8 +6,10 @@ import store from './fight-store.js';
 class Fight extends React.Component {
   constructor() {
     super();
-    store.actions.load();
-    
+
+
+
+
     this.state = store.copyState();
 
     store.addListener( state => {
@@ -31,8 +33,8 @@ class Fight extends React.Component {
   render() {
     return (
       <div>
-       <audio id="mainTheme" src="./music/FF-main-theme.mp3" loop autoPlay="true"/>
-       <audio id="battleTheme"  src="./music/Mortal-Kombat-theme.mp3" />
+       <audio id="mainTheme" src="./music/FF-main-theme.mp3" loop autoPlay="true" />
+       <audio id="battleTheme"  src="./music/Mortal-Kombat-theme.mp3" muted />
        <audio id="gameOver" src="./music/game-over-man.mp3" />
        <audio id='victory' src='./music/victory.mp3' />
        <audio id="bradleyHeal" src='./music/bradley-heal.mp3' />
@@ -56,7 +58,7 @@ class Fight extends React.Component {
              {this.state.playerAttack}
            </div>
           <div className="player-stats-and-moves">
-            <p className="playerHP">
+            <p className={this.state.playerStatus}>
               HP:{this.state.playerHP}
             </p>
             Enter Attack or Heal: <input className='attack-input' onKeyUp={evt => this._playerAttack(evt)} />
@@ -73,7 +75,7 @@ class Fight extends React.Component {
             <p>{this.state.healString}</p>
           </div>
           <div className="cpu-stats-and-moves">
-            <p>HP:{this.state.cpuHP}</p>
+            <p className={this.state.cpuStatus}>HP:{this.state.cpuHP}</p>
           </div>
 
           <div className='move-list'>
