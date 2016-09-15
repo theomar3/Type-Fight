@@ -1,3 +1,5 @@
+// import AudioFiles from './audio-files.js';
+var $ = require('jquery');
 var intervalId;
 var battleTheme;
 
@@ -29,8 +31,8 @@ var state = {
   text: 'Click to begin',
   cpuAttack: '',
   playerAttack: '',
-  playerHP: 9,
-  cpuHP: 9,
+  playerHP: 12,
+  cpuHP: 18,
   healString: '',
   cpuTaunt: ''
 
@@ -71,10 +73,14 @@ function changed() {
 function gameState() {
 
   if(state.playerHP < 8) {
-    state.text = 'Caution!';
+    state.text = 'Warning!';
+    var warning = document.getElementById('warning');
+    warning.play();
   }
   if(state.playerHP < 5) {
     state.text = 'Danger!';
+    var danger = document.getElementById('danger');
+    danger.play();
   }
 
   if(state.playerHP < 1) {
@@ -114,6 +120,14 @@ function endFight() {
     var gameOver = document.getElementById('gameOver');
     gameOver.play();
 
+    $.ajax({
+      url: '/api/progress',
+      method: 'POST',
+      data: {
+        losses: losses+=1
+      }
+    });
+
   }
 
   if(state.cpuHP < 1) {
@@ -124,6 +138,14 @@ function endFight() {
     battleTheme.pause();
     var victory = document.getElementById('victory');
     victory.play();
+
+    $.ajax({
+      url: '/api/progress',
+      method: 'POST',
+      data: {
+        wins: wins+=1
+      }
+    });
   }
 
 
@@ -145,6 +167,7 @@ store.actions.startFight = function() {
 
 store.actions.attack = function(evt) {
   var missTaunt = document.getElementById('missTaunt');
+  var cpuHit = document.getElementById('cpuHit');
   if(evt.keyCode === 13) {
     var damage = Math.floor(Math.random() * 10);
     state.cpuTaunt = '';
@@ -152,6 +175,7 @@ store.actions.attack = function(evt) {
       state.playerAttack = 'Lightning Slash!';
       if(damage >= 4) {
         state.cpuHP -= 3;
+        cpuHit.play();
       }
       else {
         state.cpuHP += 0;
@@ -163,6 +187,8 @@ store.actions.attack = function(evt) {
       state.playerAttack = 'Triple Stab!';
       if(damage >= 4) {
         state.cpuHP -= 3;
+        cpuHit.play();
+
       }
       else {
         state.cpuHP += 0;
@@ -174,6 +200,7 @@ store.actions.attack = function(evt) {
       state.playerAttack = 'Upward Cut!';
       if(damage >= 4) {
         state.cpuHP -= 3;
+        cpuHit.play();
       }
       else {
         state.cpuHP += 0;
@@ -193,6 +220,15 @@ store.actions.attack = function(evt) {
     evt.target.value = '';
     gameState();
   }
+}
+
+store.actions.load = function() {
+  $.ajax({
+    url: '/api/progress',
+    method: 'GET'
+  })
+
+  changed();
 }
 
 

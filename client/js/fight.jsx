@@ -6,7 +6,8 @@ import store from './fight-store.js';
 class Fight extends React.Component {
   constructor() {
     super();
-
+    store.actions.load();
+    
     this.state = store.copyState();
 
     store.addListener( state => {
@@ -31,12 +32,15 @@ class Fight extends React.Component {
     return (
       <div>
        <audio id="mainTheme" src="./music/FF-main-theme.mp3" loop autoPlay="true"/>
-       <audio id="battleTheme" src="./music/FF7-boss-theme.mp3" />
+       <audio id="battleTheme"  src="./music/Mortal-Kombat-theme.mp3" />
        <audio id="gameOver" src="./music/game-over-man.mp3" />
        <audio id='victory' src='./music/victory.mp3' />
        <audio id="bradleyHeal" src='./music/bradley-heal.mp3' />
        <audio id="missTaunt" src="./music/miss-taunt.mp3" />
        <audio id='playerHit' src="./music/player-hit.mp3" />
+       <audio id='cpuHit' src="./music/cpu-hit.mp3" />
+       <audio id="warning" src="./music/warning.mp3" />
+       <audio id='danger' src='./music/danger.mp3' />
 
         <h1 className='website-title'>Type Fight</h1>
         <h3 className='tagline'> A fun and interactive way to learn how to type faster</h3>
