@@ -1,4 +1,5 @@
 var intervalId;
+var battleTheme;
 
 var cpuAttacks = [
   'Shuriken Throw!',
@@ -28,8 +29,8 @@ var state = {
   text: 'Click to begin',
   cpuAttack: '',
   playerAttack: '',
-  playerHP: 10,
-  cpuHP: 10,
+  playerHP: 9,
+  cpuHP: 9,
   healString: '',
   cpuTaunt: ''
 
@@ -67,11 +68,7 @@ function changed() {
 
 //actions
 
-function fightRounds() {
-
-  state.cpuAttack = randomCPUAttack();
-  state.healString = randomString(8,'aA');
-  state.playerHP -= 3;
+function gameState() {
 
   if(state.playerHP < 8) {
     state.text = 'Caution!';
@@ -79,46 +76,75 @@ function fightRounds() {
   if(state.playerHP < 5) {
     state.text = 'Danger!';
   }
-  if(state.playerHP < 1 || state.cpuHP < 1) {
-    endIntervalFight();
-  }
-  changed();
-}
 
-function endIntervalFight() {
-  clearInterval(intervalId);
   if(state.playerHP < 1) {
-    state.text = "You must defeat my Sharingan to stand a chance.";
+    endFight();
   }
+
   if(state.cpuHP < 1) {
-    state.text = 'You cannot keep up with the King Fuhrer.'
+    endFight();
   }
+
   changed();
 }
 
-function endInputFight() {
+function intervalRounds() {
+
+
+  state.cpuAttack = randomCPUAttack();
+  state.healString = randomString(8,'aA');
+  state.playerHP -= 3;
+  var playerHit = document.getElementById('playerHit');
+  playerHit.play();
+
+
+  gameState();
 
 }
+
+function endFight() {
+  clearInterval(intervalId);
+
+  if(state.playerHP < 1) {
+    state.text = "You lost! Try again.";
+    state.playerAttack = 'I lost to a human? Impossible!';
+    state.cpuAttack = 'My Sharingan is superior!';
+    state.healString = '';
+    battleTheme.pause();
+    var gameOver = document.getElementById('gameOver');
+    gameOver.play();
+
+  }
+
+  if(state.cpuHP < 1) {
+    state.text = 'Awesome! You won!';
+    state.playerAttack = "That's why I'm King Fuhrer."
+    state.cpuAttack = 'I lost! My ninjitsu failed me.';
+    state.healString = '';
+    battleTheme.pause();
+    var victory = document.getElementById('victory');
+    victory.play();
+  }
+
+
+}
+
 
 store.actions.startFight = function() {
   state.text = 'Type Fight!';
 
-  intervalId = setInterval(fightRounds, 20000);
-  changed();
-}
+  battleTheme = document.getElementById('battleTheme');
+  battleTheme.play();
+  var mainTheme = document.getElementById('mainTheme');
+  mainTheme.pause();
 
-store.actions.heal = function(evt) {
-  if(evt.keyCode === 13) {
-    if(evt.target.value === state.healString) {
-      state.playerHP += 3;
-    }
-    evt.target.value = '';
-  }
+
+  intervalId = setInterval(intervalRounds, 3000);
   changed();
 }
 
 store.actions.attack = function(evt) {
-
+  var missTaunt = document.getElementById('missTaunt');
   if(evt.keyCode === 13) {
     var damage = Math.floor(Math.random() * 10);
     state.cpuTaunt = '';
@@ -130,6 +156,7 @@ store.actions.attack = function(evt) {
       else {
         state.cpuHP += 0;
         state.cpuTaunt = 'Ha! You missed!';
+        missTaunt.play();
       }
     }
     else if(evt.target.value === 'TripStab') {
@@ -140,6 +167,7 @@ store.actions.attack = function(evt) {
       else {
         state.cpuHP += 0;
         state.cpuTaunt = 'Ha! You missed!';
+        missTaunt.play();
       }
     }
     else if(evt.target.value === 'UpCut') {
@@ -150,14 +178,23 @@ store.actions.attack = function(evt) {
       else {
         state.cpuHP += 0;
         state.cpuTaunt = 'Ha! You missed!';
+        missTaunt.play();
       }
     }
+    else if(evt.target.value === state.healString) {
+        state.playerHP += 3;
+        state.playerAttack = "Puny attacks can't harm me!";
+        var bradleyHeal = document.getElementById('bradleyHeal');
+        bradleyHeal.play();
+      }
     else {
       state.playerAttack = 'That attack is beneath me, human.';
     }
     evt.target.value = '';
+    gameState();
   }
-  changed();
 }
+
+
 
 module.exports = store;

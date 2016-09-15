@@ -1,6 +1,8 @@
 import React from 'react';
 import store from './fight-store.js';
 
+
+
 class Fight extends React.Component {
   constructor() {
     super();
@@ -16,9 +18,6 @@ class Fight extends React.Component {
     store.actions.startFight();
   }
 
-  _healFromAttack(evt) {
-    store.actions.heal(evt);
-  }
 
   _playerAttack(evt) {
     store.actions.attack(evt);
@@ -26,10 +25,19 @@ class Fight extends React.Component {
 
 
 
-  render() {
 
+
+  render() {
     return (
       <div>
+       <audio id="mainTheme" src="./music/FF-main-theme.mp3" loop autoPlay="true"/>
+       <audio id="battleTheme" src="./music/FF7-boss-theme.mp3" />
+       <audio id="gameOver" src="./music/game-over-man.mp3" />
+       <audio id='victory' src='./music/victory.mp3' />
+       <audio id="bradleyHeal" src='./music/bradley-heal.mp3' />
+       <audio id="missTaunt" src="./music/miss-taunt.mp3" />
+       <audio id='playerHit' src="./music/player-hit.mp3" />
+
         <h1 className='website-title'>Type Fight</h1>
         <h3 className='tagline'> A fun and interactive way to learn how to type faster</h3>
 
@@ -47,8 +55,7 @@ class Fight extends React.Component {
             <p className="playerHP">
               HP:{this.state.playerHP}
             </p>
-            Enter Attack: <input className='attack-input' onKeyUp={evt => this._playerAttack(evt)} />
-          Enter to Heal: <input onKeyUp={evt => this._healFromAttack(evt)} />
+            Enter Attack or Heal: <input className='attack-input' onKeyUp={evt => this._playerAttack(evt)} />
           </div>
 
 
