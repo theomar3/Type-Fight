@@ -16,7 +16,12 @@ app.get('/player-progress', function(req, res) {
 
 
 app.post('/api/progress', function(req, res) {
+  data.push({
+    wins: req.body.wins,
+    losses: req.body.losses
+  });
   res.sendStatus(204);
+
 });
 
 app.listen(5000, function() {

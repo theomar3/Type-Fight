@@ -6,16 +6,21 @@ var battleTheme;
 var danger;
 var warning;
 
+
+
 var cpuAttacks = [
-  'Shuriken Throw!',
-  'Susano!',
-  'Fire ball!',
+  'Web Ball!',
+  'Web Swing!',
+  'Spider Sting!',
 ];
 
 
-function randomCPUAttack() {
-  var randomIndex = Math.floor(Math.random() * cpuAttacks.length);
-  return cpuAttacks[randomIndex];
+
+
+
+function randomIndexing(array) {
+  var randomIndex = Math.floor(Math.random() * array.length);
+  return array[randomIndex];
 }
 
 function randomString(length, chars) {
@@ -35,12 +40,14 @@ var state = {
   text: 'Click to begin',
   cpuAttack: '',
   playerAttack: '',
-  playerHP: 12,
+  playerHP: 30,
   playerStatus: 'healthyHP',
-  cpuHP: 10,
+  cpuHP: 20,
   cpuStatus: 'healthyHP',
   healString: '',
-  cpuTaunt: ''
+  cpuTaunt: '',
+  playerSprite: './images/kenshin-start.gif',
+  cpuSprite: './images/spidey-start.gif',
 
 }
 
@@ -64,7 +71,9 @@ store.copyState = function() {
     cpuHP: state.cpuHP,
     cpuStatus: state.cpuStatus,
     healString: state.healString,
-    cpuTaunt: state.cpuTaunt
+    cpuTaunt: state.cpuTaunt,
+    playerSprite: state.playerSprite,
+    cpuSprite: state.cpuSprite,
   }
 }
 
@@ -86,20 +95,33 @@ function gameState() {
   if(state.playerHP < 8) {
     state.text = 'Warning!';
     state.playerStatus = 'warningHP';
+    state.playerSprite = './images/kenshin-warning.gif';
     warning.play();
   }
   if(state.playerHP < 5) {
     state.text = 'Danger!';
     state.playerStatus = 'dangerHP';
+    state.playerSprite = './images/kenshin-danger.gif';
     danger.play();
   }
 
+  if(state.playerHP <= 0) {
+    state.playerHP = 0;
+  }
+
+
   if(state.cpuHP < 8) {
     state.cpuStatus = 'warningHP';
+    state.cpuSprite = './images/spidey-warning.gif';
   }
 
   if(state.cpuHP < 5) {
     state.cpuStatus = 'dangerHP';
+    state.cpuSprite = './images/spidey-danger.gif';
+  }
+
+  if(state.cpuHP <= 0) {
+    state.cpuHP = 0;
   }
 
   if(state.playerHP < 1) {
@@ -114,11 +136,28 @@ function gameState() {
 }
 
 function intervalRounds() {
+  var webBall = document.getElementById('webBall');
+  var webSwing = document.getElementById('webSwing');
+  var spiderSting = document.getElementById('spiderSting');
 
 
-  state.cpuAttack = randomCPUAttack();
+  state.cpuAttack = randomIndexing(cpuAttacks);
+  if(state.cpuAttack === 'Web Ball!') {
+    state.cpuSprite = './images/spidey-web-ball.gif';
+    webBall.play();
+  }
+  else if(state.cpuAttack === 'Web Swing!') {
+    state.cpuSprite = './images/spidey-kick.gif';
+    webSwing.play();
+  }
+  else if(state.cpuAttack === 'Spider Sting!') {
+    state.cpuSprite = './images/spidey-sting.gif';
+    spiderSting.play();
+  }
   state.healString = randomString(8,'aA');
   state.playerHP -= 3;
+  state.playerSprite = './images/kenshin-hit.gif';
+
   var playerHit = document.getElementById('playerHit');
   playerHit.play();
 
@@ -132,33 +171,64 @@ function endFight() {
 
   if(state.playerHP < 1) {
     state.text = "You lost! Try again.";
-    state.playerAttack = 'I lost to a human? Impossible!';
-    state.cpuAttack = 'My Sharingan is superior!';
+    state.playerAttack = 'I was going easy on you.';
+    state.cpuAttack = 'One for J.J.';
+    state.playerSprite = './images/kenshin-dead.gif';
+    state.cpuSprite = './images/spidey-win.gif';
     state.healString = '';
     battleTheme.pause();
     danger.pause();
     warning.pause();
     var gameOver = document.getElementById('gameOver');
-    gameOver.play();
+    var dna = document.getElementById('dna');
+    var kneel = document.getElementById('kneel');
+    var gameOverSounds = [
+      gameOver,
+      dna,
+      kneel
+    ];
+    randomIndexing(gameOverSounds).play();
+
+
+
+    var promise = $.ajax({
+      url: '/player-progress',
+      method: 'POST',
+      data: {
+        losses: 1
+      }
+    });
+
 
   }
 
   if(state.cpuHP < 1) {
     state.text = 'Awesome! You won!';
-    state.playerAttack = "That's why I'm King Fuhrer."
-    state.cpuAttack = 'I lost! My ninjitsu failed me.';
+    state.playerAttack = "You should keep practicing."
+    state.cpuAttack = 'Uncle Ben! I failed you. ';
+    state.playerSprite = './images/kenshin-win.gif';
+    state.cpuSprite = './images/spidey-dead.gif';
     state.healString = '';
     battleTheme.pause();
     var victory = document.getElementById('victory');
     victory.play();
   }
 
+  var promise = $.ajax({
+    url: '/player-progress',
+    method: 'POST',
+    data: {
+      wins: 1
+    }
+  });
 
 }
 
 
 store.actions.startFight = function() {
   state.text = 'Type Fight!';
+  state.playerSprite = './images/kenshin-ready.gif';
+  state.cpuSprite = './images/spidey-ready.gif';
 
   battleTheme = document.getElementById('battleTheme');
   battleTheme.play();
@@ -166,62 +236,97 @@ store.actions.startFight = function() {
   mainTheme.pause();
 
 
-  intervalId = setInterval(intervalRounds, 3000);
+  intervalId = setInterval(intervalRounds, 5000);
   changed();
 }
 
 store.actions.attack = function(evt) {
+  var suckTaunt = document.getElementById('suckTaunt');
+  var laughTaunt = document.getElementById('laughTaunt');
+  var patheticTaunt = document.getElementById('patheticTaunt');
+  var bradleyTaunt = document.getElementById('bradleyTaunt');
   var cpuHit = document.getElementById('cpuHit');
-  var missTaunt = document.getElementById('missTaunt');
+
+  var missTaunts = [
+    suckTaunt,
+    laughTaunt,
+    patheticTaunt,
+    bradleyTaunt
+  ];
+
   if(evt.keyCode === 13) {
     var damage = Math.floor(Math.random() * 10);
     state.cpuTaunt = '';
-    if(evt.target.value === 'LightSlash') {
-      state.playerAttack = 'Lightning Slash!';
+    if(evt.target.value === 'ForwardS') {
+      state.playerAttack = 'Forward Slash!';
+      var forwardSlash = document.getElementById('forwardSlash');
+      forwardSlash.play();
+      state.playerSprite = './images/kenshin-forward-slash.gif';
       if(damage >= 4) {
         state.cpuHP -= 3;
+        state.cpuSprite = './images/spidey-hit.gif';
         cpuHit.play();
       }
       else {
         state.cpuHP += 0;
-        state.cpuTaunt = 'Ha! You missed!';
-        missTaunt.play();
+        state.cpuTaunt = 'Spider Sense tingling.';
+        randomIndexing(missTaunts).play();
       }
     }
-    else if(evt.target.value === 'TripStab') {
-      state.playerAttack = 'Triple Stab!';
+    else if(evt.target.value === 'ChargeS') {
+      state.playerAttack = 'Charging Slash!';
+      var chargingSlash = document.getElementById('chargingSlash');
+      chargingSlash.play();
+      state.playerSprite = './images/kenshin-chargeslash.gif';
+
       if(damage >= 4) {
         state.cpuHP -= 3;
+        state.cpuSprite = './images/spidey-hit.gif';
         cpuHit.play();
 
       }
       else {
         state.cpuHP += 0;
-        state.cpuTaunt = 'Ha! You missed!';
-        missTaunt.play();
+        state.cpuTaunt = 'Spider Sense tingling.';
+        randomIndexing(missTaunts).play();
+
       }
     }
-    else if(evt.target.value === 'UpCut') {
-      state.playerAttack = 'Upward Cut!';
+    else if(evt.target.value === 'UpwardS') {
+      state.playerAttack = 'Upward Slash!';
+      var upwardSlash = document.getElementById('upwardSlash');
+      upwardSlash.play();
+      state.playerSprite = './images/kenshin-upslash.gif';
       if(damage >= 4) {
         state.cpuHP -= 3;
+        state.cpuSprite = './images/spidey-hit.gif';
         cpuHit.play();
 
       }
       else {
         state.cpuHP += 0;
-        state.cpuTaunt = 'Ha! You missed!';
-        missTaunt.play();
+        state.cpuTaunt = 'Spider Sense tingling.';
+        randomIndexing(missTaunts).play();
+
       }
     }
     else if(evt.target.value === state.healString) {
+      var gokuHeal = document.getElementById('gokuHeal');
+      var dendeHeal = document.getElementById('dendeHeal');
+
+      var healSounds = [
+        gokuHeal,
+        dendeHeal
+      ];
+
         state.playerHP += 3;
-        state.playerAttack = "Puny attacks can't harm me!";
-        var bradleyHeal = document.getElementById('bradleyHeal');
-        bradleyHeal.play();
+        state.playerAttack = "Just a scratch";
+        state.playerSprite = './images/kenshin-ready.gif';
+        randomIndexing(healSounds).play();
       }
     else {
-      state.playerAttack = 'That attack is beneath me, human.';
+      state.playerAttack = "Sorry, I don't know that move.";
+      state.playerSprite = './images/kenshin-no-move.gif';
     }
     evt.target.value = '';
     gameState();

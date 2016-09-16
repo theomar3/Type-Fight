@@ -58,7 +58,7 @@
 	
 	var _fight2 = _interopRequireDefault(_fight);
 	
-	var _progress = __webpack_require__(179);
+	var _progress = __webpack_require__(174);
 	
 	var _progress2 = _interopRequireDefault(_progress);
 	
@@ -70,7 +70,7 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	__webpack_require__(174);
+	__webpack_require__(175);
 	
 	var App = function (_React$Component) {
 	  _inherits(App, _React$Component);
@@ -21527,16 +21527,27 @@
 	      return _react2.default.createElement(
 	        'div',
 	        null,
-	        _react2.default.createElement('audio', { id: 'mainTheme', src: './music/FF-main-theme.mp3', loop: true, autoPlay: 'true' }),
-	        _react2.default.createElement('audio', { id: 'battleTheme', src: './music/Mortal-Kombat-theme.mp3', muted: true }),
+	        _react2.default.createElement('audio', { id: 'mainTheme', src: './music/FF-main-theme.mp3', loop: true, autoPlay: 'true', muted: true }),
 	        _react2.default.createElement('audio', { id: 'gameOver', src: './music/game-over-man.mp3' }),
+	        _react2.default.createElement('audio', { id: 'dna', src: './music/dna.mp3' }),
+	        _react2.default.createElement('audio', { id: 'kneel', src: './music/kneel.mp3' }),
 	        _react2.default.createElement('audio', { id: 'victory', src: './music/victory.mp3' }),
-	        _react2.default.createElement('audio', { id: 'bradleyHeal', src: './music/bradley-heal.mp3' }),
-	        _react2.default.createElement('audio', { id: 'missTaunt', src: './music/miss-taunt.mp3' }),
 	        _react2.default.createElement('audio', { id: 'playerHit', src: './music/player-hit.mp3' }),
 	        _react2.default.createElement('audio', { id: 'cpuHit', src: './music/cpu-hit.mp3' }),
 	        _react2.default.createElement('audio', { id: 'warning', src: './music/warning.mp3' }),
 	        _react2.default.createElement('audio', { id: 'danger', src: './music/danger.mp3' }),
+	        _react2.default.createElement('audio', { id: 'suckTaunt', src: './music/suck-miss-taunt.mp3' }),
+	        _react2.default.createElement('audio', { id: 'laughTaunt', src: './music/laugh-miss-taunt.mp3' }),
+	        _react2.default.createElement('audio', { id: 'patheticTaunt', src: './music/pathetic-miss-taunt.mp3' }),
+	        _react2.default.createElement('audio', { id: 'bradleyTaunt', src: './music/bradley-miss-taunt.mp3' }),
+	        _react2.default.createElement('audio', { id: 'gokuHeal', src: './music/goku-heal.mp3' }),
+	        _react2.default.createElement('audio', { id: 'dendeHeal', src: './music/dende-heal.mp3' }),
+	        _react2.default.createElement('audio', { id: 'forwardSlash', src: './music/forward-slash.mp3' }),
+	        _react2.default.createElement('audio', { id: 'chargingSlash', src: './music/charging-slash.mp3' }),
+	        _react2.default.createElement('audio', { id: 'upwardSlash', src: './music/upward-slash.mp3' }),
+	        _react2.default.createElement('audio', { id: 'webBall', src: './music/web-ball.mp3' }),
+	        _react2.default.createElement('audio', { id: 'spiderSting', src: './music/spider-sting.mp3' }),
+	        _react2.default.createElement('audio', { id: 'webSwing', src: './music/web-swing.mp3' }),
 	        _react2.default.createElement(
 	          'h1',
 	          { className: 'website-title' },
@@ -21567,7 +21578,7 @@
 	              } },
 	            this.state.text
 	          ),
-	          _react2.default.createElement('img', { className: 'player-sprite', src: './images/bradley.gif' }),
+	          _react2.default.createElement('img', { className: 'player-sprite', src: this.state.playerSprite }),
 	          _react2.default.createElement(
 	            'div',
 	            { className: 'player-bubble' },
@@ -21587,7 +21598,7 @@
 	                return _this2._playerAttack(evt);
 	              } })
 	          ),
-	          _react2.default.createElement('img', { className: 'cpu-sprite', src: './images/sasuke.gif' }),
+	          _react2.default.createElement('img', { className: 'cpu-sprite', src: this.state.cpuSprite }),
 	          _react2.default.createElement(
 	            'div',
 	            { className: 'miss-bubble' },
@@ -21636,17 +21647,17 @@
 	              _react2.default.createElement(
 	                'li',
 	                null,
-	                'LightSlash'
+	                'ForwardS'
 	              ),
 	              _react2.default.createElement(
 	                'li',
 	                null,
-	                'TripStab'
+	                'ChargeS'
 	              ),
 	              _react2.default.createElement(
 	                'li',
 	                null,
-	                'UpCut'
+	                'UpwardS'
 	              )
 	            )
 	          )
@@ -21666,18 +21677,18 @@
 
 	'use strict';
 	
-	var $ = __webpack_require__(178);
+	var $ = __webpack_require__(179);
 	
 	var intervalId;
 	var battleTheme;
 	var danger;
 	var warning;
 	
-	var cpuAttacks = ['Shuriken Throw!', 'Susano!', 'Fire ball!'];
+	var cpuAttacks = ['Web Ball!', 'Web Swing!', 'Spider Sting!'];
 	
-	function randomCPUAttack() {
-	  var randomIndex = Math.floor(Math.random() * cpuAttacks.length);
-	  return cpuAttacks[randomIndex];
+	function randomIndexing(array) {
+	  var randomIndex = Math.floor(Math.random() * array.length);
+	  return array[randomIndex];
 	}
 	
 	function randomString(length, chars) {
@@ -21697,12 +21708,14 @@
 	  text: 'Click to begin',
 	  cpuAttack: '',
 	  playerAttack: '',
-	  playerHP: 12,
+	  playerHP: 30,
 	  playerStatus: 'healthyHP',
-	  cpuHP: 10,
+	  cpuHP: 20,
 	  cpuStatus: 'healthyHP',
 	  healString: '',
-	  cpuTaunt: ''
+	  cpuTaunt: '',
+	  playerSprite: './images/kenshin-start.gif',
+	  cpuSprite: './images/spidey-start.gif'
 	
 	};
 	
@@ -21726,7 +21739,9 @@
 	    cpuHP: state.cpuHP,
 	    cpuStatus: state.cpuStatus,
 	    healString: state.healString,
-	    cpuTaunt: state.cpuTaunt
+	    cpuTaunt: state.cpuTaunt,
+	    playerSprite: state.playerSprite,
+	    cpuSprite: state.cpuSprite
 	  };
 	};
 	
@@ -21746,20 +21761,32 @@
 	  if (state.playerHP < 8) {
 	    state.text = 'Warning!';
 	    state.playerStatus = 'warningHP';
+	    state.playerSprite = './images/kenshin-warning.gif';
 	    warning.play();
 	  }
 	  if (state.playerHP < 5) {
 	    state.text = 'Danger!';
 	    state.playerStatus = 'dangerHP';
+	    state.playerSprite = './images/kenshin-danger.gif';
 	    danger.play();
+	  }
+	
+	  if (state.playerHP <= 0) {
+	    state.playerHP = 0;
 	  }
 	
 	  if (state.cpuHP < 8) {
 	    state.cpuStatus = 'warningHP';
+	    state.cpuSprite = './images/spidey-warning.gif';
 	  }
 	
 	  if (state.cpuHP < 5) {
 	    state.cpuStatus = 'dangerHP';
+	    state.cpuSprite = './images/spidey-danger.gif';
+	  }
+	
+	  if (state.cpuHP <= 0) {
+	    state.cpuHP = 0;
 	  }
 	
 	  if (state.playerHP < 1) {
@@ -21774,10 +21801,25 @@
 	}
 	
 	function intervalRounds() {
+	  var webBall = document.getElementById('webBall');
+	  var webSwing = document.getElementById('webSwing');
+	  var spiderSting = document.getElementById('spiderSting');
 	
-	  state.cpuAttack = randomCPUAttack();
+	  state.cpuAttack = randomIndexing(cpuAttacks);
+	  if (state.cpuAttack === 'Web Ball!') {
+	    state.cpuSprite = './images/spidey-web-ball.gif';
+	    webBall.play();
+	  } else if (state.cpuAttack === 'Web Swing!') {
+	    state.cpuSprite = './images/spidey-kick.gif';
+	    webSwing.play();
+	  } else if (state.cpuAttack === 'Spider Sting!') {
+	    state.cpuSprite = './images/spidey-sting.gif';
+	    spiderSting.play();
+	  }
 	  state.healString = randomString(8, 'aA');
 	  state.playerHP -= 3;
+	  state.playerSprite = './images/kenshin-hit.gif';
+	
 	  var playerHit = document.getElementById('playerHit');
 	  playerHit.play();
 	
@@ -21789,82 +21831,132 @@
 	
 	  if (state.playerHP < 1) {
 	    state.text = "You lost! Try again.";
-	    state.playerAttack = 'I lost to a human? Impossible!';
-	    state.cpuAttack = 'My Sharingan is superior!';
+	    state.playerAttack = 'I was going easy on you.';
+	    state.cpuAttack = 'One for J.J.';
+	    state.playerSprite = './images/kenshin-dead.gif';
+	    state.cpuSprite = './images/spidey-win.gif';
 	    state.healString = '';
 	    battleTheme.pause();
 	    danger.pause();
 	    warning.pause();
 	    var gameOver = document.getElementById('gameOver');
-	    gameOver.play();
+	    var dna = document.getElementById('dna');
+	    var kneel = document.getElementById('kneel');
+	    var gameOverSounds = [gameOver, dna, kneel];
+	    randomIndexing(gameOverSounds).play();
+	
+	    var promise = $.ajax({
+	      url: '/player-progress',
+	      method: 'POST',
+	      data: {
+	        losses: 1
+	      }
+	    });
 	  }
 	
 	  if (state.cpuHP < 1) {
 	    state.text = 'Awesome! You won!';
-	    state.playerAttack = "That's why I'm King Fuhrer.";
-	    state.cpuAttack = 'I lost! My ninjitsu failed me.';
+	    state.playerAttack = "You should keep practicing.";
+	    state.cpuAttack = 'Uncle Ben! I failed you. ';
+	    state.playerSprite = './images/kenshin-win.gif';
+	    state.cpuSprite = './images/spidey-dead.gif';
 	    state.healString = '';
 	    battleTheme.pause();
 	    var victory = document.getElementById('victory');
 	    victory.play();
 	  }
+	
+	  var promise = $.ajax({
+	    url: '/player-progress',
+	    method: 'POST',
+	    data: {
+	      wins: 1
+	    }
+	  });
 	}
 	
 	store.actions.startFight = function () {
 	  state.text = 'Type Fight!';
+	  state.playerSprite = './images/kenshin-ready.gif';
+	  state.cpuSprite = './images/spidey-ready.gif';
 	
 	  battleTheme = document.getElementById('battleTheme');
 	  battleTheme.play();
 	  var mainTheme = document.getElementById('mainTheme');
 	  mainTheme.pause();
 	
-	  intervalId = setInterval(intervalRounds, 3000);
+	  intervalId = setInterval(intervalRounds, 5000);
 	  changed();
 	};
 	
 	store.actions.attack = function (evt) {
+	  var suckTaunt = document.getElementById('suckTaunt');
+	  var laughTaunt = document.getElementById('laughTaunt');
+	  var patheticTaunt = document.getElementById('patheticTaunt');
+	  var bradleyTaunt = document.getElementById('bradleyTaunt');
 	  var cpuHit = document.getElementById('cpuHit');
-	  var missTaunt = document.getElementById('missTaunt');
+	
+	  var missTaunts = [suckTaunt, laughTaunt, patheticTaunt, bradleyTaunt];
+	
 	  if (evt.keyCode === 13) {
 	    var damage = Math.floor(Math.random() * 10);
 	    state.cpuTaunt = '';
-	    if (evt.target.value === 'LightSlash') {
-	      state.playerAttack = 'Lightning Slash!';
+	    if (evt.target.value === 'ForwardS') {
+	      state.playerAttack = 'Forward Slash!';
+	      var forwardSlash = document.getElementById('forwardSlash');
+	      forwardSlash.play();
+	      state.playerSprite = './images/kenshin-forward-slash.gif';
 	      if (damage >= 4) {
 	        state.cpuHP -= 3;
+	        state.cpuSprite = './images/spidey-hit.gif';
 	        cpuHit.play();
 	      } else {
 	        state.cpuHP += 0;
-	        state.cpuTaunt = 'Ha! You missed!';
-	        missTaunt.play();
+	        state.cpuTaunt = 'Spider Sense tingling.';
+	        randomIndexing(missTaunts).play();
 	      }
-	    } else if (evt.target.value === 'TripStab') {
-	      state.playerAttack = 'Triple Stab!';
+	    } else if (evt.target.value === 'ChargeS') {
+	      state.playerAttack = 'Charging Slash!';
+	      var chargingSlash = document.getElementById('chargingSlash');
+	      chargingSlash.play();
+	      state.playerSprite = './images/kenshin-chargeslash.gif';
+	
 	      if (damage >= 4) {
 	        state.cpuHP -= 3;
+	        state.cpuSprite = './images/spidey-hit.gif';
 	        cpuHit.play();
 	      } else {
 	        state.cpuHP += 0;
-	        state.cpuTaunt = 'Ha! You missed!';
-	        missTaunt.play();
+	        state.cpuTaunt = 'Spider Sense tingling.';
+	        randomIndexing(missTaunts).play();
 	      }
-	    } else if (evt.target.value === 'UpCut') {
-	      state.playerAttack = 'Upward Cut!';
+	    } else if (evt.target.value === 'UpwardS') {
+	      state.playerAttack = 'Upward Slash!';
+	      var upwardSlash = document.getElementById('upwardSlash');
+	      upwardSlash.play();
+	      state.playerSprite = './images/kenshin-upslash.gif';
 	      if (damage >= 4) {
 	        state.cpuHP -= 3;
+	        state.cpuSprite = './images/spidey-hit.gif';
 	        cpuHit.play();
 	      } else {
 	        state.cpuHP += 0;
-	        state.cpuTaunt = 'Ha! You missed!';
-	        missTaunt.play();
+	        state.cpuTaunt = 'Spider Sense tingling.';
+	        randomIndexing(missTaunts).play();
 	      }
 	    } else if (evt.target.value === state.healString) {
+	      var gokuHeal = document.getElementById('gokuHeal');
+	      var dendeHeal = document.getElementById('dendeHeal');
+	
+	      var healSounds = [gokuHeal, dendeHeal];
+	
 	      state.playerHP += 3;
-	      state.playerAttack = "Puny attacks can't harm me!";
-	      var bradleyHeal = document.getElementById('bradleyHeal');
-	      bradleyHeal.play();
+	      state.playerAttack = "Just a scratch";
+	      state.playerSprite = './images/kenshin-ready.gif';
+	      randomIndexing(healSounds).play();
 	    } else {
-	      state.playerAttack = 'That attack is beneath me, human.';
+	      state.playerAttack = "Sorry, I don't know that move.";
+	      state.playerSprite = './images/kenshin-no-move.gif';
 	    }
 	    evt.target.value = '';
 	    gameState();
@@ -21891,13 +21983,103 @@
 /* 174 */
 /***/ function(module, exports, __webpack_require__) {
 
+	'use strict';
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _fightStore = __webpack_require__(173);
+	
+	var _fightStore2 = _interopRequireDefault(_fightStore);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var React = __webpack_require__(1);
+	
+	var Progress = function (_React$Component) {
+	  _inherits(Progress, _React$Component);
+	
+	  function Progress() {
+	    _classCallCheck(this, Progress);
+	
+	    var _this = _possibleConstructorReturn(this, (Progress.__proto__ || Object.getPrototypeOf(Progress)).call(this));
+	
+	    _fightStore2.default.actions.load();
+	
+	    _this.state = _fightStore2.default.copyState();
+	
+	    _fightStore2.default.addListener(function (state) {
+	      _this.setState(state);
+	    });
+	    return _this;
+	  }
+	
+	  _createClass(Progress, [{
+	    key: 'render',
+	    value: function render() {
+	      return React.createElement(
+	        'div',
+	        null,
+	        React.createElement(
+	          'h1',
+	          { className: 'website-title progress-title' },
+	          'Your Progress'
+	        ),
+	        React.createElement(
+	          'h3',
+	          { className: 'tagline' },
+	          ' Check how you\'re doing!'
+	        ),
+	        React.createElement(
+	          'h4',
+	          { id: 'stats-heading' },
+	          ' Player Stats'
+	        ),
+	        React.createElement(
+	          'ul',
+	          null,
+	          this.state.data.map(function (x, i) {
+	            return React.createElement(
+	              'li',
+	              { key: i },
+	              'wins:',
+	              x.wins
+	            );
+	          }),
+	          this.state.data.map(function (x, i) {
+	            return React.createElement(
+	              'li',
+	              { key: i },
+	              'losses:',
+	              x.losses
+	            );
+	          })
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return Progress;
+	}(React.Component);
+	
+	module.exports = Progress;
+
+/***/ },
+/* 175 */
+/***/ function(module, exports, __webpack_require__) {
+
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(175);
+	var content = __webpack_require__(176);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(177)(content, {});
+	var update = __webpack_require__(178)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -21914,10 +22096,10 @@
 	}
 
 /***/ },
-/* 175 */
+/* 176 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(176)();
+	exports = module.exports = __webpack_require__(177)();
 	// imports
 	
 	
@@ -21928,7 +22110,7 @@
 
 
 /***/ },
-/* 176 */
+/* 177 */
 /***/ function(module, exports) {
 
 	/*
@@ -21984,7 +22166,7 @@
 
 
 /***/ },
-/* 177 */
+/* 178 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -22236,7 +22418,7 @@
 
 
 /***/ },
-/* 178 */
+/* 179 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*eslint-disable no-unused-vars*/
@@ -32314,96 +32496,6 @@
 	return jQuery;
 	} );
 
-
-/***/ },
-/* 179 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _fightStore = __webpack_require__(173);
-	
-	var _fightStore2 = _interopRequireDefault(_fightStore);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var React = __webpack_require__(1);
-	
-	var Progress = function (_React$Component) {
-	  _inherits(Progress, _React$Component);
-	
-	  function Progress() {
-	    _classCallCheck(this, Progress);
-	
-	    var _this = _possibleConstructorReturn(this, (Progress.__proto__ || Object.getPrototypeOf(Progress)).call(this));
-	
-	    _fightStore2.default.actions.load();
-	
-	    _this.state = _fightStore2.default.copyState();
-	
-	    _fightStore2.default.addListener(function (state) {
-	      _this.setState(state);
-	    });
-	    return _this;
-	  }
-	
-	  _createClass(Progress, [{
-	    key: 'render',
-	    value: function render() {
-	      return React.createElement(
-	        'div',
-	        null,
-	        React.createElement(
-	          'h1',
-	          { className: 'website-title progress-title' },
-	          'Your Progress'
-	        ),
-	        React.createElement(
-	          'h3',
-	          { className: 'tagline' },
-	          ' Check how you\'re doing!'
-	        ),
-	        React.createElement(
-	          'h4',
-	          { id: 'stats-heading' },
-	          ' Player Stats'
-	        ),
-	        React.createElement(
-	          'ul',
-	          null,
-	          this.state.data.map(function (x, i) {
-	            return React.createElement(
-	              'li',
-	              { key: i },
-	              'wins:',
-	              x.wins
-	            );
-	          }),
-	          this.state.data.map(function (x, i) {
-	            return React.createElement(
-	              'li',
-	              { key: i },
-	              'losses:',
-	              x.losses
-	            );
-	          })
-	        )
-	      );
-	    }
-	  }]);
-	
-	  return Progress;
-	}(React.Component);
-	
-	module.exports = Progress;
 
 /***/ }
 /******/ ]);
