@@ -230,8 +230,17 @@ store.actions.startFight = function() {
   state.playerSprite = './images/kenshin-ready.gif';
   state.cpuSprite = './images/spidey-ready.gif';
 
-  battleTheme = document.getElementById('battleTheme');
-  battleTheme.play();
+  var MKTheme = document.getElementById('MKTheme');
+  var GuileTheme = document.getElementById('GuileTheme');
+  var FF7BossTheme = document.getElementById('FF7BossTheme');
+
+  var battleMusic = [
+    MKTheme,
+    GuileTheme,
+    FF7BossTheme
+  ];
+
+  randomIndexing(battleMusic).play();
   var mainTheme = document.getElementById('mainTheme');
   mainTheme.pause();
 
@@ -241,17 +250,18 @@ store.actions.startFight = function() {
 }
 
 store.actions.attack = function(evt) {
-  var suckTaunt = document.getElementById('suckTaunt');
+  var bradleyTaunt = document.getElementById('bradleyTaunt');
   var laughTaunt = document.getElementById('laughTaunt');
   var patheticTaunt = document.getElementById('patheticTaunt');
-  var bradleyTaunt = document.getElementById('bradleyTaunt');
+  var suckTaunt = document.getElementById('suckTaunt');
+
   var cpuHit = document.getElementById('cpuHit');
 
   var missTaunts = [
-    suckTaunt,
+    bradleyTaunt,
     laughTaunt,
     patheticTaunt,
-    bradleyTaunt
+    suckTaunt
   ];
 
   if(evt.keyCode === 13) {
