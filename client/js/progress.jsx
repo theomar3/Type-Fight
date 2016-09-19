@@ -24,14 +24,9 @@ class Progress extends React.Component {
           {/*Try to put username instead of "Player"*/}
 
           <ul>
-            {this.state.data.map ((x,i) => <li key={i}>
-            wins:{x.wins}
-          </li>)}
-          {this.state.data.map ((x,i) => <li key={i}>
-          losses:{x.losses}  
-        </li>)}
+            <li>Wins: {this.state.wins}</li>
+            <li> Losses: {this.state.losses}</li>
           </ul>
-
 
       </div>
     );

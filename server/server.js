@@ -1,25 +1,48 @@
 var express = require('express');
+var bodyParser = require('body-parser');
+
 var app = express();
 
 app.use(express.static('public'));
 
-var data = [
-  {
-    wins: 0,
-    losses: 0
-  }
-];
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
-app.get('/player-progress', function(req, res) {
-  res.send(data);
+
+
+
+
+
+  var data = {};
+
+app.get('/player-progress/:id', function(req, res) {
+  if(data[req.params.id] === undefined){
+    data[req.params.id] = {
+      wins : 0,
+      losses: 0
+    }
+  }
+  else {
+    res.send({
+    stats: data[req.params.id]
+    });
+  }
 });
 
 
-app.post('/api/progress', function(req, res) {
-  data.push({
-    wins: req.body.wins,
-    losses: req.body.losses
-  });
+app.post('/player-progress/:id', function(req, res) {
+  if(data[req.params.id] === undefined){
+    data[req.params.id] = {
+      wins : 0,
+      losses: 0
+    }
+  }
+
+
+  data[req.params.id].wins += Number(req.body.wins);
+  data[req.params.id].losses += Number(req.body.losses);
+
+
   res.sendStatus(204);
 
 });

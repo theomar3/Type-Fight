@@ -1,10 +1,13 @@
 var $ = require('jquery');
+import audioPlay from './audio-play.js';
 
 
 var intervalId;
+var battleMusic;
 var battleTheme;
-var danger;
-var warning;
+
+
+
 
 
 
@@ -40,14 +43,20 @@ var state = {
   text: 'Click to begin',
   cpuAttack: '',
   playerAttack: '',
-  playerHP: 30,
+  playerHP: 3,
   playerStatus: 'healthyHP',
-  cpuHP: 20,
+  cpuHP: 21,
   cpuStatus: 'healthyHP',
   healString: '',
   cpuTaunt: '',
   playerSprite: './images/kenshin-start.gif',
   cpuSprite: './images/spidey-start.gif',
+  playerInput: 'input-hide',
+  playerBubble: 'player-bubble-hide',
+  cpuBubble: 'cpu-bubble-hide',
+  missBubble: 'miss-bubble-hide',
+  wins: 0,
+  losses: 0,
 
 }
 
@@ -74,6 +83,12 @@ store.copyState = function() {
     cpuTaunt: state.cpuTaunt,
     playerSprite: state.playerSprite,
     cpuSprite: state.cpuSprite,
+    playerInput: state.playerInput,
+    playerBubble: state.playerBubble,
+    cpuBubble: state.cpuBubble,
+    missBubble: state.missBubble,
+    wins: state.wins,
+    losses: state.losses
   }
 }
 
@@ -89,20 +104,18 @@ function changed() {
 //actions
 
 function gameState() {
-  warning = document.getElementById('warning');
-  danger = document.getElementById('danger');
 
   if(state.playerHP < 8) {
     state.text = 'Warning!';
     state.playerStatus = 'warningHP';
     state.playerSprite = './images/kenshin-warning.gif';
-    warning.play();
+    audioPlay.playWarning();
   }
   if(state.playerHP < 5) {
     state.text = 'Danger!';
     state.playerStatus = 'dangerHP';
     state.playerSprite = './images/kenshin-danger.gif';
-    danger.play();
+    audioPlay.playDanger();
   }
 
   if(state.playerHP <= 0) {
@@ -140,7 +153,7 @@ function intervalRounds() {
   var webSwing = document.getElementById('webSwing');
   var spiderSting = document.getElementById('spiderSting');
 
-
+  state.cpuBubble = 'cpu-bubble-show';
   state.cpuAttack = randomIndexing(cpuAttacks);
   if(state.cpuAttack === 'Web Ball!') {
     state.cpuSprite = './images/spidey-web-ball.gif';
@@ -154,7 +167,7 @@ function intervalRounds() {
     state.cpuSprite = './images/spidey-sting.gif';
     spiderSting.play();
   }
-  state.healString = randomString(8,'aA');
+  state.healString = randomString(4,'aA');
   state.playerHP -= 3;
   state.playerSprite = './images/kenshin-hit.gif';
 
@@ -176,9 +189,10 @@ function endFight() {
     state.playerSprite = './images/kenshin-dead.gif';
     state.cpuSprite = './images/spidey-win.gif';
     state.healString = '';
+    state.playerInput = 'input-hide';
     battleTheme.pause();
-    danger.pause();
-    warning.pause();
+    audioPlay.pauseDanger();
+    audioPlay.pauseWarning();
     var gameOver = document.getElementById('gameOver');
     var dna = document.getElementById('dna');
     var kneel = document.getElementById('kneel');
@@ -192,12 +206,15 @@ function endFight() {
 
 
     var promise = $.ajax({
-      url: '/player-progress',
+      url: '/player-progress/' + id,
       method: 'POST',
       data: {
+        wins: 0,
         losses: 1
       }
     });
+
+
 
 
   }
@@ -209,18 +226,24 @@ function endFight() {
     state.playerSprite = './images/kenshin-win.gif';
     state.cpuSprite = './images/spidey-dead.gif';
     state.healString = '';
+    state.playerInput = 'input-hide';
     battleTheme.pause();
     var victory = document.getElementById('victory');
     victory.play();
+
+    var id = getUserId();
+
+    var promise = $.ajax({
+      url: '/player-progress/' + id,
+      method: 'POST',
+      data: {
+        wins: 1,
+        losses: 0
+      }
+    });
   }
 
-  var promise = $.ajax({
-    url: '/player-progress',
-    method: 'POST',
-    data: {
-      wins: 1
-    }
-  });
+
 
 }
 
@@ -229,33 +252,35 @@ store.actions.startFight = function() {
   state.text = 'Type Fight!';
   state.playerSprite = './images/kenshin-ready.gif';
   state.cpuSprite = './images/spidey-ready.gif';
+  state.playerInput = 'input-show';
 
   var MKTheme = document.getElementById('MKTheme');
   var GuileTheme = document.getElementById('GuileTheme');
   var FF7BossTheme = document.getElementById('FF7BossTheme');
 
-  var battleMusic = [
+  battleMusic = [
     MKTheme,
     GuileTheme,
     FF7BossTheme
   ];
 
-  randomIndexing(battleMusic).play();
+  battleTheme = randomIndexing(battleMusic);
+  battleTheme.play();
   var mainTheme = document.getElementById('mainTheme');
   mainTheme.pause();
 
 
-  intervalId = setInterval(intervalRounds, 5000);
+  intervalId = setInterval(intervalRounds, 2000);
   changed();
 }
 
 store.actions.attack = function(evt) {
+
+  var cpuHit = document.getElementById('cpuHit');
   var bradleyTaunt = document.getElementById('bradleyTaunt');
   var laughTaunt = document.getElementById('laughTaunt');
   var patheticTaunt = document.getElementById('patheticTaunt');
   var suckTaunt = document.getElementById('suckTaunt');
-
-  var cpuHit = document.getElementById('cpuHit');
 
   var missTaunts = [
     bradleyTaunt,
@@ -265,20 +290,21 @@ store.actions.attack = function(evt) {
   ];
 
   if(evt.keyCode === 13) {
+    state.playerBubble = 'player-bubble-show';
     var damage = Math.floor(Math.random() * 10);
     state.cpuTaunt = '';
     if(evt.target.value === 'ForwardS') {
       state.playerAttack = 'Forward Slash!';
-      var forwardSlash = document.getElementById('forwardSlash');
-      forwardSlash.play();
+      audioPlay.playForwardSlash();
       state.playerSprite = './images/kenshin-forward-slash.gif';
-      if(damage >= 4) {
+      if(damage >= 5) {
         state.cpuHP -= 3;
         state.cpuSprite = './images/spidey-hit.gif';
         cpuHit.play();
       }
       else {
         state.cpuHP += 0;
+        state.missBubble = 'miss-bubble-show';
         state.cpuTaunt = 'Spider Sense tingling.';
         randomIndexing(missTaunts).play();
       }
@@ -289,7 +315,7 @@ store.actions.attack = function(evt) {
       chargingSlash.play();
       state.playerSprite = './images/kenshin-chargeslash.gif';
 
-      if(damage >= 4) {
+      if(damage >= 5) {
         state.cpuHP -= 3;
         state.cpuSprite = './images/spidey-hit.gif';
         cpuHit.play();
@@ -297,6 +323,7 @@ store.actions.attack = function(evt) {
       }
       else {
         state.cpuHP += 0;
+        state.missBubble = 'miss-bubble-show';
         state.cpuTaunt = 'Spider Sense tingling.';
         randomIndexing(missTaunts).play();
 
@@ -307,7 +334,7 @@ store.actions.attack = function(evt) {
       var upwardSlash = document.getElementById('upwardSlash');
       upwardSlash.play();
       state.playerSprite = './images/kenshin-upslash.gif';
-      if(damage >= 4) {
+      if(damage >= 5) {
         state.cpuHP -= 3;
         state.cpuSprite = './images/spidey-hit.gif';
         cpuHit.play();
@@ -315,6 +342,7 @@ store.actions.attack = function(evt) {
       }
       else {
         state.cpuHP += 0;
+        state.missBubble = 'miss-bubble-show';
         state.cpuTaunt = 'Spider Sense tingling.';
         randomIndexing(missTaunts).play();
 
@@ -336,6 +364,7 @@ store.actions.attack = function(evt) {
       }
     else {
       state.playerAttack = "Sorry, I don't know that move.";
+      state.playerBubble = 'player-bubble-show';
       state.playerSprite = './images/kenshin-no-move.gif';
     }
     evt.target.value = '';
@@ -343,16 +372,34 @@ store.actions.attack = function(evt) {
   }
 }
 
+function getUserId() {
+  var id = localStorage.getItem('randomId');
+  if (id) {
+    console.log(' id', id);
+  }
+  else {
+    var randomId = Math.ceil(Math.random() * 1000000000);
+    localStorage.setItem('randomId', randomId);
+    id = randomId;
+  }
+  return id;
+}
+
 store.actions.load = function() {
   console.log('loading');
 
+  var id = getUserId();
+
+
   $.ajax({
-    url: '/player-progress',
-    method: 'GET'
+    url: '/player-progress/' + id,
+    method: 'GET',
   })
   .done(function(data) {
     console.log(data);
-    state.data = data;
+    state.wins = data.stats.wins;
+    state.losses = data.stats.losses;
+
     console.log(state);
     changed();
 
