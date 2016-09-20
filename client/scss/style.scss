@@ -1,7 +1,6 @@
 @import 'reset';
 @import 'fight';
 @import 'index';
-@import 'header';
 @import 'progress';
 
 body {
@@ -10,11 +9,7 @@ body {
 
 
 
-#google-signin {
-  max-width: 300px;
-  margin-left: 35%;
-  margin-top: 20px;
-}
+
 
 
 .character-select-title {

@@ -8,42 +8,59 @@
     <link rel="stylesheet" href="style.css" media="screen" title="no title">
   </head>
   <body>
-    <header>
-      <ul  className='fly-in-text hidden website-title'  >
-          <li>T</li>
-          <li>y</li>
-          <li>P</li>
-          <li>e</li>
-          <li>F</li>
-          <li>i</li>
-          <li>G</li>
-          <li>h</li>
-          <li>T</li>
-      </ul>
-
-      <div className = 'kapowDiv'>
-        <img className='kapow1 hide-image fade-in-image' src='./images/kapow1.gif' />
-        <img className='kapow2 hide-image fade-in-image' src='./images/kapow2.gif' />
-      </div>
-
-      <ul className = 'fade  header-tagline'>
-        <li> Type </li>
-        <li> faster </li>
-        <li> and </li>
-        <li> more </li>
-        <li> acccurately </li>
-        <li> the </li>
-        <li> fun </li>
-        <li> way </li>
-      </ul>
-
-    </header>
+    <div class="container">
 
 
 
+      <header>
+        <!-- Show the title then animate it -->
+        <ul  class='fly-in-text hidden website-title'  >
+            <li>T</li>
+            <li>y</li>
+            <li>P</li>
+            <li>e</li>
+            <li>F</li>
+            <li>i</li>
+            <li>G</li>
+            <li>h</li>
+            <li>T</li>
+        </ul>
+
+        <div class = 'kapowDiv'>
+          <img class='kapow1 hide-image fade-in-image' src='./images/kapow1.gif' />
+          <img class='kapow2 hide-image fade-in-image' src='./images/kapow2.gif' />
+        </div>
+
+        <!-- Flash in more Batman comic images to go with the music-->
+
+        <ul class = 'fade  header-tagline'>
+          <li> Type </li>
+          <li> faster </li>
+          <li> and </li>
+          <li> more </li>
+          <li> accurately </li>
+          <li> the </li>
+          <li> fun </li>
+          <li> way </li>
+        </ul>
+
+        <!-- Make this fade-in first -->
+        <img id='google-signin' src="./images/signin-google-3.png" />
+        <div id="or-Divider">
+          <span class='or-text'>Or</span>
+        </div>
+        <a href="http://localhost:5000/"><button id='just-play'><span class='button-text'>Just Let Me Play!</span></button></a>
 
 
-    <div id="app"></div>
+      </header>
+      <audio id='homePageTheme' src="./music/cowboy-bebop.mp3" autoPlay muted  />
+
+    </div>
+
+
+
+
+    <!-- <div id="app"></div> -->
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script type="text/javascript">
@@ -64,7 +81,7 @@
 
         })();
     </script>
-    <script src="app.bundle.js"></script>
+    <!-- <script src="app.bundle.js"></script> -->
   </body>
 
 </html>

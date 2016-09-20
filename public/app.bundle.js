@@ -54,17 +54,15 @@
 	
 	var _reactDom = __webpack_require__(34);
 	
+	var _reactRouter = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"react-router\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+	
 	var _fight = __webpack_require__(172);
 	
 	var _fight2 = _interopRequireDefault(_fight);
 	
-	var _progress = __webpack_require__(176);
+	var _progress = __webpack_require__(177);
 	
 	var _progress2 = _interopRequireDefault(_progress);
-	
-	var _header = __webpack_require__(177);
-	
-	var _header2 = _interopRequireDefault(_header);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -91,7 +89,6 @@
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'container' },
-	        _react2.default.createElement(_header2.default, null),
 	        _react2.default.createElement(_fight2.default, null),
 	        _react2.default.createElement(_progress2.default, null)
 	      );
@@ -21538,7 +21535,6 @@
 	      return _react2.default.createElement(
 	        'div',
 	        null,
-	        _react2.default.createElement('audio', { id: 'mainTheme', src: './music/cowboy-bebop.mp3', muted: true, autoPlay: true }),
 	        _react2.default.createElement('audio', { id: 'MKTheme', src: './music/MK-theme.mp3' }),
 	        _react2.default.createElement('audio', { id: 'GuileTheme', src: './music/Guile-theme.mp3' }),
 	        _react2.default.createElement('audio', { id: 'FF7BossTheme', src: './music/FF7-boss-theme.mp3' }),
@@ -21685,13 +21681,13 @@
 	
 	var _audioPlay2 = _interopRequireDefault(_audioPlay);
 	
-	var _progressStore = __webpack_require__(182);
+	var _progressStore = __webpack_require__(175);
 	
 	var _progressStore2 = _interopRequireDefault(_progressStore);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	var $ = __webpack_require__(175);
+	var $ = __webpack_require__(176);
 	
 	
 	var intervalId;
@@ -22084,6 +22080,47 @@
 
 /***/ },
 /* 175 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var $ = __webpack_require__(176);
+	
+	var state = {};
+	
+	var store = {
+	  listeners: [],
+	  actions: {}
+	};
+	
+	store.addListener = function (listener) {
+	  store.listeners.push(listener);
+	};
+	
+	store.copyState = function () {
+	  return {};
+	};
+	
+	function changed() {
+	  console.log('store changed', state);
+	  var copiedState = store.copyState();
+	  store.listeners.forEach(function (listener) {
+	    listener(copiedState);
+	  });
+	}
+	
+	/* ========================================= */
+	/* Actions                                   */
+	/* ========================================= */
+	
+	store.actions.alertUser = function () {
+	  alert('Hi!');
+	};
+	
+	module.exports = store;
+
+/***/ },
+/* 176 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*eslint-disable no-unused-vars*/
@@ -32163,7 +32200,7 @@
 
 
 /***/ },
-/* 176 */
+/* 177 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -32174,7 +32211,7 @@
 	
 	var _fightStore2 = _interopRequireDefault(_fightStore);
 	
-	var _progressStore = __webpack_require__(182);
+	var _progressStore = __webpack_require__(175);
 	
 	var _progressStore2 = _interopRequireDefault(_progressStore);
 	
@@ -32291,533 +32328,10 @@
 	module.exports = Progress;
 
 /***/ },
-/* 177 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var React = __webpack_require__(1);
-	
-	var Header = function (_React$Component) {
-	  _inherits(Header, _React$Component);
-	
-	  function Header() {
-	    _classCallCheck(this, Header);
-	
-	    return _possibleConstructorReturn(this, (Header.__proto__ || Object.getPrototypeOf(Header)).call(this));
-	  }
-	
-	  _createClass(Header, [{
-	    key: 'render',
-	    value: function render() {
-	
-	      return React.createElement(
-	        'header',
-	        null,
-	        React.createElement(
-	          'ul',
-	          { className: 'fly-in-text hidden website-title' },
-	          React.createElement(
-	            'li',
-	            null,
-	            'T'
-	          ),
-	          React.createElement(
-	            'li',
-	            null,
-	            'y'
-	          ),
-	          React.createElement(
-	            'li',
-	            null,
-	            'P'
-	          ),
-	          React.createElement(
-	            'li',
-	            null,
-	            'e'
-	          ),
-	          React.createElement(
-	            'li',
-	            null,
-	            'F'
-	          ),
-	          React.createElement(
-	            'li',
-	            null,
-	            'i'
-	          ),
-	          React.createElement(
-	            'li',
-	            null,
-	            'G'
-	          ),
-	          React.createElement(
-	            'li',
-	            null,
-	            'h'
-	          ),
-	          React.createElement(
-	            'li',
-	            null,
-	            'T'
-	          )
-	        ),
-	        React.createElement(
-	          'div',
-	          { className: 'kapowDiv' },
-	          React.createElement('img', { className: 'kapow1 hide-image fade-in-image', src: './images/kapow1.gif' }),
-	          React.createElement('img', { className: 'kapow2 hide-image fade-in-image', src: './images/kapow2.gif' })
-	        ),
-	        React.createElement(
-	          'ul',
-	          { className: 'fade  header-tagline' },
-	          React.createElement(
-	            'li',
-	            null,
-	            ' Type '
-	          ),
-	          React.createElement(
-	            'li',
-	            null,
-	            ' faster '
-	          ),
-	          React.createElement(
-	            'li',
-	            null,
-	            ' and '
-	          ),
-	          React.createElement(
-	            'li',
-	            null,
-	            ' more '
-	          ),
-	          React.createElement(
-	            'li',
-	            null,
-	            ' acccurately '
-	          ),
-	          React.createElement(
-	            'li',
-	            null,
-	            ' the '
-	          ),
-	          React.createElement(
-	            'li',
-	            null,
-	            ' fun '
-	          ),
-	          React.createElement(
-	            'li',
-	            null,
-	            ' way '
-	          )
-	        )
-	      );
-	    }
-	  }]);
-	
-	  return Header;
-	}(React.Component);
-	
-	module.exports = Header;
-
-/***/ },
 /* 178 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-	
-	// load the styles
-	var content = __webpack_require__(179);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(181)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js?sourceMap!./../../node_modules/sass-loader/index.js?sourceMap!./style.scss", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js?sourceMap!./../../node_modules/sass-loader/index.js?sourceMap!./style.scss");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ },
-/* 179 */
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(180)();
-	// imports
-	
-	
-	// module
-	exports.push([module.id, "/* http://meyerweb.com/eric/tools/css/reset/\r\n   v2.0 | 20110126\r\n   License: none (public domain)\r\n*/\nhtml, body, div, span, applet, object, iframe,\nh1, h2, h3, h4, h5, h6, p, blockquote, pre,\na, abbr, acronym, address, big, cite, code,\ndel, dfn, em, img, ins, kbd, q, s, samp,\nsmall, strike, strong, sub, sup, tt, var,\nb, u, i, center,\ndl, dt, dd, ol, ul, li,\nfieldset, form, label, legend,\ntable, caption, tbody, tfoot, thead, tr, th, td,\narticle, aside, canvas, details, embed,\nfigure, figcaption, footer, header, hgroup,\nmenu, nav, output, ruby, section, summary,\ntime, mark, audio, video {\n  margin: 0;\n  padding: 0;\n  border: 0;\n  font-size: 100%;\n  font: inherit;\n  vertical-align: baseline; }\n\n/* HTML5 display-role reset for older browsers */\narticle, aside, details, figcaption, figure,\nfooter, header, hgroup, menu, nav, section {\n  display: block; }\n\nbody {\n  line-height: 1; }\n\nol, ul {\n  list-style: none; }\n\nblockquote, q {\n  quotes: none; }\n\nblockquote:before, blockquote:after,\nq:before, q:after {\n  content: '';\n  content: none; }\n\ntable {\n  border-collapse: collapse;\n  border-spacing: 0; }\n\n.battle-title {\n  font-family: Brush Script MT; }\n\n.whose-character-player {\n  color: purple;\n  text-align: left;\n  font-size: 2em;\n  font-weight: bold;\n  font-style: italic;\n  margin-bottom: -40px; }\n\n.whose-character-cpu {\n  color: purple;\n  text-align: right;\n  font-size: 2em;\n  font-weight: bold;\n  font-style: italic; }\n\n.fight-screen {\n  border: 3px solid black;\n  background-color: #ffc0cb;\n  max-width: 1000px;\n  height: 500px;\n  margin: 0 auto;\n  position: relative;\n  overflow: auto; }\n\n.player-sprite {\n  margin-top: 70px;\n  margin-left: 10%;\n  float: left; }\n\n.cpu-sprite {\n  margin-top: 90px;\n  margin-right: 20%;\n  float: right; }\n\n.player-identifier {\n  color: green;\n  font-size: 2em;\n  font-weight: bold;\n  font-style: italic; }\n\n.cpu-identifier {\n  color: green;\n  font-size: 2em;\n  font-weight: bold;\n  font-style: italic;\n  text-align: right;\n  margin-top: -30px; }\n\n.fight-title {\n  text-align: center;\n  font-size: 2em;\n  font-weight: bold; }\n\n.player-bubble-show {\n  text-align: center;\n  line-height: 3em;\n  float: left;\n  margin-top: 80px;\n  display: inline-block;\n  position: relative;\n  width: 250px;\n  height: 55px;\n  padding: 0px;\n  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#fb83fa+15,e93cec+54 */\n  background: #fb83fa;\n  /* Old browsers */\n  background: -moz-linear-gradient(top, #fb83fa 15%, #e93cec 54%);\n  /* FF3.6-15 */\n  background: -webkit-linear-gradient(top, #fb83fa 15%, #e93cec 54%);\n  /* Chrome10-25,Safari5.1-6 */\n  background: linear-gradient(to bottom, #fb83fa 15%, #e93cec 54%);\n  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */\n  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fb83fa', endColorstr='#e93cec',GradientType=0 );\n  /* IE6-9 */\n  -webkit-border-radius: 10px;\n  -moz-border-radius: 10px;\n  border-radius: 10px; }\n\n.player-bubble-show:after {\n  content: '';\n  position: absolute;\n  border-style: solid;\n  border-width: 13px 30px 13px 0;\n  border-color: transparent #fb83fa;\n  display: block;\n  width: 0;\n  z-index: 1;\n  left: -30px;\n  top: 14px; }\n\n.cpu-bubble-show {\n  text-align: center;\n  line-height: 2em;\n  float: right;\n  margin-top: 90px;\n  display: inline-block;\n  position: relative;\n  width: 180px;\n  height: 75px;\n  padding: 0px;\n  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#e5e696+18,d1d360+47 */\n  background: #e5e696;\n  /* Old browsers */\n  background: -moz-linear-gradient(top, #e5e696 18%, #d1d360 47%);\n  /* FF3.6-15 */\n  background: -webkit-linear-gradient(top, #e5e696 18%, #d1d360 47%);\n  /* Chrome10-25,Safari5.1-6 */\n  background: linear-gradient(to bottom, #e5e696 18%, #d1d360 47%);\n  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */\n  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e5e696', endColorstr='#d1d360',GradientType=0 );\n  /* IE6-9 */\n  -webkit-border-radius: 9px;\n  -moz-border-radius: 9px;\n  border-radius: 9px; }\n\n.cpu-bubble-show:after {\n  content: '';\n  position: absolute;\n  border-style: solid;\n  border-width: 13px 0 13px 30px;\n  border-color: transparent #e5e696;\n  display: block;\n  width: 0;\n  z-index: 1;\n  right: -30px;\n  top: 14px; }\n\n.miss-bubble-show {\n  text-align: center;\n  line-height: 2em;\n  float: right;\n  margin-top: 60px;\n  display: inline-block;\n  position: relative;\n  width: 165px;\n  height: 55px;\n  padding: 0px;\n  background: #FFFFFF;\n  -webkit-border-radius: 10px;\n  -moz-border-radius: 10px;\n  border-radius: 10px; }\n\n.miss-bubble-show:after {\n  content: '';\n  position: absolute;\n  border-style: solid;\n  border-width: 15px 0 15px 30px;\n  border-color: transparent #FFFFFF;\n  display: block;\n  width: 0;\n  z-index: 1;\n  right: -30px;\n  top: 12px; }\n\n.player-bubble-hide {\n  text-align: center;\n  line-height: 3em;\n  float: left;\n  margin-top: 80px;\n  display: none;\n  position: relative;\n  width: 250px;\n  height: 55px;\n  padding: 0px;\n  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#fb83fa+15,e93cec+54 */\n  background: #fb83fa;\n  /* Old browsers */\n  background: -moz-linear-gradient(top, #fb83fa 15%, #e93cec 54%);\n  /* FF3.6-15 */\n  background: -webkit-linear-gradient(top, #fb83fa 15%, #e93cec 54%);\n  /* Chrome10-25,Safari5.1-6 */\n  background: linear-gradient(to bottom, #fb83fa 15%, #e93cec 54%);\n  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */\n  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fb83fa', endColorstr='#e93cec',GradientType=0 );\n  /* IE6-9 */\n  -webkit-border-radius: 10px;\n  -moz-border-radius: 10px;\n  border-radius: 10px; }\n\n.player-bubble-hide:after {\n  content: '';\n  position: absolute;\n  border-style: solid;\n  border-width: 13px 30px 13px 0;\n  border-color: transparent #fb83fa;\n  display: none;\n  width: 0;\n  z-index: 1;\n  left: -30px;\n  top: 14px; }\n\n.cpu-bubble-hide {\n  text-align: center;\n  line-height: 2em;\n  float: right;\n  margin-top: 90px;\n  display: none;\n  position: relative;\n  width: 180px;\n  height: 75px;\n  padding: 0px;\n  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#e5e696+18,d1d360+47 */\n  background: #e5e696;\n  /* Old browsers */\n  background: -moz-linear-gradient(top, #e5e696 18%, #d1d360 47%);\n  /* FF3.6-15 */\n  background: -webkit-linear-gradient(top, #e5e696 18%, #d1d360 47%);\n  /* Chrome10-25,Safari5.1-6 */\n  background: linear-gradient(to bottom, #e5e696 18%, #d1d360 47%);\n  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */\n  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e5e696', endColorstr='#d1d360',GradientType=0 );\n  /* IE6-9 */\n  -webkit-border-radius: 9px;\n  -moz-border-radius: 9px;\n  border-radius: 9px; }\n\n.cpu-bubble-hide:after {\n  content: '';\n  position: absolute;\n  border-style: solid;\n  border-width: 13px 0 13px 30px;\n  border-color: transparent #e5e696;\n  display: none;\n  width: 0;\n  z-index: 1;\n  right: -30px;\n  top: 14px; }\n\n.miss-bubble-hide {\n  text-align: center;\n  line-height: 2em;\n  float: right;\n  margin-top: 60px;\n  display: none;\n  position: relative;\n  width: 165px;\n  height: 55px;\n  padding: 0px;\n  background: #FFFFFF;\n  -webkit-border-radius: 10px;\n  -moz-border-radius: 10px;\n  border-radius: 10px; }\n\n.miss-bubble-hide:after {\n  content: '';\n  position: absolute;\n  border-style: solid;\n  border-width: 15px 0 15px 30px;\n  border-color: transparent #FFFFFF;\n  display: none;\n  width: 0;\n  z-index: 1;\n  right: -30px;\n  top: 12px; }\n\n.player-stats-and-moves {\n  position: absolute;\n  bottom: 10px;\n  left: 50px; }\n\n.player-stats-and-moves p {\n  font-size: 3em;\n  font-weight: bold; }\n\n.input-hide {\n  display: none; }\n\n.input-show {\n  display: block; }\n\n.move-list {\n  display: inline-block;\n  background-color: white;\n  margin-left: 5%;\n  width: 30%;\n  text-align: center; }\n\n.move-list-title {\n  text-decoration: underline;\n  font-style: oblique;\n  font-family: Lucida, serif;\n  font-size: 1.3em; }\n\n.healthyHP {\n  color: green; }\n\n.warningHP {\n  font-size: 3em;\n  color: orange;\n  font-weight: bold; }\n\n.dangerHP {\n  font-size: 3em;\n  color: red;\n  font-weight: bold; }\n\n.player-stats-and-moves input {\n  padding: 10px; }\n\n.cpu-stats-and-moves {\n  position: absolute;\n  bottom: 50px;\n  right: 80px; }\n\n.cpu-stats-and-moves p {\n  text-align: center;\n  font-size: 3em;\n  font-weight: bold; }\n\n.container {\n  max-width: 1060px;\n  margin: 0px auto;\n  background-color: red;\n  padding-top: 50px;\n  padding-bottom: 50px; }\n\n.website-title {\n  font-size: 3em;\n  font-weight: bold;\n  font-family: fantasy;\n  text-align: center; }\n\n.header-tagline {\n  font-size: 1.2em;\n  font-family: cursive;\n  text-align: center;\n  margin-top: 20px;\n  margin-bottom: 160px; }\n\n.fly-in-text li {\n  display: inline-block;\n  margin-right: 50px;\n  font-family: Open Sans, Arial;\n  font-weight: 300;\n  color: #fff;\n  opacity: 1;\n  transition: all 2.5s ease; }\n\n.fly-in-text li:last-child {\n  margin-right: 0; }\n\n.fly-in-text.hidden li {\n  opacity: 0; }\n\n.fly-in-text.hidden li:nth-child(1) {\n  transform: translateX(-200px) translateY(-200px); }\n\n.fly-in-text.hidden li:nth-child(2) {\n  transform: translateX(20px) translateY(100px); }\n\n.fly-in-text.hidden li:nth-child(3) {\n  transform: translateX(-150px) translateY(-80px); }\n\n.fly-in-text.hidden li:nth-child(4) {\n  transform: translateX(10px) translateY(-200px); }\n\n.fly-in-text.hidden li:nth-child(5) {\n  transform: translateX(-300px) translateY(200px); }\n\n.fly-in-text.hidden li:nth-child(6) {\n  transform: translateX(20px) translateY(-20px); }\n\n.fly-in-text.hidden li:nth-child(7) {\n  transform: translateX(30px) translateY(200px); }\n\n@-webkit-keyframes fadeIn {\n  from {\n    opacity: 0; }\n  to {\n    opacity: 1; } }\n\n@-moz-keyframes fadeIn {\n  from {\n    opacity: 0; }\n  to {\n    opacity: 1; } }\n\n@keyframes fadeIn {\n  from {\n    opacity: 0; }\n  to {\n    opacity: 1; } }\n\n.fade li {\n  display: inline-block;\n  margin-right: 15px;\n  opacity: 0;\n  /* make things invisible upon start */\n  -webkit-animation: fadeIn ease-in 1;\n  /* call our keyframe named fadeIn, use animattion ease-in and repeat it only 1 time */\n  -moz-animation: fadeIn ease-in 1;\n  animation: fadeIn ease-in 1;\n  -webkit-animation-fill-mode: forwards;\n  /* this makes sure that after animation is done we remain at the last keyframe value (opacity: 1)*/\n  -moz-animation-fill-mode: forwards;\n  animation-fill-mode: forwards;\n  -webkit-animation-duration: 4s;\n  -moz-animation-duration: 4s;\n  animation-duration: 4s; }\n\n.fade li:last-child {\n  margin-right: 0; }\n\n.fade li:nth-child(1) {\n  -webkit-animation-delay: 5s;\n  -moz-animation-delay: 5s;\n  animation-delay: 5s; }\n\n.fade li:nth-child(2) {\n  -webkit-animation-delay: 5.5s;\n  -moz-animation-delay: 5.5s;\n  animation-delay: 5.5s; }\n\n.fade li:nth-child(3) {\n  -webkit-animation-delay: 6s;\n  -moz-animation-delay: 6s;\n  animation-delay: 6s; }\n\n.fade li:nth-child(4) {\n  -webkit-animation-delay: 6.5s;\n  -moz-animation-delay: 6.5s;\n  animation-delay: 6.5s; }\n\n.fade li:nth-child(5) {\n  -webkit-animation-delay: 7s;\n  -moz-animation-delay: 7s;\n  animation-delay: 7s; }\n\n.fade li:nth-child(6) {\n  -webkit-animation-delay: 7.5s;\n  -moz-animation-delay: 7.5s;\n  animation-delay: 7.5s; }\n\n.fade li:nth-child(7) {\n  -webkit-animation-delay: 8s;\n  -moz-animation-delay: 8s;\n  animation-delay: 8s; }\n\n.fade li:nth-child(8) {\n  -webkit-animation-delay: 8.5s;\n  -moz-animation-delay: 8.5s;\n  animation-delay: 8.5s; }\n\n.kapowDiv {\n  overflow: auto; }\n\n.kapow1 {\n  float: left; }\n\n.kapow2 {\n  float: right; }\n\n.hide-image {\n  opacity: 0; }\n\n.fade-in-image {\n  -webkit-animation: fadeIn ease-in 1;\n  /* call our keyframe named fadeIn, use animattion ease-in and repeat it only 1 time */\n  -moz-animation: fadeIn ease-in 1;\n  animation: fadeIn ease-in 1;\n  -webkit-animation-duration: 4s;\n  -moz-animation-duration: 4s;\n  animation-duration: 4s; }\n\n.progress-title {\n  font-family: cursive;\n  margin-top: 120px;\n  color: white; }\n\n.progress-tagline {\n  font-size: 1.2em;\n  font-family: cursive;\n  text-align: center;\n  margin-top: 20px; }\n\n#stats-heading {\n  text-decoration: underline;\n  text-align: center;\n  font-size: 1.5em;\n  margin-top: 50px;\n  margin-bottom: 20px; }\n\n#stats-table {\n  width: 40%;\n  border-collapse: collapse;\n  margin: 0 auto; }\n\ntr:nth-of-type(odd) {\n  background-color: red;\n  color: red; }\n\ntr:nth-of-type(even) {\n  background-color: white;\n  color: red; }\n\n#HeadRow {\n  background-color: #ffc0cb;\n  font-weight: bold; }\n\n#stats-table {\n  margin-bottom: 50px; }\n\n#stats-table td {\n  padding: 5px;\n  border: 1px solid black;\n  text-align: center; }\n\nbody {\n  background-color: #000; }\n\n#google-signin {\n  max-width: 300px;\n  margin-left: 35%;\n  margin-top: 20px; }\n\n.character-select-title {\n  font-family: monospace; }\n\n.character-select {\n  overflow: auto; }\n\n.player-select {\n  border: 1px solid blue;\n  padding: 80px;\n  width: 300px;\n  height: 300px;\n  border-radius: 50%;\n  float: left; }\n\n.cpu-select {\n  border: 1px solid red;\n  padding: 80px;\n  width: 300px;\n  height: 300px;\n  border-radius: 50%;\n  float: right; }\n\n.sample-sprite {\n  max-width: 100px;\n  margin-left: 30%; }\n\n.character-name {\n  color: purple;\n  font-size: 1.8em;\n  font-weight: bold;\n  font-family: Didot;\n  text-align: center; }\n\n.attack-command {\n  font-weight: bold; }\n\n.super-move-description {\n  text-align: center;\n  font-size: .9em; }\n\n.cpu-difficulty-form {\n  text-align: center;\n  margin-bottom: 10px; }\n", "", {"version":3,"sources":["/./client/scss/client/scss/_reset.scss","/./client/scss/client/scss/_fight.scss","/./client/scss/client/scss/_index.scss","/./client/scss/client/scss/_header.scss","/./client/scss/client/scss/_progress.scss","/./client/scss/client/scss/style.scss"],"names":[],"mappings":"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;EACE,8BAA8B;EAC9B,2BAA2B;EAC3B,sBAAsB,EACvB;;AAED;EACE,eAAe,EAChB;;AAED;EACE,YAAY,EAEb;;AAED;EACE,aAAa,EACd;;AAED;EACE,WAAW,EACZ;;AAED;EACE,oCAAmC;EAAG,sFAAsF;EAC5H,iCAAgC;EAChC,4BAA2B;EAE3B,+BAA8B;EAC9B,4BAA2B;EAC3B,uBAAsB,EACvB;;ACjID;EACE,qBAAqB;EACrB,kBAAkB;EAClB,aAAa,EACd;;AAED;EACE,iBAAiB;EACjB,qBAAoB;EACpB,mBAAmB;EACnB,iBAAiB,EAClB;;AAED;EACE,2BAA2B;EAC3B,mBAAmB;EACnB,iBAAiB;EACjB,iBAAiB;EACjB,oBAAoB,EACrB;;AAED;EACE,WAAW;EACX,0BAA0B;EAC1B,eAAe,EAChB;;AAED;EACE,sBAAsB;EACtB,WAAW,EACZ;;AAED;EACE,wBAAwB;EACxB,WAAW,EACZ;;AAED;EACE,0BAA0B;EAC1B,kBAAkB,EACnB;;AAED;EACE,oBAAoB,EACrB;;AAED;EACE,aAAa;EACb,wBAAwB;EACxB,mBAAmB,EACpB;;AC5CD;EACI,uBAAuB,EAC1B;;AAID;EACE,iBAAiB;EACjB,iBAAiB;EACjB,iBAAiB,EAClB;;AAGD;EACE,uBAAuB,EACxB;;AAED;EACE,eAAe,EAChB;;AAED;EACE,uBAAuB;EACvB,cAAc;EACd,aAAa;EACb,cAAc;EACd,mBAAmB;EACnB,YAAY,EACb;;AAED;EACE,sBAAsB;EACtB,cAAc;EACd,aAAa;EACb,cAAc;EACd,mBAAmB;EACnB,aAAa,EACd;;AAID;EACE,iBAAiB;EACjB,iBAAiB,EAClB;;AAED;EACC,cAAc;EACd,iBAAiB;EACjB,kBAAkB;EAClB,mBAAmB;EACnB,mBAAmB,EACnB;;AAGD;EACC,kBAAkB,EAClB;;AAED;EACC,mBAAmB;EACnB,gBAAgB,EAChB;;AAED;EACC,mBAAmB;EACnB,oBAAoB,EACpB","file":"style.scss","sourcesContent":["/* http://meyerweb.com/eric/tools/css/reset/\r\n   v2.0 | 20110126\r\n   License: none (public domain)\r\n*/\r\n\r\nhtml, body, div, span, applet, object, iframe,\r\nh1, h2, h3, h4, h5, h6, p, blockquote, pre,\r\na, abbr, acronym, address, big, cite, code,\r\ndel, dfn, em, img, ins, kbd, q, s, samp,\r\nsmall, strike, strong, sub, sup, tt, var,\r\nb, u, i, center,\r\ndl, dt, dd, ol, ul, li,\r\nfieldset, form, label, legend,\r\ntable, caption, tbody, tfoot, thead, tr, th, td,\r\narticle, aside, canvas, details, embed,\r\nfigure, figcaption, footer, header, hgroup,\r\nmenu, nav, output, ruby, section, summary,\r\ntime, mark, audio, video {\r\n\tmargin: 0;\r\n\tpadding: 0;\r\n\tborder: 0;\r\n\tfont-size: 100%;\r\n\tfont: inherit;\r\n\tvertical-align: baseline;\r\n}\r\n/* HTML5 display-role reset for older browsers */\r\narticle, aside, details, figcaption, figure,\r\nfooter, header, hgroup, menu, nav, section {\r\n\tdisplay: block;\r\n}\r\nbody {\r\n\tline-height: 1;\r\n}\r\nol, ul {\r\n\tlist-style: none;\r\n}\r\nblockquote, q {\r\n\tquotes: none;\r\n}\r\nblockquote:before, blockquote:after,\r\nq:before, q:after {\r\n\tcontent: '';\r\n\tcontent: none;\r\n}\r\ntable {\r\n\tborder-collapse: collapse;\r\n\tborder-spacing: 0;\r\n}\r\n","\r\n\r\n\r\n.battle-title {\r\n\tfont-family: Brush Script MT;\r\n}\r\n\r\n.whose-character-player {\r\n  color: purple;\r\n  text-align: left;\r\n  font-size: 2em;\r\n  font-weight: bold;\r\n  font-style: italic;\r\n\tmargin-bottom: -40px;\r\n}\r\n\r\n.whose-character-cpu {\r\n\tcolor: purple;\r\n  text-align: right;\r\n  font-size: 2em;\r\n  font-weight: bold;\r\n  font-style: italic;\r\n}\r\n\r\n\r\n\r\n\r\n.fight-screen {\r\n\tborder: 3px solid black;\r\n  background-color: #ffc0cb;\r\n\t// background-position: center center;\r\n\tmax-width: 1000px;\r\n\theight: 500px;\r\n\t// margin-bottom: 30px;\r\n\t// margin-top: 30px;\r\n\tmargin: 0 auto;\r\n\tposition: relative;\r\n\toverflow: auto;\r\n}\r\n\r\n.player-sprite {\r\n\tmargin-top: 70px;\r\n\tmargin-left: 10%;\r\n\tfloat: left;\r\n}\r\n\r\n.cpu-sprite {\r\n\tmargin-top: 90px;\r\n\tmargin-right: 20%;\r\n\tfloat: right;\r\n}\r\n\r\n.player-identifier {\r\n\tcolor: green;\r\n\tfont-size: 2em;\r\n\tfont-weight: bold;\r\n\tfont-style: italic;\r\n\r\n}\r\n\r\n.cpu-identifier {\r\n\tcolor: green;\r\n\tfont-size: 2em;\r\n\tfont-weight: bold;\r\n\tfont-style: italic;\r\n\ttext-align: right;\r\n\tmargin-top: -30px;\r\n}\r\n\r\n.fight-title {\r\n\ttext-align: center;\r\n\tfont-size: 2em;\r\n\tfont-weight: bold;\r\n}\r\n\r\n.player-bubble-show\r\n{\r\n\ttext-align: center;\r\n\tline-height: 3em;\r\n\tfloat: left;\r\n\tmargin-top: 80px;\r\n\tdisplay: inline-block;\r\nposition: relative;\r\nwidth: 250px;\r\nheight: 55px;\r\npadding: 0px;\r\n/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#fb83fa+15,e93cec+54 */\r\nbackground: #fb83fa; /* Old browsers */\r\nbackground: -moz-linear-gradient(top,  #fb83fa 15%, #e93cec 54%); /* FF3.6-15 */\r\nbackground: -webkit-linear-gradient(top,  #fb83fa 15%,#e93cec 54%); /* Chrome10-25,Safari5.1-6 */\r\nbackground: linear-gradient(to bottom,  #fb83fa 15%,#e93cec 54%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */\r\nfilter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fb83fa', endColorstr='#e93cec',GradientType=0 ); /* IE6-9 */\r\n-webkit-border-radius: 10px;\r\n-moz-border-radius: 10px;\r\nborder-radius: 10px;\r\n}\r\n\r\n.player-bubble-show:after\r\n{\r\ncontent: '';\r\nposition: absolute;\r\nborder-style: solid;\r\nborder-width: 13px 30px 13px 0;\r\nborder-color: transparent #fb83fa;\r\ndisplay: block;\r\nwidth: 0;\r\nz-index: 1;\r\nleft: -30px;\r\ntop: 14px;\r\n}\r\n\r\n.cpu-bubble-show\r\n{\r\n\ttext-align: center;\r\n\tline-height: 2em;\r\n\tfloat: right;\r\n\tmargin-top: 90px;\r\n\r\n\tdisplay: inline-block;\r\nposition: relative;\r\nwidth: 180px;\r\nheight: 75px;\r\npadding: 0px;\r\n/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#e5e696+18,d1d360+47 */\r\nbackground: #e5e696; /* Old browsers */\r\nbackground: -moz-linear-gradient(top,  #e5e696 18%, #d1d360 47%); /* FF3.6-15 */\r\nbackground: -webkit-linear-gradient(top,  #e5e696 18%,#d1d360 47%); /* Chrome10-25,Safari5.1-6 */\r\nbackground: linear-gradient(to bottom,  #e5e696 18%,#d1d360 47%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */\r\nfilter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e5e696', endColorstr='#d1d360',GradientType=0 ); /* IE6-9 */\r\n\r\n-webkit-border-radius: 9px;\r\n-moz-border-radius: 9px;\r\nborder-radius: 9px;\r\n}\r\n\r\n.cpu-bubble-show:after\r\n{\r\ncontent: '';\r\nposition: absolute;\r\nborder-style: solid;\r\nborder-width: 13px 0 13px 30px;\r\nborder-color: transparent #e5e696;\r\ndisplay: block;\r\nwidth: 0;\r\nz-index: 1;\r\nright: -30px;\r\ntop: 14px;\r\n}\r\n\r\n.miss-bubble-show\r\n{\r\n\ttext-align: center;\r\n\tline-height: 2em;\r\n\tfloat: right;\r\n\tmargin-top: 60px;\r\n\t// margin-left: 1.%;\r\n\tdisplay: inline-block;\r\nposition: relative;\r\nwidth: 165px;\r\nheight: 55px;\r\npadding: 0px;\r\nbackground: #FFFFFF;\r\n-webkit-border-radius: 10px;\r\n-moz-border-radius: 10px;\r\nborder-radius: 10px;\r\n}\r\n\r\n.miss-bubble-show:after\r\n{\r\ncontent: '';\r\nposition: absolute;\r\nborder-style: solid;\r\nborder-width: 15px 0 15px 30px;\r\nborder-color: transparent #FFFFFF;\r\ndisplay: block;\r\nwidth: 0;\r\nz-index: 1;\r\nright: -30px;\r\ntop: 12px;\r\n}\r\n\r\n.player-bubble-hide\r\n{\r\n\ttext-align: center;\r\n\tline-height: 3em;\r\n\tfloat: left;\r\n\tmargin-top: 80px;\r\n\tdisplay: none;\r\nposition: relative;\r\nwidth: 250px;\r\nheight: 55px;\r\npadding: 0px;\r\n/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#fb83fa+15,e93cec+54 */\r\nbackground: #fb83fa; /* Old browsers */\r\nbackground: -moz-linear-gradient(top,  #fb83fa 15%, #e93cec 54%); /* FF3.6-15 */\r\nbackground: -webkit-linear-gradient(top,  #fb83fa 15%,#e93cec 54%); /* Chrome10-25,Safari5.1-6 */\r\nbackground: linear-gradient(to bottom,  #fb83fa 15%,#e93cec 54%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */\r\nfilter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fb83fa', endColorstr='#e93cec',GradientType=0 ); /* IE6-9 */\r\n-webkit-border-radius: 10px;\r\n-moz-border-radius: 10px;\r\nborder-radius: 10px;\r\n}\r\n\r\n.player-bubble-hide:after\r\n{\r\ncontent: '';\r\nposition: absolute;\r\nborder-style: solid;\r\nborder-width: 13px 30px 13px 0;\r\nborder-color: transparent #fb83fa;\r\ndisplay: none;\r\nwidth: 0;\r\nz-index: 1;\r\nleft: -30px;\r\ntop: 14px;\r\n}\r\n\r\n.cpu-bubble-hide\r\n{\r\n\ttext-align: center;\r\n\tline-height: 2em;\r\n\tfloat: right;\r\n\tmargin-top: 90px;\r\n\r\n\tdisplay: none;\r\nposition: relative;\r\nwidth: 180px;\r\nheight: 75px;\r\npadding: 0px;\r\n/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#e5e696+18,d1d360+47 */\r\nbackground: #e5e696; /* Old browsers */\r\nbackground: -moz-linear-gradient(top,  #e5e696 18%, #d1d360 47%); /* FF3.6-15 */\r\nbackground: -webkit-linear-gradient(top,  #e5e696 18%,#d1d360 47%); /* Chrome10-25,Safari5.1-6 */\r\nbackground: linear-gradient(to bottom,  #e5e696 18%,#d1d360 47%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */\r\nfilter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e5e696', endColorstr='#d1d360',GradientType=0 ); /* IE6-9 */\r\n\r\n-webkit-border-radius: 9px;\r\n-moz-border-radius: 9px;\r\nborder-radius: 9px;\r\n}\r\n\r\n.cpu-bubble-hide:after\r\n{\r\ncontent: '';\r\nposition: absolute;\r\nborder-style: solid;\r\nborder-width: 13px 0 13px 30px;\r\nborder-color: transparent #e5e696;\r\ndisplay: none;\r\nwidth: 0;\r\nz-index: 1;\r\nright: -30px;\r\ntop: 14px;\r\n}\r\n\r\n.miss-bubble-hide\r\n{\r\n\ttext-align: center;\r\n\tline-height: 2em;\r\n\tfloat: right;\r\n\tmargin-top: 60px;\r\n\t// margin-left: 1.%;\r\n\tdisplay: none;\r\nposition: relative;\r\nwidth: 165px;\r\nheight: 55px;\r\npadding: 0px;\r\nbackground: #FFFFFF;\r\n-webkit-border-radius: 10px;\r\n-moz-border-radius: 10px;\r\nborder-radius: 10px;\r\n}\r\n\r\n.miss-bubble-hide:after\r\n{\r\ncontent: '';\r\nposition: absolute;\r\nborder-style: solid;\r\nborder-width: 15px 0 15px 30px;\r\nborder-color: transparent #FFFFFF;\r\ndisplay: none;\r\nwidth: 0;\r\nz-index: 1;\r\nright: -30px;\r\ntop: 12px;\r\n}\r\n\r\n\r\n\r\n\r\n.player-stats-and-moves {\r\n\tposition: absolute;\r\n\tbottom: 10px;\r\n\tleft: 50px;\r\n}\r\n\r\n.player-stats-and-moves p {\r\n\tfont-size: 3em;\r\n\tfont-weight: bold;\r\n\r\n}\r\n\r\n.input-hide {\r\n\tdisplay: none;\r\n}\r\n\r\n.input-show {\r\n\tdisplay: block;\r\n}\r\n\r\n.move-list {\r\n\tdisplay: inline-block;\r\n\tbackground-color: white;\r\n\tmargin-left: 5%;\r\n\twidth: 30%;\r\n\ttext-align: center;\r\n\r\n}\r\n\r\n.move-list-title {\r\n\r\n\ttext-decoration: underline;\r\n\tfont-style: oblique;\r\n\tfont-family: Lucida, serif;\r\n\tfont-size: 1.3em;\r\n}\r\n\r\n\r\n\r\n.healthyHP {\r\n\tcolor: green;\r\n}\r\n\r\n.warningHP {\r\n\tfont-size: 3em;\r\n\tcolor: orange;\r\n\tfont-weight: bold;\r\n}\r\n\r\n.dangerHP {\r\n\tfont-size: 3em;\r\n\tcolor: red;\r\n\tfont-weight: bold;\r\n\r\n}\r\n\r\n.player-stats-and-moves input{\r\n\tpadding: 10px;\r\n}\r\n\r\n.cpu-stats-and-moves {\r\n\tposition: absolute;\r\n\tbottom: 50px;\r\n\tright: 80px;\r\n}\r\n\r\n.cpu-stats-and-moves p {\r\n\ttext-align: center;\r\n\tfont-size: 3em;\r\n\tfont-weight: bold;\r\n}\r\n",".container {\r\n  max-width: 1060px;\r\n  margin: 0px auto;\r\n  background-color: red;\r\n  padding-top: 50px;\r\n  padding-bottom: 50px;\r\n}\r\n",".website-title {\r\n  font-size: 3em;\r\n  font-weight: bold;\r\n  font-family: fantasy;\r\n  text-align: center;\r\n}\r\n\r\n.header-tagline {\r\n  font-size: 1.2em;\r\n  font-family:cursive;\r\n  text-align: center;\r\n  margin-top: 20px;\r\n  margin-bottom: 160px;\r\n}\r\n\r\n.fly-in-text li {\r\n    display: inline-block;\r\n    margin-right: 50px;\r\n    font-family: Open Sans, Arial;\r\n    font-weight: 300;\r\n    color: #fff;\r\n    opacity: 1;\r\n    transition: all 2.5s ease;\r\n}\r\n.fly-in-text li:last-child {\r\n    margin-right: 0;\r\n}\r\n.fly-in-text.hidden li {\r\n    opacity: 0;\r\n}\r\n.fly-in-text.hidden li:nth-child(1) { transform: translateX(-200px) translateY(-200px); }\r\n.fly-in-text.hidden li:nth-child(2) { transform: translateX(20px) translateY(100px); }\r\n.fly-in-text.hidden li:nth-child(3) { transform: translateX(-150px) translateY(-80px); }\r\n.fly-in-text.hidden li:nth-child(4) { transform: translateX(10px) translateY(-200px); }\r\n.fly-in-text.hidden li:nth-child(5) { transform: translateX(-300px) translateY(200px); }\r\n.fly-in-text.hidden li:nth-child(6) { transform: translateX(20px) translateY(-20px); }\r\n.fly-in-text.hidden li:nth-child(7) { transform: translateX(30px) translateY(200px); }\r\n\r\n@-webkit-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }\r\n@-moz-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }\r\n@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }\r\n\r\n.fade li {\r\n  display: inline-block;\r\n  margin-right: 15px;\r\n  opacity:0;  /* make things invisible upon start */\r\n -webkit-animation:fadeIn ease-in 1;  /* call our keyframe named fadeIn, use animattion ease-in and repeat it only 1 time */\r\n -moz-animation:fadeIn ease-in 1;\r\n animation:fadeIn ease-in 1;\r\n\r\n -webkit-animation-fill-mode:forwards;  /* this makes sure that after animation is done we remain at the last keyframe value (opacity: 1)*/\r\n -moz-animation-fill-mode:forwards;\r\n animation-fill-mode:forwards;\r\n\r\n -webkit-animation-duration:4s;\r\n -moz-animation-duration:4s;\r\n animation-duration:4s;\r\n}\r\n\r\n.fade li:last-child {\r\n  margin-right: 0;\r\n}\r\n\r\n.fade li:nth-child(1) {\r\n  -webkit-animation-delay: 5s;\r\n  -moz-animation-delay: 5s;\r\n  animation-delay: 5s;\r\n}\r\n.fade li:nth-child(2) {\r\n  -webkit-animation-delay: 5.5s;\r\n  -moz-animation-delay: 5.5s;\r\n  animation-delay: 5.5s;\r\n}\r\n.fade li:nth-child(3) {\r\n  -webkit-animation-delay: 6s;\r\n  -moz-animation-delay: 6s;\r\n  animation-delay: 6s;\r\n}\r\n.fade li:nth-child(4) {\r\n  -webkit-animation-delay: 6.5s;\r\n  -moz-animation-delay: 6.5s;\r\n  animation-delay: 6.5s;\r\n}\r\n.fade li:nth-child(5) {\r\n  -webkit-animation-delay: 7s;\r\n  -moz-animation-delay: 7s;\r\n  animation-delay: 7s;\r\n}\r\n.fade li:nth-child(6) {\r\n  -webkit-animation-delay: 7.5s;\r\n  -moz-animation-delay: 7.5s;\r\n  animation-delay: 7.5s;\r\n}\r\n.fade li:nth-child(7) {\r\n  -webkit-animation-delay: 8s;\r\n  -moz-animation-delay: 8s;\r\n  animation-delay:8s;\r\n}\r\n.fade li:nth-child(8) {\r\n  -webkit-animation-delay: 8.5s;\r\n  -moz-animation-delay: 8.5s;\r\n  animation-delay: 8.5s;\r\n}\r\n\r\n.kapowDiv {\r\n  overflow: auto;\r\n}\r\n\r\n.kapow1 {\r\n  float: left;\r\n\r\n}\r\n\r\n.kapow2 {\r\n  float: right;\r\n}\r\n\r\n.hide-image {\r\n  opacity: 0;\r\n}\r\n\r\n.fade-in-image {\r\n  -webkit-animation:fadeIn ease-in 1;  /* call our keyframe named fadeIn, use animattion ease-in and repeat it only 1 time */\r\n  -moz-animation:fadeIn ease-in 1;\r\n  animation:fadeIn ease-in 1;\r\n\r\n  -webkit-animation-duration:4s;\r\n  -moz-animation-duration:4s;\r\n  animation-duration:4s;\r\n}\r\n",".progress-title {\r\n  font-family: cursive;\r\n  margin-top: 120px;\r\n  color: white;\r\n}\r\n\r\n.progress-tagline {\r\n  font-size: 1.2em;\r\n  font-family:cursive;\r\n  text-align: center;\r\n  margin-top: 20px;\r\n}\r\n\r\n#stats-heading {\r\n  text-decoration: underline;\r\n  text-align: center;\r\n  font-size: 1.5em;\r\n  margin-top: 50px;\r\n  margin-bottom: 20px;\r\n}\r\n\r\n#stats-table {\r\n  width: 40%;\r\n  border-collapse: collapse;\r\n  margin: 0 auto;\r\n}\r\n\r\ntr:nth-of-type(odd) {\r\n  background-color: red;\r\n  color: red;\r\n}\r\n\r\ntr:nth-of-type(even) {\r\n  background-color: white;\r\n  color: red;\r\n}\r\n\r\n#HeadRow {\r\n  background-color: #ffc0cb;\r\n  font-weight: bold;\r\n}\r\n\r\n#stats-table {\r\n  margin-bottom: 50px;\r\n}\r\n\r\n#stats-table td {\r\n  padding: 5px;\r\n  border: 1px solid black;\r\n  text-align: center;\r\n}\r\n","@import 'reset';\r\n@import 'fight';\r\n@import 'index';\r\n@import 'header';\r\n@import 'progress';\r\n\r\nbody {\r\n    background-color: #000;\r\n}\r\n\r\n\r\n\r\n#google-signin {\r\n  max-width: 300px;\r\n  margin-left: 35%;\r\n  margin-top: 20px;\r\n}\r\n\r\n\r\n.character-select-title {\r\n  font-family: monospace;\r\n}\r\n\r\n.character-select {\r\n  overflow: auto;\r\n}\r\n\r\n.player-select {\r\n  border: 1px solid blue;\r\n  padding: 80px;\r\n  width: 300px;\r\n  height: 300px;\r\n  border-radius: 50%;\r\n  float: left;\r\n}\r\n\r\n.cpu-select {\r\n  border: 1px solid red;\r\n  padding: 80px;\r\n  width: 300px;\r\n  height: 300px;\r\n  border-radius: 50%;\r\n  float: right;\r\n}\r\n\r\n\r\n\r\n.sample-sprite {\r\n  max-width: 100px;\r\n  margin-left: 30%;\r\n}\r\n\r\n.character-name {\r\n\tcolor: purple;\r\n\tfont-size: 1.8em;\r\n\tfont-weight: bold;\r\n\tfont-family: Didot;\r\n\ttext-align: center;\r\n}\r\n\r\n\r\n.attack-command {\r\n\tfont-weight: bold;\r\n}\r\n\r\n.super-move-description {\r\n\ttext-align: center;\r\n\tfont-size: .9em;\r\n}\r\n\r\n.cpu-difficulty-form {\r\n\ttext-align: center;\r\n\tmargin-bottom: 10px;\r\n}\r\n\r\n\r\n// @media screen and (max-width: 800px) {\r\n//   #stats-table, #stats-table tbody, #stats-table tr, #stats-table td{\r\n//     display: block;\r\n//   }\r\n//\r\n//   #HeadRow {\r\n//     position: absolute;\r\n//     left: -9999px;\r\n//     top: -9999px;\r\n//   }\r\n//\r\n//   #stats-table td {\r\n//     border: none;\r\n//     position: relative;\r\n//     padding-left: 40%;\r\n//     white-space: normal;\r\n//     text-align: left;\r\n//   }\r\n//\r\n//   #stats-table td::before {\r\n//     position: absolute;\r\n//     top: 5px;\r\n//     left: 5px;\r\n//     width: 40%;\r\n//     padding-right: 10px;\r\n//     white-space: nowrap;\r\n//     text-align: left;\r\n//     font-weight: bold;\r\n//     content: attr(tableHeadData);\r\n//\r\n//   }\r\n// }\r\n"],"sourceRoot":"webpack://"}]);
-	
-	// exports
-
-
-/***/ },
-/* 180 */
 /***/ function(module, exports) {
 
-	/*
-		MIT License http://www.opensource.org/licenses/mit-license.php
-		Author Tobias Koppers @sokra
-	*/
-	// css base code, injected by the css-loader
-	module.exports = function() {
-		var list = [];
-	
-		// return the list of modules as css string
-		list.toString = function toString() {
-			var result = [];
-			for(var i = 0; i < this.length; i++) {
-				var item = this[i];
-				if(item[2]) {
-					result.push("@media " + item[2] + "{" + item[1] + "}");
-				} else {
-					result.push(item[1]);
-				}
-			}
-			return result.join("");
-		};
-	
-		// import a list of modules into the list
-		list.i = function(modules, mediaQuery) {
-			if(typeof modules === "string")
-				modules = [[null, modules, ""]];
-			var alreadyImportedModules = {};
-			for(var i = 0; i < this.length; i++) {
-				var id = this[i][0];
-				if(typeof id === "number")
-					alreadyImportedModules[id] = true;
-			}
-			for(i = 0; i < modules.length; i++) {
-				var item = modules[i];
-				// skip already imported module
-				// this implementation is not 100% perfect for weird media query combinations
-				//  when a module is imported multiple times with different media queries.
-				//  I hope this will never occur (Hey this way we have smaller bundles)
-				if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
-					if(mediaQuery && !item[2]) {
-						item[2] = mediaQuery;
-					} else if(mediaQuery) {
-						item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
-					}
-					list.push(item);
-				}
-			}
-		};
-		return list;
-	};
-
-
-/***/ },
-/* 181 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/*
-		MIT License http://www.opensource.org/licenses/mit-license.php
-		Author Tobias Koppers @sokra
-	*/
-	var stylesInDom = {},
-		memoize = function(fn) {
-			var memo;
-			return function () {
-				if (typeof memo === "undefined") memo = fn.apply(this, arguments);
-				return memo;
-			};
-		},
-		isOldIE = memoize(function() {
-			return /msie [6-9]\b/.test(window.navigator.userAgent.toLowerCase());
-		}),
-		getHeadElement = memoize(function () {
-			return document.head || document.getElementsByTagName("head")[0];
-		}),
-		singletonElement = null,
-		singletonCounter = 0,
-		styleElementsInsertedAtTop = [];
-	
-	module.exports = function(list, options) {
-		if(false) {
-			if(typeof document !== "object") throw new Error("The style-loader cannot be used in a non-browser environment");
-		}
-	
-		options = options || {};
-		// Force single-tag solution on IE6-9, which has a hard limit on the # of <style>
-		// tags it will allow on a page
-		if (typeof options.singleton === "undefined") options.singleton = isOldIE();
-	
-		// By default, add <style> tags to the bottom of <head>.
-		if (typeof options.insertAt === "undefined") options.insertAt = "bottom";
-	
-		var styles = listToStyles(list);
-		addStylesToDom(styles, options);
-	
-		return function update(newList) {
-			var mayRemove = [];
-			for(var i = 0; i < styles.length; i++) {
-				var item = styles[i];
-				var domStyle = stylesInDom[item.id];
-				domStyle.refs--;
-				mayRemove.push(domStyle);
-			}
-			if(newList) {
-				var newStyles = listToStyles(newList);
-				addStylesToDom(newStyles, options);
-			}
-			for(var i = 0; i < mayRemove.length; i++) {
-				var domStyle = mayRemove[i];
-				if(domStyle.refs === 0) {
-					for(var j = 0; j < domStyle.parts.length; j++)
-						domStyle.parts[j]();
-					delete stylesInDom[domStyle.id];
-				}
-			}
-		};
-	}
-	
-	function addStylesToDom(styles, options) {
-		for(var i = 0; i < styles.length; i++) {
-			var item = styles[i];
-			var domStyle = stylesInDom[item.id];
-			if(domStyle) {
-				domStyle.refs++;
-				for(var j = 0; j < domStyle.parts.length; j++) {
-					domStyle.parts[j](item.parts[j]);
-				}
-				for(; j < item.parts.length; j++) {
-					domStyle.parts.push(addStyle(item.parts[j], options));
-				}
-			} else {
-				var parts = [];
-				for(var j = 0; j < item.parts.length; j++) {
-					parts.push(addStyle(item.parts[j], options));
-				}
-				stylesInDom[item.id] = {id: item.id, refs: 1, parts: parts};
-			}
-		}
-	}
-	
-	function listToStyles(list) {
-		var styles = [];
-		var newStyles = {};
-		for(var i = 0; i < list.length; i++) {
-			var item = list[i];
-			var id = item[0];
-			var css = item[1];
-			var media = item[2];
-			var sourceMap = item[3];
-			var part = {css: css, media: media, sourceMap: sourceMap};
-			if(!newStyles[id])
-				styles.push(newStyles[id] = {id: id, parts: [part]});
-			else
-				newStyles[id].parts.push(part);
-		}
-		return styles;
-	}
-	
-	function insertStyleElement(options, styleElement) {
-		var head = getHeadElement();
-		var lastStyleElementInsertedAtTop = styleElementsInsertedAtTop[styleElementsInsertedAtTop.length - 1];
-		if (options.insertAt === "top") {
-			if(!lastStyleElementInsertedAtTop) {
-				head.insertBefore(styleElement, head.firstChild);
-			} else if(lastStyleElementInsertedAtTop.nextSibling) {
-				head.insertBefore(styleElement, lastStyleElementInsertedAtTop.nextSibling);
-			} else {
-				head.appendChild(styleElement);
-			}
-			styleElementsInsertedAtTop.push(styleElement);
-		} else if (options.insertAt === "bottom") {
-			head.appendChild(styleElement);
-		} else {
-			throw new Error("Invalid value for parameter 'insertAt'. Must be 'top' or 'bottom'.");
-		}
-	}
-	
-	function removeStyleElement(styleElement) {
-		styleElement.parentNode.removeChild(styleElement);
-		var idx = styleElementsInsertedAtTop.indexOf(styleElement);
-		if(idx >= 0) {
-			styleElementsInsertedAtTop.splice(idx, 1);
-		}
-	}
-	
-	function createStyleElement(options) {
-		var styleElement = document.createElement("style");
-		styleElement.type = "text/css";
-		insertStyleElement(options, styleElement);
-		return styleElement;
-	}
-	
-	function createLinkElement(options) {
-		var linkElement = document.createElement("link");
-		linkElement.rel = "stylesheet";
-		insertStyleElement(options, linkElement);
-		return linkElement;
-	}
-	
-	function addStyle(obj, options) {
-		var styleElement, update, remove;
-	
-		if (options.singleton) {
-			var styleIndex = singletonCounter++;
-			styleElement = singletonElement || (singletonElement = createStyleElement(options));
-			update = applyToSingletonTag.bind(null, styleElement, styleIndex, false);
-			remove = applyToSingletonTag.bind(null, styleElement, styleIndex, true);
-		} else if(obj.sourceMap &&
-			typeof URL === "function" &&
-			typeof URL.createObjectURL === "function" &&
-			typeof URL.revokeObjectURL === "function" &&
-			typeof Blob === "function" &&
-			typeof btoa === "function") {
-			styleElement = createLinkElement(options);
-			update = updateLink.bind(null, styleElement);
-			remove = function() {
-				removeStyleElement(styleElement);
-				if(styleElement.href)
-					URL.revokeObjectURL(styleElement.href);
-			};
-		} else {
-			styleElement = createStyleElement(options);
-			update = applyToTag.bind(null, styleElement);
-			remove = function() {
-				removeStyleElement(styleElement);
-			};
-		}
-	
-		update(obj);
-	
-		return function updateStyle(newObj) {
-			if(newObj) {
-				if(newObj.css === obj.css && newObj.media === obj.media && newObj.sourceMap === obj.sourceMap)
-					return;
-				update(obj = newObj);
-			} else {
-				remove();
-			}
-		};
-	}
-	
-	var replaceText = (function () {
-		var textStore = [];
-	
-		return function (index, replacement) {
-			textStore[index] = replacement;
-			return textStore.filter(Boolean).join('\n');
-		};
-	})();
-	
-	function applyToSingletonTag(styleElement, index, remove, obj) {
-		var css = remove ? "" : obj.css;
-	
-		if (styleElement.styleSheet) {
-			styleElement.styleSheet.cssText = replaceText(index, css);
-		} else {
-			var cssNode = document.createTextNode(css);
-			var childNodes = styleElement.childNodes;
-			if (childNodes[index]) styleElement.removeChild(childNodes[index]);
-			if (childNodes.length) {
-				styleElement.insertBefore(cssNode, childNodes[index]);
-			} else {
-				styleElement.appendChild(cssNode);
-			}
-		}
-	}
-	
-	function applyToTag(styleElement, obj) {
-		var css = obj.css;
-		var media = obj.media;
-	
-		if(media) {
-			styleElement.setAttribute("media", media)
-		}
-	
-		if(styleElement.styleSheet) {
-			styleElement.styleSheet.cssText = css;
-		} else {
-			while(styleElement.firstChild) {
-				styleElement.removeChild(styleElement.firstChild);
-			}
-			styleElement.appendChild(document.createTextNode(css));
-		}
-	}
-	
-	function updateLink(linkElement, obj) {
-		var css = obj.css;
-		var sourceMap = obj.sourceMap;
-	
-		if(sourceMap) {
-			// http://stackoverflow.com/a/26603875
-			css += "\n/*# sourceMappingURL=data:application/json;base64," + btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))) + " */";
-		}
-	
-		var blob = new Blob([css], { type: "text/css" });
-	
-		var oldSrc = linkElement.href;
-	
-		linkElement.href = URL.createObjectURL(blob);
-	
-		if(oldSrc)
-			URL.revokeObjectURL(oldSrc);
-	}
-
-
-/***/ },
-/* 182 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var $ = __webpack_require__(175);
-	
-	var state = {};
-	
-	var store = {
-	  listeners: [],
-	  actions: {}
-	};
-	
-	store.addListener = function (listener) {
-	  store.listeners.push(listener);
-	};
-	
-	store.copyState = function () {
-	  return {};
-	};
-	
-	function changed() {
-	  console.log('store changed', state);
-	  var copiedState = store.copyState();
-	  store.listeners.forEach(function (listener) {
-	    listener(copiedState);
-	  });
-	}
-	
-	/* ========================================= */
-	/* Actions                                   */
-	/* ========================================= */
-	
-	store.actions.alertUser = function () {
-	  alert('Hi!');
-	};
-	
-	module.exports = store;
+	// removed by extract-text-webpack-plugin
 
 /***/ }
 /******/ ]);
