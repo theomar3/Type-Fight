@@ -58,6 +58,8 @@ var state = {
   missBubble: 'miss-bubble-hide',
   wins: 0,
   losses: 0,
+  clickForProgress: '',
+  rematch: ''
 
 }
 
@@ -89,7 +91,9 @@ store.copyState = function() {
     cpuBubble: state.cpuBubble,
     missBubble: state.missBubble,
     wins: state.wins,
-    losses: state.losses
+    losses: state.losses,
+    clickForProgress: state.clickForProgress,
+    rematch: state.rematch
   }
 }
 
@@ -187,6 +191,8 @@ function endFight() {
 
   if(state.playerHP < 1) {
     state.text = "You lost! Try again.";
+    state.clickForProgress = 'Click to see your Progress!';
+    state.rematch = 'Rematch!';
     state.playerAttack = 'I was going easy on you.';
     state.cpuAttack = 'One for J.J.';
     state.playerSprite = './images/kenshin-dead.gif';
@@ -226,6 +232,8 @@ function endFight() {
 
   if(state.cpuHP < 1) {
     state.text = 'Awesome! You won!';
+    state.clickForProgress = 'Click to see your Progress!';
+    state.rematch = 'Rematch!';
     state.playerAttack = "You should keep practicing."
     state.cpuAttack = 'Uncle Ben! I failed you. ';
     state.playerSprite = './images/kenshin-win.gif';
@@ -257,6 +265,8 @@ store.actions.startFight = function() {
   state.playerSprite = './images/kenshin-ready.gif';
   state.cpuSprite = './images/spidey-ready.gif';
   state.playerInput = 'input-show';
+  state.playerHP = 30;
+  state.cpuHP = 2;
 
   var MKTheme = document.getElementById('MKTheme');
   var GuileTheme = document.getElementById('GuileTheme');
@@ -281,13 +291,11 @@ store.actions.startFight = function() {
 store.actions.attack = function(evt) {
 
   var cpuHit = document.getElementById('cpuHit');
-  var bradleyTaunt = document.getElementById('bradleyTaunt');
   var laughTaunt = document.getElementById('laughTaunt');
   var patheticTaunt = document.getElementById('patheticTaunt');
   var suckTaunt = document.getElementById('suckTaunt');
 
   var missTaunts = [
-    bradleyTaunt,
     laughTaunt,
     patheticTaunt,
     suckTaunt

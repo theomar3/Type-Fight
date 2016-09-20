@@ -27293,6 +27293,24 @@
 	              } },
 	            this.state.text
 	          ),
+	          _react2.default.createElement(
+	            'a',
+	            { className: 'link-text', href: '#' },
+	            _react2.default.createElement(
+	              'p',
+	              null,
+	              this.state.clickForProgress
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'p',
+	            { className: 'rematch', onClick: function onClick() {
+	                return _this2._clickFightTitle();
+	              } },
+	            ' ',
+	            this.state.rematch,
+	            ' '
+	          ),
 	          _react2.default.createElement('img', { className: 'player-sprite', src: this.state.playerSprite }),
 	          _react2.default.createElement(
 	            'div',
@@ -27446,7 +27464,9 @@
 	  cpuBubble: 'cpu-bubble-hide',
 	  missBubble: 'miss-bubble-hide',
 	  wins: 0,
-	  losses: 0
+	  losses: 0,
+	  clickForProgress: '',
+	  rematch: ''
 	
 	};
 	
@@ -27478,7 +27498,9 @@
 	    cpuBubble: state.cpuBubble,
 	    missBubble: state.missBubble,
 	    wins: state.wins,
-	    losses: state.losses
+	    losses: state.losses,
+	    clickForProgress: state.clickForProgress,
+	    rematch: state.rematch
 	  };
 	};
 	
@@ -27568,6 +27590,8 @@
 	
 	  if (state.playerHP < 1) {
 	    state.text = "You lost! Try again.";
+	    state.clickForProgress = 'Click to see your Progress!';
+	    state.rematch = 'Rematch!';
 	    state.playerAttack = 'I was going easy on you.';
 	    state.cpuAttack = 'One for J.J.';
 	    state.playerSprite = './images/kenshin-dead.gif';
@@ -27598,6 +27622,8 @@
 	
 	  if (state.cpuHP < 1) {
 	    state.text = 'Awesome! You won!';
+	    state.clickForProgress = 'Click to see your Progress!';
+	    state.rematch = 'Rematch!';
 	    state.playerAttack = "You should keep practicing.";
 	    state.cpuAttack = 'Uncle Ben! I failed you. ';
 	    state.playerSprite = './images/kenshin-win.gif';
@@ -27624,6 +27650,8 @@
 	  state.playerSprite = './images/kenshin-ready.gif';
 	  state.cpuSprite = './images/spidey-ready.gif';
 	  state.playerInput = 'input-show';
+	  state.playerHP = 30;
+	  state.cpuHP = 2;
 	
 	  var MKTheme = document.getElementById('MKTheme');
 	  var GuileTheme = document.getElementById('GuileTheme');
@@ -27643,12 +27671,11 @@
 	store.actions.attack = function (evt) {
 	
 	  var cpuHit = document.getElementById('cpuHit');
-	  var bradleyTaunt = document.getElementById('bradleyTaunt');
 	  var laughTaunt = document.getElementById('laughTaunt');
 	  var patheticTaunt = document.getElementById('patheticTaunt');
 	  var suckTaunt = document.getElementById('suckTaunt');
 	
-	  var missTaunts = [bradleyTaunt, laughTaunt, patheticTaunt, suckTaunt];
+	  var missTaunts = [laughTaunt, patheticTaunt, suckTaunt];
 	
 	  if (evt.keyCode === 13) {
 	    state.playerBubble = 'player-bubble-show';

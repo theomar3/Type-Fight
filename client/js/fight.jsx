@@ -96,6 +96,10 @@ class Fight extends React.Component {
           <p className='fight-title' onClick={() => this._clickFightTitle()}>
             {this.state.text}
           </p>
+          <a className='link-text' href='#'>
+             <p>{this.state.clickForProgress}</p>
+          </a>
+          <p className='rematch' onClick={() => this._clickFightTitle()}> {this.state.rematch} </p>
           <img className="player-sprite" src={this.state.playerSprite} />
           <div className={this.state.playerBubble}>
              {this.state.playerAttack}

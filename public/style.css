@@ -381,6 +381,15 @@ table {
   margin-left: 40%;
   padding-top: 40px; }
 
+.link-text p {
+  text-align: center; }
+
+.rematch {
+  font-size: 1.4em;
+  font-family: cursive;
+  text-align: center;
+  text-decoration: none; }
+
 .progress-link {
   font-size: 4em;
   color: white;

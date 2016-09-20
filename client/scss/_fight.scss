@@ -387,8 +387,17 @@ top: 12px;
 	color: black;
 	margin-left: 40%;
 	padding-top: 40px;
+}
 
+.link-text p {
+	text-align: center;
+}
 
+.rematch {
+	font-size: 1.4em;
+	font-family:cursive;
+	text-align: center;
+	text-decoration: none;
 }
 
 .progress-link {
@@ -396,5 +405,4 @@ top: 12px;
 	color: white;
 	font-family: cursive;
 	display: block;
-	// margin-left: 40%;
 }
