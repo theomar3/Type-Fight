@@ -13,12 +13,18 @@ class App extends React.Component {
     return (
       <div className='container'>
         <Fight />
+        <Link to={'/progress'}> Progress</Link>
 
-        <Progress />
-
+        {this.props.children}
       </div>
     );
   }
 }
 
-render(<App/>, document.getElementById('app'));
+render((
+  <Router history={hashHistory}>
+    <Route path="/" component={App}>
+      <Route path="progress" component={Progress} />
+    </Route>
+  </Router>
+), document.getElementById('app'));

@@ -375,7 +375,7 @@ table {
   font-family: cursive;
   text-align: center;
   /*margin-top: 20px;*/
-  /*margin-bottom: 160px;*/ }
+  margin-bottom: 30px; }
 
 .fly-in-text li {
   display: inline-block;

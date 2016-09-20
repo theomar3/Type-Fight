@@ -3,8 +3,6 @@ import store from './fight-store.js';
 import audioFiles from './audio-play.js';
 
 
-
-
 class Fight extends React.Component {
   constructor() {
     super();
