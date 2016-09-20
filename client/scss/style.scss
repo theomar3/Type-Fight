@@ -2,21 +2,13 @@
 @import 'fight';
 @import 'index';
 @import 'header';
+@import 'progress';
 
 body {
     background-color: #000;
 }
 
-.progress-title {
-  font-family: cursive;
-}
 
-.tagline {
-  font-size: 1.2em;
-  font-family:cursive;
-  text-align: center;
-  margin-top: 20px;
-}
 
 #google-signin {
   max-width: 300px;
@@ -24,40 +16,6 @@ body {
   margin-top: 20px;
 }
 
-#stats-heading {
-  text-decoration: underline;
-  text-align: center;
-  font-size: 1.5em;
-  margin-top: 50px;
-}
-
-#stats-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-tr:nth-of-type(odd) {
-  background-color: blue;
-}
-
-tr:nth-of-type(even) {
-  background-color: lightblue;
-}
-
-#HeadRow {
-  background-color: #DDD;
-  font-weight: bold;
-}
-
-#stats-table {
-  margin-bottom: 50px;
-}
-
-#stats-table td {
-  padding: 5px;
-  border: 1px solid black;
-  text-align: left;
-}
 
 .character-select-title {
   font-family: monospace;

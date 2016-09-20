@@ -1,0 +1,51 @@
+.progress-title {
+  font-family: cursive;
+  margin-top: 120px;
+  color: white;
+}
+
+.progress-tagline {
+  font-size: 1.2em;
+  font-family:cursive;
+  text-align: center;
+  margin-top: 20px;
+}
+
+#stats-heading {
+  text-decoration: underline;
+  text-align: center;
+  font-size: 1.5em;
+  margin-top: 50px;
+  margin-bottom: 20px;
+}
+
+#stats-table {
+  width: 40%;
+  border-collapse: collapse;
+  margin: 0 auto;
+}
+
+tr:nth-of-type(odd) {
+  background-color: red;
+  color: red;
+}
+
+tr:nth-of-type(even) {
+  background-color: white;
+  color: red;
+}
+
+#HeadRow {
+  background-color: #ffc0cb;
+  font-weight: bold;
+}
+
+#stats-table {
+  margin-bottom: 50px;
+}
+
+#stats-table td {
+  padding: 5px;
+  border: 1px solid black;
+  text-align: center;
+}

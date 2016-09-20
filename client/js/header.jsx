@@ -27,7 +27,7 @@ class Header extends React.Component {
           <img className='kapow2 hide-image fade-in-image' src='./images/kapow2.gif' />
         </div>
 
-        <ul className = 'fade  tagline'>
+        <ul className = 'fade  header-tagline'>
           <li> Type </li>
           <li> faster </li>
           <li> and </li>

@@ -1,5 +1,6 @@
 var $ = require('jquery');
 import audioPlay from './audio-play.js';
+import ProgressStore from './progress-store.js';
 
 
 var intervalId;
@@ -43,9 +44,9 @@ var state = {
   text: 'Click to begin',
   cpuAttack: '',
   playerAttack: '',
-  playerHP: 3,
+  playerHP: 30,
   playerStatus: 'healthyHP',
-  cpuHP: 21,
+  cpuHP: 2,
   cpuStatus: 'healthyHP',
   healString: '',
   cpuTaunt: '',
@@ -181,6 +182,8 @@ function intervalRounds() {
 
 function endFight() {
   clearInterval(intervalId);
+  var id = getUserId();
+
 
   if(state.playerHP < 1) {
     state.text = "You lost! Try again.";
@@ -214,6 +217,8 @@ function endFight() {
       }
     });
 
+    // ProgressStore.actions.lose();
+
 
 
 
@@ -231,7 +236,6 @@ function endFight() {
     var victory = document.getElementById('victory');
     victory.play();
 
-    var id = getUserId();
 
     var promise = $.ajax({
       url: '/player-progress/' + id,

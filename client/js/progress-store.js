@@ -1,10 +1,9 @@
 var $ = require('jquery');
 
 
-// var state = {
-//   flyInText: 'fly-in-text',
-//   hidden: 'hidden'
-// }
+var state = {
+
+}
 
 var store = {
   listeners: [],
@@ -16,12 +15,10 @@ store.addListener = function(listener) {
   store.listeners.push(listener);
 }
 
-// store.copyState = function() {
-//   return {
-//     flyInText: state.flyInText,
-//     hidden: state.hidden
-//   };
-// }
+store.copyState = function() {
+  return {
+  };
+}
 
 function changed() {
   console.log('store changed', state);
@@ -35,13 +32,10 @@ function changed() {
 /* Actions                                   */
 /* ========================================= */
 
-store.actions.load = function() {
-  setTimeout(function() {
-      $('.fly-in-text').removeClass('hidden');
-  }, 3000);
-
-})();
-
+store.actions.alertUser=function(){
+  alert('Hi!');
 }
+
+
 
 module.exports = store;
