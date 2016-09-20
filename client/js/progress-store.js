@@ -32,9 +32,7 @@ function changed() {
 /* Actions                                   */
 /* ========================================= */
 
-store.actions.alertUser=function(){
-  alert('Hi!');
-}
+
 
 
 

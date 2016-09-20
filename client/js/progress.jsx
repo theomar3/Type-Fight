@@ -19,9 +19,6 @@ class Progress extends React.Component {
     });
   }
 
-  _click() {
-    ProgressStore.actions.alertUser();
-  }
 
   render () {
     return (
@@ -30,7 +27,6 @@ class Progress extends React.Component {
         <h3 className='progress-tagline'> Check how you're doing!</h3>
 
         <h4 id="stats-heading"> Player Stats</h4>
-        <button onClick={() => this._click()}> Click me </button>
 
           <table id="stats-table">
             <tr id='HeadRow'>

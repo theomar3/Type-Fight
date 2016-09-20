@@ -13,7 +13,7 @@ class App extends React.Component {
     return (
       <div className='container'>
         <Fight />
-        <Link to={'/progress'}> Progress</Link>
+        <Link className='link-text' to={'/progress'}> Click to see your Progress!</Link>
 
         {this.props.children}
       </div>

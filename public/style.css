@@ -45,8 +45,23 @@ table {
   border-collapse: collapse;
   border-spacing: 0; }
 
+.fight-website-title {
+  text-align: center;
+  font-size: 4em;
+  margin-bottom: 90px; }
+
+.fight-website-title li {
+  display: inline-block;
+  margin-right: 50px;
+  font-family: Open Sans, Arial;
+  font-weight: 300;
+  color: #fff; }
+
 .battle-title {
-  font-family: Brush Script MT; }
+  font-family: cursive;
+  font-size: 1.4em;
+  text-align: center;
+  margin-bottom: 30px; }
 
 .whose-character-player {
   color: purple;
@@ -357,6 +372,21 @@ table {
   font-size: 3em;
   font-weight: bold; }
 
+.link-text {
+  font-size: 1.4em;
+  font-family: cursive;
+  text-align: center;
+  text-decoration: none;
+  color: black;
+  margin-left: 40%;
+  padding-top: 40px; }
+
+.progress-link {
+  font-size: 4em;
+  color: white;
+  font-family: cursive;
+  display: block; }
+
 .container {
   max-width: 1080px;
   margin: 80px auto;
@@ -370,11 +400,10 @@ table {
   font-family: fantasy;
   text-align: center; }
 
-.header-tagline {
+.index-tagline {
   font-size: 1.4em;
   font-family: cursive;
   text-align: center;
-  /*margin-top: 20px;*/
   margin-bottom: 30px; }
 
 .fly-in-text li {

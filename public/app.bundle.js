@@ -92,8 +92,8 @@
 	        _react2.default.createElement(_fight2.default, null),
 	        _react2.default.createElement(
 	          _reactRouter.Link,
-	          { to: '/progress' },
-	          ' Progress'
+	          { className: 'link-text', to: '/progress' },
+	          ' Click to see your Progress!'
 	        ),
 	        this.props.children
 	      );
@@ -27200,6 +27200,7 @@
 	      return _react2.default.createElement(
 	        'div',
 	        null,
+	        _react2.default.createElement('audio', { id: 'mainTheme', src: './music/fallen-angels.mp3', autoPlay: true, muted: true }),
 	        _react2.default.createElement('audio', { id: 'MKTheme', src: './music/MK-theme.mp3' }),
 	        _react2.default.createElement('audio', { id: 'GuileTheme', src: './music/Guile-theme.mp3' }),
 	        _react2.default.createElement('audio', { id: 'FF7BossTheme', src: './music/FF7-boss-theme.mp3' }),
@@ -27223,6 +27224,55 @@
 	        _react2.default.createElement('audio', { id: 'laughTaunt', src: './music/laugh-miss-taunt.wav' }),
 	        _react2.default.createElement('audio', { id: 'patheticTaunt', src: './music/pathetic-miss-taunt.wav' }),
 	        _react2.default.createElement('audio', { id: 'suckTaunt', src: './music/suck-miss-taunt.wav' }),
+	        _react2.default.createElement(
+	          'ul',
+	          { className: 'fight-website-title' },
+	          _react2.default.createElement(
+	            'li',
+	            null,
+	            'T'
+	          ),
+	          _react2.default.createElement(
+	            'li',
+	            null,
+	            'y'
+	          ),
+	          _react2.default.createElement(
+	            'li',
+	            null,
+	            'P'
+	          ),
+	          _react2.default.createElement(
+	            'li',
+	            null,
+	            'e'
+	          ),
+	          _react2.default.createElement(
+	            'li',
+	            null,
+	            'F'
+	          ),
+	          _react2.default.createElement(
+	            'li',
+	            null,
+	            'i'
+	          ),
+	          _react2.default.createElement(
+	            'li',
+	            null,
+	            'G'
+	          ),
+	          _react2.default.createElement(
+	            'li',
+	            null,
+	            'h'
+	          ),
+	          _react2.default.createElement(
+	            'li',
+	            null,
+	            'T'
+	          )
+	        ),
 	        _react2.default.createElement(
 	          'h2',
 	          { className: 'whose-character-player' },
@@ -27777,10 +27827,6 @@
 	/* ========================================= */
 	/* Actions                                   */
 	/* ========================================= */
-	
-	store.actions.alertUser = function () {
-	  alert('Hi!');
-	};
 	
 	module.exports = store;
 
@@ -37913,15 +37959,8 @@
 	  }
 	
 	  _createClass(Progress, [{
-	    key: '_click',
-	    value: function _click() {
-	      _progressStore2.default.actions.alertUser();
-	    }
-	  }, {
 	    key: 'render',
 	    value: function render() {
-	      var _this2 = this;
-	
 	      return React.createElement(
 	        'div',
 	        null,
@@ -37939,13 +37978,6 @@
 	          'h4',
 	          { id: 'stats-heading' },
 	          ' Player Stats'
-	        ),
-	        React.createElement(
-	          'button',
-	          { onClick: function onClick() {
-	              return _this2._click();
-	            } },
-	          ' Click me '
 	        ),
 	        React.createElement(
 	          'table',

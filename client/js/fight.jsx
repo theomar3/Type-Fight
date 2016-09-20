@@ -34,6 +34,7 @@ class Fight extends React.Component {
     return (
       <div>
           {/*background audio*/}
+        <audio id='mainTheme' src='./music/fallen-angels.mp3' autoPlay muted/>
         <audio id='MKTheme' src="./music/MK-theme.mp3" />
         <audio id='GuileTheme' src='./music/Guile-theme.mp3' />
         <audio id='FF7BossTheme' src='./music/FF7-boss-theme.mp3' />
@@ -77,7 +78,17 @@ class Fight extends React.Component {
         <audio id = 'suckTaunt' src='./music/suck-miss-taunt.wav' />
 
 
-
+        <ul className='fight-website-title'  >
+          <li>T</li>
+          <li>y</li>
+          <li>P</li>
+          <li>e</li>
+          <li>F</li>
+          <li>i</li>
+          <li>G</li>
+          <li>h</li>
+          <li>T</li>
+        </ul>
 
         <h2 className="whose-character-player"> You </h2>
         <h2 className="whose-character-cpu"> CPU </h2>
