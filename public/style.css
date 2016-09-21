@@ -50,6 +50,9 @@ table {
   font-size: 4em;
   margin-bottom: 90px; }
 
+.fight-website-title:hover {
+  color: black; }
+
 .fight-website-title li {
   display: inline-block;
   margin-right: 50px;
@@ -112,9 +115,14 @@ table {
   margin-top: -30px; }
 
 .fight-title {
-  text-align: center;
+  margin-left: 38%;
+  margin-bottom: 20px;
   font-size: 2em;
-  font-weight: bold; }
+  font-weight: bold;
+  display: inline-block; }
+
+.fight-title:hover {
+  color: red; }
 
 .player-bubble-show {
   text-align: center;
@@ -375,20 +383,22 @@ table {
 .link-text {
   font-size: 1.4em;
   font-family: cursive;
-  text-align: center;
   text-decoration: none;
   color: black;
-  margin-left: 40%;
-  padding-top: 40px; }
+  margin-left: 38%; }
 
-.link-text p {
-  text-align: center; }
+.link-text:hover {
+  color: white; }
 
 .rematch {
   font-size: 1.4em;
   font-family: cursive;
   text-align: center;
+  margin-top: 20px;
   text-decoration: none; }
+
+.rematch:hover {
+  color: red; }
 
 .progress-link {
   font-size: 4em;
@@ -577,17 +587,14 @@ table {
   line-height: 1.6; }
 
 #just-play {
-  margin-left: 38%;
-  padding: 15px 15px 15px 60px;
+  margin-left: 40%;
+  padding: 15px;
   background-color: #ffc0cb;
   color: red;
   border: 4px solid white;
   font-size: 1.3em;
   font-weight: bold;
   font-family: "Trebuchet MS","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Tahoma,sans-serif; }
-
-.button-text {
-  margin-left: -15%; }
 
 .progress-title {
   font-family: cursive;
@@ -621,8 +628,9 @@ tr:nth-of-type(even) {
   color: red; }
 
 #HeadRow {
-  background-color: #ffc0cb;
-  font-weight: bold; }
+  background-color: black;
+  font-weight: bold;
+  text-decoration: underline; }
 
 #stats-table {
   margin-bottom: 50px; }
@@ -631,6 +639,26 @@ tr:nth-of-type(even) {
   padding: 5px;
   border: 1px solid black;
   text-align: center; }
+
+.back {
+  margin-left: 38%;
+  padding: 15px;
+  background-color: #ffc0cb;
+  color: red;
+  border: 4px solid white;
+  font-size: 1.3em;
+  font-weight: bold;
+  font-family: "Trebuchet MS","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Tahoma,sans-serif; }
+
+.homepage-link {
+  margin-left: 38%;
+  padding: 15px;
+  background-color: #ffc0cb;
+  color: red;
+  border: 4px solid white;
+  font-size: 1.3em;
+  font-weight: bold;
+  font-family: "Trebuchet MS","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Tahoma,sans-serif; }
 
 body {
   background-color: #000; }

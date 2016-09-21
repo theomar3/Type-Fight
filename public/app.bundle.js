@@ -89,12 +89,6 @@
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'container' },
-	        _react2.default.createElement(_fight2.default, null),
-	        _react2.default.createElement(
-	          _reactRouter.Link,
-	          { className: 'link-text', to: '/progress' },
-	          ' Click to see your Progress!'
-	        ),
 	        this.props.children
 	      );
 	    }
@@ -109,6 +103,7 @@
 	  _react2.default.createElement(
 	    _reactRouter.Route,
 	    { path: '/', component: App },
+	    _react2.default.createElement(_reactRouter.IndexRoute, { component: _fight2.default }),
 	    _react2.default.createElement(_reactRouter.Route, { path: 'progress', component: _progress2.default })
 	  )
 	), document.getElementById('app'));
@@ -27156,6 +27151,8 @@
 	
 	var _audioPlay2 = _interopRequireDefault(_audioPlay);
 	
+	var _reactRouter = __webpack_require__(172);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -27179,6 +27176,7 @@
 	    _fightStore2.default.addListener(function (state) {
 	      _this.setState(state);
 	    });
+	
 	    return _this;
 	  }
 	
@@ -27225,52 +27223,56 @@
 	        _react2.default.createElement('audio', { id: 'patheticTaunt', src: './music/pathetic-miss-taunt.wav' }),
 	        _react2.default.createElement('audio', { id: 'suckTaunt', src: './music/suck-miss-taunt.wav' }),
 	        _react2.default.createElement(
-	          'ul',
-	          { className: 'fight-website-title' },
+	          'a',
+	          { href: 'index.html' },
 	          _react2.default.createElement(
-	            'li',
-	            null,
-	            'T'
-	          ),
-	          _react2.default.createElement(
-	            'li',
-	            null,
-	            'y'
-	          ),
-	          _react2.default.createElement(
-	            'li',
-	            null,
-	            'P'
-	          ),
-	          _react2.default.createElement(
-	            'li',
-	            null,
-	            'e'
-	          ),
-	          _react2.default.createElement(
-	            'li',
-	            null,
-	            'F'
-	          ),
-	          _react2.default.createElement(
-	            'li',
-	            null,
-	            'i'
-	          ),
-	          _react2.default.createElement(
-	            'li',
-	            null,
-	            'G'
-	          ),
-	          _react2.default.createElement(
-	            'li',
-	            null,
-	            'h'
-	          ),
-	          _react2.default.createElement(
-	            'li',
-	            null,
-	            'T'
+	            'ul',
+	            { className: 'fight-website-title' },
+	            _react2.default.createElement(
+	              'li',
+	              null,
+	              'T'
+	            ),
+	            _react2.default.createElement(
+	              'li',
+	              null,
+	              'y'
+	            ),
+	            _react2.default.createElement(
+	              'li',
+	              null,
+	              'P'
+	            ),
+	            _react2.default.createElement(
+	              'li',
+	              null,
+	              'e'
+	            ),
+	            _react2.default.createElement(
+	              'li',
+	              null,
+	              'F'
+	            ),
+	            _react2.default.createElement(
+	              'li',
+	              null,
+	              'i'
+	            ),
+	            _react2.default.createElement(
+	              'li',
+	              null,
+	              'G'
+	            ),
+	            _react2.default.createElement(
+	              'li',
+	              null,
+	              'h'
+	            ),
+	            _react2.default.createElement(
+	              'li',
+	              null,
+	              'T'
+	            )
 	          )
 	        ),
 	        _react2.default.createElement(
@@ -27294,13 +27296,10 @@
 	            this.state.text
 	          ),
 	          _react2.default.createElement(
-	            'a',
-	            { className: 'link-text', href: '#' },
-	            _react2.default.createElement(
-	              'p',
-	              null,
-	              this.state.clickForProgress
-	            )
+	            _reactRouter.Link,
+	            { className: 'link-text', to: '/progress' },
+	            ' ',
+	            this.state.clickForProgress
 	          ),
 	          _react2.default.createElement(
 	            'p',
@@ -27329,7 +27328,7 @@
 	            'Enter Attack or Heal: ',
 	            _react2.default.createElement('input', { className: this.state.playerInput, onKeyUp: function onKeyUp(evt) {
 	                return _this2._playerAttack(evt);
-	              }, autofocus: true })
+	              }, ref: 'attackHealInput' })
 	          ),
 	          _react2.default.createElement('img', { className: 'cpu-sprite', src: this.state.cpuSprite }),
 	          _react2.default.createElement(
@@ -27453,7 +27452,7 @@
 	  playerAttack: '',
 	  playerHP: 30,
 	  playerStatus: 'healthyHP',
-	  cpuHP: 20,
+	  cpuHP: 2,
 	  cpuStatus: 'healthyHP',
 	  healString: '',
 	  cpuTaunt: '',
@@ -27653,7 +27652,7 @@
 	  state.cpuSprite = './images/spidey-ready.gif';
 	  state.playerInput = 'input-show';
 	  state.playerHP = 30;
-	  state.cpuHP = 20;
+	  state.cpuHP = 2;
 	
 	  var MKTheme = document.getElementById('MKTheme');
 	  var GuileTheme = document.getElementById('GuileTheme');
@@ -37955,6 +37954,10 @@
 	
 	var _progressStore2 = _interopRequireDefault(_progressStore);
 	
+	var _backbutton = __webpack_require__(243);
+	
+	var _backbutton2 = _interopRequireDefault(_backbutton);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -38043,6 +38046,21 @@
 	              ' '
 	            )
 	          )
+	        ),
+	        React.createElement(_backbutton2.default, null),
+	        React.createElement(
+	          'a',
+	          { href: 'react.html' },
+	          React.createElement(
+	            'button',
+	            { id: 'homepage-link' },
+	            'Lemme Google Sign-In!'
+	          )
+	        ),
+	        React.createElement(
+	          'p',
+	          null,
+	          ' (Psst. That way you can check your progress from around the world.)'
 	        )
 	      );
 	    }
@@ -38058,6 +38076,34 @@
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 242 */,
+/* 243 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var React = __webpack_require__(1);
+	var Router = __webpack_require__(172);
+	
+	var History = Router.History;
+	
+	var BackButton = React.createClass({
+	  displayName: 'BackButton',
+	
+	  mixins: [History],
+	  render: function render() {
+	    return React.createElement(
+	      'button',
+	      { className: 'back', onClick: this.history.goBack },
+	      'Lemme Type Fight!',
+	      this.props.children
+	    );
+	  }
+	});
+	
+	module.exports = BackButton;
 
 /***/ }
 /******/ ]);

@@ -1,6 +1,7 @@
 var React = require('react');
 import store from './fight-store.js';
 import ProgressStore from './progress-store.js';
+import BackButton from './backbutton.jsx';
 
 class Progress extends React.Component {
   constructor() {
@@ -39,7 +40,13 @@ class Progress extends React.Component {
               <td tableHeadData = 'Losses'> {this.state.losses} </td>
             </tr>
           </table>
-
+          <BackButton />
+          <a href="react.html">
+            <button id='homepage-link'>
+              Lemme Google Sign-In!
+            </button>
+          </a>
+          <p> (Psst. That way you can check your progress from around the world.)</p>
       </div>
     );
   }

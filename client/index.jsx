@@ -19,6 +19,7 @@ class App extends React.Component {
   }
 }
 
+
 render((
   <Router history={hashHistory}>
     <Route path="/" component={App}>

@@ -2,7 +2,10 @@
 	text-align: center;
 	font-size: 4em;
 	margin-bottom: 90px;
+}
 
+.fight-website-title:hover {
+	color: black;
 }
 
 .fight-website-title li {
@@ -20,8 +23,9 @@
 	font-size: 1.4em;
 	text-align: center;
 	margin-bottom: 30px;
-
 }
+
+
 
 .whose-character-player {
   color: purple;
@@ -87,9 +91,15 @@
 }
 
 .fight-title {
-	text-align: center;
+	margin-left: 38%;
+	margin-bottom: 20px;
 	font-size: 2em;
 	font-weight: bold;
+	display: inline-block;
+}
+
+.fight-title:hover {
+	color: red;
 }
 
 .player-bubble-show
@@ -384,19 +394,26 @@ top: 14px;
 	font-family:cursive;
 	text-decoration: none;
 	color: black;
-	margin-left: 40%;
+	margin-left: 38%;
 }
 
-.link-text p {
-	text-align: center;
+.link-text:hover {
+	color: white;
 }
 
 .rematch {
 	font-size: 1.4em;
 	font-family:cursive;
 	text-align: center;
+	margin-top: 20px;
 	text-decoration: none;
 }
+
+.rematch:hover {
+	color: red;
+}
+
+
 
 .progress-link {
 	font-size: 4em;

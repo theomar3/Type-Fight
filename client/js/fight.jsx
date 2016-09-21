@@ -14,8 +14,6 @@ class Fight extends React.Component {
 
     store.addListener( state => {
       this.setState(state);
-      console.log(this.refs.attackHealInput);
-      this.refs.attackHealInput.focus();
 
     })
 
@@ -86,17 +84,19 @@ class Fight extends React.Component {
         <audio id = 'suckTaunt' src='./music/suck-miss-taunt.wav' />
 
 
-        <ul className='fight-website-title'  >
-          <li>T</li>
-          <li>y</li>
-          <li>P</li>
-          <li>e</li>
-          <li>F</li>
-          <li>i</li>
-          <li>G</li>
-          <li>h</li>
-          <li>T</li>
-        </ul>
+        <a href="index.html">
+          <ul className='fight-website-title'  >
+            <li>T</li>
+            <li>y</li>
+            <li>P</li>
+            <li>e</li>
+            <li>F</li>
+            <li>i</li>
+            <li>G</li>
+            <li>h</li>
+            <li>T</li>
+          </ul>
+        </a>
 
         <h2 className="whose-character-player"> You </h2>
         <h2 className="whose-character-cpu"> CPU </h2>
