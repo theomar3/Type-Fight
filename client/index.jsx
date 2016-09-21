@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from 'react-dom';
-import {Router, Route, Link, hashHistory} from 'react-router';
+import {Router, Route, Link, hashHistory, IndexRoute} from 'react-router';
 
 import Fight from './js/fight.jsx';
 import Progress from './js/progress.jsx';
@@ -12,8 +12,6 @@ class App extends React.Component {
   render () {
     return (
       <div className='container'>
-        <Fight />
-        <Link className='link-text' to={'/progress'}> Click to see your Progress!</Link>
 
         {this.props.children}
       </div>
@@ -24,6 +22,7 @@ class App extends React.Component {
 render((
   <Router history={hashHistory}>
     <Route path="/" component={App}>
+      <IndexRoute component={Fight} />
       <Route path="progress" component={Progress} />
     </Route>
   </Router>

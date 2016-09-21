@@ -1,7 +1,7 @@
 import React from 'react';
 import store from './fight-store.js';
 import audioFiles from './audio-play.js';
-
+import {Link} from 'react-router';
 
 class Fight extends React.Component {
   constructor() {
@@ -14,8 +14,14 @@ class Fight extends React.Component {
 
     store.addListener( state => {
       this.setState(state);
+      console.log(this.refs.attackHealInput);
+      this.refs.attackHealInput.focus();
+
     })
+
   }
+
+
 
   _clickFightTitle() {
     store.actions.startFight();
@@ -31,6 +37,8 @@ class Fight extends React.Component {
 
 
   render() {
+
+
     return (
       <div>
           {/*background audio*/}
@@ -96,9 +104,7 @@ class Fight extends React.Component {
           <p className='fight-title' onClick={() => this._clickFightTitle()}>
             {this.state.text}
           </p>
-          <a className='link-text' href='#'>
-             <p>{this.state.clickForProgress}</p>
-          </a>
+          <Link className='link-text' to={'/progress'}> {this.state.clickForProgress}</Link>
           <p className='rematch' onClick={() => this._clickFightTitle()}> {this.state.rematch} </p>
           <img className="player-sprite" src={this.state.playerSprite} />
           <div className={this.state.playerBubble}>
@@ -108,7 +114,7 @@ class Fight extends React.Component {
             <p className={this.state.playerStatus}>
               HP:{this.state.playerHP}
             </p>
-            Enter Attack or Heal: <input  className= {this.state.playerInput} onKeyUp={evt => this._playerAttack(evt)} autofocus />
+            Enter Attack or Heal: <input  className= {this.state.playerInput} onKeyUp={evt => this._playerAttack(evt)} ref='attackHealInput' />
           </div>
 
 

@@ -46,7 +46,7 @@ var state = {
   playerAttack: '',
   playerHP: 30,
   playerStatus: 'healthyHP',
-  cpuHP: 20,
+  cpuHP: 2,
   cpuStatus: 'healthyHP',
   healString: '',
   cpuTaunt: '',
@@ -59,7 +59,7 @@ var state = {
   wins: 0,
   losses: 0,
   clickForProgress: '',
-  rematch: ''
+  rematch: '',
 
 }
 
@@ -93,7 +93,7 @@ store.copyState = function() {
     wins: state.wins,
     losses: state.losses,
     clickForProgress: state.clickForProgress,
-    rematch: state.rematch
+    rematch: state.rematch,
   }
 }
 
@@ -268,7 +268,7 @@ store.actions.startFight = function() {
   state.cpuSprite = './images/spidey-ready.gif';
   state.playerInput = 'input-show';
   state.playerHP = 30;
-  state.cpuHP = 20;
+  state.cpuHP = 2;
 
   var MKTheme = document.getElementById('MKTheme');
   var GuileTheme = document.getElementById('GuileTheme');
