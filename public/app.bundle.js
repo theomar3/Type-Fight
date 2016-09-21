@@ -27329,7 +27329,7 @@
 	            'Enter Attack or Heal: ',
 	            _react2.default.createElement('input', { className: this.state.playerInput, onKeyUp: function onKeyUp(evt) {
 	                return _this2._playerAttack(evt);
-	              } })
+	              }, autofocus: true })
 	          ),
 	          _react2.default.createElement('img', { className: 'cpu-sprite', src: this.state.cpuSprite }),
 	          _react2.default.createElement(
@@ -27453,7 +27453,7 @@
 	  playerAttack: '',
 	  playerHP: 30,
 	  playerStatus: 'healthyHP',
-	  cpuHP: 2,
+	  cpuHP: 20,
 	  cpuStatus: 'healthyHP',
 	  healString: '',
 	  cpuTaunt: '',
@@ -27598,6 +27598,7 @@
 	    state.cpuSprite = './images/spidey-win.gif';
 	    state.healString = '';
 	    state.playerInput = 'input-hide';
+	    state.missBubble = 'miss-bubble-hide';
 	    battleTheme.pause();
 	    _audioPlay2.default.pauseDanger();
 	    _audioPlay2.default.pauseWarning();
@@ -27630,6 +27631,7 @@
 	    state.cpuSprite = './images/spidey-dead.gif';
 	    state.healString = '';
 	    state.playerInput = 'input-hide';
+	    state.missBubble = 'miss-bubble-hide';
 	    battleTheme.pause();
 	    var victory = document.getElementById('victory');
 	    victory.play();
@@ -27651,7 +27653,7 @@
 	  state.cpuSprite = './images/spidey-ready.gif';
 	  state.playerInput = 'input-show';
 	  state.playerHP = 30;
-	  state.cpuHP = 2;
+	  state.cpuHP = 20;
 	
 	  var MKTheme = document.getElementById('MKTheme');
 	  var GuileTheme = document.getElementById('GuileTheme');
@@ -27664,7 +27666,7 @@
 	  var mainTheme = document.getElementById('mainTheme');
 	  mainTheme.pause();
 	
-	  intervalId = setInterval(intervalRounds, 2000);
+	  intervalId = setInterval(intervalRounds, 20000);
 	  changed();
 	};
 	

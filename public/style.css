@@ -193,8 +193,8 @@ table {
 .miss-bubble-show {
   text-align: center;
   line-height: 2em;
-  float: right;
-  margin-top: 60px;
+  margin-top: -100px;
+  margin-left: 80%;
   display: inline-block;
   position: relative;
   width: 165px;
@@ -209,12 +209,12 @@ table {
   content: '';
   position: absolute;
   border-style: solid;
-  border-width: 15px 0 15px 30px;
+  border-width: 15px 30px 15px 0;
   border-color: transparent #FFFFFF;
   display: block;
   width: 0;
   z-index: 1;
-  right: -30px;
+  left: -30px;
   top: 12px; }
 
 .player-bubble-hide {
@@ -310,12 +310,12 @@ table {
   content: '';
   position: absolute;
   border-style: solid;
-  border-width: 15px 0 15px 30px;
+  border-width: 15px 30px 15px 0;
   border-color: transparent #FFFFFF;
   display: none;
   width: 0;
   z-index: 1;
-  right: -30px;
+  left: -30px;
   top: 12px; }
 
 .player-stats-and-moves {
@@ -552,7 +552,7 @@ table {
 
 #google-signin {
   max-width: 100%;
-  margin-left: 38%;
+  margin-left: 44%;
   margin-top: -5px; }
 
 #or-Divider {

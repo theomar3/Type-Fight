@@ -170,32 +170,32 @@ top: 14px;
 {
 	text-align: center;
 	line-height: 2em;
-	float: right;
-	margin-top: 60px;
-	// margin-left: 1.%;
+	// float: right;
+	margin-top: -100px;
+	margin-left: 80%;
 	display: inline-block;
-position: relative;
-width: 165px;
-height: 55px;
-padding: 0px;
-background: #FFFFFF;
--webkit-border-radius: 10px;
--moz-border-radius: 10px;
-border-radius: 10px;
+	position: relative;
+	width: 165px;
+	height: 55px;
+	padding: 0px;
+	background: #FFFFFF;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
 }
 
 .miss-bubble-show:after
 {
-content: '';
-position: absolute;
-border-style: solid;
-border-width: 15px 0 15px 30px;
-border-color: transparent #FFFFFF;
-display: block;
-width: 0;
-z-index: 1;
-right: -30px;
-top: 12px;
+	content: '';
+	position: absolute;
+	border-style: solid;
+	border-width: 15px 30px 15px 0;
+	border-color: transparent #FFFFFF;
+	display: block;
+	width: 0;
+	z-index: 1;
+	left: -30px;
+	top: 12px;
 }
 
 .player-bubble-hide
@@ -280,28 +280,28 @@ top: 14px;
 	margin-top: 60px;
 	// margin-left: 1.%;
 	display: none;
-position: relative;
-width: 165px;
-height: 55px;
-padding: 0px;
-background: #FFFFFF;
--webkit-border-radius: 10px;
--moz-border-radius: 10px;
-border-radius: 10px;
+	position: relative;
+	width: 165px;
+	height: 55px;
+	padding: 0px;
+	background: #FFFFFF;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
 }
 
 .miss-bubble-hide:after
 {
-content: '';
-position: absolute;
-border-style: solid;
-border-width: 15px 0 15px 30px;
-border-color: transparent #FFFFFF;
-display: none;
-width: 0;
-z-index: 1;
-right: -30px;
-top: 12px;
+	content: '';
+	position: absolute;
+	border-style: solid;
+	border-width: 15px 30px 15px 0;
+	border-color: transparent #FFFFFF;
+	display: none;
+	width: 0;
+	z-index: 1;
+	left: -30px;
+	top: 12px;
 }
 
 

@@ -46,7 +46,7 @@ var state = {
   playerAttack: '',
   playerHP: 30,
   playerStatus: 'healthyHP',
-  cpuHP: 2,
+  cpuHP: 20,
   cpuStatus: 'healthyHP',
   healString: '',
   cpuTaunt: '',
@@ -199,6 +199,7 @@ function endFight() {
     state.cpuSprite = './images/spidey-win.gif';
     state.healString = '';
     state.playerInput = 'input-hide';
+    state.missBubble =  'miss-bubble-hide';
     battleTheme.pause();
     audioPlay.pauseDanger();
     audioPlay.pauseWarning();
@@ -240,6 +241,7 @@ function endFight() {
     state.cpuSprite = './images/spidey-dead.gif';
     state.healString = '';
     state.playerInput = 'input-hide';
+    state.missBubble =  'miss-bubble-hide';
     battleTheme.pause();
     var victory = document.getElementById('victory');
     victory.play();
@@ -266,7 +268,7 @@ store.actions.startFight = function() {
   state.cpuSprite = './images/spidey-ready.gif';
   state.playerInput = 'input-show';
   state.playerHP = 30;
-  state.cpuHP = 2;
+  state.cpuHP = 20;
 
   var MKTheme = document.getElementById('MKTheme');
   var GuileTheme = document.getElementById('GuileTheme');
@@ -284,7 +286,7 @@ store.actions.startFight = function() {
   mainTheme.pause();
 
 
-  intervalId = setInterval(intervalRounds, 2000);
+  intervalId = setInterval(intervalRounds, 20000);
   changed();
 }
 

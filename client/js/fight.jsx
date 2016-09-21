@@ -108,7 +108,7 @@ class Fight extends React.Component {
             <p className={this.state.playerStatus}>
               HP:{this.state.playerHP}
             </p>
-            Enter Attack or Heal: <input className= {this.state.playerInput} onKeyUp={evt => this._playerAttack(evt)} />
+            Enter Attack or Heal: <input  className= {this.state.playerInput} onKeyUp={evt => this._playerAttack(evt)} autofocus />
           </div>
 
 

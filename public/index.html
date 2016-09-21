@@ -4,7 +4,11 @@
 
   <head>
     <meta charset="utf-8">
-    
+    <meta name="google-signin-scope" content="profile email">
+    <meta name="google-signin-client_id" content="YOUR_CLIENT_ID.apps.googleusercontent.com">
+    <meta name="google-signin-client_id" content="1003006427196-rgi9871dhge8np0hmj69hu64su3jkaaj.apps.googleusercontent.com">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+
     <title>Type Fight</title>
     <link rel="stylesheet" href="style.css" media="screen" title="no title">
   </head>
@@ -46,7 +50,9 @@
         </ul>
 
         <!-- Make this fade-in first -->
-        <img id='google-signin' src="./images/signin-google-3.png" />
+
+          <div id='google-signin' class="g-signin2" data-onsuccess="onSignIn"></div>
+
         <div id="or-Divider">
           <span class='or-text'>Or</span>
         </div>
@@ -81,6 +87,25 @@
 
         })();
     </script>
+    <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
+    <script>
+      function onSignIn(googleUser) {
+        // Useful data for your client-side scripts:
+        var profile = googleUser.getBasicProfile();
+        console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+        console.log('Full Name: ' + profile.getName());
+        console.log('Given Name: ' + profile.getGivenName());
+        console.log('Family Name: ' + profile.getFamilyName());
+        console.log("Image URL: " + profile.getImageUrl());
+        console.log("Email: " + profile.getEmail());
+
+        // The ID token you need to pass to your backend:
+        var id_token = googleUser.getAuthResponse().id_token;
+        console.log("ID Token: " + id_token);
+      };
+    </script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+
   </body>
 
 </html>
