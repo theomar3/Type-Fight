@@ -1,4 +1,4 @@
-var $googlePic = $('#google-pic');
+var $googlePic = $('.google-pic');
 var googleImage;
 
 function onSignIn(googleUser) {
@@ -20,17 +20,4 @@ function onSignIn(googleUser) {
 
 };
 
-$googlePic.attr('src', googleImage).load(function() {
-  this.width;
-});
-
-// var $templateHtml = $('#google-pic-template').html();
-// var htmlFactory = _.template($templateHtml);
-// var $googlePic = $('#google-pic');
-//
-// var html = htmlFactory(
-//   {
-//     google-image: googlePic
-//   }
-// )
-// $googlePic.append(html);
+$googlePic.attr('src', googleImage);
