@@ -27748,15 +27748,18 @@
 	};
 	
 	function getUserId() {
-	  var id = localStorage.getItem('randomId');
-	  if (id) {
+	  var userGoogleID = localStorage.getItem('googleID');
+	
+	  if (userGoogleID) {
+	    console.log('google id', userGoogleID);
+	  } else if (id) {
 	    console.log(' id', id);
 	  } else {
 	    var randomId = Math.ceil(Math.random() * 1000000000);
 	    localStorage.setItem('randomId', randomId);
 	    id = randomId;
 	  }
-	  return id;
+	  return userGoogleID;
 	}
 	
 	store.actions.load = function () {

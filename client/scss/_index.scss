@@ -6,6 +6,8 @@
   padding-bottom: 50px;
 }
 
+
+
 .website-title {
   font-size: 4em;
   font-weight: bold;
@@ -20,15 +22,34 @@
   margin-bottom: 30px;
 }
 
-.fly-in-text li {
+.shake-text li {
     display: inline-block;
     margin-right: 50px;
     font-family: Open Sans, Arial;
     font-weight: 300;
     color: #fff;
     opacity: 1;
+    // transition: all 2.5s ease;
+}
+
+.shake-text.hidden li {
+  opacity: 0;
+}
+
+.fly-in-text li {
+    display: inline-block;
+    margin-right: 50px;
+    font-family: Open Sans, Arial;
+    font-weight: 300;
+    color: #fff;
+    opacity: 0;
     transition: all 2.5s ease;
 }
+
+.fly-in-text.show li {
+  opacity: 1;
+}
+
 .fly-in-text li:last-child {
     margin-right: 0;
 }
