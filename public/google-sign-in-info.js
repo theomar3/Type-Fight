@@ -1,3 +1,6 @@
+var $googlePic = $('#google-pic');
+var googleImage;
+
 function onSignIn(googleUser) {
   // Useful data for your client-side scripts:
   var profile = googleUser.getBasicProfile();
@@ -11,8 +14,23 @@ function onSignIn(googleUser) {
   // The ID token you need to pass to your backend:
   var id_token = googleUser.getAuthResponse().id_token;
   var googleID = profile.getId();
-  var googlePic = profile.getImageUrl();
+  googleImage = profile.getImageUrl();
   console.log("ID Token: " + id_token);
   localStorage.setItem('googleID', googleID);
-  localStorage.setItem('googlePic', googlePic);
+
 };
+
+$googlePic.attr('src', googleImage).load(function() {
+  this.width;
+});
+
+// var $templateHtml = $('#google-pic-template').html();
+// var htmlFactory = _.template($templateHtml);
+// var $googlePic = $('#google-pic');
+//
+// var html = htmlFactory(
+//   {
+//     google-image: googlePic
+//   }
+// )
+// $googlePic.append(html);

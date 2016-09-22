@@ -22,19 +22,6 @@
   margin-bottom: 30px;
 }
 
-.shake-text li {
-    display: inline-block;
-    margin-right: 50px;
-    font-family: Open Sans, Arial;
-    font-weight: 300;
-    color: #fff;
-    opacity: 1;
-    // transition: all 2.5s ease;
-}
-
-.shake-text.hidden li {
-  opacity: 0;
-}
 
 .fly-in-text li {
     display: inline-block;
@@ -42,11 +29,11 @@
     font-family: Open Sans, Arial;
     font-weight: 300;
     color: #fff;
-    opacity: 0;
+    opacity: 1;
     transition: all 2.5s ease;
 }
 
-.fly-in-text.show li {
+.fly-in-text.hidden li {
   opacity: 1;
 }
 
@@ -161,6 +148,12 @@
   max-width: 100%;
   margin-left: 44%;
   margin-top: -5px;
+  margin-bottom: 10px;
+}
+
+#google-signout {
+  margin-left: 44%;
+  margin-top: 10px;
 }
 
 #or-Divider {

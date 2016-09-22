@@ -72,7 +72,7 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	__webpack_require__(241);
+	__webpack_require__(242);
 	
 	var App = function (_React$Component) {
 	  _inherits(App, _React$Component);
@@ -37952,7 +37952,7 @@
 	
 	var _progressStore2 = _interopRequireDefault(_progressStore);
 	
-	var _backbutton = __webpack_require__(243);
+	var _backbutton = __webpack_require__(241);
 	
 	var _backbutton2 = _interopRequireDefault(_backbutton);
 	
@@ -38071,13 +38071,6 @@
 
 /***/ },
 /* 241 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
-/* 242 */,
-/* 243 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -38102,6 +38095,12 @@
 	});
 	
 	module.exports = BackButton;
+
+/***/ },
+/* 242 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
 
 /***/ }
 /******/ ]);

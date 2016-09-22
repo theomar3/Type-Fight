@@ -3,15 +3,7 @@
 $(function() {
 
     setTimeout(function() {
-        $('.shake-text').addClass('hidden');
-    }, 1000);
-
-})();
-
-$(function() {
-
-    setTimeout(function() {
-        $('.fly-in-text').addClass('show');
+        $('.fly-in-text').removeClass('hidden');
     }, 4000);
 
 })();
