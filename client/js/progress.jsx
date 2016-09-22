@@ -41,12 +41,12 @@ class Progress extends React.Component {
             </tr>
           </table>
           <BackButton />
-          <a href="react.html">
+          <a href="index.html">
             <button id='homepage-link'>
               Lemme Google Sign-In!
             </button>
           </a>
-          <p> (Psst. That way you can check your progress from around the world.)</p>
+          <p id='sign-in-info'> (Psst. That way you can check your progress from around the world.)</p>
       </div>
     );
   }

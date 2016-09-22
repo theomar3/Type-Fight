@@ -62,8 +62,9 @@ tr:nth-of-type(even) {
   font-family: "Trebuchet MS","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Tahoma,sans-serif;
 }
 
-.homepage-link {
-  margin-left: 38%;
+#homepage-link {
+  margin-left: 36%;
+  margin-top: 20px;
   padding: 15px;
   background-color: #ffc0cb;
   color: red;
@@ -71,4 +72,10 @@ tr:nth-of-type(even) {
   font-size: 1.3em;
   font-weight: bold;
   font-family: "Trebuchet MS","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Tahoma,sans-serif;
+}
+
+#sign-in-info {
+  margin-top: 5px;
+  text-align: center;
+  font-family: "Lucida Sans Typewriter","Lucida Console",monaco,"Bitstream Vera Sans Mono",monospace;
 }

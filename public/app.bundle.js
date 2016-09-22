@@ -38050,7 +38050,7 @@
 	        React.createElement(_backbutton2.default, null),
 	        React.createElement(
 	          'a',
-	          { href: 'react.html' },
+	          { href: 'index.html' },
 	          React.createElement(
 	            'button',
 	            { id: 'homepage-link' },
@@ -38059,7 +38059,7 @@
 	        ),
 	        React.createElement(
 	          'p',
-	          null,
+	          { id: 'sign-in-info' },
 	          ' (Psst. That way you can check your progress from around the world.)'
 	        )
 	      );

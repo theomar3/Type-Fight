@@ -5,11 +5,3 @@ $(function() {
     }, 4000);
 
 })();
-
-$(function() {
-
-    setTimeout(function() {
-        $('.fade').removeClass('fade');
-    }, 4000);
-
-})();
