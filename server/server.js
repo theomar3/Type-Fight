@@ -16,7 +16,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 var data = {};
 
 app.get('/player-progress/:id', function(req, res) {
-  if(data[req.params.id] === unde fined){
+  if(data[req.params.id] === undefined){
 
     data[req.params.id] = {
       wins : 0,
