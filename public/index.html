@@ -13,11 +13,22 @@
     <title>Type Fight</title>
     <link rel="stylesheet" href="style.css" media="screen" title="no title">
 
+    <script>
+    $(document).ready(function(){
+        $('.effects-div-top').fadeOut();
+    });
+    </script>
+
   </head>
 
   <body>
     <div class="container">
       <header>
+        <div class="effects-div-top">
+          <img class='kapow hidden-image' src='./images/kapow1.gif' />
+          <img class="crash animated shake" src='./images/crash.gif' />
+        </div>
+
 
         <!-- <img className="google-pic"src="https://lh6.googleusercontent.com/--GDWy5rCwMo/AAAAAAAAAAI/AAAAAAAAB2k/lX2Q0nBAoWk/s96-c/photo.jpg" /> -->
 
@@ -35,10 +46,8 @@
             <li>T</li>
         </ul>
 
-        <div class = 'kapowDiv'>
-          <img class='kapow1 hide-image fade-in-image' src='./images/kapow1.gif' />
-          <img class='kapow2 hide-image fade-in-image' src='./images/kapow2.gif' />
-        </div>
+
+
 
         <!-- Flash in more Batman comic images to go with the music-->
 
@@ -78,7 +87,10 @@
           <span class='button-text'>Just Let Me Play!</span>
         </button>
 
-
+        <div class="effects-div-bottom">
+          <img class='bloop animated shake' src='./images/bloop.gif' />
+          <img class="vronk animated shake" src='./images/vronk.gif' />
+        </div
 
       </header>
 

@@ -7,3 +7,9 @@ $(function() {
     }, 4000);
 
 })();
+
+
+
+// setTimeout(function() {
+//   $('.kapow').addClass('.hidden-image');
+// }, 4000);
