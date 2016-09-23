@@ -1,4 +1,3 @@
-var $googlePic = $('.google-pic');
 var googleImage;
 
 function onSignIn(googleUser) {
@@ -20,4 +19,8 @@ function onSignIn(googleUser) {
 
 };
 
-$googlePic.attr('src', googleImage);
+// $('#google-pic').prepend('<img id="userPic" src="googleImage" />');
+
+$('<img src="'+ googleImage +'">').load(function() {
+  $(this).width(30px).height(30px).appendTo('#google-pic');
+});

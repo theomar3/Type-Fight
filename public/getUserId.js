@@ -1,5 +1,5 @@
-var $justPlayButton = $('#just-play');
-$justPlayButton.on('click', getUserId);
+var $playTypeFight = $('.fly-in-text');
+$playTypeFight.on('click', getUserId);
 
 function getUserId() {
 
