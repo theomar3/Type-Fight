@@ -6,7 +6,12 @@
   padding-bottom: 50px;
 }
 
-
+#userPic {
+  border-radius: 50%;
+  height: 32px;
+  outline: 0;
+  width: 32px;
+}
 
 .website-title {
   font-size: 4em;
@@ -194,7 +199,7 @@
 .google-signout {
   margin-left: 44%;
   margin-top: 10px;
-  opacity: 0;
+  opacity: 1;
   transition: opacity 2.5s ease-in;
 
 }

@@ -17,10 +17,6 @@ function onSignIn(googleUser) {
   console.log("ID Token: " + id_token);
   localStorage.setItem('googleID', googleID);
 
+  $('#google-pic').html('<img id="userPic" src="'+ googleImage +'">');
+
 };
-
-// $('#google-pic').prepend('<img id="userPic" src="googleImage" />');
-
-$('<img src="'+ googleImage +'">').load(function() {
-  $(this).width(30px).height(30px).appendTo('#google-pic');
-});
