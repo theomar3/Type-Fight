@@ -30,6 +30,11 @@ class Fight extends React.Component {
     store.actions.attack(evt);
   }
 
+  _cpuDifficulty() {
+  store.actions.cpuDifficulty();
+}
+
+
 
 
 
@@ -40,7 +45,7 @@ class Fight extends React.Component {
     return (
       <div>
           {/*background audio*/}
-        <audio id='mainTheme' src='./music/fallen-angels.mp3' autoPlay />
+        <audio id='mainTheme' src='./music/fallen-angels.mp3' autoPlay muted/>
         <audio id='MKTheme' src="./music/MK-theme.mp3" />
         <audio id='GuileTheme' src='./music/Guile-theme.mp3' />
         <audio id='FF7BossTheme' src='./music/FF7-boss-theme.mp3' />
@@ -98,18 +103,34 @@ class Fight extends React.Component {
           </ul>
         </a>
 
-        <h2 className="whose-character-player"> You </h2>
-        <h2 className="whose-character-cpu"> CPU </h2>
+        <div class="character-identifier">
+          <h2 className="whose-character-player"> You </h2>
+          <h2 className="whose-character-cpu"> CPU </h2>
+          <select id='difficulty' name='cpuDifficulty' onChange={() => this._cpuDifficulty()}>
+            <option value =''>- Select CPU Difficulty - </option>
+            <option value='E' >{this.state.cpuEasy}</option>
+            <option value='M'>{this.state.cpuMedium}</option>
+            <option value='H'>{this.state.cpuHard}</option>
+          </select>
+        </div>
+
+
         <div className="fight-screen">
+
           <p className='fight-title' onClick={() => this._clickFightTitle()}>
             {this.state.text}
           </p>
+
           <Link className='link-text' to={'/progress'}> {this.state.clickForProgress}</Link>
+
           <p className='rematch' onClick={() => this._clickFightTitle()}> {this.state.rematch} </p>
+
           <img className="player-sprite" src={this.state.playerSprite} />
+
           <div className={this.state.playerBubble}>
              {this.state.playerAttack}
-           </div>
+          </div>
+
           <div className="player-stats-and-moves">
             <p className={this.state.playerStatus}>
               HP:{this.state.playerHP}
@@ -117,21 +138,25 @@ class Fight extends React.Component {
             Enter Attack or Heal: <input  className= {this.state.playerInput} onKeyUp={evt => this._playerAttack(evt)} ref='attackHealInput' />
           </div>
 
-
-
           <img className='cpu-sprite' src={this.state.cpuSprite} />
+
           <div className={this.state.missBubble}>
             <p>{this.state.cpuTaunt}</p>
           </div>
+
           <div className={this.state.cpuBubble}>
             <p>{this.state.cpuAttack} </p>
             <p>{this.state.healString}</p>
           </div>
+
           <div className="cpu-stats-and-moves">
-            <p className={this.state.cpuStatus}>HP:{this.state.cpuHP}</p>
+            <p className={this.state.cpuStatus}>
+              HP:{this.state.cpuHP}
+            </p>
           </div>
 
         </div>
+
         <div className='move-list'>
           <p className='move-list-title'> Move List </p>
           <ul className="move-list-items">

@@ -27191,6 +27191,11 @@
 	      _fightStore2.default.actions.attack(evt);
 	    }
 	  }, {
+	    key: '_cpuDifficulty',
+	    value: function _cpuDifficulty() {
+	      _fightStore2.default.actions.cpuDifficulty();
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      var _this2 = this;
@@ -27198,7 +27203,7 @@
 	      return _react2.default.createElement(
 	        'div',
 	        null,
-	        _react2.default.createElement('audio', { id: 'mainTheme', src: './music/fallen-angels.mp3', autoPlay: true }),
+	        _react2.default.createElement('audio', { id: 'mainTheme', src: './music/fallen-angels.mp3', autoPlay: true, muted: true }),
 	        _react2.default.createElement('audio', { id: 'MKTheme', src: './music/MK-theme.mp3' }),
 	        _react2.default.createElement('audio', { id: 'GuileTheme', src: './music/Guile-theme.mp3' }),
 	        _react2.default.createElement('audio', { id: 'FF7BossTheme', src: './music/FF7-boss-theme.mp3' }),
@@ -27276,14 +27281,44 @@
 	          )
 	        ),
 	        _react2.default.createElement(
-	          'h2',
-	          { className: 'whose-character-player' },
-	          ' You '
-	        ),
-	        _react2.default.createElement(
-	          'h2',
-	          { className: 'whose-character-cpu' },
-	          ' CPU '
+	          'div',
+	          { 'class': 'character-identifier' },
+	          _react2.default.createElement(
+	            'h2',
+	            { className: 'whose-character-player' },
+	            ' You '
+	          ),
+	          _react2.default.createElement(
+	            'h2',
+	            { className: 'whose-character-cpu' },
+	            ' CPU '
+	          ),
+	          _react2.default.createElement(
+	            'select',
+	            { id: 'difficulty', name: 'cpuDifficulty', onChange: function onChange() {
+	                return _this2._cpuDifficulty();
+	              } },
+	            _react2.default.createElement(
+	              'option',
+	              { value: '' },
+	              '- Select CPU Difficulty - '
+	            ),
+	            _react2.default.createElement(
+	              'option',
+	              { value: 'E' },
+	              this.state.cpuEasy
+	            ),
+	            _react2.default.createElement(
+	              'option',
+	              { value: 'M' },
+	              this.state.cpuMedium
+	            ),
+	            _react2.default.createElement(
+	              'option',
+	              { value: 'H' },
+	              this.state.cpuHard
+	            )
+	          )
 	        ),
 	        _react2.default.createElement(
 	          'div',
@@ -27465,7 +27500,13 @@
 	  wins: 0,
 	  losses: 0,
 	  clickForProgress: '',
-	  rematch: ''
+	  rematch: '',
+	  cpuEasy: 'Easy',
+	  cpuMedium: 'Medium',
+	  cpuHard: 'Hard',
+	  cpuLevel1: 'cpuLevel1',
+	  cpuLevel2: 'cpuLevel2',
+	  cpuLevel3: 'cpuLevel3'
 	
 	};
 	
@@ -27499,7 +27540,13 @@
 	    wins: state.wins,
 	    losses: state.losses,
 	    clickForProgress: state.clickForProgress,
-	    rematch: state.rematch
+	    rematch: state.rematch,
+	    cpuEasy: state.cpuEasy,
+	    cpuMedium: state.cpuMedium,
+	    cpuHard: state.cpuHard,
+	    cpuLevel1: state.cpuLevel1,
+	    cpuLevel2: state.cpuLevel2,
+	    cpuLevel3: state.cpuLevel3
 	  };
 	};
 	
@@ -27773,6 +27820,19 @@
 	    console.log(state);
 	    changed();
 	  });
+	};
+	
+	store.actions.cpuDifficulty = function () {
+	  var $difficulty = $('#difficulty');
+	  var option = $('option');
+	
+	  if (option.value === 'E') {
+	    alert('Easy!');
+	  } else if (state.cpuMedium) {
+	    alert('Medium!');
+	  } else if (state.cpuHard) {
+	    alert('Hard!');
+	  }
 	};
 	
 	module.exports = store;

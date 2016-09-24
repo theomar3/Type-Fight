@@ -60,6 +60,13 @@ var state = {
   losses: 0,
   clickForProgress: '',
   rematch: '',
+  cpuEasy: 'Easy',
+  cpuMedium: 'Medium',
+  cpuHard: 'Hard',
+  cpuLevel1: 'cpuLevel1',
+  cpuLevel2: 'cpuLevel2',
+  cpuLevel3: 'cpuLevel3',
+
 
 }
 
@@ -94,6 +101,12 @@ store.copyState = function() {
     losses: state.losses,
     clickForProgress: state.clickForProgress,
     rematch: state.rematch,
+    cpuEasy: state.cpuEasy,
+    cpuMedium: state.cpuMedium,
+    cpuHard: state.cpuHard,
+    cpuLevel1: state.cpuLevel1,
+    cpuLevel2: state.cpuLevel2,
+    cpuLevel3: state.cpuLevel3
   }
 }
 
@@ -416,6 +429,21 @@ store.actions.load = function() {
     changed();
 
   });
+}
+
+store.actions.cpuDifficulty = function() {
+  var $difficulty = $('#difficulty');
+  var option = $('option');
+
+  if(option.value === 'E') {
+    alert('Easy!');
+  }
+  else if(state.cpuMedium) {
+    alert('Medium!');
+  }
+  else if(state.cpuHard) {
+    alert('Hard!');
+  }
 }
 
 

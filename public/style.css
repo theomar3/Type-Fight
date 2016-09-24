@@ -66,6 +66,9 @@ table {
   text-align: center;
   margin-bottom: 30px; }
 
+.character-identifier {
+  overflow: auto; }
+
 .whose-character-player {
   color: purple;
   text-align: left;
@@ -80,6 +83,9 @@ table {
   font-size: 2em;
   font-weight: bold;
   font-style: italic; }
+
+#difficulty {
+  float: right; }
 
 .fight-screen {
   border: 3px solid black;
@@ -99,20 +105,6 @@ table {
   margin-top: 90px;
   margin-right: 20%;
   float: right; }
-
-.player-identifier {
-  color: green;
-  font-size: 2em;
-  font-weight: bold;
-  font-style: italic; }
-
-.cpu-identifier {
-  color: green;
-  font-size: 2em;
-  font-weight: bold;
-  font-style: italic;
-  text-align: right;
-  margin-top: -30px; }
 
 .fight-title {
   margin-left: 38%;
