@@ -27200,6 +27200,15 @@
 	    value: function render() {
 	      var _this2 = this;
 	
+	      var input;
+	      if (this.state.playerInput) {
+	        input = _react2.default.createElement('input', { type: 'text', autoFocus: true, className: 'input-show', onKeyUp: function onKeyUp(evt) {
+	            return _this2._playerAttack(evt);
+	          }, ref: function ref(input) {
+	            return _this2._input = input;
+	          } });
+	      }
+	
 	      return _react2.default.createElement(
 	        'div',
 	        null,
@@ -27365,9 +27374,7 @@
 	              this.state.playerHP
 	            ),
 	            'Enter Attack or Heal: ',
-	            _react2.default.createElement('input', { className: this.state.playerInput, onKeyUp: function onKeyUp(evt) {
-	                return _this2._playerAttack(evt);
-	              }, ref: 'attackHealInput' })
+	            input
 	          ),
 	          _react2.default.createElement('img', { className: 'cpu-sprite', src: this.state.cpuSprite }),
 	          _react2.default.createElement(
@@ -27499,7 +27506,8 @@
 	  cpuTaunt: '',
 	  playerSprite: './images/kenshin-start.gif',
 	  cpuSprite: './images/spidey-start.gif',
-	  playerInput: 'input-hide',
+	  playerInput: false,
+	
 	  playerBubble: 'player-bubble-hide',
 	  cpuBubble: 'cpu-bubble-hide',
 	  missBubble: 'miss-bubble-hide',
@@ -27651,7 +27659,7 @@
 	    state.playerSprite = './images/kenshin-dead.gif';
 	    state.cpuSprite = './images/spidey-win.gif';
 	    state.healString = '';
-	    state.playerInput = 'input-hide';
+	    state.playerInput = false;
 	    state.missBubble = 'miss-bubble-hide';
 	    battleTheme.pause();
 	    _audioPlay2.default.pauseDanger();
@@ -27684,7 +27692,7 @@
 	    state.playerSprite = './images/kenshin-win.gif';
 	    state.cpuSprite = './images/spidey-dead.gif';
 	    state.healString = '';
-	    state.playerInput = 'input-hide';
+	    state.playerInput = false;
 	    state.missBubble = 'miss-bubble-hide';
 	    battleTheme.pause();
 	    var victory = document.getElementById('victory');
@@ -27710,7 +27718,7 @@
 	  state.text = 'Type Fight!';
 	  state.playerSprite = './images/kenshin-ready.gif';
 	  state.cpuSprite = './images/spidey-ready.gif';
-	  state.playerInput = 'input-show';
+	  state.playerInput = true;
 	  state.rematch = '';
 	  state.clickForProgress = '';
 	  state.playerHP = 30;

@@ -53,7 +53,8 @@ var state = {
   cpuTaunt: '',
   playerSprite: './images/kenshin-start.gif',
   cpuSprite: './images/spidey-start.gif',
-  playerInput: 'input-hide',
+  playerInput: false,
+
   playerBubble: 'player-bubble-hide',
   cpuBubble: 'cpu-bubble-hide',
   missBubble: 'miss-bubble-hide',
@@ -216,7 +217,7 @@ function endFight() {
     state.playerSprite = './images/kenshin-dead.gif';
     state.cpuSprite = './images/spidey-win.gif';
     state.healString = '';
-    state.playerInput = 'input-hide';
+    state.playerInput = false;
     state.missBubble =  'miss-bubble-hide';
     battleTheme.pause();
     audioPlay.pauseDanger();
@@ -258,7 +259,7 @@ function endFight() {
     state.playerSprite = './images/kenshin-win.gif';
     state.cpuSprite = './images/spidey-dead.gif';
     state.healString = '';
-    state.playerInput = 'input-hide';
+    state.playerInput = false;
     state.missBubble =  'miss-bubble-hide';
     battleTheme.pause();
     var victory = document.getElementById('victory');
@@ -290,7 +291,7 @@ store.actions.startFight = function() {
   state.text = 'Type Fight!';
   state.playerSprite = './images/kenshin-ready.gif';
   state.cpuSprite = './images/spidey-ready.gif';
-  state.playerInput = 'input-show';
+  state.playerInput = true;
   state.rematch = '';
   state.clickForProgress = '';
   state.playerHP = 30;

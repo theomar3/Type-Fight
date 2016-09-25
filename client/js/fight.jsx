@@ -36,6 +36,10 @@ class Fight extends React.Component {
 
 
   render() {
+    var input;
+    if(this.state.playerInput) {
+        input = <input type='text' autoFocus className= 'input-show' onKeyUp={evt => this._playerAttack(evt)} ref={input => this._input = input} />
+    }
 
 
     return (
@@ -134,7 +138,7 @@ class Fight extends React.Component {
             <p className={this.state.playerStatus}>
               HP:{this.state.playerHP}
             </p>
-            Enter Attack or Heal: <input  className= {this.state.playerInput} onKeyUp={evt => this._playerAttack(evt)} ref='attackHealInput' />
+            Enter Attack or Heal: {input}
           </div>
 
           <img className='cpu-sprite' src={this.state.cpuSprite} />
