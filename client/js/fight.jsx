@@ -31,12 +31,8 @@ class Fight extends React.Component {
   }
 
   _cpuDifficulty() {
-  store.actions.cpuDifficulty();
+    store.actions.cpuDifficulty();
 }
-
-
-
-
 
 
   render() {
@@ -106,12 +102,15 @@ class Fight extends React.Component {
         <div class="character-identifier">
           <h2 className="whose-character-player"> You </h2>
           <h2 className="whose-character-cpu"> CPU </h2>
-          <select id='difficulty' name='cpuDifficulty' onChange={() => this._cpuDifficulty()}>
-            <option value =''>- Select CPU Difficulty - </option>
-            <option value='E' >{this.state.cpuEasy}</option>
-            <option value='M'>{this.state.cpuMedium}</option>
-            <option value='H'>{this.state.cpuHard}</option>
-          </select>
+          <form>
+            <select id='difficulty' name='cpuDifficulty' onChange={() => this._cpuDifficulty()}>
+              <option value ='void'>- Select CPU Difficulty - </option>
+              <option value='E' >{this.state.cpuEasy}</option>
+              <option value='M'>{this.state.cpuMedium}</option>
+              <option value='H'>{this.state.cpuHard}</option>
+            </select>
+          </form>
+
         </div>
 
 

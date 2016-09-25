@@ -6,7 +6,8 @@ import ProgressStore from './progress-store.js';
 var intervalId;
 var battleMusic;
 var battleTheme;
-
+var difficulty;
+var difficultyChosen;
 
 
 
@@ -63,9 +64,6 @@ var state = {
   cpuEasy: 'Easy',
   cpuMedium: 'Medium',
   cpuHard: 'Hard',
-  cpuLevel1: 'cpuLevel1',
-  cpuLevel2: 'cpuLevel2',
-  cpuLevel3: 'cpuLevel3',
 
 
 }
@@ -104,9 +102,6 @@ store.copyState = function() {
     cpuEasy: state.cpuEasy,
     cpuMedium: state.cpuMedium,
     cpuHard: state.cpuHard,
-    cpuLevel1: state.cpuLevel1,
-    cpuLevel2: state.cpuLevel2,
-    cpuLevel3: state.cpuLevel3
   }
 }
 
@@ -276,10 +271,18 @@ function endFight() {
 
 
 store.actions.startFight = function() {
+  if (difficulty === undefined) {
+    alert('Please choose CPU Difficulty!');
+  }
+  disableDropDown();
+
+
   state.text = 'Type Fight!';
   state.playerSprite = './images/kenshin-ready.gif';
   state.cpuSprite = './images/spidey-ready.gif';
   state.playerInput = 'input-show';
+  state.rematch = '';
+  state.clickForProgress = '';
   state.playerHP = 30;
   state.cpuHP = 2;
 
@@ -299,7 +302,7 @@ store.actions.startFight = function() {
   mainTheme.pause();
 
 
-  intervalId = setInterval(intervalRounds, 20000);
+  intervalId = setInterval(intervalRounds, 6000);
   changed();
 }
 
@@ -432,18 +435,29 @@ store.actions.load = function() {
 }
 
 store.actions.cpuDifficulty = function() {
-  var $difficulty = $('#difficulty');
-  var option = $('option');
+  difficulty = document.querySelector('#difficulty');
+  difficultyChosen = difficulty.options[difficulty.selectedIndex].value;
 
-  if(option.value === 'E') {
-    alert('Easy!');
+  if(difficultyChosen === 'E') {
+    return easy();
   }
-  else if(state.cpuMedium) {
-    alert('Medium!');
+  else if(difficultyChosen === 'M') {
   }
-  else if(state.cpuHard) {
-    alert('Hard!');
+  else if(difficultyChosen === 'H') {
   }
+
+}
+
+function disableDropDown() {
+  difficulty.disabled=true;
+}
+
+function enableDropDown() {
+  difficulty.disabled=false;
+}
+
+function easy() {
+  randomString(4,'aA');
 }
 
 
