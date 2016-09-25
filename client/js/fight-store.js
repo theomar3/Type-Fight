@@ -180,7 +180,17 @@ function intervalRounds() {
     state.cpuSprite = './images/spidey-sting.gif';
     spiderSting.play();
   }
-  state.healString = randomString(4,'aA');
+
+  if(difficultyChosen === 'E') {
+    state.healString = randomString(4, 'aA');
+  }
+  else if(difficultyChosen === 'M') {
+    state.healString = randomString(6, 'aA');
+  }
+  else if(difficultyChosen === 'H') {
+    state.healString = randomString(8, 'aA');
+  }
+
   state.playerHP -= 3;
   state.playerSprite = './images/kenshin-hit.gif';
 
@@ -438,13 +448,7 @@ store.actions.cpuDifficulty = function() {
   difficulty = document.querySelector('#difficulty');
   difficultyChosen = difficulty.options[difficulty.selectedIndex].value;
 
-  if(difficultyChosen === 'E') {
-    return easy();
-  }
-  else if(difficultyChosen === 'M') {
-  }
-  else if(difficultyChosen === 'H') {
-  }
+
 
 }
 
@@ -456,9 +460,8 @@ function enableDropDown() {
   difficulty.disabled=false;
 }
 
-function easy() {
-  randomString(4,'aA');
-}
+// function easy() {
+// }
 
 
 
