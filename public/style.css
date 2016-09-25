@@ -399,8 +399,7 @@ table {
   display: block; }
 
 .container {
-  max-width: 1500px;
-  margin: 80px auto;
+  margin: 80px;
   background-color: red;
   padding-top: 40px;
   padding-bottom: 50px; }
@@ -552,38 +551,26 @@ table {
   -moz-animation-delay: 8.5s;
   animation-delay: 8.5s; }
 
-.effects-div-top, .effects-div-bottom {
-  overflow: auto; }
-
 .kapow {
-  float: left;
-  margin-left: 5%;
   opacity: 1;
   transition: opacity 2.5s ease-out;
   max-width: 100%;
   height: auto; }
 
 .crash {
-  float: right;
   transition: opacity 2.5s ease-out;
-  margin-right: 10%;
-  margin-top: 30px;
   max-width: 100%;
   height: auto;
   opacity: 1; }
 
 .bloop {
-  float: left;
   transition: opacity 2.5s ease-out;
   max-width: 100%;
   height: auto;
   opacity: 1; }
 
 .vronk {
-  float: right;
   transition: opacity 2.5s ease-out;
-  margin-right: 10%;
-  margin-bottom: 30px;
   max-width: 100%;
   height: auto;
   opacity: 1; }
@@ -593,12 +580,10 @@ table {
 
 #google-signin {
   max-width: 100%;
-  margin-left: 44%;
   opacity: 1;
   transition: opacity 2.5s ease-in; }
 
 .google-signout {
-  margin-left: 44%;
   margin-top: 10px;
   opacity: 1;
   transition: opacity 2.5s ease-in; }
@@ -3039,8 +3024,71 @@ tr:nth-of-type(even) {
   -webkit-animation-name: slideOutUp;
   animation-name: slideOutUp; }
 
+* {
+  box-sizing: border-box; }
+
 body {
+  width: 100%;
+  min-width: 320px;
+  max-width: 1200px;
+  margin: 0 auto;
   background-color: #000; }
+
+.row {
+  padding: 20px;
+  width: 100%;
+  min-height: 1px;
+  float: left; }
+
+.col {
+  outline: 1px solid blue;
+  min-height: 40px;
+  margin-left: 2.4%;
+  margin-right: 2.4%;
+  display: inline-block;
+  float: left; }
+
+.col:first-child {
+  margin-left: 0px; }
+
+.col:last-child {
+  margin-right: 0px; }
+
+.col.one {
+  width: 3.93%; }
+
+.col.two {
+  width: 12.66%; }
+
+.col.three {
+  width: 21.4%; }
+
+.col.four {
+  width: 30.13%; }
+
+.col.five {
+  width: 38.867%; }
+
+.col.six {
+  width: 47.6%; }
+
+.col.seven {
+  width: 56.333%; }
+
+.col.eight {
+  width: 65.07%; }
+
+.col.nine {
+  width: 73.8%; }
+
+.col.ten {
+  width: 82.533%; }
+
+.col.eleven {
+  width: 91.27%; }
+
+.col.twelve {
+  width: 100%; }
 
 .character-select-title {
   font-family: monospace; }
