@@ -29,15 +29,69 @@ class Progress extends React.Component {
           <div className='row'>
             <div className='col one'></div>
             <div className='col ten'>
-              <h1 className='website-title progress-title animated bounceInLeft'>
+              <h1 className='website-title progress-title animated slideInDown'>
                  Your
               </h1>
-              <h1 className='website-title progress-title animated bounceInRight'>
+              <h1 className='website-title progress-title animated slideInUp'>
                  Progress
               </h1>
             </div>
             <div className='col one'></div>
           </div>
+
+          <div className='row'>
+            <div className='col one'></div>
+            <div className='col ten'>
+              <h3 className='progress-tagline animated pulse'> Check how you're doing!</h3>
+            </div>
+            <div className='col one'></div>
+          </div>
+
+          <div className='row'>
+            <div className='col one'></div>
+            <div className='col ten'>
+              <h4 id="stats-heading"> Player Stats</h4>
+              <table id="stats-table">
+                <tr id='HeadRow'>
+                  <td> Wins </td>
+                  <td> Losses </td>
+                </tr>
+                <tr>
+                  <td tableHeadData = "Wins"> {this.state.wins} </td>
+                  <td tableHeadData = 'Losses'> {this.state.losses} </td>
+                </tr>
+              </table>
+            </div>
+            <div className='col one'></div>
+          </div>
+
+          <div className='row'>
+            <div className='col two'></div>
+            <div className='col two'>
+              <BackButton />
+            </div>
+            <div className='col four'></div>
+            <div className='col two'>
+              <a href="index.html">
+                <button id='homepage-link'>
+                  *Lemme Google Sign-In!
+                </button>
+              </a>
+            </div>
+            <div className='col two'></div>
+          </div>
+
+
+          <div className='row'>
+            <div className='col seven'></div>
+            <div className='col five'>
+              <p id='sign-in-info'> *(Psst. That way you can check your progress from around the world.)</p>
+            </div>
+          </div>
+
+
+
+
 
         </div>
       </div>

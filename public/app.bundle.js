@@ -27598,16 +27598,121 @@
 	              { className: 'col ten' },
 	              React.createElement(
 	                'h1',
-	                { className: 'website-title progress-title animated bounceInLeft' },
+	                { className: 'website-title progress-title animated slideInDown' },
 	                'Your'
 	              ),
 	              React.createElement(
 	                'h1',
-	                { className: 'website-title progress-title animated bounceInRight' },
+	                { className: 'website-title progress-title animated slideInUp' },
 	                'Progress'
 	              )
 	            ),
 	            React.createElement('div', { className: 'col one' })
+	          ),
+	          React.createElement(
+	            'div',
+	            { className: 'row' },
+	            React.createElement('div', { className: 'col one' }),
+	            React.createElement(
+	              'div',
+	              { className: 'col ten' },
+	              React.createElement(
+	                'h3',
+	                { className: 'progress-tagline animated pulse' },
+	                ' Check how you\'re doing!'
+	              )
+	            ),
+	            React.createElement('div', { className: 'col one' })
+	          ),
+	          React.createElement(
+	            'div',
+	            { className: 'row' },
+	            React.createElement('div', { className: 'col one' }),
+	            React.createElement(
+	              'div',
+	              { className: 'col ten' },
+	              React.createElement(
+	                'h4',
+	                { id: 'stats-heading' },
+	                ' Player Stats'
+	              ),
+	              React.createElement(
+	                'table',
+	                { id: 'stats-table' },
+	                React.createElement(
+	                  'tr',
+	                  { id: 'HeadRow' },
+	                  React.createElement(
+	                    'td',
+	                    null,
+	                    ' Wins '
+	                  ),
+	                  React.createElement(
+	                    'td',
+	                    null,
+	                    ' Losses '
+	                  )
+	                ),
+	                React.createElement(
+	                  'tr',
+	                  null,
+	                  React.createElement(
+	                    'td',
+	                    { tableHeadData: 'Wins' },
+	                    ' ',
+	                    this.state.wins,
+	                    ' '
+	                  ),
+	                  React.createElement(
+	                    'td',
+	                    { tableHeadData: 'Losses' },
+	                    ' ',
+	                    this.state.losses,
+	                    ' '
+	                  )
+	                )
+	              )
+	            ),
+	            React.createElement('div', { className: 'col one' })
+	          ),
+	          React.createElement(
+	            'div',
+	            { className: 'row' },
+	            React.createElement('div', { className: 'col two' }),
+	            React.createElement(
+	              'div',
+	              { className: 'col two' },
+	              React.createElement(_backbutton2.default, null)
+	            ),
+	            React.createElement('div', { className: 'col four' }),
+	            React.createElement(
+	              'div',
+	              { className: 'col two' },
+	              React.createElement(
+	                'a',
+	                { href: 'index.html' },
+	                React.createElement(
+	                  'button',
+	                  { id: 'homepage-link' },
+	                  '*Lemme Google Sign-In!'
+	                )
+	              )
+	            ),
+	            React.createElement('div', { className: 'col two' })
+	          ),
+	          React.createElement(
+	            'div',
+	            { className: 'row' },
+	            React.createElement('div', { className: 'col seven' }),
+	            React.createElement(
+	              'div',
+	              { className: 'col five' },
+	              React.createElement(
+	                'p',
+	                { id: 'sign-in-info' },
+	                ' *(Psst. That way you can check your progress from around the world.)'
+	              )
+	            )
 	          )
 	        )
 	      );

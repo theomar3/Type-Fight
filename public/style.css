@@ -486,20 +486,20 @@ input[type='text'] {
   color: white; }
 
 .progress-tagline {
-  font-size: 1.2em;
+  font-size: 1.4em;
   font-family: cursive;
-  text-align: center;
-  margin-top: 20px; }
+  text-align: center; }
 
 #stats-heading {
   text-decoration: underline;
   text-align: center;
   font-size: 1.5em;
-  margin-top: 50px;
-  margin-bottom: 20px; }
+  margin-bottom: 10px; }
 
 #stats-table {
-  border-collapse: collapse; }
+  width: 40%;
+  border-collapse: collapse;
+  margin: 0 auto; }
 
 tr:nth-of-type(odd) {
   background-color: red;
@@ -513,9 +513,6 @@ tr:nth-of-type(even) {
   background-color: black;
   font-weight: bold;
   text-decoration: underline; }
-
-#stats-table {
-  margin-bottom: 50px; }
 
 #stats-table td {
   padding: 5px;
@@ -541,8 +538,8 @@ tr:nth-of-type(even) {
   font-family: "Trebuchet MS","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Tahoma,sans-serif; }
 
 #sign-in-info {
-  margin-top: 5px;
   text-align: center;
+  font-size: 1.2em;
   font-family: "Lucida Sans Typewriter","Lucida Console",monaco,"Bitstream Vera Sans Mono",monospace; }
 
 /*!
@@ -2928,7 +2925,6 @@ body {
   float: left; }
 
 .col {
-  outline: 1px solid blue;
   min-height: 40px;
   margin-left: 2.4%;
   margin-right: 2.4%;

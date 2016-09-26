@@ -1,28 +1,25 @@
 .progress-title {
   font-family: cursive;
   color: white;
-  // display: inline-block;
 }
 
 .progress-tagline {
-  font-size: 1.2em;
+  font-size: 1.4em;
   font-family:cursive;
   text-align: center;
-  margin-top: 20px;
 }
 
 #stats-heading {
   text-decoration: underline;
   text-align: center;
   font-size: 1.5em;
-  margin-top: 50px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 #stats-table {
-  // width: 40%;
+  width: 40%;
   border-collapse: collapse;
-  // margin: 0 auto;
+  margin: 0 auto;
 }
 
 tr:nth-of-type(odd) {
@@ -41,10 +38,6 @@ tr:nth-of-type(even) {
   text-decoration: underline;
 }
 
-#stats-table {
-  margin-bottom: 50px;
-}
-
 #stats-table td {
   padding: 5px;
   border: 1px solid black;
@@ -52,7 +45,6 @@ tr:nth-of-type(even) {
 }
 
 .back {
-  // margin-left: 38%;
   padding: 15px;
   background-color: #ffc0cb;
   color: red;
@@ -63,8 +55,6 @@ tr:nth-of-type(even) {
 }
 
 #homepage-link {
-  // margin-left: 36%;
-  // margin-top: 20px;
   padding: 15px;
   background-color: #ffc0cb;
   color: red;
@@ -75,7 +65,7 @@ tr:nth-of-type(even) {
 }
 
 #sign-in-info {
-  margin-top: 5px;
   text-align: center;
+  font-size: 1.2em;
   font-family: "Lucida Sans Typewriter","Lucida Console",monaco,"Bitstream Vera Sans Mono",monospace;
 }
