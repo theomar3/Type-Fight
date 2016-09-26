@@ -88,7 +88,7 @@
 	    value: function render() {
 	      return _react2.default.createElement(
 	        'div',
-	        { className: 'container' },
+	        null,
 	        this.props.children
 	      );
 	    }
@@ -27211,232 +27211,174 @@
 	
 	      return _react2.default.createElement(
 	        'div',
-	        null,
-	        _react2.default.createElement('audio', { id: 'mainTheme', src: './music/fallen-angels.mp3', autoPlay: true, muted: true }),
-	        _react2.default.createElement('audio', { id: 'MKTheme', src: './music/MK-theme.mp3' }),
-	        _react2.default.createElement('audio', { id: 'GuileTheme', src: './music/Guile-theme.mp3' }),
-	        _react2.default.createElement('audio', { id: 'FF7BossTheme', src: './music/FF7-boss-theme.mp3' }),
-	        _react2.default.createElement('audio', { id: 'gameOver', src: './music/game-over-man.mp3' }),
-	        _react2.default.createElement('audio', { id: 'dna', src: './music/dna.mp3' }),
-	        _react2.default.createElement('audio', { id: 'kneel', src: './music/kneel.mp3' }),
-	        _react2.default.createElement('audio', { id: 'victory', src: './music/victory.mp3' }),
-	        _react2.default.createElement('audio', { id: 'playerHit', src: './music/player-hit.mp3' }),
-	        _react2.default.createElement('audio', { id: 'cpuHit', src: './music/cpu-hit.mp3' }),
-	        _react2.default.createElement('audio', { id: 'warning', src: './music/warning.mp3' }),
-	        _react2.default.createElement('audio', { id: 'danger', src: './music/danger.mp3' }),
-	        _react2.default.createElement('audio', { id: 'gokuHeal', src: './music/goku-heal.mp3' }),
-	        _react2.default.createElement('audio', { id: 'dendeHeal', src: './music/dende-heal.mp3' }),
-	        _react2.default.createElement('audio', { id: 'webBall', src: './music/web-ball.mp3' }),
-	        _react2.default.createElement('audio', { id: 'spiderSting', src: './music/spider-sting.mp3' }),
-	        _react2.default.createElement('audio', { id: 'webSwing', src: './music/web-swing.mp3' }),
-	        _react2.default.createElement('audio', { id: 'chargingSlash', src: './music/charging-slash.mp3' }),
-	        _react2.default.createElement('audio', { id: 'forwardSlash', src: './music/forward-slash.mp3' }),
-	        _react2.default.createElement('audio', { id: 'upwardSlash', src: './music/upward-slash.mp3' }),
-	        _react2.default.createElement('audio', { id: 'bradleyTaunt', src: './music/bradley-miss-taunt.mp3' }),
-	        _react2.default.createElement('audio', { id: 'laughTaunt', src: './music/laugh-miss-taunt.wav' }),
-	        _react2.default.createElement('audio', { id: 'patheticTaunt', src: './music/pathetic-miss-taunt.wav' }),
-	        _react2.default.createElement('audio', { id: 'suckTaunt', src: './music/suck-miss-taunt.wav' }),
-	        _react2.default.createElement(
-	          'a',
-	          { href: 'index.html' },
-	          _react2.default.createElement(
-	            'ul',
-	            { className: 'fight-website-title' },
-	            _react2.default.createElement(
-	              'li',
-	              null,
-	              'T'
-	            ),
-	            _react2.default.createElement(
-	              'li',
-	              null,
-	              'y'
-	            ),
-	            _react2.default.createElement(
-	              'li',
-	              null,
-	              'P'
-	            ),
-	            _react2.default.createElement(
-	              'li',
-	              null,
-	              'e'
-	            ),
-	            _react2.default.createElement(
-	              'li',
-	              null,
-	              'F'
-	            ),
-	            _react2.default.createElement(
-	              'li',
-	              null,
-	              'i'
-	            ),
-	            _react2.default.createElement(
-	              'li',
-	              null,
-	              'G'
-	            ),
-	            _react2.default.createElement(
-	              'li',
-	              null,
-	              'h'
-	            ),
-	            _react2.default.createElement(
-	              'li',
-	              null,
-	              'T'
-	            )
-	          )
-	        ),
+	        { className: 'row' },
 	        _react2.default.createElement(
 	          'div',
-	          { 'class': 'character-identifier' },
+	          { className: 'container col twelve' },
+	          _react2.default.createElement('audio', { id: 'mainTheme', src: './music/fallen-angels.mp3', autoPlay: true, muted: true }),
+	          _react2.default.createElement('audio', { id: 'MKTheme', src: './music/MK-theme.mp3' }),
+	          _react2.default.createElement('audio', { id: 'GuileTheme', src: './music/Guile-theme.mp3' }),
+	          _react2.default.createElement('audio', { id: 'FF7BossTheme', src: './music/FF7-boss-theme.mp3' }),
+	          _react2.default.createElement('audio', { id: 'gameOver', src: './music/game-over-man.mp3' }),
+	          _react2.default.createElement('audio', { id: 'dna', src: './music/dna.mp3' }),
+	          _react2.default.createElement('audio', { id: 'kneel', src: './music/kneel.mp3' }),
+	          _react2.default.createElement('audio', { id: 'victory', src: './music/victory.mp3' }),
+	          _react2.default.createElement('audio', { id: 'playerHit', src: './music/player-hit.mp3' }),
+	          _react2.default.createElement('audio', { id: 'cpuHit', src: './music/cpu-hit.mp3' }),
+	          _react2.default.createElement('audio', { id: 'warning', src: './music/warning.mp3' }),
+	          _react2.default.createElement('audio', { id: 'danger', src: './music/danger.mp3' }),
+	          _react2.default.createElement('audio', { id: 'gokuHeal', src: './music/goku-heal.mp3' }),
+	          _react2.default.createElement('audio', { id: 'dendeHeal', src: './music/dende-heal.mp3' }),
+	          _react2.default.createElement('audio', { id: 'webBall', src: './music/web-ball.mp3' }),
+	          _react2.default.createElement('audio', { id: 'spiderSting', src: './music/spider-sting.mp3' }),
+	          _react2.default.createElement('audio', { id: 'webSwing', src: './music/web-swing.mp3' }),
+	          _react2.default.createElement('audio', { id: 'chargingSlash', src: './music/charging-slash.mp3' }),
+	          _react2.default.createElement('audio', { id: 'forwardSlash', src: './music/forward-slash.mp3' }),
+	          _react2.default.createElement('audio', { id: 'upwardSlash', src: './music/upward-slash.mp3' }),
+	          _react2.default.createElement('audio', { id: 'bradleyTaunt', src: './music/bradley-miss-taunt.mp3' }),
+	          _react2.default.createElement('audio', { id: 'laughTaunt', src: './music/laugh-miss-taunt.wav' }),
+	          _react2.default.createElement('audio', { id: 'patheticTaunt', src: './music/pathetic-miss-taunt.wav' }),
+	          _react2.default.createElement('audio', { id: 'suckTaunt', src: './music/suck-miss-taunt.wav' }),
 	          _react2.default.createElement(
-	            'h2',
-	            { className: 'whose-character-player' },
-	            ' You '
-	          ),
-	          _react2.default.createElement(
-	            'h2',
-	            { className: 'whose-character-cpu' },
-	            ' CPU '
-	          ),
-	          _react2.default.createElement(
-	            'form',
-	            null,
+	            'div',
+	            { className: 'row' },
+	            _react2.default.createElement('div', { className: 'col one' }),
 	            _react2.default.createElement(
-	              'select',
-	              { id: 'difficulty', name: 'cpuDifficulty', onChange: function onChange() {
-	                  return _this2._cpuDifficulty();
-	                } },
+	              'div',
+	              { className: 'col ten' },
 	              _react2.default.createElement(
-	                'option',
-	                { value: 'void' },
-	                '- Select CPU Difficulty - '
-	              ),
-	              _react2.default.createElement(
-	                'option',
-	                { value: 'E' },
-	                this.state.cpuEasy
-	              ),
-	              _react2.default.createElement(
-	                'option',
-	                { value: 'M' },
-	                this.state.cpuMedium
-	              ),
-	              _react2.default.createElement(
-	                'option',
-	                { value: 'H' },
-	                this.state.cpuHard
+	                'a',
+	                { href: 'index.html' },
+	                _react2.default.createElement(
+	                  'ul',
+	                  { className: 'fight-website-title' },
+	                  _react2.default.createElement(
+	                    'li',
+	                    null,
+	                    'T'
+	                  ),
+	                  _react2.default.createElement(
+	                    'li',
+	                    null,
+	                    'y'
+	                  ),
+	                  _react2.default.createElement(
+	                    'li',
+	                    null,
+	                    'P'
+	                  ),
+	                  _react2.default.createElement(
+	                    'li',
+	                    null,
+	                    'e'
+	                  ),
+	                  _react2.default.createElement(
+	                    'li',
+	                    null,
+	                    'F'
+	                  ),
+	                  _react2.default.createElement(
+	                    'li',
+	                    null,
+	                    'i'
+	                  ),
+	                  _react2.default.createElement(
+	                    'li',
+	                    null,
+	                    'G'
+	                  ),
+	                  _react2.default.createElement(
+	                    'li',
+	                    null,
+	                    'h'
+	                  ),
+	                  _react2.default.createElement(
+	                    'li',
+	                    null,
+	                    'T'
+	                  )
+	                )
 	              )
-	            )
-	          )
-	        ),
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'fight-screen' },
-	          _react2.default.createElement(
-	            'p',
-	            { className: 'fight-title', onClick: function onClick() {
-	                return _this2._clickFightTitle();
-	              } },
-	            this.state.text
-	          ),
-	          _react2.default.createElement(
-	            _reactRouter.Link,
-	            { className: 'link-text', to: '/progress' },
-	            ' ',
-	            this.state.clickForProgress
-	          ),
-	          _react2.default.createElement(
-	            'p',
-	            { className: 'rematch', onClick: function onClick() {
-	                return _this2._clickFightTitle();
-	              } },
-	            ' ',
-	            this.state.rematch,
-	            ' '
-	          ),
-	          _react2.default.createElement('img', { className: 'player-sprite', src: this.state.playerSprite }),
-	          _react2.default.createElement(
-	            'div',
-	            { className: this.state.playerBubble },
-	            this.state.playerAttack
-	          ),
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'player-stats-and-moves' },
-	            _react2.default.createElement(
-	              'p',
-	              { className: this.state.playerStatus },
-	              'HP:',
-	              this.state.playerHP
 	            ),
-	            'Enter Attack or Heal: ',
-	            input
-	          ),
-	          _react2.default.createElement('img', { className: 'cpu-sprite', src: this.state.cpuSprite }),
-	          _react2.default.createElement(
-	            'div',
-	            { className: this.state.missBubble },
-	            _react2.default.createElement(
-	              'p',
-	              null,
-	              this.state.cpuTaunt
-	            )
+	            _react2.default.createElement('div', { className: 'col one' })
 	          ),
 	          _react2.default.createElement(
 	            'div',
-	            { className: this.state.cpuBubble },
+	            { className: 'row' },
 	            _react2.default.createElement(
-	              'p',
-	              null,
-	              this.state.cpuAttack,
-	              ' '
-	            ),
-	            _react2.default.createElement(
-	              'p',
-	              null,
-	              this.state.healString
-	            )
-	          ),
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'cpu-stats-and-moves' },
-	            _react2.default.createElement(
-	              'p',
-	              { className: this.state.cpuStatus },
-	              'HP:',
-	              this.state.cpuHP
-	            )
-	          )
-	        ),
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'move-list' },
-	          _react2.default.createElement(
-	            'p',
-	            { className: 'move-list-title' },
-	            ' Move List '
-	          ),
-	          _react2.default.createElement(
-	            'ul',
-	            { className: 'move-list-items' },
-	            _react2.default.createElement(
-	              'li',
-	              null,
-	              'ForwardS'
-	            ),
-	            _react2.default.createElement(
-	              'li',
-	              null,
-	              'ChargeS'
-	            ),
-	            _react2.default.createElement(
-	              'li',
-	              null,
-	              'UpwardS'
+	              'div',
+	              { className: 'fight-screen col twelve' },
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'row' },
+	                _react2.default.createElement('div', { className: 'col two' }),
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'col two' },
+	                  _react2.default.createElement(
+	                    'h2',
+	                    { className: 'whose-character-player' },
+	                    'You'
+	                  )
+	                ),
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'col four' },
+	                  _react2.default.createElement(
+	                    'p',
+	                    { className: 'fight-title', onClick: function onClick() {
+	                        return _this2._clickFightTitle();
+	                      } },
+	                    this.state.text
+	                  )
+	                ),
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'col three' },
+	                  _react2.default.createElement(
+	                    'h2',
+	                    { className: 'whose-character-cpu' },
+	                    'CPU'
+	                  ),
+	                  _react2.default.createElement(
+	                    'form',
+	                    null,
+	                    _react2.default.createElement(
+	                      'select',
+	                      { id: 'difficulty', name: 'cpuDifficulty', onChange: function onChange() {
+	                          return _this2._cpuDifficulty();
+	                        } },
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: 'void' },
+	                        '- Select CPU Difficulty - '
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: 'E' },
+	                        this.state.cpuEasy
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: 'M' },
+	                        this.state.cpuMedium
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: 'H' },
+	                        this.state.cpuHard
+	                      )
+	                    )
+	                  )
+	                ),
+	                _react2.default.createElement('div', { className: 'col one' })
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'row' },
+	                _react2.default.createElement('div', { className: 'col two' }),
+	                _react2.default.createElement('div', { className: 'col two' })
+	              )
 	            )
 	          )
 	        )

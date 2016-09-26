@@ -55,73 +55,47 @@ table {
 
 .fight-website-title li {
   display: inline-block;
-  margin-right: 50px;
   font-family: Open Sans, Arial;
   font-weight: 300;
   color: #fff; }
 
-.battle-title {
-  font-family: cursive;
-  font-size: 1.4em;
-  text-align: center;
-  margin-bottom: 30px; }
+.fight-screen {
+  border: 3px solid black;
+  background-color: #ffc0cb; }
 
-.character-identifier {
-  overflow: auto; }
+.fight-title {
+  margin-bottom: 20px;
+  font-size: 2em;
+  font-weight: bold;
+  text-align: center; }
+
+.fight-title:hover {
+  color: red; }
 
 .whose-character-player {
-  color: purple;
-  text-align: left;
+  color: red;
   font-size: 2em;
   font-weight: bold;
   font-style: italic;
-  margin-bottom: -40px; }
+  text-align: center; }
 
 .whose-character-cpu {
-  color: purple;
-  text-align: right;
+  color: red;
+  text-align: center;
   font-size: 2em;
   font-weight: bold;
   font-style: italic; }
 
 #difficulty {
-  float: right; }
-
-.fight-screen {
-  border: 3px solid black;
-  background-color: #ffc0cb;
-  max-width: 1000px;
-  height: 500px;
-  margin: 0 auto;
-  position: relative;
-  overflow: auto; }
-
-.player-sprite {
-  margin-top: 70px;
-  margin-left: 10%;
-  float: left; }
-
-.cpu-sprite {
-  margin-top: 90px;
-  margin-right: 20%;
-  float: right; }
-
-.fight-title {
-  margin-left: 38%;
-  margin-bottom: 20px;
-  font-size: 2em;
-  font-weight: bold;
-  display: inline-block; }
-
-.fight-title:hover {
-  color: red; }
+  border-radius: 20px;
+  padding: 5px;
+  background-color: black;
+  color: white;
+  margin-left: 10%; }
 
 .player-bubble-show {
   text-align: center;
   line-height: 3em;
-  float: left;
-  margin-top: 80px;
-  display: inline-block;
   position: relative;
   width: 250px;
   height: 55px;
@@ -156,9 +130,6 @@ table {
 .cpu-bubble-show {
   text-align: center;
   line-height: 2em;
-  float: right;
-  margin-top: 90px;
-  display: inline-block;
   position: relative;
   width: 180px;
   height: 75px;
@@ -193,9 +164,6 @@ table {
 .miss-bubble-show {
   text-align: center;
   line-height: 2em;
-  margin-top: -100px;
-  margin-left: 80%;
-  display: inline-block;
   position: relative;
   width: 165px;
   height: 55px;
@@ -220,8 +188,6 @@ table {
 .player-bubble-hide {
   text-align: center;
   line-height: 3em;
-  float: left;
-  margin-top: 80px;
   display: none;
   position: relative;
   width: 250px;
@@ -257,8 +223,6 @@ table {
 .cpu-bubble-hide {
   text-align: center;
   line-height: 2em;
-  float: right;
-  margin-top: 90px;
   display: none;
   position: relative;
   width: 180px;
@@ -294,8 +258,6 @@ table {
 .miss-bubble-hide {
   text-align: center;
   line-height: 2em;
-  float: right;
-  margin-top: 60px;
   display: none;
   position: relative;
   width: 165px;
@@ -318,11 +280,6 @@ table {
   left: -30px;
   top: 12px; }
 
-.player-stats-and-moves {
-  position: absolute;
-  bottom: 10px;
-  left: 50px; }
-
 .player-stats-and-moves p {
   font-size: 3em;
   font-weight: bold; }
@@ -330,14 +287,8 @@ table {
 .input-hide {
   display: none; }
 
-.input-show {
-  display: block; }
-
 .move-list {
-  display: inline-block;
   background-color: white;
-  margin-left: 5%;
-  width: 30%;
   text-align: center; }
 
 .move-list-title {
@@ -362,11 +313,6 @@ table {
 .player-stats-and-moves input {
   padding: 10px; }
 
-.cpu-stats-and-moves {
-  position: absolute;
-  bottom: 50px;
-  right: 80px; }
-
 .cpu-stats-and-moves p {
   text-align: center;
   font-size: 3em;
@@ -376,8 +322,7 @@ table {
   font-size: 1.4em;
   font-family: cursive;
   text-decoration: none;
-  color: black;
-  margin-left: 38%; }
+  color: black; }
 
 .link-text:hover {
   color: white; }
@@ -395,8 +340,7 @@ table {
 .progress-link {
   font-size: 4em;
   color: white;
-  font-family: cursive;
-  display: block; }
+  font-family: cursive; }
 
 .container {
   margin: 80px;
