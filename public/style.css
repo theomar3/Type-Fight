@@ -64,7 +64,7 @@ table {
   background-color: #ffc0cb; }
 
 .fight-title {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   font-size: 2em;
   font-weight: bold;
   text-align: center; }
@@ -72,15 +72,35 @@ table {
 .fight-title:hover {
   color: red; }
 
+.link-text {
+  font-size: 1.4em;
+  font-family: cursive;
+  text-decoration: none;
+  color: black;
+  text-align: center; }
+
+.link-text:hover {
+  color: white; }
+
+.rematch {
+  font-size: 1.4em;
+  font-family: cursive;
+  text-align: center;
+  margin-top: 10px;
+  text-decoration: none; }
+
+.rematch:hover {
+  color: red; }
+
 .whose-character-player {
-  color: red;
+  color: purple;
   font-size: 2em;
   font-weight: bold;
   font-style: italic;
   text-align: center; }
 
 .whose-character-cpu {
-  color: red;
+  color: yellow;
   text-align: center;
   font-size: 2em;
   font-weight: bold;
@@ -93,13 +113,23 @@ table {
   color: white;
   margin-left: 10%; }
 
+.player-bubble-hide {
+  display: none; }
+
+.player-bubble-hide:after {
+  display: none; }
+
 .player-bubble-show {
+  font-size: 1.2em;
   text-align: center;
   line-height: 3em;
   position: relative;
-  width: 250px;
-  height: 55px;
+  width: 175px;
+  height: 120px;
   padding: 0px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#fb83fa+15,e93cec+54 */
   background: #fb83fa;
   /* Old browsers */
@@ -116,22 +146,29 @@ table {
   border-radius: 10px; }
 
 .player-bubble-show:after {
+  border-color: transparent #fb83fa;
   content: '';
   position: absolute;
   border-style: solid;
-  border-width: 13px 30px 13px 0;
-  border-color: transparent #fb83fa;
+  border-width: 15px 0 15px 31px;
   display: block;
   width: 0;
   z-index: 1;
-  left: -30px;
-  top: 14px; }
+  right: -31px;
+  top: 15px; }
+
+.cpu-bubble-hide {
+  display: none; }
+
+.cpu-bubble-hide:after {
+  display: none; }
 
 .cpu-bubble-show {
+  font-size: 1.3em;
   text-align: center;
   line-height: 2em;
   position: relative;
-  width: 180px;
+  width: 280px;
   height: 75px;
   padding: 0px;
   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#e5e696+18,d1d360+47 */
@@ -165,7 +202,7 @@ table {
   text-align: center;
   line-height: 2em;
   position: relative;
-  width: 165px;
+  width: 145px;
   height: 55px;
   padding: 0px;
   background: #FFFFFF;
@@ -184,76 +221,6 @@ table {
   z-index: 1;
   left: -30px;
   top: 12px; }
-
-.player-bubble-hide {
-  text-align: center;
-  line-height: 3em;
-  display: none;
-  position: relative;
-  width: 250px;
-  height: 55px;
-  padding: 0px;
-  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#fb83fa+15,e93cec+54 */
-  background: #fb83fa;
-  /* Old browsers */
-  background: -moz-linear-gradient(top, #fb83fa 15%, #e93cec 54%);
-  /* FF3.6-15 */
-  background: -webkit-linear-gradient(top, #fb83fa 15%, #e93cec 54%);
-  /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(to bottom, #fb83fa 15%, #e93cec 54%);
-  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fb83fa', endColorstr='#e93cec',GradientType=0 );
-  /* IE6-9 */
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  border-radius: 10px; }
-
-.player-bubble-hide:after {
-  content: '';
-  position: absolute;
-  border-style: solid;
-  border-width: 13px 30px 13px 0;
-  border-color: transparent #fb83fa;
-  display: none;
-  width: 0;
-  z-index: 1;
-  left: -30px;
-  top: 14px; }
-
-.cpu-bubble-hide {
-  text-align: center;
-  line-height: 2em;
-  display: none;
-  position: relative;
-  width: 180px;
-  height: 75px;
-  padding: 0px;
-  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#e5e696+18,d1d360+47 */
-  background: #e5e696;
-  /* Old browsers */
-  background: -moz-linear-gradient(top, #e5e696 18%, #d1d360 47%);
-  /* FF3.6-15 */
-  background: -webkit-linear-gradient(top, #e5e696 18%, #d1d360 47%);
-  /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(to bottom, #e5e696 18%, #d1d360 47%);
-  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e5e696', endColorstr='#d1d360',GradientType=0 );
-  /* IE6-9 */
-  -webkit-border-radius: 9px;
-  -moz-border-radius: 9px;
-  border-radius: 9px; }
-
-.cpu-bubble-hide:after {
-  content: '';
-  position: absolute;
-  border-style: solid;
-  border-width: 13px 0 13px 30px;
-  border-color: transparent #e5e696;
-  display: none;
-  width: 0;
-  z-index: 1;
-  right: -30px;
-  top: 14px; }
 
 .miss-bubble-hide {
   text-align: center;
@@ -280,25 +247,10 @@ table {
   left: -30px;
   top: 12px; }
 
-.player-stats-and-moves p {
+.healthyHP {
+  color: green;
   font-size: 3em;
   font-weight: bold; }
-
-.input-hide {
-  display: none; }
-
-.move-list {
-  background-color: white;
-  text-align: center; }
-
-.move-list-title {
-  text-decoration: underline;
-  font-style: oblique;
-  font-family: Lucida, serif;
-  font-size: 1.3em; }
-
-.healthyHP {
-  color: green; }
 
 .warningHP {
   font-size: 3em;
@@ -310,37 +262,34 @@ table {
   color: red;
   font-weight: bold; }
 
-.player-stats-and-moves input {
-  padding: 10px; }
-
-.cpu-stats-and-moves p {
+.input-instructions {
+  font-size: 1.5em;
+  color: red;
+  font-family: TimesNewRoman,"Times New Roman",Times,Baskerville,Georgia,serif;
   text-align: center;
-  font-size: 3em;
   font-weight: bold; }
 
-.link-text {
-  font-size: 1.4em;
-  font-family: cursive;
-  text-decoration: none;
-  color: black; }
+input[type='text'] {
+  font-size: 1.1em; }
 
-.link-text:hover {
-  color: white; }
+.input-hide {
+  display: none; }
 
-.rematch {
-  font-size: 1.4em;
-  font-family: cursive;
+.input-show {
+  display: block; }
+
+.move-list-title {
+  background-color: white;
   text-align: center;
-  margin-top: 20px;
-  text-decoration: none; }
+  text-decoration: underline;
+  font-style: oblique;
+  font-family: Lucida, serif;
+  font-size: 1.4em; }
 
-.rematch:hover {
-  color: red; }
-
-.progress-link {
-  font-size: 4em;
-  color: white;
-  font-family: cursive; }
+.move-list-items {
+  background-color: white;
+  text-align: center;
+  font-size: 1.2em; }
 
 .container {
   margin: 80px;
@@ -534,7 +483,6 @@ table {
 
 .progress-title {
   font-family: cursive;
-  margin-top: 120px;
   color: white; }
 
 .progress-tagline {
@@ -551,9 +499,7 @@ table {
   margin-bottom: 20px; }
 
 #stats-table {
-  width: 40%;
-  border-collapse: collapse;
-  margin: 0 auto; }
+  border-collapse: collapse; }
 
 tr:nth-of-type(odd) {
   background-color: red;
@@ -577,7 +523,6 @@ tr:nth-of-type(even) {
   text-align: center; }
 
 .back {
-  margin-left: 38%;
   padding: 15px;
   background-color: #ffc0cb;
   color: red;
@@ -587,8 +532,6 @@ tr:nth-of-type(even) {
   font-family: "Trebuchet MS","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Tahoma,sans-serif; }
 
 #homepage-link {
-  margin-left: 36%;
-  margin-top: 20px;
   padding: 15px;
   background-color: #ffc0cb;
   color: red;
@@ -3033,49 +2976,5 @@ body {
 
 .col.twelve {
   width: 100%; }
-
-.character-select-title {
-  font-family: monospace; }
-
-.character-select {
-  overflow: auto; }
-
-.player-select {
-  border: 1px solid blue;
-  padding: 80px;
-  width: 300px;
-  height: 300px;
-  border-radius: 50%;
-  float: left; }
-
-.cpu-select {
-  border: 1px solid red;
-  padding: 80px;
-  width: 300px;
-  height: 300px;
-  border-radius: 50%;
-  float: right; }
-
-.sample-sprite {
-  max-width: 100px;
-  margin-left: 30%; }
-
-.character-name {
-  color: purple;
-  font-size: 1.8em;
-  font-weight: bold;
-  font-family: Didot;
-  text-align: center; }
-
-.attack-command {
-  font-weight: bold; }
-
-.super-move-description {
-  text-align: center;
-  font-size: .9em; }
-
-.cpu-difficulty-form {
-  text-align: center;
-  margin-bottom: 10px; }
 
 /*# sourceMappingURL=style.css.map*/

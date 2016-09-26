@@ -1,7 +1,7 @@
 .progress-title {
   font-family: cursive;
-  margin-top: 120px;
   color: white;
+  // display: inline-block;
 }
 
 .progress-tagline {
@@ -20,9 +20,9 @@
 }
 
 #stats-table {
-  width: 40%;
+  // width: 40%;
   border-collapse: collapse;
-  margin: 0 auto;
+  // margin: 0 auto;
 }
 
 tr:nth-of-type(odd) {
@@ -52,7 +52,7 @@ tr:nth-of-type(even) {
 }
 
 .back {
-  margin-left: 38%;
+  // margin-left: 38%;
   padding: 15px;
   background-color: #ffc0cb;
   color: red;
@@ -63,8 +63,8 @@ tr:nth-of-type(even) {
 }
 
 #homepage-link {
-  margin-left: 36%;
-  margin-top: 20px;
+  // margin-left: 36%;
+  // margin-top: 20px;
   padding: 15px;
   background-color: #ffc0cb;
   color: red;

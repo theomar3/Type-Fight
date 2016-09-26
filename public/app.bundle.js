@@ -60,7 +60,7 @@
 	
 	var _fight2 = _interopRequireDefault(_fight);
 	
-	var _progress = __webpack_require__(240);
+	var _progress = __webpack_require__(236);
 	
 	var _progress2 = _interopRequireDefault(_progress);
 	
@@ -27143,11 +27143,11 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _fightStore = __webpack_require__(236);
+	var _fightStore = __webpack_require__(237);
 	
 	var _fightStore2 = _interopRequireDefault(_fightStore);
 	
-	var _audioPlay = __webpack_require__(237);
+	var _audioPlay = __webpack_require__(238);
 	
 	var _audioPlay2 = _interopRequireDefault(_audioPlay);
 	
@@ -27229,6 +27229,7 @@
 	          _react2.default.createElement('audio', { id: 'danger', src: './music/danger.mp3' }),
 	          _react2.default.createElement('audio', { id: 'gokuHeal', src: './music/goku-heal.mp3' }),
 	          _react2.default.createElement('audio', { id: 'dendeHeal', src: './music/dende-heal.mp3' }),
+	          _react2.default.createElement('audio', { id: 'wrongInput', src: './music/wrong-input.mp3' }),
 	          _react2.default.createElement('audio', { id: 'webBall', src: './music/web-ball.mp3' }),
 	          _react2.default.createElement('audio', { id: 'spiderSting', src: './music/spider-sting.mp3' }),
 	          _react2.default.createElement('audio', { id: 'webSwing', src: './music/web-swing.mp3' }),
@@ -27251,7 +27252,7 @@
 	                { href: 'index.html' },
 	                _react2.default.createElement(
 	                  'ul',
-	                  { className: 'fight-website-title' },
+	                  { className: 'fight-website-title animated rollIn' },
 	                  _react2.default.createElement(
 	                    'li',
 	                    null,
@@ -27330,6 +27331,23 @@
 	                        return _this2._clickFightTitle();
 	                      } },
 	                    this.state.text
+	                  ),
+	                  _react2.default.createElement(
+	                    _reactRouter.Link,
+	                    { className: 'link-text', to: '/progress' },
+	                    '       ',
+	                    _react2.default.createElement(
+	                      'p',
+	                      null,
+	                      this.state.clickForProgress
+	                    )
+	                  ),
+	                  _react2.default.createElement(
+	                    'p',
+	                    { className: 'rematch', onClick: function onClick() {
+	                        return _this2._clickFightTitle();
+	                      } },
+	                    this.state.rematch
 	                  )
 	                ),
 	                _react2.default.createElement(
@@ -27376,8 +27394,127 @@
 	              _react2.default.createElement(
 	                'div',
 	                { className: 'row' },
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'col two' },
+	                  _react2.default.createElement(
+	                    'div',
+	                    { className: this.state.playerBubble },
+	                    this.state.playerAttack
+	                  )
+	                ),
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'col two' },
+	                  _react2.default.createElement('img', { className: 'player-sprite', src: this.state.playerSprite })
+	                ),
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'col four' },
+	                  _react2.default.createElement(
+	                    'div',
+	                    { className: this.state.cpuBubble },
+	                    _react2.default.createElement(
+	                      'p',
+	                      null,
+	                      this.state.cpuAttack,
+	                      ' '
+	                    ),
+	                    _react2.default.createElement(
+	                      'p',
+	                      null,
+	                      this.state.healString
+	                    )
+	                  )
+	                ),
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'col two' },
+	                  _react2.default.createElement('img', { className: 'cpu-sprite', src: this.state.cpuSprite })
+	                ),
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'col two' },
+	                  _react2.default.createElement(
+	                    'div',
+	                    { className: this.state.missBubble },
+	                    _react2.default.createElement(
+	                      'p',
+	                      null,
+	                      this.state.cpuTaunt
+	                    )
+	                  )
+	                )
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'row' },
 	                _react2.default.createElement('div', { className: 'col two' }),
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'col two' },
+	                  _react2.default.createElement(
+	                    'p',
+	                    { className: this.state.playerStatus },
+	                    'HP:',
+	                    this.state.playerHP
+	                  )
+	                ),
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'col four' },
+	                  _react2.default.createElement(
+	                    'p',
+	                    { className: 'input-instructions' },
+	                    ' Enter Attack or Heal: ',
+	                    input
+	                  )
+	                ),
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'col two' },
+	                  _react2.default.createElement(
+	                    'p',
+	                    { className: this.state.cpuStatus },
+	                    'HP:',
+	                    this.state.cpuHP
+	                  )
+	                ),
 	                _react2.default.createElement('div', { className: 'col two' })
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'row' },
+	                _react2.default.createElement('div', { className: 'col four' }),
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'col four' },
+	                  _react2.default.createElement(
+	                    'p',
+	                    { className: 'move-list-title' },
+	                    ' Move List '
+	                  ),
+	                  _react2.default.createElement(
+	                    'ul',
+	                    { className: 'move-list-items' },
+	                    _react2.default.createElement(
+	                      'li',
+	                      null,
+	                      'ForwardS'
+	                    ),
+	                    _react2.default.createElement(
+	                      'li',
+	                      null,
+	                      'ChargeS'
+	                    ),
+	                    _react2.default.createElement(
+	                      'li',
+	                      null,
+	                      'UpwardS'
+	                    )
+	                  )
+	                ),
+	                _react2.default.createElement('div', { className: 'col four' })
 	              )
 	            )
 	          )
@@ -27397,17 +27534,108 @@
 
 	'use strict';
 	
-	var _audioPlay = __webpack_require__(237);
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _fightStore = __webpack_require__(237);
+	
+	var _fightStore2 = _interopRequireDefault(_fightStore);
+	
+	var _progressStore = __webpack_require__(239);
+	
+	var _progressStore2 = _interopRequireDefault(_progressStore);
+	
+	var _backbutton = __webpack_require__(241);
+	
+	var _backbutton2 = _interopRequireDefault(_backbutton);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var React = __webpack_require__(1);
+	
+	var Progress = function (_React$Component) {
+	  _inherits(Progress, _React$Component);
+	
+	  function Progress() {
+	    _classCallCheck(this, Progress);
+	
+	    var _this = _possibleConstructorReturn(this, (Progress.__proto__ || Object.getPrototypeOf(Progress)).call(this));
+	
+	    _fightStore2.default.actions.load();
+	
+	    _this.state = _fightStore2.default.copyState();
+	
+	    _fightStore2.default.addListener(function (state) {
+	      _this.setState(state);
+	    });
+	
+	    _progressStore2.default.addListener(function (state) {
+	      _this.setState(state);
+	    });
+	    return _this;
+	  }
+	
+	  _createClass(Progress, [{
+	    key: 'render',
+	    value: function render() {
+	      return React.createElement(
+	        'div',
+	        { className: 'row' },
+	        React.createElement(
+	          'div',
+	          { className: 'container col twelve' },
+	          React.createElement(
+	            'div',
+	            { className: 'row' },
+	            React.createElement('div', { className: 'col one' }),
+	            React.createElement(
+	              'div',
+	              { className: 'col ten' },
+	              React.createElement(
+	                'h1',
+	                { className: 'website-title progress-title animated bounceInLeft' },
+	                'Your'
+	              ),
+	              React.createElement(
+	                'h1',
+	                { className: 'website-title progress-title animated bounceInRight' },
+	                'Progress'
+	              )
+	            ),
+	            React.createElement('div', { className: 'col one' })
+	          )
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return Progress;
+	}(React.Component);
+	
+	module.exports = Progress;
+
+/***/ },
+/* 237 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var _audioPlay = __webpack_require__(238);
 	
 	var _audioPlay2 = _interopRequireDefault(_audioPlay);
 	
-	var _progressStore = __webpack_require__(238);
+	var _progressStore = __webpack_require__(239);
 	
 	var _progressStore2 = _interopRequireDefault(_progressStore);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	var $ = __webpack_require__(239);
+	var $ = __webpack_require__(240);
 	
 	
 	var intervalId;
@@ -27440,16 +27668,15 @@
 	  text: 'Click to begin',
 	  cpuAttack: '',
 	  playerAttack: '',
-	  playerHP: 30,
+	  playerHP: 15,
 	  playerStatus: 'healthyHP',
-	  cpuHP: 2,
+	  cpuHP: 24,
 	  cpuStatus: 'healthyHP',
 	  healString: '',
 	  cpuTaunt: '',
 	  playerSprite: './images/kenshin-start.gif',
 	  cpuSprite: './images/spidey-start.gif',
 	  playerInput: false,
-	
 	  playerBubble: 'player-bubble-hide',
 	  cpuBubble: 'cpu-bubble-hide',
 	  missBubble: 'miss-bubble-hide',
@@ -27663,8 +27890,8 @@
 	  state.playerInput = true;
 	  state.rematch = '';
 	  state.clickForProgress = '';
-	  state.playerHP = 30;
-	  state.cpuHP = 2;
+	  state.playerHP = 15;
+	  state.cpuHP = 24;
 	
 	  var MKTheme = document.getElementById('MKTheme');
 	  var GuileTheme = document.getElementById('GuileTheme');
@@ -27753,6 +27980,8 @@
 	      state.playerAttack = "Sorry, I don't know that move.";
 	      state.playerBubble = 'player-bubble-show';
 	      state.playerSprite = './images/kenshin-no-move.gif';
+	      var wrongInput = document.getElementById('wrongInput');
+	      wrongInput.play();
 	    }
 	    evt.target.value = '';
 	    gameState();
@@ -27807,7 +28036,7 @@
 	module.exports = store;
 
 /***/ },
-/* 237 */
+/* 238 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -27849,12 +28078,12 @@
 	module.exports = audioPlay;
 
 /***/ },
-/* 238 */
+/* 239 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var $ = __webpack_require__(239);
+	var $ = __webpack_require__(240);
 	
 	var state = {};
 	
@@ -27886,7 +28115,7 @@
 	module.exports = store;
 
 /***/ },
-/* 239 */
+/* 240 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*eslint-disable no-unused-vars*/
@@ -37964,139 +38193,6 @@
 	return jQuery;
 	} );
 
-
-/***/ },
-/* 240 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _fightStore = __webpack_require__(236);
-	
-	var _fightStore2 = _interopRequireDefault(_fightStore);
-	
-	var _progressStore = __webpack_require__(238);
-	
-	var _progressStore2 = _interopRequireDefault(_progressStore);
-	
-	var _backbutton = __webpack_require__(241);
-	
-	var _backbutton2 = _interopRequireDefault(_backbutton);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var React = __webpack_require__(1);
-	
-	var Progress = function (_React$Component) {
-	  _inherits(Progress, _React$Component);
-	
-	  function Progress() {
-	    _classCallCheck(this, Progress);
-	
-	    var _this = _possibleConstructorReturn(this, (Progress.__proto__ || Object.getPrototypeOf(Progress)).call(this));
-	
-	    _fightStore2.default.actions.load();
-	
-	    _this.state = _fightStore2.default.copyState();
-	
-	    _fightStore2.default.addListener(function (state) {
-	      _this.setState(state);
-	    });
-	
-	    _progressStore2.default.addListener(function (state) {
-	      _this.setState(state);
-	    });
-	    return _this;
-	  }
-	
-	  _createClass(Progress, [{
-	    key: 'render',
-	    value: function render() {
-	      return React.createElement(
-	        'div',
-	        null,
-	        React.createElement(
-	          'h1',
-	          { className: 'website-title progress-title' },
-	          'Your Progress'
-	        ),
-	        React.createElement(
-	          'h3',
-	          { className: 'progress-tagline' },
-	          ' Check how you\'re doing!'
-	        ),
-	        React.createElement(
-	          'h4',
-	          { id: 'stats-heading' },
-	          ' Player Stats'
-	        ),
-	        React.createElement(
-	          'table',
-	          { id: 'stats-table' },
-	          React.createElement(
-	            'tr',
-	            { id: 'HeadRow' },
-	            React.createElement(
-	              'td',
-	              null,
-	              ' Wins '
-	            ),
-	            React.createElement(
-	              'td',
-	              null,
-	              ' Losses '
-	            )
-	          ),
-	          React.createElement(
-	            'tr',
-	            null,
-	            React.createElement(
-	              'td',
-	              { tableHeadData: 'Wins' },
-	              ' ',
-	              this.state.wins,
-	              ' '
-	            ),
-	            React.createElement(
-	              'td',
-	              { tableHeadData: 'Losses' },
-	              ' ',
-	              this.state.losses,
-	              ' '
-	            )
-	          )
-	        ),
-	        React.createElement(_backbutton2.default, null),
-	        React.createElement(
-	          'a',
-	          { href: 'index.html' },
-	          React.createElement(
-	            'button',
-	            { id: 'homepage-link' },
-	            'Lemme Google Sign-In!'
-	          )
-	        ),
-	        React.createElement(
-	          'p',
-	          { id: 'sign-in-info' },
-	          ' (Psst. That way you can check your progress from around the world.)'
-	        )
-	      );
-	    }
-	  }]);
-	
-	  return Progress;
-	}(React.Component);
-	
-	module.exports = Progress;
 
 /***/ },
 /* 241 */

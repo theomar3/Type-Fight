@@ -69,6 +69,7 @@ class Fight extends React.Component {
 
           <audio id = 'gokuHeal' src='./music/goku-heal.mp3' />
           <audio id= 'dendeHeal' src="./music/dende-heal.mp3" />
+          <audio id ='wrongInput' src="./music/wrong-input.mp3" />
 
             {/*cpu attack audio*/}
 
@@ -94,7 +95,7 @@ class Fight extends React.Component {
             <div className='col one'></div>
             <div className='col ten'>
                <a href="index.html">
-                  <ul className='fight-website-title'  >
+                  <ul className='fight-website-title animated rollIn'  >
                     <li>T</li>
                     <li>y</li>
                     <li>P</li>
@@ -124,6 +125,11 @@ class Fight extends React.Component {
                   <p className='fight-title' onClick={() => this._clickFightTitle()}>
                       {this.state.text}
                   </p>
+                  <Link className='link-text' to={'/progress'}>       <p>{this.state.clickForProgress}</p>
+                  </Link>
+                  <p className='rematch' onClick={() => this._clickFightTitle()}>
+                     {this.state.rematch}
+                  </p>
                 </div>
                 <div className='col three'>
                   <h2 className="whose-character-cpu">
@@ -142,19 +148,67 @@ class Fight extends React.Component {
               </div>
 
               <div className='row'>
-                <div className='col two'></div>
+                <div className='col two'>
+                  <div className={this.state.playerBubble}>
+                       {this.state.playerAttack}
+                  </div>
+                </div>
                 <div className = 'col two'>
-
+                  <img className="player-sprite" src={this.state.playerSprite} />
+                </div>
+                <div className = 'col four'>
+                  <div className={this.state.cpuBubble}>
+                    <p>{this.state.cpuAttack} </p>
+                    <p>{this.state.healString}</p>
+                  </div>
+                </div>
+                <div className = 'col two'>
+                  <img className='cpu-sprite' src={this.state.cpuSprite} />
+                </div>
+                <div className = 'col two'>
+                  <div className={this.state.missBubble}>
+                      <p>{this.state.cpuTaunt}</p>
+                  </div>
                 </div>
               </div>
 
+              <div className = 'row'>
+                <div className = 'col two'></div>
+                <div className = 'col two'>
+                  <p className={this.state.playerStatus}>
+                    HP:{this.state.playerHP}
+                  </p>
+                </div>
+                <div className='col four'>
+                  <p className='input-instructions'> Enter Attack or Heal: {input}</p>
+                </div>
+                <div className = 'col two'>
+                  <p className={this.state.cpuStatus}>
+                    HP:{this.state.cpuHP}
+                  </p>
+                </div>
+                <div className = 'col two'></div>
+              </div>
+
+              <div className = 'row'>
+                <div className = 'col four'></div>
+                <div className='col four'>
+                  <p className='move-list-title'> Move List </p>
+                  <ul className="move-list-items">
+                    <li>ForwardS</li>
+                    <li>ChargeS</li>
+                    <li>UpwardS</li>
+                  </ul>
+                </div>
+                <div className = 'col four'></div>
+              </div>
+
             </div>
+
           </div>
 
-
-
-
         </div>
+
       </div>
 
 

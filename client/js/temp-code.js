@@ -1,57 +1,25 @@
 
+</div>
+<h1 className='website-title progress-title'>Your Progress</h1>
+<h3 className='progress-tagline'> Check how you're doing!</h3>
 
-/*  <form>
-    <select id='difficulty' name='cpuDifficulty' onChange={() => this._cpuDifficulty()}>
-      <option value ='void'>- Select CPU Difficulty - </option>
-      <option value='E' >{this.state.cpuEasy}</option>
-      <option value='M'>{this.state.cpuMedium}</option>
-      <option value='H'>{this.state.cpuHard}</option>
-    </select>
-  </form> */
+<h4 id="stats-heading"> Player Stats</h4>
 
+  <table id="stats-table">
+    <tr id='HeadRow'>
+      <td> Wins </td>
+      <td> Losses </td>
+    </tr>
 
-
-
-/*  <Link className='link-text' to={'/progress'}> {this.state.clickForProgress}</Link>*/
-
-/*  <p className='rematch' onClick={() => this._clickFightTitle()}> {this.state.rematch} </p> */
-
-  /*<img className="player-sprite" src={this.state.playerSprite} /> */
-
-/*  <div className={this.state.playerBubble}>
-     {this.state.playerAttack}
-  </div> */
-
-/*  <div className="player-stats-and-moves">
-    <p className={this.state.playerStatus}>
-      HP:{this.state.playerHP}
-    </p>
-    Enter Attack or Heal: {input}
-  </div> */
-
-  /*<img className='cpu-sprite' src={this.state.cpuSprite} /> */
-
-/*  <div className={this.state.missBubble}>
-    <p>{this.state.cpuTaunt}</p>
-  </div> */
-
-  /*<div className={this.state.cpuBubble}>
-    <p>{this.state.cpuAttack} </p>
-    <p>{this.state.healString}</p>
-  </div> */
-
-/*  <div className="cpu-stats-and-moves">
-    <p className={this.state.cpuStatus}>
-      HP:{this.state.cpuHP}
-    </p>
-  </div> */
-
-
-/*<div className='move-list'>
-  <p className='move-list-title'> Move List </p>
-  <ul className="move-list-items">
-    <li>ForwardS</li>
-    <li>ChargeS</li>
-    <li>UpwardS</li>
-  </ul>
-</div> */
+    <tr>
+      <td tableHeadData = "Wins"> {this.state.wins} </td>
+      <td tableHeadData = 'Losses'> {this.state.losses} </td>
+    </tr>
+  </table>
+  <BackButton />
+  <a href="index.html">
+    <button id='homepage-link'>
+      Lemme Google Sign-In!
+    </button>
+  </a>
+  <p id='sign-in-info'> (Psst. That way you can check your progress from around the world.)</p>

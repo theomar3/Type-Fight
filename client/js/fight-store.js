@@ -45,16 +45,15 @@ var state = {
   text: 'Click to begin',
   cpuAttack: '',
   playerAttack: '',
-  playerHP: 30,
+  playerHP: 15,
   playerStatus: 'healthyHP',
-  cpuHP: 2,
+  cpuHP: 24,
   cpuStatus: 'healthyHP',
   healString: '',
   cpuTaunt: '',
   playerSprite: './images/kenshin-start.gif',
   cpuSprite: './images/spidey-start.gif',
   playerInput: false,
-
   playerBubble: 'player-bubble-hide',
   cpuBubble: 'cpu-bubble-hide',
   missBubble: 'miss-bubble-hide',
@@ -294,8 +293,8 @@ store.actions.startFight = function() {
   state.playerInput = true;
   state.rematch = '';
   state.clickForProgress = '';
-  state.playerHP = 30;
-  state.cpuHP = 2;
+  state.playerHP = 15;
+  state.cpuHP = 24;
 
   var MKTheme = document.getElementById('MKTheme');
   var GuileTheme = document.getElementById('GuileTheme');
@@ -407,6 +406,8 @@ store.actions.attack = function(evt) {
       state.playerAttack = "Sorry, I don't know that move.";
       state.playerBubble = 'player-bubble-show';
       state.playerSprite = './images/kenshin-no-move.gif';
+      var wrongInput = document.getElementById('wrongInput');
+      wrongInput.play();
     }
     evt.target.value = '';
     gameState();
