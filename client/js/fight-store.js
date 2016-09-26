@@ -6,7 +6,8 @@ import ProgressStore from './progress-store.js';
 var intervalId;
 var battleMusic;
 var battleTheme;
-
+var difficulty;
+var difficultyChosen;
 
 
 
@@ -44,15 +45,15 @@ var state = {
   text: 'Click to begin',
   cpuAttack: '',
   playerAttack: '',
-  playerHP: 30,
+  playerHP: 15,
   playerStatus: 'healthyHP',
-  cpuHP: 2,
+  cpuHP: 24,
   cpuStatus: 'healthyHP',
   healString: '',
   cpuTaunt: '',
   playerSprite: './images/kenshin-start.gif',
   cpuSprite: './images/spidey-start.gif',
-  playerInput: 'input-hide',
+  playerInput: false,
   playerBubble: 'player-bubble-hide',
   cpuBubble: 'cpu-bubble-hide',
   missBubble: 'miss-bubble-hide',
@@ -63,9 +64,6 @@ var state = {
   cpuEasy: 'Easy',
   cpuMedium: 'Medium',
   cpuHard: 'Hard',
-  cpuLevel1: 'cpuLevel1',
-  cpuLevel2: 'cpuLevel2',
-  cpuLevel3: 'cpuLevel3',
 
 
 }
@@ -104,9 +102,6 @@ store.copyState = function() {
     cpuEasy: state.cpuEasy,
     cpuMedium: state.cpuMedium,
     cpuHard: state.cpuHard,
-    cpuLevel1: state.cpuLevel1,
-    cpuLevel2: state.cpuLevel2,
-    cpuLevel3: state.cpuLevel3
   }
 }
 
@@ -185,7 +180,17 @@ function intervalRounds() {
     state.cpuSprite = './images/spidey-sting.gif';
     spiderSting.play();
   }
-  state.healString = randomString(4,'aA');
+
+  if(difficultyChosen === 'E') {
+    state.healString = randomString(4, 'aA');
+  }
+  else if(difficultyChosen === 'M') {
+    state.healString = randomString(6, 'aA');
+  }
+  else if(difficultyChosen === 'H') {
+    state.healString = randomString(8, 'aA');
+  }
+
   state.playerHP -= 3;
   state.playerSprite = './images/kenshin-hit.gif';
 
@@ -211,7 +216,7 @@ function endFight() {
     state.playerSprite = './images/kenshin-dead.gif';
     state.cpuSprite = './images/spidey-win.gif';
     state.healString = '';
-    state.playerInput = 'input-hide';
+    state.playerInput = false;
     state.missBubble =  'miss-bubble-hide';
     battleTheme.pause();
     audioPlay.pauseDanger();
@@ -253,7 +258,7 @@ function endFight() {
     state.playerSprite = './images/kenshin-win.gif';
     state.cpuSprite = './images/spidey-dead.gif';
     state.healString = '';
-    state.playerInput = 'input-hide';
+    state.playerInput = false;
     state.missBubble =  'miss-bubble-hide';
     battleTheme.pause();
     var victory = document.getElementById('victory');
@@ -276,12 +281,20 @@ function endFight() {
 
 
 store.actions.startFight = function() {
+  if (difficulty === undefined) {
+    alert('Please choose CPU Difficulty!');
+  }
+  disableDropDown();
+
+
   state.text = 'Type Fight!';
   state.playerSprite = './images/kenshin-ready.gif';
   state.cpuSprite = './images/spidey-ready.gif';
-  state.playerInput = 'input-show';
-  state.playerHP = 30;
-  state.cpuHP = 2;
+  state.playerInput = true;
+  state.rematch = '';
+  state.clickForProgress = '';
+  state.playerHP = 15;
+  state.cpuHP = 24;
 
   var MKTheme = document.getElementById('MKTheme');
   var GuileTheme = document.getElementById('GuileTheme');
@@ -299,7 +312,7 @@ store.actions.startFight = function() {
   mainTheme.pause();
 
 
-  intervalId = setInterval(intervalRounds, 20000);
+  intervalId = setInterval(intervalRounds, 6000);
   changed();
 }
 
@@ -393,6 +406,8 @@ store.actions.attack = function(evt) {
       state.playerAttack = "Sorry, I don't know that move.";
       state.playerBubble = 'player-bubble-show';
       state.playerSprite = './images/kenshin-no-move.gif';
+      var wrongInput = document.getElementById('wrongInput');
+      wrongInput.play();
     }
     evt.target.value = '';
     gameState();
@@ -432,19 +447,23 @@ store.actions.load = function() {
 }
 
 store.actions.cpuDifficulty = function() {
-  var $difficulty = $('#difficulty');
-  var option = $('option');
+  difficulty = document.querySelector('#difficulty');
+  difficultyChosen = difficulty.options[difficulty.selectedIndex].value;
 
-  if(option.value === 'E') {
-    alert('Easy!');
-  }
-  else if(state.cpuMedium) {
-    alert('Medium!');
-  }
-  else if(state.cpuHard) {
-    alert('Hard!');
-  }
+
+
 }
+
+function disableDropDown() {
+  difficulty.disabled=true;
+}
+
+function enableDropDown() {
+  difficulty.disabled=false;
+}
+
+// function easy() {
+// }
 
 
 

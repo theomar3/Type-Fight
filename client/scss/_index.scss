@@ -1,6 +1,5 @@
 .container {
-  max-width: 1500px;
-  margin: 80px auto;
+  margin: 80px;
   background-color: red;
   padding-top: 40px;
   padding-bottom: 50px;
@@ -79,17 +78,17 @@
   display: inline-block;
   margin-right: 15px;
   opacity:0;  /* make things invisible upon start */
- -webkit-animation:fadeIn ease-in 1;  /* call our keyframe named fadeIn, use animattion ease-in and repeat it only 1 time */
- -moz-animation:fadeIn ease-in 1;
- animation:fadeIn ease-in 1;
+   -webkit-animation:fadeIn ease-in 1;  /* call our keyframe named fadeIn, use animattion ease-in and repeat it only 1 time */
+   -moz-animation:fadeIn ease-in 1;
+   animation:fadeIn ease-in 1;
 
- -webkit-animation-fill-mode:forwards;  /* this makes sure that after animation is done we remain at the last keyframe value (opacity: 1)*/
- -moz-animation-fill-mode:forwards;
- animation-fill-mode:forwards;
+   -webkit-animation-fill-mode:forwards;  /* this makes sure that after animation is done we remain at the last keyframe value (opacity: 1)*/
+   -moz-animation-fill-mode:forwards;
+   animation-fill-mode:forwards;
 
- -webkit-animation-duration: 8s;
- -moz-animation-duration: 8s;
- animation-duration: 8s;
+   -webkit-animation-duration: 8s;
+   -moz-animation-duration: 8s;
+   animation-duration: 8s;
 }
 
 .fade li:last-child {
@@ -137,14 +136,7 @@
   animation-delay: 8.5s;
 }
 
-.effects-div-top, .effects-div-bottom {
-  overflow: auto;
-}
-
-
 .kapow {
-  float: left;
-  margin-left: 5%;
   opacity: 1;
   transition: opacity 2.5s ease-out;
   max-width: 100%;
@@ -153,10 +145,7 @@
 }
 
 .crash {
-  float: right;
   transition: opacity 2.5s ease-out;
-  margin-right: 10%;
-  margin-top: 30px;
   max-width: 100%;
   height: auto;
   opacity: 1;
@@ -164,7 +153,6 @@
 }
 
 .bloop {
-  float: left;
   transition: opacity 2.5s ease-out;
   max-width: 100%;
   height: auto;
@@ -173,10 +161,7 @@
 }
 
 .vronk {
-  float: right;
   transition: opacity 2.5s ease-out;
-  margin-right: 10%;
-  margin-bottom: 30px;
   max-width: 100%;
   height: auto;
   opacity: 1;
@@ -190,14 +175,12 @@
 
 #google-signin {
   max-width: 100%;
-  margin-left: 44%;
   opacity: 1;
   transition: opacity 2.5s ease-in;
 
 }
 
 .google-signout {
-  margin-left: 44%;
   margin-top: 10px;
   opacity: 1;
   transition: opacity 2.5s ease-in;

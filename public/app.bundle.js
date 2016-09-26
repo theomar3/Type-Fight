@@ -60,7 +60,7 @@
 	
 	var _fight2 = _interopRequireDefault(_fight);
 	
-	var _progress = __webpack_require__(240);
+	var _progress = __webpack_require__(236);
 	
 	var _progress2 = _interopRequireDefault(_progress);
 	
@@ -88,7 +88,7 @@
 	    value: function render() {
 	      return _react2.default.createElement(
 	        'div',
-	        { className: 'container' },
+	        null,
 	        this.props.children
 	      );
 	    }
@@ -27143,11 +27143,11 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _fightStore = __webpack_require__(236);
+	var _fightStore = __webpack_require__(237);
 	
 	var _fightStore2 = _interopRequireDefault(_fightStore);
 	
-	var _audioPlay = __webpack_require__(237);
+	var _audioPlay = __webpack_require__(238);
 	
 	var _audioPlay2 = _interopRequireDefault(_audioPlay);
 	
@@ -27200,232 +27200,322 @@
 	    value: function render() {
 	      var _this2 = this;
 	
+	      var input;
+	      if (this.state.playerInput) {
+	        input = _react2.default.createElement('input', { type: 'text', autoFocus: true, className: 'input-show', onKeyUp: function onKeyUp(evt) {
+	            return _this2._playerAttack(evt);
+	          }, ref: function ref(input) {
+	            return _this2._input = input;
+	          } });
+	      }
+	
 	      return _react2.default.createElement(
 	        'div',
-	        null,
-	        _react2.default.createElement('audio', { id: 'mainTheme', src: './music/fallen-angels.mp3', autoPlay: true, muted: true }),
-	        _react2.default.createElement('audio', { id: 'MKTheme', src: './music/MK-theme.mp3' }),
-	        _react2.default.createElement('audio', { id: 'GuileTheme', src: './music/Guile-theme.mp3' }),
-	        _react2.default.createElement('audio', { id: 'FF7BossTheme', src: './music/FF7-boss-theme.mp3' }),
-	        _react2.default.createElement('audio', { id: 'gameOver', src: './music/game-over-man.mp3' }),
-	        _react2.default.createElement('audio', { id: 'dna', src: './music/dna.mp3' }),
-	        _react2.default.createElement('audio', { id: 'kneel', src: './music/kneel.mp3' }),
-	        _react2.default.createElement('audio', { id: 'victory', src: './music/victory.mp3' }),
-	        _react2.default.createElement('audio', { id: 'playerHit', src: './music/player-hit.mp3' }),
-	        _react2.default.createElement('audio', { id: 'cpuHit', src: './music/cpu-hit.mp3' }),
-	        _react2.default.createElement('audio', { id: 'warning', src: './music/warning.mp3' }),
-	        _react2.default.createElement('audio', { id: 'danger', src: './music/danger.mp3' }),
-	        _react2.default.createElement('audio', { id: 'gokuHeal', src: './music/goku-heal.mp3' }),
-	        _react2.default.createElement('audio', { id: 'dendeHeal', src: './music/dende-heal.mp3' }),
-	        _react2.default.createElement('audio', { id: 'webBall', src: './music/web-ball.mp3' }),
-	        _react2.default.createElement('audio', { id: 'spiderSting', src: './music/spider-sting.mp3' }),
-	        _react2.default.createElement('audio', { id: 'webSwing', src: './music/web-swing.mp3' }),
-	        _react2.default.createElement('audio', { id: 'chargingSlash', src: './music/charging-slash.mp3' }),
-	        _react2.default.createElement('audio', { id: 'forwardSlash', src: './music/forward-slash.mp3' }),
-	        _react2.default.createElement('audio', { id: 'upwardSlash', src: './music/upward-slash.mp3' }),
-	        _react2.default.createElement('audio', { id: 'bradleyTaunt', src: './music/bradley-miss-taunt.mp3' }),
-	        _react2.default.createElement('audio', { id: 'laughTaunt', src: './music/laugh-miss-taunt.wav' }),
-	        _react2.default.createElement('audio', { id: 'patheticTaunt', src: './music/pathetic-miss-taunt.wav' }),
-	        _react2.default.createElement('audio', { id: 'suckTaunt', src: './music/suck-miss-taunt.wav' }),
-	        _react2.default.createElement(
-	          'a',
-	          { href: 'index.html' },
-	          _react2.default.createElement(
-	            'ul',
-	            { className: 'fight-website-title' },
-	            _react2.default.createElement(
-	              'li',
-	              null,
-	              'T'
-	            ),
-	            _react2.default.createElement(
-	              'li',
-	              null,
-	              'y'
-	            ),
-	            _react2.default.createElement(
-	              'li',
-	              null,
-	              'P'
-	            ),
-	            _react2.default.createElement(
-	              'li',
-	              null,
-	              'e'
-	            ),
-	            _react2.default.createElement(
-	              'li',
-	              null,
-	              'F'
-	            ),
-	            _react2.default.createElement(
-	              'li',
-	              null,
-	              'i'
-	            ),
-	            _react2.default.createElement(
-	              'li',
-	              null,
-	              'G'
-	            ),
-	            _react2.default.createElement(
-	              'li',
-	              null,
-	              'h'
-	            ),
-	            _react2.default.createElement(
-	              'li',
-	              null,
-	              'T'
-	            )
-	          )
-	        ),
+	        { className: 'row' },
 	        _react2.default.createElement(
 	          'div',
-	          { 'class': 'character-identifier' },
-	          _react2.default.createElement(
-	            'h2',
-	            { className: 'whose-character-player' },
-	            ' You '
-	          ),
-	          _react2.default.createElement(
-	            'h2',
-	            { className: 'whose-character-cpu' },
-	            ' CPU '
-	          ),
-	          _react2.default.createElement(
-	            'select',
-	            { id: 'difficulty', name: 'cpuDifficulty', onChange: function onChange() {
-	                return _this2._cpuDifficulty();
-	              } },
-	            _react2.default.createElement(
-	              'option',
-	              { value: '' },
-	              '- Select CPU Difficulty - '
-	            ),
-	            _react2.default.createElement(
-	              'option',
-	              { value: 'E' },
-	              this.state.cpuEasy
-	            ),
-	            _react2.default.createElement(
-	              'option',
-	              { value: 'M' },
-	              this.state.cpuMedium
-	            ),
-	            _react2.default.createElement(
-	              'option',
-	              { value: 'H' },
-	              this.state.cpuHard
-	            )
-	          )
-	        ),
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'fight-screen' },
-	          _react2.default.createElement(
-	            'p',
-	            { className: 'fight-title', onClick: function onClick() {
-	                return _this2._clickFightTitle();
-	              } },
-	            this.state.text
-	          ),
-	          _react2.default.createElement(
-	            _reactRouter.Link,
-	            { className: 'link-text', to: '/progress' },
-	            ' ',
-	            this.state.clickForProgress
-	          ),
-	          _react2.default.createElement(
-	            'p',
-	            { className: 'rematch', onClick: function onClick() {
-	                return _this2._clickFightTitle();
-	              } },
-	            ' ',
-	            this.state.rematch,
-	            ' '
-	          ),
-	          _react2.default.createElement('img', { className: 'player-sprite', src: this.state.playerSprite }),
+	          { className: 'container col twelve' },
+	          _react2.default.createElement('audio', { id: 'mainTheme', src: './music/fallen-angels.mp3', autoPlay: true, muted: true }),
+	          _react2.default.createElement('audio', { id: 'MKTheme', src: './music/MK-theme.mp3' }),
+	          _react2.default.createElement('audio', { id: 'GuileTheme', src: './music/Guile-theme.mp3' }),
+	          _react2.default.createElement('audio', { id: 'FF7BossTheme', src: './music/FF7-boss-theme.mp3' }),
+	          _react2.default.createElement('audio', { id: 'gameOver', src: './music/game-over-man.mp3' }),
+	          _react2.default.createElement('audio', { id: 'dna', src: './music/dna.mp3' }),
+	          _react2.default.createElement('audio', { id: 'kneel', src: './music/kneel.mp3' }),
+	          _react2.default.createElement('audio', { id: 'victory', src: './music/victory.mp3' }),
+	          _react2.default.createElement('audio', { id: 'playerHit', src: './music/player-hit.mp3' }),
+	          _react2.default.createElement('audio', { id: 'cpuHit', src: './music/cpu-hit.mp3' }),
+	          _react2.default.createElement('audio', { id: 'warning', src: './music/warning.mp3' }),
+	          _react2.default.createElement('audio', { id: 'danger', src: './music/danger.mp3' }),
+	          _react2.default.createElement('audio', { id: 'gokuHeal', src: './music/goku-heal.mp3' }),
+	          _react2.default.createElement('audio', { id: 'dendeHeal', src: './music/dende-heal.mp3' }),
+	          _react2.default.createElement('audio', { id: 'wrongInput', src: './music/wrong-input.mp3' }),
+	          _react2.default.createElement('audio', { id: 'webBall', src: './music/web-ball.mp3' }),
+	          _react2.default.createElement('audio', { id: 'spiderSting', src: './music/spider-sting.mp3' }),
+	          _react2.default.createElement('audio', { id: 'webSwing', src: './music/web-swing.mp3' }),
+	          _react2.default.createElement('audio', { id: 'chargingSlash', src: './music/charging-slash.mp3' }),
+	          _react2.default.createElement('audio', { id: 'forwardSlash', src: './music/forward-slash.mp3' }),
+	          _react2.default.createElement('audio', { id: 'upwardSlash', src: './music/upward-slash.mp3' }),
+	          _react2.default.createElement('audio', { id: 'bradleyTaunt', src: './music/bradley-miss-taunt.mp3' }),
+	          _react2.default.createElement('audio', { id: 'laughTaunt', src: './music/laugh-miss-taunt.wav' }),
+	          _react2.default.createElement('audio', { id: 'patheticTaunt', src: './music/pathetic-miss-taunt.wav' }),
+	          _react2.default.createElement('audio', { id: 'suckTaunt', src: './music/suck-miss-taunt.wav' }),
 	          _react2.default.createElement(
 	            'div',
-	            { className: this.state.playerBubble },
-	            this.state.playerAttack
-	          ),
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'player-stats-and-moves' },
+	            { className: 'row' },
+	            _react2.default.createElement('div', { className: 'col one' }),
 	            _react2.default.createElement(
-	              'p',
-	              { className: this.state.playerStatus },
-	              'HP:',
-	              this.state.playerHP
+	              'div',
+	              { className: 'col ten' },
+	              _react2.default.createElement(
+	                'a',
+	                { href: 'index.html' },
+	                _react2.default.createElement(
+	                  'ul',
+	                  { className: 'fight-website-title animated rollIn' },
+	                  _react2.default.createElement(
+	                    'li',
+	                    null,
+	                    'T'
+	                  ),
+	                  _react2.default.createElement(
+	                    'li',
+	                    null,
+	                    'y'
+	                  ),
+	                  _react2.default.createElement(
+	                    'li',
+	                    null,
+	                    'P'
+	                  ),
+	                  _react2.default.createElement(
+	                    'li',
+	                    null,
+	                    'e'
+	                  ),
+	                  _react2.default.createElement(
+	                    'li',
+	                    null,
+	                    'F'
+	                  ),
+	                  _react2.default.createElement(
+	                    'li',
+	                    null,
+	                    'i'
+	                  ),
+	                  _react2.default.createElement(
+	                    'li',
+	                    null,
+	                    'G'
+	                  ),
+	                  _react2.default.createElement(
+	                    'li',
+	                    null,
+	                    'h'
+	                  ),
+	                  _react2.default.createElement(
+	                    'li',
+	                    null,
+	                    'T'
+	                  )
+	                )
+	              )
 	            ),
-	            'Enter Attack or Heal: ',
-	            _react2.default.createElement('input', { className: this.state.playerInput, onKeyUp: function onKeyUp(evt) {
-	                return _this2._playerAttack(evt);
-	              }, ref: 'attackHealInput' })
-	          ),
-	          _react2.default.createElement('img', { className: 'cpu-sprite', src: this.state.cpuSprite }),
-	          _react2.default.createElement(
-	            'div',
-	            { className: this.state.missBubble },
-	            _react2.default.createElement(
-	              'p',
-	              null,
-	              this.state.cpuTaunt
-	            )
+	            _react2.default.createElement('div', { className: 'col one' })
 	          ),
 	          _react2.default.createElement(
 	            'div',
-	            { className: this.state.cpuBubble },
+	            { className: 'row' },
 	            _react2.default.createElement(
-	              'p',
-	              null,
-	              this.state.cpuAttack,
-	              ' '
-	            ),
-	            _react2.default.createElement(
-	              'p',
-	              null,
-	              this.state.healString
-	            )
-	          ),
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'cpu-stats-and-moves' },
-	            _react2.default.createElement(
-	              'p',
-	              { className: this.state.cpuStatus },
-	              'HP:',
-	              this.state.cpuHP
-	            )
-	          )
-	        ),
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'move-list' },
-	          _react2.default.createElement(
-	            'p',
-	            { className: 'move-list-title' },
-	            ' Move List '
-	          ),
-	          _react2.default.createElement(
-	            'ul',
-	            { className: 'move-list-items' },
-	            _react2.default.createElement(
-	              'li',
-	              null,
-	              'ForwardS'
-	            ),
-	            _react2.default.createElement(
-	              'li',
-	              null,
-	              'ChargeS'
-	            ),
-	            _react2.default.createElement(
-	              'li',
-	              null,
-	              'UpwardS'
+	              'div',
+	              { className: 'fight-screen col twelve' },
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'row' },
+	                _react2.default.createElement('div', { className: 'col two' }),
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'col two' },
+	                  _react2.default.createElement(
+	                    'h2',
+	                    { className: 'whose-character-player' },
+	                    'You'
+	                  )
+	                ),
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'col four' },
+	                  _react2.default.createElement(
+	                    'p',
+	                    { className: 'fight-title', onClick: function onClick() {
+	                        return _this2._clickFightTitle();
+	                      } },
+	                    this.state.text
+	                  ),
+	                  _react2.default.createElement(
+	                    _reactRouter.Link,
+	                    { className: 'link-text', to: '/progress' },
+	                    '       ',
+	                    _react2.default.createElement(
+	                      'p',
+	                      null,
+	                      this.state.clickForProgress
+	                    )
+	                  ),
+	                  _react2.default.createElement(
+	                    'p',
+	                    { className: 'rematch', onClick: function onClick() {
+	                        return _this2._clickFightTitle();
+	                      } },
+	                    this.state.rematch
+	                  )
+	                ),
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'col three' },
+	                  _react2.default.createElement(
+	                    'h2',
+	                    { className: 'whose-character-cpu' },
+	                    'CPU'
+	                  ),
+	                  _react2.default.createElement(
+	                    'form',
+	                    null,
+	                    _react2.default.createElement(
+	                      'select',
+	                      { id: 'difficulty', name: 'cpuDifficulty', onChange: function onChange() {
+	                          return _this2._cpuDifficulty();
+	                        } },
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: 'void' },
+	                        '- Select CPU Difficulty - '
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: 'E' },
+	                        this.state.cpuEasy
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: 'M' },
+	                        this.state.cpuMedium
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: 'H' },
+	                        this.state.cpuHard
+	                      )
+	                    )
+	                  )
+	                ),
+	                _react2.default.createElement('div', { className: 'col one' })
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'row' },
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'col two' },
+	                  _react2.default.createElement(
+	                    'div',
+	                    { className: this.state.playerBubble },
+	                    this.state.playerAttack
+	                  )
+	                ),
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'col two' },
+	                  _react2.default.createElement('img', { className: 'player-sprite', src: this.state.playerSprite })
+	                ),
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'col four' },
+	                  _react2.default.createElement(
+	                    'div',
+	                    { className: this.state.cpuBubble },
+	                    _react2.default.createElement(
+	                      'p',
+	                      null,
+	                      this.state.cpuAttack,
+	                      ' '
+	                    ),
+	                    _react2.default.createElement(
+	                      'p',
+	                      null,
+	                      this.state.healString
+	                    )
+	                  )
+	                ),
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'col two' },
+	                  _react2.default.createElement('img', { className: 'cpu-sprite', src: this.state.cpuSprite })
+	                ),
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'col two' },
+	                  _react2.default.createElement(
+	                    'div',
+	                    { className: this.state.missBubble },
+	                    _react2.default.createElement(
+	                      'p',
+	                      null,
+	                      this.state.cpuTaunt
+	                    )
+	                  )
+	                )
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'row' },
+	                _react2.default.createElement('div', { className: 'col two' }),
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'col two' },
+	                  _react2.default.createElement(
+	                    'p',
+	                    { className: this.state.playerStatus },
+	                    'HP:',
+	                    this.state.playerHP
+	                  )
+	                ),
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'col four' },
+	                  _react2.default.createElement(
+	                    'p',
+	                    { className: 'input-instructions' },
+	                    ' Enter Attack or Heal: ',
+	                    input
+	                  )
+	                ),
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'col two' },
+	                  _react2.default.createElement(
+	                    'p',
+	                    { className: this.state.cpuStatus },
+	                    'HP:',
+	                    this.state.cpuHP
+	                  )
+	                ),
+	                _react2.default.createElement('div', { className: 'col two' })
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'row' },
+	                _react2.default.createElement('div', { className: 'col four' }),
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'col four' },
+	                  _react2.default.createElement(
+	                    'p',
+	                    { className: 'move-list-title' },
+	                    ' Move List '
+	                  ),
+	                  _react2.default.createElement(
+	                    'ul',
+	                    { className: 'move-list-items' },
+	                    _react2.default.createElement(
+	                      'li',
+	                      null,
+	                      'ForwardS'
+	                    ),
+	                    _react2.default.createElement(
+	                      'li',
+	                      null,
+	                      'ChargeS'
+	                    ),
+	                    _react2.default.createElement(
+	                      'li',
+	                      null,
+	                      'UpwardS'
+	                    )
+	                  )
+	                ),
+	                _react2.default.createElement('div', { className: 'col four' })
+	              )
 	            )
 	          )
 	        )
@@ -27444,22 +27534,220 @@
 
 	'use strict';
 	
-	var _audioPlay = __webpack_require__(237);
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _fightStore = __webpack_require__(237);
+	
+	var _fightStore2 = _interopRequireDefault(_fightStore);
+	
+	var _progressStore = __webpack_require__(239);
+	
+	var _progressStore2 = _interopRequireDefault(_progressStore);
+	
+	var _backbutton = __webpack_require__(241);
+	
+	var _backbutton2 = _interopRequireDefault(_backbutton);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var React = __webpack_require__(1);
+	
+	var Progress = function (_React$Component) {
+	  _inherits(Progress, _React$Component);
+	
+	  function Progress() {
+	    _classCallCheck(this, Progress);
+	
+	    var _this = _possibleConstructorReturn(this, (Progress.__proto__ || Object.getPrototypeOf(Progress)).call(this));
+	
+	    _fightStore2.default.actions.load();
+	
+	    _this.state = _fightStore2.default.copyState();
+	
+	    _fightStore2.default.addListener(function (state) {
+	      _this.setState(state);
+	    });
+	
+	    _progressStore2.default.addListener(function (state) {
+	      _this.setState(state);
+	    });
+	    return _this;
+	  }
+	
+	  _createClass(Progress, [{
+	    key: 'render',
+	    value: function render() {
+	      return React.createElement(
+	        'div',
+	        { className: 'row' },
+	        React.createElement(
+	          'div',
+	          { className: 'container col twelve' },
+	          React.createElement(
+	            'div',
+	            { className: 'row' },
+	            React.createElement('div', { className: 'col one' }),
+	            React.createElement(
+	              'div',
+	              { className: 'col ten' },
+	              React.createElement(
+	                'h1',
+	                { className: 'website-title progress-title animated slideInDown' },
+	                'Your'
+	              ),
+	              React.createElement(
+	                'h1',
+	                { className: 'website-title progress-title animated slideInUp' },
+	                'Progress'
+	              )
+	            ),
+	            React.createElement('div', { className: 'col one' })
+	          ),
+	          React.createElement(
+	            'div',
+	            { className: 'row' },
+	            React.createElement('div', { className: 'col one' }),
+	            React.createElement(
+	              'div',
+	              { className: 'col ten' },
+	              React.createElement(
+	                'h3',
+	                { className: 'progress-tagline animated pulse' },
+	                ' Check how you\'re doing!'
+	              )
+	            ),
+	            React.createElement('div', { className: 'col one' })
+	          ),
+	          React.createElement(
+	            'div',
+	            { className: 'row' },
+	            React.createElement('div', { className: 'col one' }),
+	            React.createElement(
+	              'div',
+	              { className: 'col ten' },
+	              React.createElement(
+	                'h4',
+	                { id: 'stats-heading' },
+	                ' Player Stats'
+	              ),
+	              React.createElement(
+	                'table',
+	                { id: 'stats-table' },
+	                React.createElement(
+	                  'tr',
+	                  { id: 'HeadRow' },
+	                  React.createElement(
+	                    'td',
+	                    null,
+	                    ' Wins '
+	                  ),
+	                  React.createElement(
+	                    'td',
+	                    null,
+	                    ' Losses '
+	                  )
+	                ),
+	                React.createElement(
+	                  'tr',
+	                  null,
+	                  React.createElement(
+	                    'td',
+	                    { tableHeadData: 'Wins' },
+	                    ' ',
+	                    this.state.wins,
+	                    ' '
+	                  ),
+	                  React.createElement(
+	                    'td',
+	                    { tableHeadData: 'Losses' },
+	                    ' ',
+	                    this.state.losses,
+	                    ' '
+	                  )
+	                )
+	              )
+	            ),
+	            React.createElement('div', { className: 'col one' })
+	          ),
+	          React.createElement(
+	            'div',
+	            { className: 'row' },
+	            React.createElement('div', { className: 'col two' }),
+	            React.createElement(
+	              'div',
+	              { className: 'col two' },
+	              React.createElement(_backbutton2.default, null)
+	            ),
+	            React.createElement('div', { className: 'col four' }),
+	            React.createElement(
+	              'div',
+	              { className: 'col two' },
+	              React.createElement(
+	                'a',
+	                { href: 'index.html' },
+	                React.createElement(
+	                  'button',
+	                  { id: 'homepage-link' },
+	                  '*Lemme Google Sign-In!'
+	                )
+	              )
+	            ),
+	            React.createElement('div', { className: 'col two' })
+	          ),
+	          React.createElement(
+	            'div',
+	            { className: 'row' },
+	            React.createElement('div', { className: 'col seven' }),
+	            React.createElement(
+	              'div',
+	              { className: 'col five' },
+	              React.createElement(
+	                'p',
+	                { id: 'sign-in-info' },
+	                ' *(Psst. That way you can check your progress from around the world.)'
+	              )
+	            )
+	          )
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return Progress;
+	}(React.Component);
+	
+	module.exports = Progress;
+
+/***/ },
+/* 237 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var _audioPlay = __webpack_require__(238);
 	
 	var _audioPlay2 = _interopRequireDefault(_audioPlay);
 	
-	var _progressStore = __webpack_require__(238);
+	var _progressStore = __webpack_require__(239);
 	
 	var _progressStore2 = _interopRequireDefault(_progressStore);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	var $ = __webpack_require__(239);
+	var $ = __webpack_require__(240);
 	
 	
 	var intervalId;
 	var battleMusic;
 	var battleTheme;
+	var difficulty;
+	var difficultyChosen;
 	
 	var cpuAttacks = ['Web Ball!', 'Web Swing!', 'Spider Sting!'];
 	
@@ -27485,15 +27773,15 @@
 	  text: 'Click to begin',
 	  cpuAttack: '',
 	  playerAttack: '',
-	  playerHP: 30,
+	  playerHP: 15,
 	  playerStatus: 'healthyHP',
-	  cpuHP: 2,
+	  cpuHP: 24,
 	  cpuStatus: 'healthyHP',
 	  healString: '',
 	  cpuTaunt: '',
 	  playerSprite: './images/kenshin-start.gif',
 	  cpuSprite: './images/spidey-start.gif',
-	  playerInput: 'input-hide',
+	  playerInput: false,
 	  playerBubble: 'player-bubble-hide',
 	  cpuBubble: 'cpu-bubble-hide',
 	  missBubble: 'miss-bubble-hide',
@@ -27503,10 +27791,7 @@
 	  rematch: '',
 	  cpuEasy: 'Easy',
 	  cpuMedium: 'Medium',
-	  cpuHard: 'Hard',
-	  cpuLevel1: 'cpuLevel1',
-	  cpuLevel2: 'cpuLevel2',
-	  cpuLevel3: 'cpuLevel3'
+	  cpuHard: 'Hard'
 	
 	};
 	
@@ -27543,10 +27828,7 @@
 	    rematch: state.rematch,
 	    cpuEasy: state.cpuEasy,
 	    cpuMedium: state.cpuMedium,
-	    cpuHard: state.cpuHard,
-	    cpuLevel1: state.cpuLevel1,
-	    cpuLevel2: state.cpuLevel2,
-	    cpuLevel3: state.cpuLevel3
+	    cpuHard: state.cpuHard
 	  };
 	};
 	
@@ -27620,7 +27902,15 @@
 	    state.cpuSprite = './images/spidey-sting.gif';
 	    spiderSting.play();
 	  }
-	  state.healString = randomString(4, 'aA');
+	
+	  if (difficultyChosen === 'E') {
+	    state.healString = randomString(4, 'aA');
+	  } else if (difficultyChosen === 'M') {
+	    state.healString = randomString(6, 'aA');
+	  } else if (difficultyChosen === 'H') {
+	    state.healString = randomString(8, 'aA');
+	  }
+	
 	  state.playerHP -= 3;
 	  state.playerSprite = './images/kenshin-hit.gif';
 	
@@ -27643,7 +27933,7 @@
 	    state.playerSprite = './images/kenshin-dead.gif';
 	    state.cpuSprite = './images/spidey-win.gif';
 	    state.healString = '';
-	    state.playerInput = 'input-hide';
+	    state.playerInput = false;
 	    state.missBubble = 'miss-bubble-hide';
 	    battleTheme.pause();
 	    _audioPlay2.default.pauseDanger();
@@ -27676,7 +27966,7 @@
 	    state.playerSprite = './images/kenshin-win.gif';
 	    state.cpuSprite = './images/spidey-dead.gif';
 	    state.healString = '';
-	    state.playerInput = 'input-hide';
+	    state.playerInput = false;
 	    state.missBubble = 'miss-bubble-hide';
 	    battleTheme.pause();
 	    var victory = document.getElementById('victory');
@@ -27694,12 +27984,19 @@
 	}
 	
 	store.actions.startFight = function () {
+	  if (difficulty === undefined) {
+	    alert('Please choose CPU Difficulty!');
+	  }
+	  disableDropDown();
+	
 	  state.text = 'Type Fight!';
 	  state.playerSprite = './images/kenshin-ready.gif';
 	  state.cpuSprite = './images/spidey-ready.gif';
-	  state.playerInput = 'input-show';
-	  state.playerHP = 30;
-	  state.cpuHP = 2;
+	  state.playerInput = true;
+	  state.rematch = '';
+	  state.clickForProgress = '';
+	  state.playerHP = 15;
+	  state.cpuHP = 24;
 	
 	  var MKTheme = document.getElementById('MKTheme');
 	  var GuileTheme = document.getElementById('GuileTheme');
@@ -27712,7 +28009,7 @@
 	  var mainTheme = document.getElementById('mainTheme');
 	  mainTheme.pause();
 	
-	  intervalId = setInterval(intervalRounds, 20000);
+	  intervalId = setInterval(intervalRounds, 6000);
 	  changed();
 	};
 	
@@ -27788,6 +28085,8 @@
 	      state.playerAttack = "Sorry, I don't know that move.";
 	      state.playerBubble = 'player-bubble-show';
 	      state.playerSprite = './images/kenshin-no-move.gif';
+	      var wrongInput = document.getElementById('wrongInput');
+	      wrongInput.play();
 	    }
 	    evt.target.value = '';
 	    gameState();
@@ -27823,22 +28122,26 @@
 	};
 	
 	store.actions.cpuDifficulty = function () {
-	  var $difficulty = $('#difficulty');
-	  var option = $('option');
-	
-	  if (option.value === 'E') {
-	    alert('Easy!');
-	  } else if (state.cpuMedium) {
-	    alert('Medium!');
-	  } else if (state.cpuHard) {
-	    alert('Hard!');
-	  }
+	  difficulty = document.querySelector('#difficulty');
+	  difficultyChosen = difficulty.options[difficulty.selectedIndex].value;
 	};
+	
+	function disableDropDown() {
+	  difficulty.disabled = true;
+	}
+	
+	function enableDropDown() {
+	  difficulty.disabled = false;
+	}
+	
+	// function easy() {
+	// }
+	
 	
 	module.exports = store;
 
 /***/ },
-/* 237 */
+/* 238 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -27880,12 +28183,12 @@
 	module.exports = audioPlay;
 
 /***/ },
-/* 238 */
+/* 239 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var $ = __webpack_require__(239);
+	var $ = __webpack_require__(240);
 	
 	var state = {};
 	
@@ -27917,7 +28220,7 @@
 	module.exports = store;
 
 /***/ },
-/* 239 */
+/* 240 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*eslint-disable no-unused-vars*/
@@ -37995,139 +38298,6 @@
 	return jQuery;
 	} );
 
-
-/***/ },
-/* 240 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _fightStore = __webpack_require__(236);
-	
-	var _fightStore2 = _interopRequireDefault(_fightStore);
-	
-	var _progressStore = __webpack_require__(238);
-	
-	var _progressStore2 = _interopRequireDefault(_progressStore);
-	
-	var _backbutton = __webpack_require__(241);
-	
-	var _backbutton2 = _interopRequireDefault(_backbutton);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var React = __webpack_require__(1);
-	
-	var Progress = function (_React$Component) {
-	  _inherits(Progress, _React$Component);
-	
-	  function Progress() {
-	    _classCallCheck(this, Progress);
-	
-	    var _this = _possibleConstructorReturn(this, (Progress.__proto__ || Object.getPrototypeOf(Progress)).call(this));
-	
-	    _fightStore2.default.actions.load();
-	
-	    _this.state = _fightStore2.default.copyState();
-	
-	    _fightStore2.default.addListener(function (state) {
-	      _this.setState(state);
-	    });
-	
-	    _progressStore2.default.addListener(function (state) {
-	      _this.setState(state);
-	    });
-	    return _this;
-	  }
-	
-	  _createClass(Progress, [{
-	    key: 'render',
-	    value: function render() {
-	      return React.createElement(
-	        'div',
-	        null,
-	        React.createElement(
-	          'h1',
-	          { className: 'website-title progress-title' },
-	          'Your Progress'
-	        ),
-	        React.createElement(
-	          'h3',
-	          { className: 'progress-tagline' },
-	          ' Check how you\'re doing!'
-	        ),
-	        React.createElement(
-	          'h4',
-	          { id: 'stats-heading' },
-	          ' Player Stats'
-	        ),
-	        React.createElement(
-	          'table',
-	          { id: 'stats-table' },
-	          React.createElement(
-	            'tr',
-	            { id: 'HeadRow' },
-	            React.createElement(
-	              'td',
-	              null,
-	              ' Wins '
-	            ),
-	            React.createElement(
-	              'td',
-	              null,
-	              ' Losses '
-	            )
-	          ),
-	          React.createElement(
-	            'tr',
-	            null,
-	            React.createElement(
-	              'td',
-	              { tableHeadData: 'Wins' },
-	              ' ',
-	              this.state.wins,
-	              ' '
-	            ),
-	            React.createElement(
-	              'td',
-	              { tableHeadData: 'Losses' },
-	              ' ',
-	              this.state.losses,
-	              ' '
-	            )
-	          )
-	        ),
-	        React.createElement(_backbutton2.default, null),
-	        React.createElement(
-	          'a',
-	          { href: 'index.html' },
-	          React.createElement(
-	            'button',
-	            { id: 'homepage-link' },
-	            'Lemme Google Sign-In!'
-	          )
-	        ),
-	        React.createElement(
-	          'p',
-	          { id: 'sign-in-info' },
-	          ' (Psst. That way you can check your progress from around the world.)'
-	        )
-	      );
-	    }
-	  }]);
-	
-	  return Progress;
-	}(React.Component);
-	
-	module.exports = Progress;
 
 /***/ },
 /* 241 */
