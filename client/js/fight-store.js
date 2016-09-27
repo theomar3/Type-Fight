@@ -7,7 +7,6 @@ var intervalId;
 var battleMusic;
 var battleTheme;
 var difficulty;
-// var difficultyChosen;
 
 
 
@@ -41,7 +40,6 @@ function randomString(length, chars) {
 
 
 var state = {
-  data: [],
   text: 'Click to begin',
   cpuAttack: '',
   playerAttack: '',
@@ -60,10 +58,7 @@ var state = {
   wins: 0,
   losses: 0,
   clickForProgress: '',
-  rematch: '',
-  cpuEasy: 'Easy',
-  cpuMedium: 'Medium',
-  cpuHard: 'Hard',
+  rematch: false,
   difficultyChosen: ''
 
 
@@ -100,9 +95,6 @@ store.copyState = function() {
     losses: state.losses,
     clickForProgress: state.clickForProgress,
     rematch: state.rematch,
-    cpuEasy: state.cpuEasy,
-    cpuMedium: state.cpuMedium,
-    cpuHard: state.cpuHard,
     difficultyChosen: state.difficultyChosen
 
   }
@@ -165,23 +157,20 @@ function gameState() {
 }
 
 function intervalRounds() {
-  var webBall = document.getElementById('webBall');
-  var webSwing = document.getElementById('webSwing');
-  var spiderSting = document.getElementById('spiderSting');
 
   state.cpuBubble = 'cpu-bubble-show';
   state.cpuAttack = randomIndexing(cpuAttacks);
   if(state.cpuAttack === 'Web Ball!') {
     state.cpuSprite = './images/spidey-web-ball.gif';
-    webBall.play();
+    audioPlay.webBall();
   }
   else if(state.cpuAttack === 'Web Swing!') {
     state.cpuSprite = './images/spidey-kick.gif';
-    webSwing.play();
+    audioPlay.webSwing();
   }
   else if(state.cpuAttack === 'Spider Sting!') {
     state.cpuSprite = './images/spidey-sting.gif';
-    spiderSting.play();
+    audioPlay.spiderSting();
   }
 
   if(state.difficultyChosen === 'Easy') {
@@ -197,8 +186,7 @@ function intervalRounds() {
   state.playerHP -= 3;
   state.playerSprite = './images/kenshin-hit.gif';
 
-  var playerHit = document.getElementById('playerHit');
-  playerHit.play();
+  audioPlay.playerHit();
 
 
   gameState();
@@ -213,7 +201,7 @@ function endFight() {
   if(state.playerHP < 1) {
     state.text = "You lost! Try again.";
     state.clickForProgress = 'Click to see your Progress!';
-    state.rematch = 'Rematch!';
+    state.rematch = true;
     state.playerAttack = 'I was going easy on you.';
     state.cpuAttack = 'One for J.J.';
     state.playerSprite = './images/kenshin-dead.gif';
@@ -242,20 +230,17 @@ function endFight() {
       data: {
         wins: 0,
         losses: 1,
+        difficultyChosen: state.difficultyChosen
+
       }
     });
-
-    // ProgressStore.actions.lose();
-
-
-
 
   }
 
   if(state.cpuHP < 1) {
     state.text = 'Awesome! You won!';
     state.clickForProgress = 'Click to see your Progress!';
-    state.rematch = 'Rematch!';
+    state.rematch = true;
     state.playerAttack = "You should keep practicing."
     state.cpuAttack = 'Uncle Ben! I failed you. ';
     state.playerSprite = './images/kenshin-win.gif';
@@ -264,8 +249,7 @@ function endFight() {
     state.playerInput = false;
     state.missBubble =  'miss-bubble-hide';
     battleTheme.pause();
-    var victory = document.getElementById('victory');
-    victory.play();
+    audioPlay.victory();
 
 
     var promise = $.ajax({
@@ -279,40 +263,13 @@ function endFight() {
     });
   }
 
-
-
 }
 
-//     message = message to display
-//     title = the title to display on the alert
-//     buttonText = the text to display on the button which closes the alert
-function alert2(message, title, buttonText) {
-
-    buttonText = (buttonText == undefined) ? "Ok" : buttonText;
-    title = (title == undefined) ? "The page says:" : title;
-
-    var div = $('<div>');
-    div.html(message);
-    div.attr('title', title);
-    div.dialog({
-        autoOpen: true,
-        modal: true,
-        draggable: false,
-        resizable: false,
-        buttons: [{
-            text: buttonText,
-            click: function () {
-                $(this).dialog("close");
-                div.remove();
-            }
-        }]
-    });
-}
 
 
 store.actions.startFight = function() {
   if (difficulty === undefined) {
-    alert2('Please select CPU Difficulty', 'Halt!', 'Right on');
+    alert('Please select CPU Difficulty');
   }
   disableDropDown();
 
@@ -321,7 +278,7 @@ store.actions.startFight = function() {
   state.playerSprite = './images/kenshin-ready.gif';
   state.cpuSprite = './images/spidey-ready.gif';
   state.playerInput = true;
-  state.rematch = '';
+  state.rematch = false;
   state.clickForProgress = '';
   state.playerHP = 15;
   state.cpuHP = 2;
@@ -338,7 +295,6 @@ store.actions.startFight = function() {
 
   battleTheme = randomIndexing(battleMusic);
   battleTheme.play();
-  var mainTheme = document.getElementById('mainTheme');
   mainTheme.pause();
 
 
@@ -348,7 +304,6 @@ store.actions.startFight = function() {
 
 store.actions.attack = function(evt) {
 
-  var cpuHit = document.getElementById('cpuHit');
   var laughTaunt = document.getElementById('laughTaunt');
   var patheticTaunt = document.getElementById('patheticTaunt');
   var suckTaunt = document.getElementById('suckTaunt');
@@ -365,12 +320,12 @@ store.actions.attack = function(evt) {
     state.cpuTaunt = '';
     if(evt.target.value === 'ForwardS') {
       state.playerAttack = 'Forward Slash!';
-      audioPlay.playForwardSlash();
+      audioPlay.forwardSlash();
       state.playerSprite = './images/kenshin-forward-slash.gif';
       if(damage >= 5) {
         state.cpuHP -= 3;
         state.cpuSprite = './images/spidey-hit.gif';
-        cpuHit.play();
+        audioPlay.cpuHit();
       }
       else {
         state.cpuHP += 0;
@@ -381,14 +336,13 @@ store.actions.attack = function(evt) {
     }
     else if(evt.target.value === 'ChargeS') {
       state.playerAttack = 'Charging Slash!';
-      var chargingSlash = document.getElementById('chargingSlash');
-      chargingSlash.play();
+      audioPlay.chargingSlash();
       state.playerSprite = './images/kenshin-chargeslash.gif';
 
       if(damage >= 5) {
         state.cpuHP -= 3;
         state.cpuSprite = './images/spidey-hit.gif';
-        cpuHit.play();
+        audioPlay.cpuHit();
 
       }
       else {
@@ -401,13 +355,12 @@ store.actions.attack = function(evt) {
     }
     else if(evt.target.value === 'UpwardS') {
       state.playerAttack = 'Upward Slash!';
-      var upwardSlash = document.getElementById('upwardSlash');
-      upwardSlash.play();
+      audioPlay.upwardSlash();
       state.playerSprite = './images/kenshin-upslash.gif';
       if(damage >= 5) {
         state.cpuHP -= 3;
         state.cpuSprite = './images/spidey-hit.gif';
-        cpuHit.play();
+        audioPlay.cpuHit();
 
       }
       else {
@@ -436,8 +389,7 @@ store.actions.attack = function(evt) {
       state.playerAttack = "Sorry, I don't know that move.";
       state.playerBubble = 'player-bubble-show';
       state.playerSprite = './images/kenshin-no-move.gif';
-      var wrongInput = document.getElementById('wrongInput');
-      wrongInput.play();
+      audioPlay.wrongInput();
     }
     evt.target.value = '';
     gameState();
@@ -481,14 +433,6 @@ store.actions.cpuDifficulty = function() {
   difficulty = document.querySelector('#difficulty');
   state.difficultyChosen = difficulty.options[difficulty.selectedIndex].value;
 
-  var promise = $.ajax({
-    url: '/player-progress/' + id,
-    method: 'POST',
-    data: {
-    difficultyChosen: state.difficultyChosen
-    }
-  });
-
 }
 
 function disableDropDown() {
@@ -499,8 +443,6 @@ function enableDropDown() {
   difficulty.disabled=false;
 }
 
-// function easy() {
-// }
 
 
 

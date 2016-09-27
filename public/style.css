@@ -122,7 +122,6 @@ table {
 .player-bubble-show {
   font-size: 1.2em;
   text-align: center;
-  line-height: 3em;
   position: relative;
   width: 175px;
   height: 120px;
@@ -2931,7 +2930,6 @@ body {
   float: left; }
 
 .col {
-  outline: 1px solid blue;
   min-height: 40px;
   margin-left: 2.4%;
   margin-right: 2.4%;

@@ -24,6 +24,7 @@ app.get('/player-progress/:id', function(req, res) {
       difficultyChosen: ''
     }
   }
+  console.log('get stats for id', req.params.id);
   res.send({
     stats: data[req.params.id]
   });
@@ -47,6 +48,7 @@ app.post('/player-progress/:id', function(req, res) {
   data[req.params.id].difficultyChosen = req.body.difficultyChosen;
 
 
+  console.log(' post stats for body', req.body, data[req.params.id]);
 
   res.sendStatus(204);
 

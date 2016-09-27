@@ -52,16 +52,19 @@ class Progress extends React.Component {
             <div className='col ten'>
               <h4 id="stats-heading"> Player Stats</h4>
               <table id="stats-table">
-                <tr id='HeadRow'>
-                  <td> Wins </td>
-                  <td> Losses </td>
-                  <td> CPU Difficulty </td>
-                </tr>
-                <tr>
-                  <td tableHeadData = "Wins"> {this.state.wins} </td>
-                  <td tableHeadData = 'Losses'> {this.state.losses} </td>
-                  <td tableHeadData = 'CPU Difficulty'> {this.state.difficultyChosen}</td>
-                </tr>
+                <tbody>
+                  <tr id='HeadRow'>
+                    <td> Wins </td>
+                    <td> Losses </td>
+                    <td> CPU Difficulty </td>
+                  </tr>
+
+                  <tr>
+                    <td > {this.state.wins} </td>
+                    <td> {this.state.losses} </td>
+                    <td> {this.state.difficultyChosen}</td>
+                  </tr>
+                </tbody>
               </table>
             </div>
             <div className='col one'></div>
