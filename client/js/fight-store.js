@@ -7,7 +7,7 @@ var intervalId;
 var battleMusic;
 var battleTheme;
 var difficulty;
-var difficultyChosen;
+// var difficultyChosen;
 
 
 
@@ -64,6 +64,7 @@ var state = {
   cpuEasy: 'Easy',
   cpuMedium: 'Medium',
   cpuHard: 'Hard',
+  difficultyChosen: ''
 
 
 }
@@ -102,6 +103,8 @@ store.copyState = function() {
     cpuEasy: state.cpuEasy,
     cpuMedium: state.cpuMedium,
     cpuHard: state.cpuHard,
+    difficultyChosen: state.difficultyChosen
+
   }
 }
 
@@ -181,13 +184,13 @@ function intervalRounds() {
     spiderSting.play();
   }
 
-  if(difficultyChosen === 'E') {
+  if(state.difficultyChosen === 'Easy') {
     state.healString = randomString(4, 'aA');
   }
-  else if(difficultyChosen === 'M') {
+  else if(state.difficultyChosen === 'Medium') {
     state.healString = randomString(6, 'aA');
   }
-  else if(difficultyChosen === 'H') {
+  else if(state.difficultyChosen === 'Hard') {
     state.healString = randomString(8, 'aA');
   }
 
@@ -238,7 +241,7 @@ function endFight() {
       method: 'POST',
       data: {
         wins: 0,
-        losses: 1
+        losses: 1,
       }
     });
 
@@ -270,7 +273,8 @@ function endFight() {
       method: 'POST',
       data: {
         wins: 1,
-        losses: 0
+        losses: 0,
+        difficultyChosen: state.difficultyChosen
       }
     });
   }
@@ -294,7 +298,7 @@ store.actions.startFight = function() {
   state.rematch = '';
   state.clickForProgress = '';
   state.playerHP = 15;
-  state.cpuHP = 24;
+  state.cpuHP = 2;
 
   var MKTheme = document.getElementById('MKTheme');
   var GuileTheme = document.getElementById('GuileTheme');
@@ -439,6 +443,7 @@ store.actions.load = function() {
     console.log(data);
     state.wins = data.stats.wins;
     state.losses = data.stats.losses;
+    state.difficultyChosen = data.stats.difficultyChosen;
 
     console.log(state);
     changed();
@@ -448,9 +453,15 @@ store.actions.load = function() {
 
 store.actions.cpuDifficulty = function() {
   difficulty = document.querySelector('#difficulty');
-  difficultyChosen = difficulty.options[difficulty.selectedIndex].value;
+  state.difficultyChosen = difficulty.options[difficulty.selectedIndex].value;
 
-
+  var promise = $.ajax({
+    url: '/player-progress/' + id,
+    method: 'POST',
+    data: {
+    difficultyChosen: state.difficultyChosen
+    }
+  });
 
 }
 

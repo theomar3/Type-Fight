@@ -22,6 +22,21 @@ $(function() {
       $('.vronk').addClass('old-batman-effects-hide');
     }, 3000);
 
+    var $signInButton = $('#google-signin');
+    var $signOutButton = $('.google-signout');
 
+    $signInButton.click(hideSignInButton);
+    function hideSignInButton() {
+      $signInButton.addClass('hide-button');
+      $signOutButton.removeClass('hide-button');
+    }
+
+    $signOutButton.click(hideSignOutButton);
+    function hideSignOutButton() {
+      $signInButton.removeClass('hide-button');
+      $signOutButton.addClass('hide-button');
+      window.location.reload();
+
+    }
 
 })();

@@ -60,7 +60,7 @@
 	
 	var _fight2 = _interopRequireDefault(_fight);
 	
-	var _progress = __webpack_require__(236);
+	var _progress = __webpack_require__(240);
 	
 	var _progress2 = _interopRequireDefault(_progress);
 	
@@ -27143,11 +27143,11 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _fightStore = __webpack_require__(237);
+	var _fightStore = __webpack_require__(236);
 	
 	var _fightStore2 = _interopRequireDefault(_fightStore);
 	
-	var _audioPlay = __webpack_require__(238);
+	var _audioPlay = __webpack_require__(237);
 	
 	var _audioPlay2 = _interopRequireDefault(_audioPlay);
 	
@@ -27373,17 +27373,17 @@
 	                      ),
 	                      _react2.default.createElement(
 	                        'option',
-	                        { value: 'E' },
+	                        { value: 'Easy' },
 	                        this.state.cpuEasy
 	                      ),
 	                      _react2.default.createElement(
 	                        'option',
-	                        { value: 'M' },
+	                        { value: 'Medium' },
 	                        this.state.cpuMedium
 	                      ),
 	                      _react2.default.createElement(
 	                        'option',
-	                        { value: 'H' },
+	                        { value: 'Hard' },
 	                        this.state.cpuHard
 	                      )
 	                    )
@@ -27534,220 +27534,25 @@
 
 	'use strict';
 	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _fightStore = __webpack_require__(237);
-	
-	var _fightStore2 = _interopRequireDefault(_fightStore);
-	
-	var _progressStore = __webpack_require__(239);
-	
-	var _progressStore2 = _interopRequireDefault(_progressStore);
-	
-	var _backbutton = __webpack_require__(241);
-	
-	var _backbutton2 = _interopRequireDefault(_backbutton);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var React = __webpack_require__(1);
-	
-	var Progress = function (_React$Component) {
-	  _inherits(Progress, _React$Component);
-	
-	  function Progress() {
-	    _classCallCheck(this, Progress);
-	
-	    var _this = _possibleConstructorReturn(this, (Progress.__proto__ || Object.getPrototypeOf(Progress)).call(this));
-	
-	    _fightStore2.default.actions.load();
-	
-	    _this.state = _fightStore2.default.copyState();
-	
-	    _fightStore2.default.addListener(function (state) {
-	      _this.setState(state);
-	    });
-	
-	    _progressStore2.default.addListener(function (state) {
-	      _this.setState(state);
-	    });
-	    return _this;
-	  }
-	
-	  _createClass(Progress, [{
-	    key: 'render',
-	    value: function render() {
-	      return React.createElement(
-	        'div',
-	        { className: 'row' },
-	        React.createElement(
-	          'div',
-	          { className: 'container col twelve' },
-	          React.createElement(
-	            'div',
-	            { className: 'row' },
-	            React.createElement('div', { className: 'col one' }),
-	            React.createElement(
-	              'div',
-	              { className: 'col ten' },
-	              React.createElement(
-	                'h1',
-	                { className: 'website-title progress-title animated slideInDown' },
-	                'Your'
-	              ),
-	              React.createElement(
-	                'h1',
-	                { className: 'website-title progress-title animated slideInUp' },
-	                'Progress'
-	              )
-	            ),
-	            React.createElement('div', { className: 'col one' })
-	          ),
-	          React.createElement(
-	            'div',
-	            { className: 'row' },
-	            React.createElement('div', { className: 'col one' }),
-	            React.createElement(
-	              'div',
-	              { className: 'col ten' },
-	              React.createElement(
-	                'h3',
-	                { className: 'progress-tagline animated pulse' },
-	                ' Check how you\'re doing!'
-	              )
-	            ),
-	            React.createElement('div', { className: 'col one' })
-	          ),
-	          React.createElement(
-	            'div',
-	            { className: 'row' },
-	            React.createElement('div', { className: 'col one' }),
-	            React.createElement(
-	              'div',
-	              { className: 'col ten' },
-	              React.createElement(
-	                'h4',
-	                { id: 'stats-heading' },
-	                ' Player Stats'
-	              ),
-	              React.createElement(
-	                'table',
-	                { id: 'stats-table' },
-	                React.createElement(
-	                  'tr',
-	                  { id: 'HeadRow' },
-	                  React.createElement(
-	                    'td',
-	                    null,
-	                    ' Wins '
-	                  ),
-	                  React.createElement(
-	                    'td',
-	                    null,
-	                    ' Losses '
-	                  )
-	                ),
-	                React.createElement(
-	                  'tr',
-	                  null,
-	                  React.createElement(
-	                    'td',
-	                    { tableHeadData: 'Wins' },
-	                    ' ',
-	                    this.state.wins,
-	                    ' '
-	                  ),
-	                  React.createElement(
-	                    'td',
-	                    { tableHeadData: 'Losses' },
-	                    ' ',
-	                    this.state.losses,
-	                    ' '
-	                  )
-	                )
-	              )
-	            ),
-	            React.createElement('div', { className: 'col one' })
-	          ),
-	          React.createElement(
-	            'div',
-	            { className: 'row' },
-	            React.createElement('div', { className: 'col two' }),
-	            React.createElement(
-	              'div',
-	              { className: 'col two' },
-	              React.createElement(_backbutton2.default, null)
-	            ),
-	            React.createElement('div', { className: 'col four' }),
-	            React.createElement(
-	              'div',
-	              { className: 'col two' },
-	              React.createElement(
-	                'a',
-	                { href: 'index.html' },
-	                React.createElement(
-	                  'button',
-	                  { id: 'homepage-link' },
-	                  '*Lemme Google Sign-In!'
-	                )
-	              )
-	            ),
-	            React.createElement('div', { className: 'col two' })
-	          ),
-	          React.createElement(
-	            'div',
-	            { className: 'row' },
-	            React.createElement('div', { className: 'col seven' }),
-	            React.createElement(
-	              'div',
-	              { className: 'col five' },
-	              React.createElement(
-	                'p',
-	                { id: 'sign-in-info' },
-	                ' *(Psst. That way you can check your progress from around the world.)'
-	              )
-	            )
-	          )
-	        )
-	      );
-	    }
-	  }]);
-	
-	  return Progress;
-	}(React.Component);
-	
-	module.exports = Progress;
-
-/***/ },
-/* 237 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var _audioPlay = __webpack_require__(238);
+	var _audioPlay = __webpack_require__(237);
 	
 	var _audioPlay2 = _interopRequireDefault(_audioPlay);
 	
-	var _progressStore = __webpack_require__(239);
+	var _progressStore = __webpack_require__(238);
 	
 	var _progressStore2 = _interopRequireDefault(_progressStore);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	var $ = __webpack_require__(240);
+	var $ = __webpack_require__(239);
 	
 	
 	var intervalId;
 	var battleMusic;
 	var battleTheme;
 	var difficulty;
-	var difficultyChosen;
+	// var difficultyChosen;
+	
 	
 	var cpuAttacks = ['Web Ball!', 'Web Swing!', 'Spider Sting!'];
 	
@@ -27791,7 +27596,8 @@
 	  rematch: '',
 	  cpuEasy: 'Easy',
 	  cpuMedium: 'Medium',
-	  cpuHard: 'Hard'
+	  cpuHard: 'Hard',
+	  difficultyChosen: ''
 	
 	};
 	
@@ -27828,7 +27634,9 @@
 	    rematch: state.rematch,
 	    cpuEasy: state.cpuEasy,
 	    cpuMedium: state.cpuMedium,
-	    cpuHard: state.cpuHard
+	    cpuHard: state.cpuHard,
+	    difficultyChosen: state.difficultyChosen
+	
 	  };
 	};
 	
@@ -27903,11 +27711,11 @@
 	    spiderSting.play();
 	  }
 	
-	  if (difficultyChosen === 'E') {
+	  if (state.difficultyChosen === 'Easy') {
 	    state.healString = randomString(4, 'aA');
-	  } else if (difficultyChosen === 'M') {
+	  } else if (state.difficultyChosen === 'Medium') {
 	    state.healString = randomString(6, 'aA');
-	  } else if (difficultyChosen === 'H') {
+	  } else if (state.difficultyChosen === 'Hard') {
 	    state.healString = randomString(8, 'aA');
 	  }
 	
@@ -27977,7 +27785,8 @@
 	      method: 'POST',
 	      data: {
 	        wins: 1,
-	        losses: 0
+	        losses: 0,
+	        difficultyChosen: state.difficultyChosen
 	      }
 	    });
 	  }
@@ -27996,7 +27805,7 @@
 	  state.rematch = '';
 	  state.clickForProgress = '';
 	  state.playerHP = 15;
-	  state.cpuHP = 24;
+	  state.cpuHP = 2;
 	
 	  var MKTheme = document.getElementById('MKTheme');
 	  var GuileTheme = document.getElementById('GuileTheme');
@@ -28115,6 +27924,7 @@
 	    console.log(data);
 	    state.wins = data.stats.wins;
 	    state.losses = data.stats.losses;
+	    state.difficultyChosen = data.stats.difficultyChosen;
 	
 	    console.log(state);
 	    changed();
@@ -28123,7 +27933,15 @@
 	
 	store.actions.cpuDifficulty = function () {
 	  difficulty = document.querySelector('#difficulty');
-	  difficultyChosen = difficulty.options[difficulty.selectedIndex].value;
+	  state.difficultyChosen = difficulty.options[difficulty.selectedIndex].value;
+	
+	  var promise = $.ajax({
+	    url: '/player-progress/' + id,
+	    method: 'POST',
+	    data: {
+	      difficultyChosen: state.difficultyChosen
+	    }
+	  });
 	};
 	
 	function disableDropDown() {
@@ -28141,7 +27959,7 @@
 	module.exports = store;
 
 /***/ },
-/* 238 */
+/* 237 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -28183,12 +28001,12 @@
 	module.exports = audioPlay;
 
 /***/ },
-/* 239 */
+/* 238 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var $ = __webpack_require__(240);
+	var $ = __webpack_require__(239);
 	
 	var state = {};
 	
@@ -28220,7 +28038,7 @@
 	module.exports = store;
 
 /***/ },
-/* 240 */
+/* 239 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*eslint-disable no-unused-vars*/
@@ -38298,6 +38116,213 @@
 	return jQuery;
 	} );
 
+
+/***/ },
+/* 240 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _fightStore = __webpack_require__(236);
+	
+	var _fightStore2 = _interopRequireDefault(_fightStore);
+	
+	var _progressStore = __webpack_require__(238);
+	
+	var _progressStore2 = _interopRequireDefault(_progressStore);
+	
+	var _backbutton = __webpack_require__(241);
+	
+	var _backbutton2 = _interopRequireDefault(_backbutton);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var React = __webpack_require__(1);
+	
+	var Progress = function (_React$Component) {
+	  _inherits(Progress, _React$Component);
+	
+	  function Progress() {
+	    _classCallCheck(this, Progress);
+	
+	    var _this = _possibleConstructorReturn(this, (Progress.__proto__ || Object.getPrototypeOf(Progress)).call(this));
+	
+	    _fightStore2.default.actions.load();
+	
+	    _this.state = _fightStore2.default.copyState();
+	
+	    _fightStore2.default.addListener(function (state) {
+	      _this.setState(state);
+	    });
+	
+	    _progressStore2.default.addListener(function (state) {
+	      _this.setState(state);
+	    });
+	    return _this;
+	  }
+	
+	  _createClass(Progress, [{
+	    key: 'render',
+	    value: function render() {
+	      return React.createElement(
+	        'div',
+	        { className: 'row' },
+	        React.createElement(
+	          'div',
+	          { className: 'container col twelve' },
+	          React.createElement(
+	            'div',
+	            { className: 'row' },
+	            React.createElement('div', { className: 'col one' }),
+	            React.createElement(
+	              'div',
+	              { className: 'col ten' },
+	              React.createElement(
+	                'h1',
+	                { className: 'website-title progress-title animated slideInDown' },
+	                'Your'
+	              ),
+	              React.createElement(
+	                'h1',
+	                { className: 'website-title progress-title animated slideInUp' },
+	                'Progress'
+	              )
+	            ),
+	            React.createElement('div', { className: 'col one' })
+	          ),
+	          React.createElement(
+	            'div',
+	            { className: 'row' },
+	            React.createElement('div', { className: 'col one' }),
+	            React.createElement(
+	              'div',
+	              { className: 'col ten' },
+	              React.createElement(
+	                'h3',
+	                { className: 'progress-tagline animated pulse' },
+	                ' Check how you\'re doing!'
+	              )
+	            ),
+	            React.createElement('div', { className: 'col one' })
+	          ),
+	          React.createElement(
+	            'div',
+	            { className: 'row' },
+	            React.createElement('div', { className: 'col one' }),
+	            React.createElement(
+	              'div',
+	              { className: 'col ten' },
+	              React.createElement(
+	                'h4',
+	                { id: 'stats-heading' },
+	                ' Player Stats'
+	              ),
+	              React.createElement(
+	                'table',
+	                { id: 'stats-table' },
+	                React.createElement(
+	                  'tr',
+	                  { id: 'HeadRow' },
+	                  React.createElement(
+	                    'td',
+	                    null,
+	                    ' Wins '
+	                  ),
+	                  React.createElement(
+	                    'td',
+	                    null,
+	                    ' Losses '
+	                  ),
+	                  React.createElement(
+	                    'td',
+	                    null,
+	                    ' CPU Difficulty '
+	                  )
+	                ),
+	                React.createElement(
+	                  'tr',
+	                  null,
+	                  React.createElement(
+	                    'td',
+	                    { tableHeadData: 'Wins' },
+	                    ' ',
+	                    this.state.wins,
+	                    ' '
+	                  ),
+	                  React.createElement(
+	                    'td',
+	                    { tableHeadData: 'Losses' },
+	                    ' ',
+	                    this.state.losses,
+	                    ' '
+	                  ),
+	                  React.createElement(
+	                    'td',
+	                    { tableHeadData: 'CPU Difficulty' },
+	                    ' ',
+	                    this.state.difficultyChosen
+	                  )
+	                )
+	              )
+	            ),
+	            React.createElement('div', { className: 'col one' })
+	          ),
+	          React.createElement(
+	            'div',
+	            { className: 'row' },
+	            React.createElement('div', { className: 'col two' }),
+	            React.createElement(
+	              'div',
+	              { className: 'col two' },
+	              React.createElement(_backbutton2.default, null)
+	            ),
+	            React.createElement('div', { className: 'col four' }),
+	            React.createElement(
+	              'div',
+	              { className: 'col two' },
+	              React.createElement(
+	                'a',
+	                { href: 'index.html' },
+	                React.createElement(
+	                  'button',
+	                  { id: 'homepage-link' },
+	                  '*Lemme Google Sign-In!'
+	                )
+	              )
+	            ),
+	            React.createElement('div', { className: 'col two' })
+	          ),
+	          React.createElement(
+	            'div',
+	            { className: 'row' },
+	            React.createElement('div', { className: 'col seven' }),
+	            React.createElement(
+	              'div',
+	              { className: 'col five' },
+	              React.createElement(
+	                'p',
+	                { id: 'sign-in-info' },
+	                ' *(Psst. That way you can check your progress from around the world.)'
+	              )
+	            )
+	          )
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return Progress;
+	}(React.Component);
+	
+	module.exports = Progress;
 
 /***/ },
 /* 241 */

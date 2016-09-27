@@ -20,7 +20,8 @@ app.get('/player-progress/:id', function(req, res) {
 
     data[req.params.id] = {
       wins : 0,
-      losses: 0
+      losses: 0,
+      difficultyChosen: ''
     }
   }
   res.send({
@@ -35,13 +36,15 @@ app.post('/player-progress/:id', function(req, res) {
 
     data[req.params.id] = {
       wins : 0,
-      losses: 0
+      losses: 0,
+      difficultyChosen: ''
     }
   }
 
 
   data[req.params.id].wins += Number(req.body.wins);
   data[req.params.id].losses += Number(req.body.losses);
+  data[req.params.id].difficultyChosen = req.body.difficultyChosen;
 
 
 

@@ -55,10 +55,12 @@ class Progress extends React.Component {
                 <tr id='HeadRow'>
                   <td> Wins </td>
                   <td> Losses </td>
+                  <td> CPU Difficulty </td>
                 </tr>
                 <tr>
                   <td tableHeadData = "Wins"> {this.state.wins} </td>
                   <td tableHeadData = 'Losses'> {this.state.losses} </td>
+                  <td tableHeadData = 'CPU Difficulty'> {this.state.difficultyChosen}</td>
                 </tr>
               </table>
             </div>

@@ -23,7 +23,8 @@
       <div class="container  col twelve">
 
         <div class ='row'>
-          <div class='col one' id='google-pic'></div>
+          <div class='col one' id='google-pic'>
+          </div>
           <div class='col eleven'></div>
         </div>
 
@@ -31,8 +32,12 @@
           <div class='col three'>
             <img class='kapow animated flip' src='./images/kapow1.gif' />
           </div>
-          <div class='col three'></div>
-          <div class='col three'></div>
+          <div class ='col three'>
+            <img class='click-to-fight hidden' src="./images/click-to-fight.png" alt="" />
+          </div>
+          <div class='col three'>
+            <img class='click-to-fight hidden-image' src="./images/click-to-fight.png" alt="" />
+          </div>
           <div class='col three'>
             <img class="crash animated flip" src='./images/crash.gif' />
           </div>
@@ -80,7 +85,9 @@
           <div class='col two'></div>
           <div class='col two'>
             <div id='google-signin' class="g-signin2" data-onsuccess="onSignIn"></div>
-            <a href="#" class="google-signout" onclick="signOut();">Sign out</a>
+            <a href="#" class="google-signout hide-button" onclick="signOut();">
+              <button>Google Sign Out</button>
+            </a>
           </div>
           <div class='col two'></div>
           <div class='col three'>

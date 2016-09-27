@@ -7,9 +7,17 @@
 
 #userPic {
   border-radius: 50%;
-  height: 32px;
+  height: 40px;
   outline: 0;
-  width: 32px;
+  width: 40px;
+}
+
+.click-to-fight {
+  max-width: 100%;
+}
+
+.hidden-image {
+  opacity: 0;
 }
 
 .website-title {
@@ -175,14 +183,14 @@
 
 #google-signin {
   max-width: 100%;
-  opacity: 1;
-  transition: opacity 2.5s ease-in;
 
 }
 
-.google-signout {
-  margin-top: 10px;
-  opacity: 1;
-  transition: opacity 2.5s ease-in;
+.google-signout button {
+  height:36px;
+  width:120px;
+}
 
+.hide-button {
+  display: none;
 }

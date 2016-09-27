@@ -138,9 +138,9 @@ class Fight extends React.Component {
                   <form>
                     <select id='difficulty' name='cpuDifficulty' onChange={() => this._cpuDifficulty()}>
                       <option value ='void'>- Select CPU Difficulty - </option>
-                      <option value='E' >{this.state.cpuEasy}</option>
-                      <option value='M'>{this.state.cpuMedium}</option>
-                      <option value='H'>{this.state.cpuHard}</option>
+                      <option value='Easy' >{this.state.cpuEasy}</option>
+                      <option value='Medium'>{this.state.cpuMedium}</option>
+                      <option value='Hard'>{this.state.cpuHard}</option>
                     </select>
                   </form>
                 </div>
