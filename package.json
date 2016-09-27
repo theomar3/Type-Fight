@@ -2,7 +2,8 @@
   "description": "",
   "scripts": {
     "server": "node server/server.js",
-    "webpack": "webpack --watch"
+    "webpack": "webpack --watch",
+    "start": "node server/server.js"
   },
   "dependencies": {
     "babel-loader": "^6.2.5",
