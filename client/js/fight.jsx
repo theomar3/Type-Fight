@@ -39,7 +39,7 @@ class Fight extends React.Component {
 
   render() {
     var input;
-    if(this.state.playerInput) {
+    if(this.state.showPlayerInput) {
         input = <input type='text' autoFocus className= 'input-show' onKeyUp={evt => this._playerAttack(evt)} ref={input => this._input = input} />
     }
 
@@ -54,6 +54,11 @@ class Fight extends React.Component {
       rematch = <p className='rematch' onClick={() => this._clickFightTitle()}>
            Rematch
         </p>
+    }
+
+    var showPlayerBubble;
+    if(this.state.showPlayerBubble) {
+      showPlayerBubble =<div className='player-bubble-show'>{this.state.playerAttackMessage}</div>
     }
 
 
@@ -99,25 +104,23 @@ class Fight extends React.Component {
 
               <div className='row'>
                 <div className='col two'>
-                  <div className={this.state.playerBubble}>
-                       {this.state.playerAttack}
-                  </div>
+                {showPlayerBubble}
                 </div>
                 <div className = 'col two'>
-                  <img className="player-sprite" src={this.state.playerSprite} />
+                  <img className="player-sprite" src={this.state.playerSpriteUrls} />
                 </div>
                 <div className = 'col four'>
                   <div className={this.state.cpuBubble}>
-                    <p>{this.state.cpuAttack} </p>
+                    <p>{this.state.cpuAttackMessage} </p>
                     <p>{this.state.healString}</p>
                   </div>
                 </div>
                 <div className = 'col two'>
-                  <img className='cpu-sprite' src={this.state.cpuSprite} />
+                  <img className='cpu-sprite' src={this.state.cpuSpriteUrls} />
                 </div>
                 <div className = 'col two'>
                   <div className={this.state.missBubble}>
-                      <p>{this.state.cpuTaunt}</p>
+                      <p>{this.state.cpuTauntMessage}</p>
                   </div>
                 </div>
               </div>
@@ -125,7 +128,7 @@ class Fight extends React.Component {
               <div className = 'row'>
                 <div className = 'col two'></div>
                 <div className = 'col two'>
-                  <p className={this.state.playerStatus}>
+                  <p className={this.state.playerStatusClass}>
                     HP:{this.state.playerHP}
                   </p>
                 </div>
@@ -133,7 +136,7 @@ class Fight extends React.Component {
                   <p className='input-instructions'> Enter Attack or Heal: {input}</p>
                 </div>
                 <div className = 'col two'>
-                  <p className={this.state.cpuStatus}>
+                  <p className={this.state.cpuStatusClass}>
                     HP:{this.state.cpuHP}
                   </p>
                 </div>
