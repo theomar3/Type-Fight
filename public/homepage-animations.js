@@ -22,6 +22,11 @@ $(function() {
       $('.vronk').addClass('old-batman-effects-hide');
     }, 3000);
 
+    setTimeout(function() {
+      $('.click-to-fight').removeClass('hidden-image');
+      $('.click-to-fight').addClass('animated zoomIn');
+    }, 15000);
+
     var $signInButton = $('#google-signin');
     var $signOutButton = $('.google-signout');
 
