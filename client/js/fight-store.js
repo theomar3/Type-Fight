@@ -53,12 +53,12 @@ var state = {
   cpuSpriteUrls: './images/spidey-start.gif',
   showPlayerInput: false,
   showPlayerBubble: false,
-  cpuBubble: 'cpu-bubble-hide',
-  missBubble: 'miss-bubble-hide',
+  showCpuBubble: false,
+  showMissBubble: false,
   wins: 0,
   losses: 0,
-  clickForProgress: '',
-  rematch: false,
+  showClickForProgress: '',
+  showRematch: false,
   difficultyChosen: ''
 
 
@@ -89,12 +89,12 @@ store.copyState = function() {
     cpuSpriteUrls: state.cpuSpriteUrls,
     showPlayerInput: state.showPlayerInput,
     showPlayerBubble: state.showPlayerBubble,
-    cpuBubble: state.cpuBubble,
-    missBubble: state.missBubble,
+    showCpuBubble: state.showCpuBubble,
+    showMissBubble: state.showMissBubble,
     wins: state.wins,
     losses: state.losses,
-    clickForProgress: state.clickForProgress,
-    rematch: state.rematch,
+    showClickForProgress: state.showClickForProgress,
+    showRematch: state.showRematch,
     difficultyChosen: state.difficultyChosen
 
   }
@@ -158,7 +158,7 @@ function gameState() {
 
 function intervalRounds() {
 
-  state.cpuBubble = 'cpu-bubble-show';
+  state.showCpuBubble = true;
   state.cpuAttackMessage = randomIndexing(cpuAttacks);
   if(state.cpuAttackMessage === 'Web Ball!') {
     state.cpuSpriteUrls = './images/spidey-web-ball.gif';
@@ -200,15 +200,15 @@ function endFight() {
 
   if(state.playerHP < 1) {
     state.fightScreenTitleText = "You lost! Try again.";
-    state.clickForProgress = 'Click to see your Progress!';
-    state.rematch = true;
+    state.showClickForProgress = 'Click to see your Progress!';
+    state.showRematch = true;
     state.playerAttackMessage = 'I was going easy on you.';
     state.cpuAttackMessage = 'One for J.J.';
     state.playerSpriteUrls = './images/kenshin-dead.gif';
     state.cpuSpriteUrls = './images/spidey-win.gif';
     state.healString = '';
     state.showPlayerInput = false;
-    state.missBubble =  'miss-bubble-hide';
+    state.showMissBubble =  false;
     battleTheme.pause();
     audioPlay.pauseDanger();
     audioPlay.pauseWarning();
@@ -239,15 +239,15 @@ function endFight() {
 
   if(state.cpuHP < 1) {
     state.fightScreenTitleText = 'Awesome! You won!';
-    state.clickForProgress = 'Click to see your Progress!';
-    state.rematch = true;
+    state.showClickForProgress = 'Click to see your Progress!';
+    state.showRematch = true;
     state.playerAttackMessage = "You should keep practicing."
     state.cpuAttackMessage = 'Uncle Ben! I failed you. ';
     state.playerSpriteUrls = './images/kenshin-win.gif';
     state.cpuSpriteUrls = './images/spidey-dead.gif';
     state.healString = '';
     state.showPlayerInput = false;
-    state.missBubble =  'miss-bubble-hide';
+    state.showMissBubble =  false;
     battleTheme.pause();
     audioPlay.victory();
 
@@ -278,19 +278,21 @@ store.actions.startFight = function() {
   state.playerSpriteUrls = './images/kenshin-ready.gif';
   state.cpuSpriteUrls = './images/spidey-ready.gif';
   state.showPlayerInput = true;
-  state.rematch = false;
-  state.clickForProgress = '';
+  state.showRematch = false;
+  state.showClickForProgress = '';
   state.playerHP = 15;
   state.cpuHP = 2;
 
   var MKTheme = document.getElementById('MKTheme');
   var GuileTheme = document.getElementById('GuileTheme');
   var FF7BossTheme = document.getElementById('FF7BossTheme');
+  var OneWingedAngel = document.getElementById('OneWingedAngel');
 
   battleMusic = [
     MKTheme,
     GuileTheme,
-    FF7BossTheme
+    FF7BossTheme,
+    OneWingedAngel
   ];
 
   battleTheme = randomIndexing(battleMusic);
@@ -329,7 +331,7 @@ store.actions.attack = function(evt) {
       }
       else {
         state.cpuHP += 0;
-        state.missBubble = 'miss-bubble-show';
+        state.showMissBubble = true;
         state.cpuTauntMessage = 'Spider Sense tingling.';
         randomIndexing(missTaunts).play();
       }
@@ -347,7 +349,7 @@ store.actions.attack = function(evt) {
       }
       else {
         state.cpuHP += 0;
-        state.missBubble = 'miss-bubble-show';
+        state.showMissBubble = true;
         state.cpuTauntMessage = 'Spider Sense tingling.';
         randomIndexing(missTaunts).play();
 
@@ -365,7 +367,7 @@ store.actions.attack = function(evt) {
       }
       else {
         state.cpuHP += 0;
-        state.missBubble = 'miss-bubble-show';
+        state.showMissBubble = true;
         state.cpuTauntMessage = 'Spider Sense tingling.';
         randomIndexing(missTaunts).play();
 

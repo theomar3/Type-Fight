@@ -27221,7 +27221,7 @@
 	      }
 	
 	      var progressLink;
-	      if (this.state.clickForProgress !== '') {
+	      if (this.state.showClickForProgress !== '') {
 	        progressLink = _react2.default.createElement(
 	          _reactRouter.Link,
 	          { className: 'link-text', to: '/progress' },
@@ -27229,13 +27229,13 @@
 	          _react2.default.createElement(
 	            'p',
 	            null,
-	            this.state.clickForProgress
+	            this.state.showClickForProgress
 	          )
 	        );
 	      }
 	
 	      var rematch;
-	      if (this.state.rematch) {
+	      if (this.state.showRematch) {
 	        rematch = _react2.default.createElement(
 	          'p',
 	          { className: 'rematch', onClick: function onClick() {
@@ -27251,6 +27251,38 @@
 	          'div',
 	          { className: 'player-bubble-show' },
 	          this.state.playerAttackMessage
+	        );
+	      }
+	
+	      var showCpuBubble;
+	      if (this.state.showCpuBubble) {
+	        showCpuBubble = _react2.default.createElement(
+	          'div',
+	          { className: 'cpu-bubble-show' },
+	          _react2.default.createElement(
+	            'p',
+	            null,
+	            this.state.cpuAttackMessage,
+	            ' '
+	          ),
+	          _react2.default.createElement(
+	            'p',
+	            null,
+	            this.state.healString
+	          )
+	        );
+	      }
+	
+	      var showMissBubble;
+	      if (this.state.showMissBubble) {
+	        showMissBubble = _react2.default.createElement(
+	          'div',
+	          { className: this.state.showMissBubble },
+	          _react2.default.createElement(
+	            'p',
+	            null,
+	            this.state.cpuTauntMessage
+	          )
 	        );
 	      }
 	
@@ -27332,21 +27364,7 @@
 	                _react2.default.createElement(
 	                  'div',
 	                  { className: 'col four' },
-	                  _react2.default.createElement(
-	                    'div',
-	                    { className: this.state.cpuBubble },
-	                    _react2.default.createElement(
-	                      'p',
-	                      null,
-	                      this.state.cpuAttackMessage,
-	                      ' '
-	                    ),
-	                    _react2.default.createElement(
-	                      'p',
-	                      null,
-	                      this.state.healString
-	                    )
-	                  )
+	                  showCpuBubble
 	                ),
 	                _react2.default.createElement(
 	                  'div',
@@ -27356,15 +27374,7 @@
 	                _react2.default.createElement(
 	                  'div',
 	                  { className: 'col two' },
-	                  _react2.default.createElement(
-	                    'div',
-	                    { className: this.state.missBubble },
-	                    _react2.default.createElement(
-	                      'p',
-	                      null,
-	                      this.state.cpuTauntMessage
-	                    )
-	                  )
+	                  showMissBubble
 	                )
 	              ),
 	              _react2.default.createElement(
@@ -27473,12 +27483,12 @@
 	  cpuSpriteUrls: './images/spidey-start.gif',
 	  showPlayerInput: false,
 	  showPlayerBubble: false,
-	  cpuBubble: 'cpu-bubble-hide',
-	  missBubble: 'miss-bubble-hide',
+	  showCpuBubble: false,
+	  showMissBubble: false,
 	  wins: 0,
 	  losses: 0,
-	  clickForProgress: '',
-	  rematch: false,
+	  showClickForProgress: '',
+	  showRematch: false,
 	  difficultyChosen: ''
 	
 	};
@@ -27508,12 +27518,12 @@
 	    cpuSpriteUrls: state.cpuSpriteUrls,
 	    showPlayerInput: state.showPlayerInput,
 	    showPlayerBubble: state.showPlayerBubble,
-	    cpuBubble: state.cpuBubble,
-	    missBubble: state.missBubble,
+	    showCpuBubble: state.showCpuBubble,
+	    showMissBubble: state.showMissBubble,
 	    wins: state.wins,
 	    losses: state.losses,
-	    clickForProgress: state.clickForProgress,
-	    rematch: state.rematch,
+	    showClickForProgress: state.showClickForProgress,
+	    showRematch: state.showRematch,
 	    difficultyChosen: state.difficultyChosen
 	
 	  };
@@ -27574,7 +27584,7 @@
 	
 	function intervalRounds() {
 	
-	  state.cpuBubble = 'cpu-bubble-show';
+	  state.showCpuBubble = true;
 	  state.cpuAttackMessage = randomIndexing(cpuAttacks);
 	  if (state.cpuAttackMessage === 'Web Ball!') {
 	    state.cpuSpriteUrls = './images/spidey-web-ball.gif';
@@ -27609,15 +27619,15 @@
 	
 	  if (state.playerHP < 1) {
 	    state.fightScreenTitleText = "You lost! Try again.";
-	    state.clickForProgress = 'Click to see your Progress!';
-	    state.rematch = true;
+	    state.showClickForProgress = 'Click to see your Progress!';
+	    state.showRematch = true;
 	    state.playerAttackMessage = 'I was going easy on you.';
 	    state.cpuAttackMessage = 'One for J.J.';
 	    state.playerSpriteUrls = './images/kenshin-dead.gif';
 	    state.cpuSpriteUrls = './images/spidey-win.gif';
 	    state.healString = '';
 	    state.showPlayerInput = false;
-	    state.missBubble = 'miss-bubble-hide';
+	    state.showMissBubble = false;
 	    battleTheme.pause();
 	    _audioPlay2.default.pauseDanger();
 	    _audioPlay2.default.pauseWarning();
@@ -27641,15 +27651,15 @@
 	
 	  if (state.cpuHP < 1) {
 	    state.fightScreenTitleText = 'Awesome! You won!';
-	    state.clickForProgress = 'Click to see your Progress!';
-	    state.rematch = true;
+	    state.showClickForProgress = 'Click to see your Progress!';
+	    state.showRematch = true;
 	    state.playerAttackMessage = "You should keep practicing.";
 	    state.cpuAttackMessage = 'Uncle Ben! I failed you. ';
 	    state.playerSpriteUrls = './images/kenshin-win.gif';
 	    state.cpuSpriteUrls = './images/spidey-dead.gif';
 	    state.healString = '';
 	    state.showPlayerInput = false;
-	    state.missBubble = 'miss-bubble-hide';
+	    state.showMissBubble = false;
 	    battleTheme.pause();
 	    _audioPlay2.default.victory();
 	
@@ -27675,16 +27685,17 @@
 	  state.playerSpriteUrls = './images/kenshin-ready.gif';
 	  state.cpuSpriteUrls = './images/spidey-ready.gif';
 	  state.showPlayerInput = true;
-	  state.rematch = false;
-	  state.clickForProgress = '';
+	  state.showRematch = false;
+	  state.showClickForProgress = '';
 	  state.playerHP = 15;
 	  state.cpuHP = 2;
 	
 	  var MKTheme = document.getElementById('MKTheme');
 	  var GuileTheme = document.getElementById('GuileTheme');
 	  var FF7BossTheme = document.getElementById('FF7BossTheme');
+	  var OneWingedAngel = document.getElementById('OneWingedAngel');
 	
-	  battleMusic = [MKTheme, GuileTheme, FF7BossTheme];
+	  battleMusic = [MKTheme, GuileTheme, FF7BossTheme, OneWingedAngel];
 	
 	  battleTheme = randomIndexing(battleMusic);
 	  battleTheme.play();
@@ -27716,7 +27727,7 @@
 	        _audioPlay2.default.cpuHit();
 	      } else {
 	        state.cpuHP += 0;
-	        state.missBubble = 'miss-bubble-show';
+	        state.showMissBubble = true;
 	        state.cpuTauntMessage = 'Spider Sense tingling.';
 	        randomIndexing(missTaunts).play();
 	      }
@@ -27731,7 +27742,7 @@
 	        _audioPlay2.default.cpuHit();
 	      } else {
 	        state.cpuHP += 0;
-	        state.missBubble = 'miss-bubble-show';
+	        state.showMissBubble = true;
 	        state.cpuTauntMessage = 'Spider Sense tingling.';
 	        randomIndexing(missTaunts).play();
 	      }
@@ -27745,7 +27756,7 @@
 	        _audioPlay2.default.cpuHit();
 	      } else {
 	        state.cpuHP += 0;
-	        state.missBubble = 'miss-bubble-show';
+	        state.showMissBubble = true;
 	        state.cpuTauntMessage = 'Spider Sense tingling.';
 	        randomIndexing(missTaunts).play();
 	      }
@@ -38125,10 +38136,11 @@
 	                        return _react2.default.createElement(
 	                                'div',
 	                                null,
-	                                _react2.default.createElement('audio', { id: 'mainTheme', src: '/music/fallen-angels.mp3', autoPlay: true, muted: true }),
+	                                _react2.default.createElement('audio', { id: 'mainTheme', src: '/music/enter-the-dragon.mp3', autoPlay: true }),
 	                                _react2.default.createElement('audio', { id: 'MKTheme', src: '/music/MK-theme.mp3' }),
 	                                _react2.default.createElement('audio', { id: 'GuileTheme', src: '/music/Guile-theme.mp3' }),
 	                                _react2.default.createElement('audio', { id: 'FF7BossTheme', src: '/music/FF7-boss-theme.mp3' }),
+	                                _react2.default.createElement('audio', { id: 'OneWingedAngel', src: '/music/one-winged-angel.mp3' }),
 	                                _react2.default.createElement('audio', { id: 'gameOver', src: '/music/game-over-man.mp3' }),
 	                                _react2.default.createElement('audio', { id: 'dna', src: '/music/dna.mp3' }),
 	                                _react2.default.createElement('audio', { id: 'kneel', src: '/music/kneel.mp3' }),

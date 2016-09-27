@@ -44,13 +44,13 @@ class Fight extends React.Component {
     }
 
     var progressLink;
-    if(this.state.clickForProgress !== '') {
-      progressLink = <Link className='link-text' to={'/progress'}>             <p>{this.state.clickForProgress}</p>
+    if(this.state.showClickForProgress !== '') {
+      progressLink = <Link className='link-text' to={'/progress'}>             <p>{this.state.showClickForProgress}</p>
       </Link>
     }
 
     var rematch;
-    if(this.state.rematch) {
+    if(this.state.showRematch) {
       rematch = <p className='rematch' onClick={() => this._clickFightTitle()}>
            Rematch
         </p>
@@ -59,6 +59,21 @@ class Fight extends React.Component {
     var showPlayerBubble;
     if(this.state.showPlayerBubble) {
       showPlayerBubble =<div className='player-bubble-show'>{this.state.playerAttackMessage}</div>
+    }
+
+    var showCpuBubble;
+    if(this.state.showCpuBubble) {
+      showCpuBubble = <div className='cpu-bubble-show'>
+          <p>{this.state.cpuAttackMessage} </p>
+          <p>{this.state.healString}</p>
+        </div>
+    }
+
+    var showMissBubble;
+    if(this.state.showMissBubble) {
+      showMissBubble = <div className={this.state.showMissBubble}>
+              <p>{this.state.cpuTauntMessage}</p>
+          </div>
     }
 
 
@@ -110,18 +125,13 @@ class Fight extends React.Component {
                   <img className="player-sprite" src={this.state.playerSpriteUrls} />
                 </div>
                 <div className = 'col four'>
-                  <div className={this.state.cpuBubble}>
-                    <p>{this.state.cpuAttackMessage} </p>
-                    <p>{this.state.healString}</p>
-                  </div>
+                {showCpuBubble}
                 </div>
                 <div className = 'col two'>
                   <img className='cpu-sprite' src={this.state.cpuSpriteUrls} />
                 </div>
                 <div className = 'col two'>
-                  <div className={this.state.missBubble}>
-                      <p>{this.state.cpuTauntMessage}</p>
-                  </div>
+                  {showMissBubble}
                 </div>
               </div>
 
