@@ -83,7 +83,7 @@ class Fight extends React.Component {
                 </div>
                 <div className='col four'>
                   <p className='fight-title' onClick={() => this._clickFightTitle()}>
-                      {this.state.text}
+                      {this.state.fightScreenTitleText}
                   </p>
                 {progressLink}
                 {rematch}

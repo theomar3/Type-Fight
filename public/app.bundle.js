@@ -60,7 +60,7 @@
 	
 	var _fight2 = _interopRequireDefault(_fight);
 	
-	var _progress = __webpack_require__(240);
+	var _progress = __webpack_require__(244);
 	
 	var _progress2 = _interopRequireDefault(_progress);
 	
@@ -72,7 +72,7 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	__webpack_require__(242);
+	__webpack_require__(246);
 	
 	var App = function (_React$Component) {
 	  _inherits(App, _React$Component);
@@ -27151,19 +27151,19 @@
 	
 	var _audioPlay2 = _interopRequireDefault(_audioPlay);
 	
-	var _moveList = __webpack_require__(244);
+	var _moveList = __webpack_require__(240);
 	
 	var _moveList2 = _interopRequireDefault(_moveList);
 	
-	var _audioFiles = __webpack_require__(246);
+	var _audioFiles = __webpack_require__(241);
 	
 	var _audioFiles2 = _interopRequireDefault(_audioFiles);
 	
-	var _typeFightTitle = __webpack_require__(247);
+	var _typeFightTitle = __webpack_require__(242);
 	
 	var _typeFightTitle2 = _interopRequireDefault(_typeFightTitle);
 	
-	var _cpuDifficulty = __webpack_require__(245);
+	var _cpuDifficulty = __webpack_require__(243);
 	
 	var _cpuDifficulty2 = _interopRequireDefault(_cpuDifficulty);
 	
@@ -27290,7 +27290,7 @@
 	                    { className: 'fight-title', onClick: function onClick() {
 	                        return _this2._clickFightTitle();
 	                      } },
-	                    this.state.text
+	                    this.state.fightScreenTitleText
 	                  ),
 	                  progressLink,
 	                  rematch
@@ -27455,7 +27455,7 @@
 	}
 	
 	var state = {
-	  text: 'Click to begin',
+	  fightScreenTitleText: 'Click to begin',
 	  cpuAttack: '',
 	  playerAttack: '',
 	  playerHP: 15,
@@ -27490,7 +27490,7 @@
 	store.copyState = function () {
 	  return {
 	    data: state.data,
-	    text: state.text,
+	    fightScreenTitleText: state.fightScreenTitleText,
 	    cpuAttack: state.cpuAttack,
 	    playerAttack: state.playerAttack,
 	    playerHP: state.playerHP,
@@ -27526,13 +27526,13 @@
 	function gameState() {
 	
 	  if (state.playerHP < 8) {
-	    state.text = 'Warning!';
+	    state.fightScreenTitleText = 'Warning!';
 	    state.playerStatus = 'warningHP';
 	    state.playerSprite = './images/kenshin-warning.gif';
 	    _audioPlay2.default.playWarning();
 	  }
 	  if (state.playerHP < 5) {
-	    state.text = 'Danger!';
+	    state.fightScreenTitleText = 'Danger!';
 	    state.playerStatus = 'dangerHP';
 	    state.playerSprite = './images/kenshin-danger.gif';
 	    _audioPlay2.default.playDanger();
@@ -27603,7 +27603,7 @@
 	  var id = getUserId();
 	
 	  if (state.playerHP < 1) {
-	    state.text = "You lost! Try again.";
+	    state.fightScreenTitleText = "You lost! Try again.";
 	    state.clickForProgress = 'Click to see your Progress!';
 	    state.rematch = true;
 	    state.playerAttack = 'I was going easy on you.';
@@ -27635,7 +27635,7 @@
 	  }
 	
 	  if (state.cpuHP < 1) {
-	    state.text = 'Awesome! You won!';
+	    state.fightScreenTitleText = 'Awesome! You won!';
 	    state.clickForProgress = 'Click to see your Progress!';
 	    state.rematch = true;
 	    state.playerAttack = "You should keep practicing.";
@@ -27666,7 +27666,7 @@
 	  }
 	  disableDropDown();
 	
-	  state.text = 'Type Fight!';
+	  state.fightScreenTitleText = 'Type Fight!';
 	  state.playerSprite = './images/kenshin-ready.gif';
 	  state.cpuSprite = './images/spidey-ready.gif';
 	  state.playerInput = true;
@@ -38017,6 +38017,326 @@
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var MoveList = function (_React$Component) {
+	  _inherits(MoveList, _React$Component);
+	
+	  function MoveList() {
+	    _classCallCheck(this, MoveList);
+	
+	    return _possibleConstructorReturn(this, (MoveList.__proto__ || Object.getPrototypeOf(MoveList)).apply(this, arguments));
+	  }
+	
+	  _createClass(MoveList, [{
+	    key: 'render',
+	    value: function render() {
+	
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'row' },
+	        _react2.default.createElement('div', { className: 'col four' }),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'col four' },
+	          _react2.default.createElement(
+	            'p',
+	            { className: 'move-list-title' },
+	            ' Move List '
+	          ),
+	          _react2.default.createElement(
+	            'ul',
+	            { className: 'move-list-items' },
+	            _react2.default.createElement(
+	              'li',
+	              null,
+	              'ForwardS'
+	            ),
+	            _react2.default.createElement(
+	              'li',
+	              null,
+	              'ChargeS'
+	            ),
+	            _react2.default.createElement(
+	              'li',
+	              null,
+	              'UpwardS'
+	            )
+	          )
+	        ),
+	        _react2.default.createElement('div', { className: 'col four' })
+	      );
+	    }
+	  }]);
+	
+	  return MoveList;
+	}(_react2.default.Component);
+	
+	module.exports = MoveList;
+
+/***/ },
+/* 241 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var AudioFiles = function (_React$Component) {
+	        _inherits(AudioFiles, _React$Component);
+	
+	        function AudioFiles() {
+	                _classCallCheck(this, AudioFiles);
+	
+	                return _possibleConstructorReturn(this, (AudioFiles.__proto__ || Object.getPrototypeOf(AudioFiles)).apply(this, arguments));
+	        }
+	
+	        _createClass(AudioFiles, [{
+	                key: 'render',
+	                value: function render() {
+	
+	                        return _react2.default.createElement(
+	                                'div',
+	                                null,
+	                                _react2.default.createElement('audio', { id: 'mainTheme', src: '/music/fallen-angels.mp3', autoPlay: true, muted: true }),
+	                                _react2.default.createElement('audio', { id: 'MKTheme', src: '/music/MK-theme.mp3' }),
+	                                _react2.default.createElement('audio', { id: 'GuileTheme', src: '/music/Guile-theme.mp3' }),
+	                                _react2.default.createElement('audio', { id: 'FF7BossTheme', src: '/music/FF7-boss-theme.mp3' }),
+	                                _react2.default.createElement('audio', { id: 'gameOver', src: '/music/game-over-man.mp3' }),
+	                                _react2.default.createElement('audio', { id: 'dna', src: '/music/dna.mp3' }),
+	                                _react2.default.createElement('audio', { id: 'kneel', src: '/music/kneel.mp3' }),
+	                                _react2.default.createElement('audio', { id: 'victory', src: '/music/victory.mp3' }),
+	                                _react2.default.createElement('audio', { id: 'playerHit', src: '/music/player-hit.mp3' }),
+	                                _react2.default.createElement('audio', { id: 'cpuHit', src: '/music/cpu-hit.mp3' }),
+	                                _react2.default.createElement('audio', { id: 'warning', src: '/music/warning.mp3' }),
+	                                _react2.default.createElement('audio', { id: 'danger', src: '/music/danger.mp3' }),
+	                                _react2.default.createElement('audio', { id: 'gokuHeal', src: '/music/goku-heal.mp3' }),
+	                                _react2.default.createElement('audio', { id: 'dendeHeal', src: '/music/dende-heal.mp3' }),
+	                                _react2.default.createElement('audio', { id: 'wrongInput', src: '/music/wrong-input.mp3' }),
+	                                _react2.default.createElement('audio', { id: 'webBall', src: '/music/web-ball.mp3' }),
+	                                _react2.default.createElement('audio', { id: 'spiderSting', src: '/music/spider-sting.mp3' }),
+	                                _react2.default.createElement('audio', { id: 'webSwing', src: '/music/web-swing.mp3' }),
+	                                _react2.default.createElement('audio', { id: 'chargingSlash', src: '/music/charging-slash.mp3' }),
+	                                _react2.default.createElement('audio', { id: 'forwardSlash', src: '/music/forward-slash.mp3' }),
+	                                _react2.default.createElement('audio', { id: 'upwardSlash', src: '/music/upward-slash.mp3' }),
+	                                _react2.default.createElement('audio', { id: 'bradleyTaunt', src: '/music/bradley-miss-taunt.mp3' }),
+	                                _react2.default.createElement('audio', { id: 'laughTaunt', src: '/music/laugh-miss-taunt.wav' }),
+	                                _react2.default.createElement('audio', { id: 'patheticTaunt', src: '/music/pathetic-miss-taunt.wav' }),
+	                                _react2.default.createElement('audio', { id: 'suckTaunt', src: '/music/suck-miss-taunt.wav' })
+	                        );
+	                }
+	        }]);
+	
+	        return AudioFiles;
+	}(_react2.default.Component);
+	
+	module.exports = AudioFiles;
+
+/***/ },
+/* 242 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var TypeFightTitle = function (_React$Component) {
+	  _inherits(TypeFightTitle, _React$Component);
+	
+	  function TypeFightTitle() {
+	    _classCallCheck(this, TypeFightTitle);
+	
+	    return _possibleConstructorReturn(this, (TypeFightTitle.__proto__ || Object.getPrototypeOf(TypeFightTitle)).apply(this, arguments));
+	  }
+	
+	  _createClass(TypeFightTitle, [{
+	    key: 'render',
+	    value: function render() {
+	
+	      return _react2.default.createElement(
+	        'a',
+	        { href: 'index.html' },
+	        _react2.default.createElement(
+	          'ul',
+	          { className: 'fight-website-title animated rollIn' },
+	          _react2.default.createElement(
+	            'li',
+	            null,
+	            'T'
+	          ),
+	          _react2.default.createElement(
+	            'li',
+	            null,
+	            'y'
+	          ),
+	          _react2.default.createElement(
+	            'li',
+	            null,
+	            'P'
+	          ),
+	          _react2.default.createElement(
+	            'li',
+	            null,
+	            'e'
+	          ),
+	          _react2.default.createElement(
+	            'li',
+	            null,
+	            'F'
+	          ),
+	          _react2.default.createElement(
+	            'li',
+	            null,
+	            'i'
+	          ),
+	          _react2.default.createElement(
+	            'li',
+	            null,
+	            'G'
+	          ),
+	          _react2.default.createElement(
+	            'li',
+	            null,
+	            'h'
+	          ),
+	          _react2.default.createElement(
+	            'li',
+	            null,
+	            'T'
+	          )
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return TypeFightTitle;
+	}(_react2.default.Component);
+	
+	module.exports = TypeFightTitle;
+
+/***/ },
+/* 243 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _fightStore = __webpack_require__(236);
+	
+	var _fightStore2 = _interopRequireDefault(_fightStore);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var CpuDifficulty = function (_React$Component) {
+	  _inherits(CpuDifficulty, _React$Component);
+	
+	  function CpuDifficulty() {
+	    _classCallCheck(this, CpuDifficulty);
+	
+	    return _possibleConstructorReturn(this, (CpuDifficulty.__proto__ || Object.getPrototypeOf(CpuDifficulty)).apply(this, arguments));
+	  }
+	
+	  _createClass(CpuDifficulty, [{
+	    key: '_cpuDifficulty',
+	    value: function _cpuDifficulty() {
+	      _fightStore2.default.actions.cpuDifficulty();
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var _this2 = this;
+	
+	      return _react2.default.createElement(
+	        'form',
+	        null,
+	        _react2.default.createElement(
+	          'select',
+	          { id: 'difficulty', name: 'cpuDifficulty', onChange: function onChange() {
+	              return _this2._cpuDifficulty();
+	            } },
+	          _react2.default.createElement(
+	            'option',
+	            { value: 'void' },
+	            '- Select CPU Difficulty - '
+	          ),
+	          _react2.default.createElement(
+	            'option',
+	            { value: 'Easy' },
+	            'Easy'
+	          ),
+	          _react2.default.createElement(
+	            'option',
+	            { value: 'Medium' },
+	            'Medium'
+	          ),
+	          _react2.default.createElement(
+	            'option',
+	            { value: 'Hard' },
+	            'Hard'
+	          )
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return CpuDifficulty;
+	}(_react2.default.Component);
+	
+	module.exports = CpuDifficulty;
+
+/***/ },
+/* 244 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
 	var _fightStore = __webpack_require__(236);
 	
 	var _fightStore2 = _interopRequireDefault(_fightStore);
@@ -38025,7 +38345,7 @@
 	
 	var _progressStore2 = _interopRequireDefault(_progressStore);
 	
-	var _backbutton = __webpack_require__(241);
+	var _backbutton = __webpack_require__(245);
 	
 	var _backbutton2 = _interopRequireDefault(_backbutton);
 	
@@ -38221,7 +38541,7 @@
 	module.exports = Progress;
 
 /***/ },
-/* 241 */
+/* 245 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -38248,331 +38568,10 @@
 	module.exports = BackButton;
 
 /***/ },
-/* 242 */
+/* 246 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
-
-/***/ },
-/* 243 */,
-/* 244 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var MoveList = function (_React$Component) {
-	  _inherits(MoveList, _React$Component);
-	
-	  function MoveList() {
-	    _classCallCheck(this, MoveList);
-	
-	    return _possibleConstructorReturn(this, (MoveList.__proto__ || Object.getPrototypeOf(MoveList)).apply(this, arguments));
-	  }
-	
-	  _createClass(MoveList, [{
-	    key: 'render',
-	    value: function render() {
-	
-	      return _react2.default.createElement(
-	        'div',
-	        { className: 'row' },
-	        _react2.default.createElement('div', { className: 'col four' }),
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'col four' },
-	          _react2.default.createElement(
-	            'p',
-	            { className: 'move-list-title' },
-	            ' Move List '
-	          ),
-	          _react2.default.createElement(
-	            'ul',
-	            { className: 'move-list-items' },
-	            _react2.default.createElement(
-	              'li',
-	              null,
-	              'ForwardS'
-	            ),
-	            _react2.default.createElement(
-	              'li',
-	              null,
-	              'ChargeS'
-	            ),
-	            _react2.default.createElement(
-	              'li',
-	              null,
-	              'UpwardS'
-	            )
-	          )
-	        ),
-	        _react2.default.createElement('div', { className: 'col four' })
-	      );
-	    }
-	  }]);
-	
-	  return MoveList;
-	}(_react2.default.Component);
-	
-	module.exports = MoveList;
-
-/***/ },
-/* 245 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _fightStore = __webpack_require__(236);
-	
-	var _fightStore2 = _interopRequireDefault(_fightStore);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var CpuDifficulty = function (_React$Component) {
-	  _inherits(CpuDifficulty, _React$Component);
-	
-	  function CpuDifficulty() {
-	    _classCallCheck(this, CpuDifficulty);
-	
-	    return _possibleConstructorReturn(this, (CpuDifficulty.__proto__ || Object.getPrototypeOf(CpuDifficulty)).apply(this, arguments));
-	  }
-	
-	  _createClass(CpuDifficulty, [{
-	    key: '_cpuDifficulty',
-	    value: function _cpuDifficulty() {
-	      _fightStore2.default.actions.cpuDifficulty();
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      var _this2 = this;
-	
-	      return _react2.default.createElement(
-	        'form',
-	        null,
-	        _react2.default.createElement(
-	          'select',
-	          { id: 'difficulty', name: 'cpuDifficulty', onChange: function onChange() {
-	              return _this2._cpuDifficulty();
-	            } },
-	          _react2.default.createElement(
-	            'option',
-	            { value: 'void' },
-	            '- Select CPU Difficulty - '
-	          ),
-	          _react2.default.createElement(
-	            'option',
-	            { value: 'Easy' },
-	            'Easy'
-	          ),
-	          _react2.default.createElement(
-	            'option',
-	            { value: 'Medium' },
-	            'Medium'
-	          ),
-	          _react2.default.createElement(
-	            'option',
-	            { value: 'Hard' },
-	            'Hard'
-	          )
-	        )
-	      );
-	    }
-	  }]);
-	
-	  return CpuDifficulty;
-	}(_react2.default.Component);
-	
-	module.exports = CpuDifficulty;
-
-/***/ },
-/* 246 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var AudioFiles = function (_React$Component) {
-	    _inherits(AudioFiles, _React$Component);
-	
-	    function AudioFiles() {
-	        _classCallCheck(this, AudioFiles);
-	
-	        return _possibleConstructorReturn(this, (AudioFiles.__proto__ || Object.getPrototypeOf(AudioFiles)).apply(this, arguments));
-	    }
-	
-	    _createClass(AudioFiles, [{
-	        key: 'render',
-	        value: function render() {
-	
-	            return _react2.default.createElement(
-	                'div',
-	                null,
-	                _react2.default.createElement('audio', { id: 'mainTheme', src: '/music/fallen-angels.mp3', autoPlay: true, muted: true }),
-	                _react2.default.createElement('audio', { id: 'MKTheme', src: '/music/MK-theme.mp3' }),
-	                _react2.default.createElement('audio', { id: 'GuileTheme', src: '/music/Guile-theme.mp3' }),
-	                _react2.default.createElement('audio', { id: 'FF7BossTheme', src: '/music/FF7-boss-theme.mp3' }),
-	                _react2.default.createElement('audio', { id: 'gameOver', src: '/music/game-over-man.mp3' }),
-	                _react2.default.createElement('audio', { id: 'dna', src: '/music/dna.mp3' }),
-	                _react2.default.createElement('audio', { id: 'kneel', src: '/music/kneel.mp3' }),
-	                _react2.default.createElement('audio', { id: 'victory', src: '/music/victory.mp3' }),
-	                _react2.default.createElement('audio', { id: 'playerHit', src: '/music/player-hit.mp3' }),
-	                _react2.default.createElement('audio', { id: 'cpuHit', src: '/music/cpu-hit.mp3' }),
-	                _react2.default.createElement('audio', { id: 'warning', src: '/music/warning.mp3' }),
-	                _react2.default.createElement('audio', { id: 'danger', src: '/music/danger.mp3' }),
-	                _react2.default.createElement('audio', { id: 'gokuHeal', src: '/music/goku-heal.mp3' }),
-	                _react2.default.createElement('audio', { id: 'dendeHeal', src: '/music/dende-heal.mp3' }),
-	                _react2.default.createElement('audio', { id: 'wrongInput', src: '/music/wrong-input.mp3' }),
-	                _react2.default.createElement('audio', { id: 'webBall', src: '/music/web-ball.mp3' }),
-	                _react2.default.createElement('audio', { id: 'spiderSting', src: '/music/spider-sting.mp3' }),
-	                _react2.default.createElement('audio', { id: 'webSwing', src: '/music/web-swing.mp3' }),
-	                _react2.default.createElement('audio', { id: 'chargingSlash', src: '/music/charging-slash.mp3' }),
-	                _react2.default.createElement('audio', { id: 'forwardSlash', src: '/music/forward-slash.mp3' }),
-	                _react2.default.createElement('audio', { id: 'upwardSlash', src: '/music/upward-slash.mp3' }),
-	                _react2.default.createElement('audio', { id: 'bradleyTaunt', src: '/music/bradley-miss-taunt.mp3' }),
-	                _react2.default.createElement('audio', { id: 'laughTaunt', src: '/music/laugh-miss-taunt.wav' }),
-	                _react2.default.createElement('audio', { id: 'patheticTaunt', src: '/music/pathetic-miss-taunt.wav' }),
-	                _react2.default.createElement('audio', { id: 'suckTaunt', src: '/music/suck-miss-taunt.wav' })
-	            );
-	        }
-	    }]);
-	
-	    return AudioFiles;
-	}(_react2.default.Component);
-	
-	module.exports = AudioFiles;
-
-/***/ },
-/* 247 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var TypeFightTitle = function (_React$Component) {
-	  _inherits(TypeFightTitle, _React$Component);
-	
-	  function TypeFightTitle() {
-	    _classCallCheck(this, TypeFightTitle);
-	
-	    return _possibleConstructorReturn(this, (TypeFightTitle.__proto__ || Object.getPrototypeOf(TypeFightTitle)).apply(this, arguments));
-	  }
-	
-	  _createClass(TypeFightTitle, [{
-	    key: 'render',
-	    value: function render() {
-	
-	      return _react2.default.createElement(
-	        'a',
-	        { href: 'index.html' },
-	        _react2.default.createElement(
-	          'ul',
-	          { className: 'fight-website-title animated rollIn' },
-	          _react2.default.createElement(
-	            'li',
-	            null,
-	            'T'
-	          ),
-	          _react2.default.createElement(
-	            'li',
-	            null,
-	            'y'
-	          ),
-	          _react2.default.createElement(
-	            'li',
-	            null,
-	            'P'
-	          ),
-	          _react2.default.createElement(
-	            'li',
-	            null,
-	            'e'
-	          ),
-	          _react2.default.createElement(
-	            'li',
-	            null,
-	            'F'
-	          ),
-	          _react2.default.createElement(
-	            'li',
-	            null,
-	            'i'
-	          ),
-	          _react2.default.createElement(
-	            'li',
-	            null,
-	            'G'
-	          ),
-	          _react2.default.createElement(
-	            'li',
-	            null,
-	            'h'
-	          ),
-	          _react2.default.createElement(
-	            'li',
-	            null,
-	            'T'
-	          )
-	        )
-	      );
-	    }
-	  }]);
-	
-	  return TypeFightTitle;
-	}(_react2.default.Component);
-	
-	module.exports = TypeFightTitle;
 
 /***/ }
 /******/ ]);

@@ -40,7 +40,7 @@ function randomString(length, chars) {
 
 
 var state = {
-  text: 'Click to begin',
+  fightScreenTitleText: 'Click to begin',
   cpuAttack: '',
   playerAttack: '',
   playerHP: 15,
@@ -76,7 +76,7 @@ store.addListener = function(listener) {
 store.copyState = function() {
   return {
     data : state.data,
-    text : state.text,
+    fightScreenTitleText : state.fightScreenTitleText,
     cpuAttack: state.cpuAttack,
     playerAttack: state.playerAttack,
     playerHP: state.playerHP,
@@ -114,13 +114,13 @@ function changed() {
 function gameState() {
 
   if(state.playerHP < 8) {
-    state.text = 'Warning!';
+    state.fightScreenTitleText = 'Warning!';
     state.playerStatus = 'warningHP';
     state.playerSprite = './images/kenshin-warning.gif';
     audioPlay.playWarning();
   }
   if(state.playerHP < 5) {
-    state.text = 'Danger!';
+    state.fightScreenTitleText = 'Danger!';
     state.playerStatus = 'dangerHP';
     state.playerSprite = './images/kenshin-danger.gif';
     audioPlay.playDanger();
@@ -199,7 +199,7 @@ function endFight() {
 
 
   if(state.playerHP < 1) {
-    state.text = "You lost! Try again.";
+    state.fightScreenTitleText = "You lost! Try again.";
     state.clickForProgress = 'Click to see your Progress!';
     state.rematch = true;
     state.playerAttack = 'I was going easy on you.';
@@ -238,7 +238,7 @@ function endFight() {
   }
 
   if(state.cpuHP < 1) {
-    state.text = 'Awesome! You won!';
+    state.fightScreenTitleText = 'Awesome! You won!';
     state.clickForProgress = 'Click to see your Progress!';
     state.rematch = true;
     state.playerAttack = "You should keep practicing."
@@ -274,7 +274,7 @@ store.actions.startFight = function() {
   disableDropDown();
 
 
-  state.text = 'Type Fight!';
+  state.fightScreenTitleText = 'Type Fight!';
   state.playerSprite = './images/kenshin-ready.gif';
   state.cpuSprite = './images/spidey-ready.gif';
   state.playerInput = true;
