@@ -32,7 +32,7 @@ function changed() {
 /* Actions                                   */
 /* ========================================= */
 
-store.actions.saveLoseProgress = function() {
+store.actions.saveLoseProgress = function(id) {
   var promise = $.ajax({
     url: '/player-progress/' + id,
     method: 'POST',
@@ -45,7 +45,7 @@ store.actions.saveLoseProgress = function() {
   });
 }
 
-store.actions.saveWinProgress = function() {
+store.actions.saveWinProgress = function(id) {
   var promise = $.ajax({
     url: '/player-progress/' + id,
     method: 'POST',
@@ -57,7 +57,19 @@ store.actions.saveWinProgress = function() {
   });
 }
 
-store.actions.loadProgress = function() {
+store.actions.loadProgress = function(id
+) {
+  $.ajax({
+    url: '/player-progress/' + id,
+    method: 'GET',
+  })
+  .done(function(data) {
+    console.log(data);
+    state.wins = data.stats.wins;
+    state.losses = data.stats.losses;
+    state.difficultyChosen = data.stats.difficultyChosen;
+    changed();
+  });
 
 }
 

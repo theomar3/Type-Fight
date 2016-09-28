@@ -13,17 +13,21 @@ class Fight extends React.Component {
   constructor() {
     super();
 
-     
-
-    store.actions.load();
-
     this.state = store.copyState();
 
-    store.addListener( state => {
+  }
+
+  componentWillMount() {
+    store.actions.load();
+
+    this.listeningFunc = (state) => {
       this.setState(state);
+    }
+    store.addListener(this.listeningFunc);
+  }
 
-    })
-
+  componentWillUnmount() {
+    store.removeListener(this.listeningFunc);
   }
 
 

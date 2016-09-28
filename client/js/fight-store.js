@@ -73,6 +73,11 @@ store.addListener = function(listener) {
   store.listeners.push(listener);
 }
 
+store.removeListener = function(listener) {
+  var index = store.listeners.indexOf(listener);
+  store.listeners.splice(index, 1);
+}
+
 store.copyState = function() {
   return {
     data : state.data,
@@ -224,7 +229,7 @@ function endFight() {
 
 
 
-    saveLoseProgress();
+    ProgressStore.actions.saveLoseProgress(id);
 
   }
 
@@ -243,7 +248,7 @@ function endFight() {
     audioPlay.victory();
 
 
-    saveWinProgress();
+    ProgressStore.actions.saveWinProgress(id);
   }
 
 }
@@ -252,7 +257,10 @@ function endFight() {
 
 store.actions.startFight = function() {
   if (difficulty === undefined) {
-    alert('Please select CPU Difficulty');
+    swal({
+      title: "Please select CPU Difficulty",
+      type: 'warning'
+    });
   }
   disableDropDown();
 
@@ -400,20 +408,9 @@ store.actions.load = function() {
   var id = getUserId();
 
 
-  $.ajax({
-    url: '/player-progress/' + id,
-    method: 'GET',
-  })
-  .done(function(data) {
-    console.log(data);
-    state.wins = data.stats.wins;
-    state.losses = data.stats.losses;
-    state.difficultyChosen = data.stats.difficultyChosen;
+  ProgressStore.actions.loadProgress(id);
 
-    console.log(state);
-    changed();
 
-  });
 }
 
 store.actions.cpuDifficulty = function() {
