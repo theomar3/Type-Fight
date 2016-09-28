@@ -27667,7 +27667,7 @@
 	    var gameOverSounds = [gameOver, dna, kneel];
 	    randomIndexing(gameOverSounds).play();
 	
-	    _progressStore2.default.actions.saveLoseProgress(id);
+	    _progressStore2.default.actions.saveLoseProgress(id, state.difficultyChosen);
 	  }
 	
 	  if (state.cpuHP < 1) {
@@ -27684,7 +27684,7 @@
 	    battleTheme.pause();
 	    _audioPlay2.default.victory();
 	
-	    _progressStore2.default.actions.saveWinProgress(id);
+	    _progressStore2.default.actions.saveWinProgress(id, state.difficultyChosen);
 	  }
 	}
 	
@@ -27949,27 +27949,27 @@
 	/* Actions                                   */
 	/* ========================================= */
 	
-	store.actions.saveLoseProgress = function (id) {
+	store.actions.saveLoseProgress = function (id, difficultyChosen) {
 	  var promise = $.ajax({
 	    url: '/player-progress/' + id,
 	    method: 'POST',
 	    data: {
 	      wins: 0,
 	      losses: 1,
-	      difficultyChosen: state.difficultyChosen
+	      difficultyChosen: difficultyChosen
 	
 	    }
 	  });
 	};
 	
-	store.actions.saveWinProgress = function (id) {
+	store.actions.saveWinProgress = function (id, difficultyChosen) {
 	  var promise = $.ajax({
 	    url: '/player-progress/' + id,
 	    method: 'POST',
 	    data: {
 	      wins: 1,
 	      losses: 0,
-	      difficultyChosen: state.difficultyChosen
+	      difficultyChosen: difficultyChosen
 	    }
 	  });
 	};
@@ -39736,8 +39736,6 @@
 	
 	    var _this = _possibleConstructorReturn(this, (Progress.__proto__ || Object.getPrototypeOf(Progress)).call(this));
 	
-	    _progressStore2.default.actions.saveLoseProgress();
-	    _progressStore2.default.actions.saveWinProgress();
 	    _progressStore2.default.actions.loadProgress();
 	
 	    _this.state = _progressStore2.default.copyState();

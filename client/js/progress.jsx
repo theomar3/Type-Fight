@@ -6,8 +6,6 @@ class Progress extends React.Component {
   constructor() {
     super();
 
-    ProgressStore.actions.saveLoseProgress();
-    ProgressStore.actions.saveWinProgress();
     ProgressStore.actions.loadProgress();
 
     this.state = ProgressStore.copyState();

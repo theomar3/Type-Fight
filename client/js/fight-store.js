@@ -241,7 +241,7 @@ function endFight() {
 
 
 
-    ProgressStore.actions.saveLoseProgress(id);
+    ProgressStore.actions.saveLoseProgress(id, state.difficultyChosen);
 
   }
 
@@ -260,7 +260,7 @@ function endFight() {
     audioPlay.victory();
 
 
-    ProgressStore.actions.saveWinProgress(id);
+    ProgressStore.actions.saveWinProgress(id, state.difficultyChosen);
   }
 
 }
