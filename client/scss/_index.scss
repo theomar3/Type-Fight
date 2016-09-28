@@ -14,7 +14,12 @@
 
 .container {
   margin: 80px;
-  background-color: red;
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#cf0404+6,ff3019+23,ff3019+85,cf0404+98 */
+  background: #cf0404; /* Old browsers */
+  background: -moz-linear-gradient(left,  #cf0404 6%, #ff3019 23%, #ff3019 85%, #cf0404 98%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(left,  #cf0404 6%,#ff3019 23%,#ff3019 85%,#cf0404 98%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to right,  #cf0404 6%,#ff3019 23%,#ff3019 85%,#cf0404 98%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cf0404', endColorstr='#cf0404',GradientType=1 ); /* IE6-9 */
   padding-top: 40px;
   padding-bottom: 50px;
 }
