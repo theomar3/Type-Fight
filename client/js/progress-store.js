@@ -1,7 +1,12 @@
 var $ = require('jquery');
+import getUserId from './user-id.js';
+
 
 
 var state = {
+  wins: 0,
+  losses: 0,
+  difficultyChosen: ''
 
 }
 
@@ -17,6 +22,10 @@ store.addListener = function(listener) {
 
 store.copyState = function() {
   return {
+    wins: state.wins,
+    losses: state.losses,
+    difficultyChosen: state.difficultyChosen
+
   };
 }
 
@@ -32,7 +41,8 @@ function changed() {
 /* Actions                                   */
 /* ========================================= */
 
-store.actions.saveLoseProgress = function(id, difficultyChosen) {
+store.actions.saveLoseProgress = function(difficultyChosen) {
+  var id = getUserId();
   var promise = $.ajax({
     url: '/player-progress/' + id,
     method: 'POST',
@@ -45,7 +55,8 @@ store.actions.saveLoseProgress = function(id, difficultyChosen) {
   });
 }
 
-store.actions.saveWinProgress = function(id, difficultyChosen) {
+store.actions.saveWinProgress = function(difficultyChosen) {
+  var id = getUserId();
   var promise = $.ajax({
     url: '/player-progress/' + id,
     method: 'POST',
@@ -57,8 +68,8 @@ store.actions.saveWinProgress = function(id, difficultyChosen) {
   });
 }
 
-store.actions.loadProgress = function(id
-) {
+store.actions.loadProgress = function() {
+  var id = getUserId();
   $.ajax({
     url: '/player-progress/' + id,
     method: 'GET',

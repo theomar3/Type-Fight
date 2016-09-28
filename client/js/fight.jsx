@@ -19,7 +19,6 @@ class Fight extends React.Component {
   }
 
   componentWillMount() {
-    store.actions.load();
 
     this.listeningFunc = (state) => {
       this.setState(state);

@@ -60,7 +60,7 @@
 	
 	var _fight2 = _interopRequireDefault(_fight);
 	
-	var _progress = __webpack_require__(253);
+	var _progress = __webpack_require__(254);
 	
 	var _progress2 = _interopRequireDefault(_progress);
 	
@@ -72,7 +72,7 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	__webpack_require__(255);
+	__webpack_require__(256);
 	
 	var App = function (_React$Component) {
 	  _inherits(App, _React$Component);
@@ -27151,25 +27151,25 @@
 	
 	var _audioPlay2 = _interopRequireDefault(_audioPlay);
 	
-	var _moveList = __webpack_require__(240);
+	var _moveList = __webpack_require__(241);
 	
 	var _moveList2 = _interopRequireDefault(_moveList);
 	
-	var _audioFiles = __webpack_require__(241);
+	var _audioFiles = __webpack_require__(242);
 	
 	var _audioFiles2 = _interopRequireDefault(_audioFiles);
 	
-	var _typeFightTitle = __webpack_require__(242);
+	var _typeFightTitle = __webpack_require__(243);
 	
 	var _typeFightTitle2 = _interopRequireDefault(_typeFightTitle);
 	
-	var _cpuDifficulty = __webpack_require__(243);
+	var _cpuDifficulty = __webpack_require__(244);
 	
 	var _cpuDifficulty2 = _interopRequireDefault(_cpuDifficulty);
 	
 	var _reactRouter = __webpack_require__(172);
 	
-	var _sweetalert = __webpack_require__(244);
+	var _sweetalert = __webpack_require__(245);
 	
 	var _sweetalert2 = _interopRequireDefault(_sweetalert);
 	
@@ -27200,8 +27200,6 @@
 	    key: 'componentWillMount',
 	    value: function componentWillMount() {
 	      var _this2 = this;
-	
-	      _fightStore2.default.actions.load();
 	
 	      this.listeningFunc = function (state) {
 	        _this2.setState(state);
@@ -27457,9 +27455,13 @@
 	
 	var _progressStore2 = _interopRequireDefault(_progressStore);
 	
+	var _userId = __webpack_require__(239);
+	
+	var _userId2 = _interopRequireDefault(_userId);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	var $ = __webpack_require__(239);
+	var $ = __webpack_require__(240);
 	
 	
 	var intervalId;
@@ -27502,11 +27504,8 @@
 	  showPlayerBubble: false,
 	  showCpuBubble: false,
 	  showMissBubble: false,
-	  wins: 0,
-	  losses: 0,
 	  showClickForProgress: '',
-	  showRematch: false,
-	  difficultyChosen: ''
+	  showRematch: false
 	
 	};
 	
@@ -27542,11 +27541,8 @@
 	    showPlayerBubble: state.showPlayerBubble,
 	    showCpuBubble: state.showCpuBubble,
 	    showMissBubble: state.showMissBubble,
-	    wins: state.wins,
-	    losses: state.losses,
 	    showClickForProgress: state.showClickForProgress,
-	    showRematch: state.showRematch,
-	    difficultyChosen: state.difficultyChosen
+	    showRematch: state.showRematch
 	
 	  };
 	};
@@ -27645,7 +27641,7 @@
 	
 	function endFight() {
 	  clearInterval(intervalId);
-	  var id = getUserId();
+	  var id = (0, _userId2.default)();
 	
 	  if (state.playerHP < 1) {
 	    state.fightScreenTitleText = "You lost! Try again.";
@@ -27667,7 +27663,7 @@
 	    var gameOverSounds = [gameOver, dna, kneel];
 	    randomIndexing(gameOverSounds).play();
 	
-	    _progressStore2.default.actions.saveLoseProgress(id, state.difficultyChosen);
+	    _progressStore2.default.actions.saveLoseProgress(state.difficultyChosen);
 	  }
 	
 	  if (state.cpuHP < 1) {
@@ -27684,7 +27680,7 @@
 	    battleTheme.pause();
 	    _audioPlay2.default.victory();
 	
-	    _progressStore2.default.actions.saveWinProgress(id, state.difficultyChosen);
+	    _progressStore2.default.actions.saveWinProgress(state.difficultyChosen);
 	  }
 	}
 	
@@ -27799,22 +27795,16 @@
 	  }
 	};
 	
-	function getUserId() {
-	  var userGoogleID = localStorage.getItem('googleID');
-	
-	  if (userGoogleID) {
-	    console.log('google id', userGoogleID);
-	  }
-	  return userGoogleID;
-	}
-	
-	store.actions.load = function () {
-	  console.log('loading');
-	
-	  var id = getUserId();
-	
-	  _progressStore2.default.actions.loadProgress(id);
-	};
+	// store.actions.load = function() {
+	//   console.log('loading');
+	//
+	//   var id = getUserId();
+	//
+	//
+	//   ProgressStore.actions.loadProgress(id);
+	//
+	//
+	// }
 	
 	store.actions.cpuDifficulty = function () {
 	  difficulty = document.querySelector('#difficulty');
@@ -27920,9 +27910,21 @@
 
 	'use strict';
 	
-	var $ = __webpack_require__(239);
+	var _userId = __webpack_require__(239);
 	
-	var state = {};
+	var _userId2 = _interopRequireDefault(_userId);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var $ = __webpack_require__(240);
+	
+	
+	var state = {
+	  wins: 0,
+	  losses: 0,
+	  difficultyChosen: ''
+	
+	};
 	
 	var store = {
 	  listeners: [],
@@ -27934,7 +27936,12 @@
 	};
 	
 	store.copyState = function () {
-	  return {};
+	  return {
+	    wins: state.wins,
+	    losses: state.losses,
+	    difficultyChosen: state.difficultyChosen
+	
+	  };
 	};
 	
 	function changed() {
@@ -27949,7 +27956,8 @@
 	/* Actions                                   */
 	/* ========================================= */
 	
-	store.actions.saveLoseProgress = function (id, difficultyChosen) {
+	store.actions.saveLoseProgress = function (difficultyChosen) {
+	  var id = (0, _userId2.default)();
 	  var promise = $.ajax({
 	    url: '/player-progress/' + id,
 	    method: 'POST',
@@ -27962,7 +27970,8 @@
 	  });
 	};
 	
-	store.actions.saveWinProgress = function (id, difficultyChosen) {
+	store.actions.saveWinProgress = function (difficultyChosen) {
+	  var id = (0, _userId2.default)();
 	  var promise = $.ajax({
 	    url: '/player-progress/' + id,
 	    method: 'POST',
@@ -27974,7 +27983,8 @@
 	  });
 	};
 	
-	store.actions.loadProgress = function (id) {
+	store.actions.loadProgress = function () {
+	  var id = (0, _userId2.default)();
 	  $.ajax({
 	    url: '/player-progress/' + id,
 	    method: 'GET'
@@ -27991,6 +28001,23 @@
 
 /***/ },
 /* 239 */
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	function getUserId() {
+	  var userGoogleID = localStorage.getItem('googleID');
+	
+	  if (userGoogleID) {
+	    console.log('google id', userGoogleID);
+	    return userGoogleID;
+	  } else {}
+	}
+	
+	module.exports = getUserId;
+
+/***/ },
+/* 240 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*eslint-disable no-unused-vars*/
@@ -38070,7 +38097,7 @@
 
 
 /***/ },
-/* 240 */
+/* 241 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -38145,7 +38172,7 @@
 	module.exports = MoveList;
 
 /***/ },
-/* 241 */
+/* 242 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -38216,7 +38243,7 @@
 	module.exports = AudioFiles;
 
 /***/ },
-/* 242 */
+/* 243 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -38310,7 +38337,7 @@
 	module.exports = TypeFightTitle;
 
 /***/ },
-/* 243 */
+/* 244 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -38367,37 +38394,37 @@
 	          ),
 	          _react2.default.createElement(
 	            'option',
-	            { value: 'Very Easy' },
+	            { value: 'Baby' },
 	            'Baby-Mode (Very Easy)'
 	          ),
 	          _react2.default.createElement(
 	            'option',
-	            { value: 'Easy' },
+	            { value: 'Cake Walk' },
 	            'Piece Of Cake (Easy)'
 	          ),
 	          _react2.default.createElement(
 	            'option',
-	            { value: 'Medium' },
+	            { value: 'Not Rough' },
 	            'Not Too Rough (Medium)'
 	          ),
 	          _react2.default.createElement(
 	            'option',
-	            { value: 'Very Medium' },
+	            { value: 'Let\'s Rock' },
 	            'Let\'s Rock (Very Medium)'
 	          ),
 	          _react2.default.createElement(
 	            'option',
-	            { value: 'Hard' },
+	            { value: 'Damn I\'m Good' },
 	            'Damn I\'m Good (Hard)'
 	          ),
 	          _react2.default.createElement(
 	            'option',
-	            { value: 'Very Hard' },
+	            { value: 'Nightmare' },
 	            'Nightmare (Very Hard)'
 	          ),
 	          _react2.default.createElement(
 	            'option',
-	            { value: 'Extreme' },
+	            { value: 'Mike Tyson' },
 	            'Mike Tyson from Punch Out (Extreme) '
 	          )
 	        )
@@ -38411,7 +38438,7 @@
 	module.exports = CpuDifficulty;
 
 /***/ },
-/* 244 */
+/* 245 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -38429,35 +38456,35 @@
 	 * jQuery-like functions for manipulating the DOM
 	 */
 	
-	var _hasClass$addClass$removeClass$escapeHtml$_show$show$_hide$hide$isDescendant$getTopMargin$fadeIn$fadeOut$fireClick$stopEventPropagation = __webpack_require__(245);
+	var _hasClass$addClass$removeClass$escapeHtml$_show$show$_hide$hide$isDescendant$getTopMargin$fadeIn$fadeOut$fireClick$stopEventPropagation = __webpack_require__(246);
 	
 	/*
 	 * Handy utilities
 	 */
 	
-	var _extend$hexToRgb$isIE8$logStr$colorLuminance = __webpack_require__(246);
+	var _extend$hexToRgb$isIE8$logStr$colorLuminance = __webpack_require__(247);
 	
 	/*
 	 *  Handle sweetAlert's DOM elements
 	 */
 	
-	var _sweetAlertInitialize$getModal$getOverlay$getInput$setFocusStyle$openModal$resetInput$fixVerticalPosition = __webpack_require__(247);
+	var _sweetAlertInitialize$getModal$getOverlay$getInput$setFocusStyle$openModal$resetInput$fixVerticalPosition = __webpack_require__(248);
 	
 	// Handle button events and keyboard events
 	
-	var _handleButton$handleConfirm$handleCancel = __webpack_require__(250);
+	var _handleButton$handleConfirm$handleCancel = __webpack_require__(251);
 	
-	var _handleKeyDown = __webpack_require__(251);
+	var _handleKeyDown = __webpack_require__(252);
 	
 	var _handleKeyDown2 = _interopRequireWildcard(_handleKeyDown);
 	
 	// Default values
 	
-	var _defaultParams = __webpack_require__(248);
+	var _defaultParams = __webpack_require__(249);
 	
 	var _defaultParams2 = _interopRequireWildcard(_defaultParams);
 	
-	var _setParameters = __webpack_require__(252);
+	var _setParameters = __webpack_require__(253);
 	
 	var _setParameters2 = _interopRequireWildcard(_setParameters);
 	
@@ -38719,7 +38746,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 245 */
+/* 246 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -38915,7 +38942,7 @@
 	exports.stopEventPropagation = stopEventPropagation;
 
 /***/ },
-/* 246 */
+/* 247 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -38993,7 +39020,7 @@
 	exports.colorLuminance = colorLuminance;
 
 /***/ },
-/* 247 */
+/* 248 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -39004,11 +39031,11 @@
 	  value: true
 	});
 	
-	var _hexToRgb = __webpack_require__(246);
+	var _hexToRgb = __webpack_require__(247);
 	
-	var _removeClass$getTopMargin$fadeIn$show$addClass = __webpack_require__(245);
+	var _removeClass$getTopMargin$fadeIn$show$addClass = __webpack_require__(246);
 	
-	var _defaultParams = __webpack_require__(248);
+	var _defaultParams = __webpack_require__(249);
 	
 	var _defaultParams2 = _interopRequireWildcard(_defaultParams);
 	
@@ -39016,7 +39043,7 @@
 	 * Add modal + overlay to DOM
 	 */
 	
-	var _injectedHTML = __webpack_require__(249);
+	var _injectedHTML = __webpack_require__(250);
 	
 	var _injectedHTML2 = _interopRequireWildcard(_injectedHTML);
 	
@@ -39165,7 +39192,7 @@
 	exports.fixVerticalPosition = fixVerticalPosition;
 
 /***/ },
-/* 248 */
+/* 249 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -39202,7 +39229,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 249 */
+/* 250 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -39249,7 +39276,7 @@
 	module.exports = exports["default"];
 
 /***/ },
-/* 250 */
+/* 251 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -39258,11 +39285,11 @@
 	  value: true
 	});
 	
-	var _colorLuminance = __webpack_require__(246);
+	var _colorLuminance = __webpack_require__(247);
 	
-	var _getModal = __webpack_require__(247);
+	var _getModal = __webpack_require__(248);
 	
-	var _hasClass$isDescendant = __webpack_require__(245);
+	var _hasClass$isDescendant = __webpack_require__(246);
 	
 	/*
 	 * User clicked on "Confirm"/"OK" or "Cancel"
@@ -39389,7 +39416,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 251 */
+/* 252 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -39398,9 +39425,9 @@
 	  value: true
 	});
 	
-	var _stopEventPropagation$fireClick = __webpack_require__(245);
+	var _stopEventPropagation$fireClick = __webpack_require__(246);
 	
-	var _setFocusStyle = __webpack_require__(247);
+	var _setFocusStyle = __webpack_require__(248);
 	
 	var handleKeyDown = function handleKeyDown(event, params, modal) {
 	  var e = event || window.event;
@@ -39473,7 +39500,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 252 */
+/* 253 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -39482,11 +39509,11 @@
 	  value: true
 	});
 	
-	var _isIE8 = __webpack_require__(246);
+	var _isIE8 = __webpack_require__(247);
 	
-	var _getModal$getInput$setFocusStyle = __webpack_require__(247);
+	var _getModal$getInput$setFocusStyle = __webpack_require__(248);
 	
-	var _hasClass$addClass$removeClass$escapeHtml$_show$show$_hide$hide = __webpack_require__(245);
+	var _hasClass$addClass$removeClass$escapeHtml$_show$show$_hide$hide = __webpack_require__(246);
 	
 	var alertTypes = ['error', 'warning', 'info', 'success', 'input', 'prompt'];
 	
@@ -39703,7 +39730,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 253 */
+/* 254 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -39714,7 +39741,7 @@
 	
 	var _progressStore2 = _interopRequireDefault(_progressStore);
 	
-	var _backbutton = __webpack_require__(254);
+	var _backbutton = __webpack_require__(255);
 	
 	var _backbutton2 = _interopRequireDefault(_backbutton);
 	
@@ -39741,8 +39768,10 @@
 	    _this.state = _progressStore2.default.copyState();
 	
 	    _progressStore2.default.addListener(function (state) {
+	      console.log('progres compononent state', state);
 	      _this.setState(state);
 	    });
+	
 	    return _this;
 	  }
 	
@@ -39906,7 +39935,7 @@
 	module.exports = Progress;
 
 /***/ },
-/* 254 */
+/* 255 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -39933,7 +39962,7 @@
 	module.exports = BackButton;
 
 /***/ },
-/* 255 */
+/* 256 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin

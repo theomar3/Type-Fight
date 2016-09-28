@@ -11,8 +11,10 @@ class Progress extends React.Component {
     this.state = ProgressStore.copyState();
 
     ProgressStore.addListener(state => {
+      console.log('progres compononent state', state)
       this.setState(state);
     });
+
   }
 
 

@@ -1,6 +1,7 @@
 var $ = require('jquery');
 import audioPlay from './audio-play.js';
 import ProgressStore from './progress-store.js';
+import getUserId from './user-id.js';
 
 
 var intervalId;
@@ -55,11 +56,8 @@ var state = {
   showPlayerBubble: false,
   showCpuBubble: false,
   showMissBubble: false,
-  wins: 0,
-  losses: 0,
   showClickForProgress: '',
-  showRematch: false,
-  difficultyChosen: ''
+  showRematch: false
 
 
 }
@@ -96,11 +94,8 @@ store.copyState = function() {
     showPlayerBubble: state.showPlayerBubble,
     showCpuBubble: state.showCpuBubble,
     showMissBubble: state.showMissBubble,
-    wins: state.wins,
-    losses: state.losses,
     showClickForProgress: state.showClickForProgress,
-    showRematch: state.showRematch,
-    difficultyChosen: state.difficultyChosen
+    showRematch: state.showRematch
 
   }
 }
@@ -241,7 +236,7 @@ function endFight() {
 
 
 
-    ProgressStore.actions.saveLoseProgress(id, state.difficultyChosen);
+    ProgressStore.actions.saveLoseProgress(state.difficultyChosen);
 
   }
 
@@ -260,7 +255,7 @@ function endFight() {
     audioPlay.victory();
 
 
-    ProgressStore.actions.saveWinProgress(id, state.difficultyChosen);
+    ProgressStore.actions.saveWinProgress(state.difficultyChosen);
   }
 
 }
@@ -403,25 +398,18 @@ store.actions.attack = function(evt) {
   }
 }
 
-function getUserId() {
-  var userGoogleID = localStorage.getItem('googleID');
-
-  if (userGoogleID) {
-    console.log('google id', userGoogleID);
-  }
-  return userGoogleID;
-}
-
-store.actions.load = function() {
-  console.log('loading');
-
-  var id = getUserId();
 
 
-  ProgressStore.actions.loadProgress(id);
-
-
-}
+// store.actions.load = function() {
+//   console.log('loading');
+//
+//   var id = getUserId();
+//
+//
+//   ProgressStore.actions.loadProgress(id);
+//
+//
+// }
 
 store.actions.cpuDifficulty = function() {
   difficulty = document.querySelector('#difficulty');
