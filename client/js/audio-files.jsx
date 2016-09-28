@@ -11,7 +11,7 @@ class AudioFiles extends React.Component {
       <audio id='MKTheme' src="/music/MK-theme.mp3" />
       <audio id='GuileTheme' src='/music/Guile-theme.mp3' />
       <audio id='FF7BossTheme' src='/music/FF7-boss-theme.mp3' />
-      <audio id ='OneWingedAngel' src='/music/one-winged-angel.mp3' />
+      <audio id ='OneWingedAngel' src='/music/one-winged-angel2.mp3' />
 
         {/*game over audio*/}
 

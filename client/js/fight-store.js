@@ -282,6 +282,8 @@ store.actions.startFight = function() {
   state.showClickForProgress = '';
   state.playerHP = 15;
   state.cpuHP = 24;
+  state.playerStatusClass = 'healthyHP';
+  state.cpuStatusClass = 'healthyHP';
 
   var MKTheme = document.getElementById('MKTheme');
   var GuileTheme = document.getElementById('GuileTheme');
@@ -289,9 +291,9 @@ store.actions.startFight = function() {
   var OneWingedAngel = document.getElementById('OneWingedAngel');
 
   battleMusic = [
-    MKTheme,
-    GuileTheme,
-    FF7BossTheme,
+    // MKTheme,
+    // GuileTheme,
+    // FF7BossTheme,
     OneWingedAngel
   ];
 

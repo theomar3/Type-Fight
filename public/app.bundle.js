@@ -27688,14 +27688,20 @@
 	  state.showRematch = false;
 	  state.showClickForProgress = '';
 	  state.playerHP = 15;
-	  state.cpuHP = 2;
+	  state.cpuHP = 24;
+	  state.playerStatusClass = 'healthyHP';
+	  state.cpuStatusClass = 'healthyHP';
 	
 	  var MKTheme = document.getElementById('MKTheme');
 	  var GuileTheme = document.getElementById('GuileTheme');
 	  var FF7BossTheme = document.getElementById('FF7BossTheme');
 	  var OneWingedAngel = document.getElementById('OneWingedAngel');
 	
-	  battleMusic = [MKTheme, GuileTheme, FF7BossTheme, OneWingedAngel];
+	  battleMusic = [
+	  // MKTheme,
+	  // GuileTheme,
+	  // FF7BossTheme,
+	  OneWingedAngel];
 	
 	  battleTheme = randomIndexing(battleMusic);
 	  battleTheme.play();
@@ -38140,7 +38146,7 @@
 	                                _react2.default.createElement('audio', { id: 'MKTheme', src: '/music/MK-theme.mp3' }),
 	                                _react2.default.createElement('audio', { id: 'GuileTheme', src: '/music/Guile-theme.mp3' }),
 	                                _react2.default.createElement('audio', { id: 'FF7BossTheme', src: '/music/FF7-boss-theme.mp3' }),
-	                                _react2.default.createElement('audio', { id: 'OneWingedAngel', src: '/music/one-winged-angel.mp3' }),
+	                                _react2.default.createElement('audio', { id: 'OneWingedAngel', src: '/music/one-winged-angel2.mp3' }),
 	                                _react2.default.createElement('audio', { id: 'gameOver', src: '/music/game-over-man.mp3' }),
 	                                _react2.default.createElement('audio', { id: 'dna', src: '/music/dna.mp3' }),
 	                                _react2.default.createElement('audio', { id: 'kneel', src: '/music/kneel.mp3' }),
