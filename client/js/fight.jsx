@@ -13,7 +13,7 @@ class Fight extends React.Component {
   constructor() {
     super();
 
-    
+     
 
     store.actions.load();
 
