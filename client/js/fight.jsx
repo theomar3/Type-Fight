@@ -6,11 +6,14 @@ import AudioFiles from './audio-files.jsx';
 import TypeFightTitle from './type-fight-title.jsx';
 import CpuDifficulty from './cpu-difficulty.jsx';
 import {Link} from 'react-router';
+import swal from 'sweetalert';
+console.log(swal);
 
 class Fight extends React.Component {
   constructor() {
     super();
 
+    
 
     store.actions.load();
 
