@@ -73,7 +73,4 @@ store.actions.loadProgress = function(id
 
 }
 
-
-
-
 module.exports = store;

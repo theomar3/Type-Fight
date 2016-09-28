@@ -1,5 +1,4 @@
 var React = require('react');
-import store from './fight-store.js';
 import ProgressStore from './progress-store.js';
 import BackButton from './backbutton.jsx';
 
@@ -7,13 +6,11 @@ class Progress extends React.Component {
   constructor() {
     super();
 
-    store.actions.load();
+    ProgressStore.actions.saveLoseProgress();
+    ProgressStore.actions.saveWinProgress();
+    ProgressStore.actions.loadProgress();
 
-    this.state = store.copyState();
-
-    store.addListener(state => {
-      this.setState(state);
-    });
+    this.state = ProgressStore.copyState();
 
     ProgressStore.addListener(state => {
       this.setState(state);

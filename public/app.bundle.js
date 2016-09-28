@@ -27713,11 +27713,7 @@
 	  var FF7BossTheme = document.getElementById('FF7BossTheme');
 	  var OneWingedAngel = document.getElementById('OneWingedAngel');
 	
-	  battleMusic = [
-	  // MKTheme,
-	  // GuileTheme,
-	  // FF7BossTheme,
-	  OneWingedAngel];
+	  battleMusic = [MKTheme, GuileTheme, FF7BossTheme, OneWingedAngel];
 	
 	  battleTheme = randomIndexing(battleMusic);
 	  battleTheme.play();
@@ -27809,7 +27805,6 @@
 	  if (userGoogleID) {
 	    console.log('google id', userGoogleID);
 	  }
-	
 	  return userGoogleID;
 	}
 	
@@ -39715,10 +39710,6 @@
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
-	var _fightStore = __webpack_require__(236);
-	
-	var _fightStore2 = _interopRequireDefault(_fightStore);
-	
 	var _progressStore = __webpack_require__(238);
 	
 	var _progressStore2 = _interopRequireDefault(_progressStore);
@@ -39745,13 +39736,11 @@
 	
 	    var _this = _possibleConstructorReturn(this, (Progress.__proto__ || Object.getPrototypeOf(Progress)).call(this));
 	
-	    _fightStore2.default.actions.load();
+	    _progressStore2.default.actions.saveLoseProgress();
+	    _progressStore2.default.actions.saveWinProgress();
+	    _progressStore2.default.actions.loadProgress();
 	
-	    _this.state = _fightStore2.default.copyState();
-	
-	    _fightStore2.default.addListener(function (state) {
-	      _this.setState(state);
-	    });
+	    _this.state = _progressStore2.default.copyState();
 	
 	    _progressStore2.default.addListener(function (state) {
 	      _this.setState(state);

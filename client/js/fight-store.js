@@ -294,9 +294,9 @@ store.actions.startFight = function() {
   var OneWingedAngel = document.getElementById('OneWingedAngel');
 
   battleMusic = [
-    // MKTheme,
-    // GuileTheme,
-    // FF7BossTheme,
+    MKTheme,
+    GuileTheme,
+    FF7BossTheme,
     OneWingedAngel
   ];
 
@@ -409,8 +409,6 @@ function getUserId() {
   if (userGoogleID) {
     console.log('google id', userGoogleID);
   }
-
-
   return userGoogleID;
 }
 
