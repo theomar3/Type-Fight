@@ -178,14 +178,26 @@ function intervalRounds() {
     audioPlay.spiderSting();
   }
 
-  if(state.difficultyChosen === 'Easy') {
+  if(state.difficultyChosen === 'Very Easy') {
     state.healString = randomString(4, 'aA');
+  }
+  else if(state.difficultyChosen === 'Easy') {
+    state.healString = randomString(4, 'aA#');
   }
   else if(state.difficultyChosen === 'Medium') {
     state.healString = randomString(6, 'aA');
   }
+  else if(state.difficultyChosen === 'Very Medium') {
+    state.healString = randomString(6, 'aA#');
+  }
   else if(state.difficultyChosen === 'Hard') {
     state.healString = randomString(8, 'aA');
+  }
+  else if(state.difficultyChosen === 'Very Hard') {
+    state.healString = randomString(8, 'aA#');
+  }
+  else if(state.difficultyChosen === 'Extreme') {
+    state.healString = randomString(8, 'aA#!');
   }
 
   state.playerHP -= 3;
@@ -272,7 +284,7 @@ store.actions.startFight = function() {
   state.showRematch = false;
   state.showClickForProgress = '';
   state.playerHP = 15;
-  state.cpuHP = 24;
+  state.cpuHP = 2;
   state.playerStatusClass = 'healthyHP';
   state.cpuStatusClass = 'healthyHP';
 

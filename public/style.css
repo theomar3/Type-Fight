@@ -1105,7 +1105,8 @@ body.stop-scrolling {
   padding: 5px;
   background-color: black;
   color: white;
-  margin-left: 10%; }
+  margin-left: 10%;
+  font-size: 1em; }
 
 .player-bubble-hide {
   display: none; }
