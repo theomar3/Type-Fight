@@ -27324,9 +27324,7 @@
 	            { className: 'row' },
 	            _react2.default.createElement(
 	              'div',
-	              { className: 'fight-screen col twelve', onClick: function onClick() {
-	                  return _this3._clickFightTitle();
-	                } },
+	              { className: 'fight-screen col twelve' },
 	              _react2.default.createElement(
 	                'div',
 	                { className: 'row' },
@@ -27503,7 +27501,7 @@
 	}
 	
 	var state = {
-	  fightScreenTitleText: 'Click to begin',
+	  fightScreenTitleText: 'Click HERE to begin',
 	  cpuAttackMessage: '',
 	  playerAttackMessage: '',
 	  playerHP: 15,
@@ -38123,6 +38121,10 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
+	var _fightStore = __webpack_require__(236);
+	
+	var _fightStore2 = _interopRequireDefault(_fightStore);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -38137,51 +38139,49 @@
 	  function MoveList() {
 	    _classCallCheck(this, MoveList);
 	
-	    return _possibleConstructorReturn(this, (MoveList.__proto__ || Object.getPrototypeOf(MoveList)).apply(this, arguments));
+	    var _this = _possibleConstructorReturn(this, (MoveList.__proto__ || Object.getPrototypeOf(MoveList)).call(this));
+	
+	    _this.state = _fightStore2.default.copyState();
+	
+	    return _this;
 	  }
 	
 	  _createClass(MoveList, [{
+	    key: 'componentWillMount',
+	    value: function componentWillMount() {
+	      var _this2 = this;
+	
+	      this.listeningFunc = function (state) {
+	        _this2.setState(state);
+	      };
+	      _fightStore2.default.addListener(this.listeningFunc);
+	    }
+	  }, {
+	    key: 'componentWillUnmount',
+	    value: function componentWillUnmount() {
+	      _fightStore2.default.removeListener(this.listeningFunc);
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
+	      var _this3 = this;
 	
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'row' },
-	        _react2.default.createElement('div', { className: 'col three' }),
+	        _react2.default.createElement('div', { className: 'col four' }),
 	        _react2.default.createElement(
 	          'div',
-	          { className: 'col six' },
+	          { className: 'col four' },
 	          _react2.default.createElement(
-	            'p',
-	            { className: 'move-list-title heal-instructions' },
-	            'TYPE THE RANDOM LETTERS UNDER THE CPU\'S ATTACK TO HEAL YOURSELF!'
-	          ),
-	          _react2.default.createElement(
-	            'p',
-	            { className: 'move-list-title' },
-	            ' Move List '
-	          ),
-	          _react2.default.createElement(
-	            'ul',
-	            { className: 'move-list-items' },
-	            _react2.default.createElement(
-	              'li',
-	              null,
-	              'ForwardS'
-	            ),
-	            _react2.default.createElement(
-	              'li',
-	              null,
-	              'ChargeS'
-	            ),
-	            _react2.default.createElement(
-	              'li',
-	              null,
-	              'UpwardS'
-	            )
+	            'button',
+	            { className: 'instructions', onClick: function onClick() {
+	                return _this3._instructionsPopUp();
+	              } },
+	            'CLICK HERE FOR GAME INSTRUCTIONS'
 	          )
 	        ),
-	        _react2.default.createElement('div', { className: 'col three' })
+	        _react2.default.createElement('div', { className: 'col four' })
 	      );
 	    }
 	  }]);

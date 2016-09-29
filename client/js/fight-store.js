@@ -41,7 +41,7 @@ function randomString(length, chars) {
 
 
 var state = {
-  fightScreenTitleText: 'Click to begin',
+  fightScreenTitleText: 'Click HERE to begin',
   cpuAttackMessage: '',
   playerAttackMessage: '',
   playerHP: 15,

@@ -50,6 +50,7 @@
 	font-size: 2em;
 	font-weight: bold;
 	text-align: center;
+	cursor: pointer;
 }
 
 .fight-title:hover {
@@ -149,7 +150,7 @@
 	line-height: 2em;
 	position: relative;
 	width: 280px;
-	height: 75px;
+	height: 90px;
 	padding: 0px;
 	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#e5e696+18,d1d360+47 */
 	background: #e5e696; /* Old browsers */
@@ -280,4 +281,20 @@ input[type='text'] {
 	background-color: white;
 	text-align: center;
 	font-size: 1.2em;
+}
+
+.instructions {
+	padding: 15px;
+  background-color: #ffc0cb;
+  color: red;
+  border: 4px solid white;
+  font-size: 1.3em;
+  font-weight: bold;
+  font-family: "Trebuchet MS","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Tahoma,sans-serif;
+  cursor: pointer;
+}
+
+.instructions:hover {
+	background-color: black;
+	color: white;
 }

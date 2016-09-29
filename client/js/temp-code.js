@@ -1,24 +1,7 @@
-
-
-
-
-  <table id="stats-table">
-    <tr id='HeadRow'>
-      <td> Wins </td>
-      <td> Losses </td>
-    </tr>
-
-    <tr>
-      <td tableHeadData = "Wins"> {this.state.wins} </td>
-      <td tableHeadData = 'Losses'> {this.state.losses} </td>
-    </tr>
-  </table>
-
-  <BackButton />
-
-  <a href="index.html">
-    <button id='homepage-link'>
-      Lemme Google Sign-In!
-    </button>
-  </a>
-  <p id='sign-in-info'> (Psst. That way you can check your progress from around the world.)</p>
+<p className = 'move-list-title heal-instructions'>TYPE THE RANDOM LETTERS UNDER THE CPU'S ATTACK TO HEAL YOURSELF!</p>
+<p className='move-list-title'> Move List </p>
+<ul className="move-list-items">
+<li>ForwardS</li>
+<li>ChargeS</li>
+<li>UpwardS</li>
+</ul>
