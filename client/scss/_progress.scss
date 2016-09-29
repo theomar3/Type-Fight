@@ -52,6 +52,12 @@ tr:nth-of-type(even) {
   font-size: 1.3em;
   font-weight: bold;
   font-family: "Trebuchet MS","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Tahoma,sans-serif;
+  cursor: pointer;
+}
+
+.back:hover {
+  background-color: black;
+  color: white;
 }
 
 #homepage-link {
@@ -62,6 +68,12 @@ tr:nth-of-type(even) {
   font-size: 1.3em;
   font-weight: bold;
   font-family: "Trebuchet MS","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Tahoma,sans-serif;
+  cursor: pointer;
+}
+
+#homepage-link:hover {
+  background-color: black;
+  color: white;
 }
 
 #sign-in-info {

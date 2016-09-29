@@ -1,6 +1,9 @@
 var $playTypeFight = $('.fly-in-text');
 $playTypeFight.on('click', getUserId);
 
+var $play = $('#play');
+$play.on('click', getUserId);
+
 function getUserId() {
 
   var id = localStorage.getItem('randomId');

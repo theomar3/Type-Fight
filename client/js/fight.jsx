@@ -99,7 +99,7 @@ class Fight extends React.Component {
           </div>
 
           <div className='row'>
-            <div className="fight-screen col twelve">
+            <div className="fight-screen col twelve" onClick={() => this._clickFightTitle()}>
 
               <div className='row'>
                 <div className='col two'></div>

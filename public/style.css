@@ -1292,8 +1292,20 @@ input[type='text'] {
   outline: 0;
   width: 40px; }
 
-.click-to-fight {
-  max-width: 100%; }
+#play {
+  padding: 15px;
+  width: 100%;
+  background-color: #ffc0cb;
+  color: red;
+  border: 4px solid white;
+  font-size: 2.3em;
+  font-weight: bold;
+  font-family: "Trebuchet MS","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Tahoma,sans-serif;
+  cursor: pointer; }
+
+#play:hover {
+  background-color: black;
+  color: white; }
 
 .hidden-image, .hide-button {
   display: none; }
@@ -1314,9 +1326,10 @@ input[type='text'] {
   margin-bottom: 30px; }
 
 .fly-in-text {
-  padding-bottom: 10px; }
+  padding-bottom: 10px;
+  cursor: pointer; }
 
-.fly-in-text:hover {
+.type-fight-title:hover {
   color: black; }
 
 .fly-in-text li {
@@ -1392,9 +1405,9 @@ input[type='text'] {
   /* this makes sure that after animation is done we remain at the last keyframe value (opacity: 1)*/
   -moz-animation-fill-mode: forwards;
   animation-fill-mode: forwards;
-  -webkit-animation-duration: 8s;
-  -moz-animation-duration: 8s;
-  animation-duration: 8s; }
+  -webkit-animation-duration: 4s;
+  -moz-animation-duration: 4s;
+  animation-duration: 4s; }
 
 .fade li:last-child {
   margin-right: 0; }
@@ -1526,7 +1539,12 @@ tr:nth-of-type(even) {
   border: 4px solid white;
   font-size: 1.3em;
   font-weight: bold;
-  font-family: "Trebuchet MS","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Tahoma,sans-serif; }
+  font-family: "Trebuchet MS","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Tahoma,sans-serif;
+  cursor: pointer; }
+
+.back:hover {
+  background-color: black;
+  color: white; }
 
 #homepage-link {
   padding: 15px;
@@ -1535,7 +1553,12 @@ tr:nth-of-type(even) {
   border: 4px solid white;
   font-size: 1.3em;
   font-weight: bold;
-  font-family: "Trebuchet MS","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Tahoma,sans-serif; }
+  font-family: "Trebuchet MS","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Tahoma,sans-serif;
+  cursor: pointer; }
+
+#homepage-link:hover {
+  background-color: black;
+  color: white; }
 
 #sign-in-info {
   text-align: center;

@@ -14,9 +14,9 @@ $(function() {
     }, 3000);
 
     setTimeout(function() {
-      $('.click-to-fight').removeClass('hidden-image');
-      $('.click-to-fight').addClass('animated zoomIn');
-    }, 20000);
+      $('#play').removeClass('hidden-image');
+      $('#play').addClass('animated zoomIn');
+    }, 13500);
 
 
 

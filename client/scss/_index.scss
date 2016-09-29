@@ -33,8 +33,21 @@
   width: 40px;
 }
 
-.click-to-fight {
-  max-width: 100%;
+#play {
+  padding: 15px;
+  width: 100%;
+  background-color: #ffc0cb;
+  color: red;
+  border: 4px solid white;
+  font-size: 2.3em;
+  font-weight: bold;
+  font-family: "Trebuchet MS","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Tahoma,sans-serif;
+  cursor: pointer;
+}
+
+#play:hover {
+  background-color: black;
+  color: white;
 }
 
 .hidden-image, .hide-button {
@@ -62,9 +75,10 @@
 
 .fly-in-text {
   padding-bottom: 10px;
+  cursor: pointer;
 }
 
-.fly-in-text:hover {
+.type-fight-title:hover {
   color: black;
 }
 
@@ -116,9 +130,9 @@
    -moz-animation-fill-mode:forwards;
    animation-fill-mode:forwards;
 
-   -webkit-animation-duration: 8s;
-   -moz-animation-duration: 8s;
-   animation-duration: 8s;
+   -webkit-animation-duration: 4s;
+   -moz-animation-duration: 4s;
+   animation-duration: 4s;
 }
 
 .fade li:last-child {
