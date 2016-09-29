@@ -7,8 +7,9 @@ class MoveList extends React.Component {
 
     return(
       <div className = 'row'>
-        <div className = 'col four'></div>
-        <div className='col four'>
+        <div className = 'col three'></div>
+        <div className='col six'>
+            <p className = 'move-list-title heal-instructions'>TYPE THE RANDOM LETTERS UNDER THE CPU'S ATTACK TO HEAL YOURSELF!</p>
           <p className='move-list-title'> Move List </p>
           <ul className="move-list-items">
             <li>ForwardS</li>
@@ -16,7 +17,7 @@ class MoveList extends React.Component {
             <li>UpwardS</li>
           </ul>
         </div>
-        <div className = 'col four'></div>
+        <div className = 'col three'></div>
       </div>
     );
   }

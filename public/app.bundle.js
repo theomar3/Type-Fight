@@ -38132,10 +38132,15 @@
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'row' },
-	        _react2.default.createElement('div', { className: 'col four' }),
+	        _react2.default.createElement('div', { className: 'col three' }),
 	        _react2.default.createElement(
 	          'div',
-	          { className: 'col four' },
+	          { className: 'col six' },
+	          _react2.default.createElement(
+	            'p',
+	            { className: 'move-list-title heal-instructions' },
+	            'TYPE THE RANDOM LETTERS UNDER THE CPU\'S ATTACK TO HEAL YOURSELF!'
+	          ),
 	          _react2.default.createElement(
 	            'p',
 	            { className: 'move-list-title' },
@@ -38161,7 +38166,7 @@
 	            )
 	          )
 	        ),
-	        _react2.default.createElement('div', { className: 'col four' })
+	        _react2.default.createElement('div', { className: 'col three' })
 	      );
 	    }
 	  }]);
