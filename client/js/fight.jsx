@@ -1,6 +1,5 @@
 import React from 'react';
 import store from './fight-store.js';
-
 import audioFiles from './audio-play.js';
 import MoveList from './move-list.jsx';
 import AudioFiles from './audio-files.jsx';
