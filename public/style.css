@@ -1116,7 +1116,7 @@ body.stop-scrolling {
   padding: 5px;
   background-color: black;
   color: white;
-  margin-left: 10%;
+  margin-left: 5%;
   font-size: 1em; }
 
 .player-bubble-show {
@@ -1258,18 +1258,12 @@ input[type='text'] {
   text-decoration: underline;
   font-style: oblique;
   font-family: Lucida, serif;
-  font-size: 1.4em; }
-
-.heal-instructions {
-  text-decoration: none;
-  font-weight: bold;
-  font-family: "Lucida Sans Typewriter","Lucida Console",monaco,"Bitstream Vera Sans Mono",monospace;
-  color: #1e90ff; }
+  font-size: 1.6em; }
 
 .move-list-items {
   background-color: white;
   text-align: center;
-  font-size: 1.2em; }
+  font-size: 1.4em; }
 
 .instructions {
   padding: 15px;
@@ -3963,7 +3957,6 @@ body {
   float: left; }
 
 .col {
-  outline: 1px solid blue;
   min-height: 40px;
   margin-left: 2.4%;
   margin-right: 2.4%;

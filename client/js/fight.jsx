@@ -115,13 +115,12 @@ class Fight extends React.Component {
                 {progressLink}
                 {rematch}
                 </div>
-                <div className='col three'>
+                <div className='col four'>
                   <h2 className="whose-character-cpu">
                      CPU
                   </h2>
                 <CpuDifficulty />
                 </div>
-                <div className='col one'></div>
               </div>
 
               <div className='row'>

@@ -27353,15 +27353,14 @@
 	                ),
 	                _react2.default.createElement(
 	                  'div',
-	                  { className: 'col three' },
+	                  { className: 'col four' },
 	                  _react2.default.createElement(
 	                    'h2',
 	                    { className: 'whose-character-cpu' },
 	                    'CPU'
 	                  ),
 	                  _react2.default.createElement(_cpuDifficulty2.default, null)
-	                ),
-	                _react2.default.createElement('div', { className: 'col one' })
+	                )
 	              ),
 	              _react2.default.createElement(
 	                'div',
@@ -27831,6 +27830,21 @@
 	function enableDropDown() {
 	  difficulty.disabled = false;
 	}
+	
+	store.actions.instructionsPopUp = function () {
+	
+	  swal({
+	    title: "Type Fight Instructions - How To Heal",
+	    text: "When the CPU attacks, you will see some random BRIGHT BLUE letters. Type those correctly to heal!",
+	    type: "warning",
+	    showCancelButton: true,
+	    confirmButtonColor: "#DD6B55",
+	    confirmButtonText: "Lemme at 'em!'",
+	    closeOnConfirm: false
+	  }, function () {
+	    swal("Type Fight Instructions - How To Attack", "Your ATTACK COMMANDS are under your HP. Type those to attack.", "success");
+	  });
+	};
 	
 	module.exports = store;
 
@@ -38162,6 +38176,11 @@
 	      _fightStore2.default.removeListener(this.listeningFunc);
 	    }
 	  }, {
+	    key: '_instructionsPopUp',
+	    value: function _instructionsPopUp() {
+	      _fightStore2.default.actions.instructionsPopUp();
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      var _this3 = this;
@@ -38169,7 +38188,34 @@
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'row' },
-	        _react2.default.createElement('div', { className: 'col four' }),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'col four' },
+	          _react2.default.createElement(
+	            'p',
+	            { className: 'move-list-title' },
+	            ' ATTACK COMMANDS '
+	          ),
+	          _react2.default.createElement(
+	            'ul',
+	            { className: 'move-list-items' },
+	            _react2.default.createElement(
+	              'li',
+	              null,
+	              'ForwardS'
+	            ),
+	            _react2.default.createElement(
+	              'li',
+	              null,
+	              'ChargeS'
+	            ),
+	            _react2.default.createElement(
+	              'li',
+	              null,
+	              'UpwardS'
+	            )
+	          )
+	        ),
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'col four' },
