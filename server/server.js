@@ -1,5 +1,6 @@
 var express = require('express');
 var bodyParser = require('body-parser');
+var MongoClient = require('mongodb').MongoClient
 
 var app = express();
 
@@ -7,11 +8,6 @@ app.use(express.static('public'));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-
-
-
-
-
 
 var data = {};
 
@@ -26,9 +22,37 @@ app.get('/player-progress/:id', function(req, res) {
   }
   console.log('get data', req.params.id);
 
-  res.send({
-    stats: data[req.params.id]
+  // Connection URL
+  var url = 'mongodb://localhost:27017/myproject';
+  // Use connect method to connect to the Server
+  MongoClient.connect(url, function(err, db) {
+    // assert.equal(null, err);
+    console.log('err', err);
+    console.log("Connected correctly to server");
+
+    insertDocuments(db, function() {
+      db.close();
+      res.send({
+        stats: data[req.params.id]
+      });
+    });
+
   });
+
+  var insertDocuments = function(db, callback) {
+  // Get the documents collection
+  var collection = db.collection('documents');
+  // Insert some documents
+  collection.insert({a : 1},
+    function(err, result) {
+    // assert.equal(err, null);
+    // assert.equal(3, result.result.n);
+    // assert.equal(3, result.ops.length);
+    console.log("Added something");
+    callback(result);
+  });
+}
+
 
 });
 
