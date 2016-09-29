@@ -71,7 +71,7 @@ class Fight extends React.Component {
     if(this.state.showCpuBubble) {
       showCpuBubble = <div className='cpu-bubble-show'>
           <p>{this.state.cpuAttackMessage} </p>
-          <p className='healString-color'>{this.state.healString}</p>
+          <p className='healString-color healString-size'>{this.state.healString}</p>
         </div>
     }
 

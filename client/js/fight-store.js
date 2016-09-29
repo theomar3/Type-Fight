@@ -172,28 +172,29 @@ function intervalRounds() {
     state.cpuSpriteUrls = './images/spidey-sting.gif';
     audioPlay.spiderSting();
   }
-
-  if(state.difficultyChosen === 'Very Easy') {
+console.log('difficulty chosen', state.difficultyChosen);
+  if(state.difficultyChosen === 'Baby') {
     state.healString = randomString(4, 'aA');
   }
-  else if(state.difficultyChosen === 'Easy') {
+  else if(state.difficultyChosen === 'Cake Walk') {
     state.healString = randomString(4, 'aA#');
   }
-  else if(state.difficultyChosen === 'Medium') {
+  else if(state.difficultyChosen === 'Not Rough') {
     state.healString = randomString(6, 'aA');
   }
-  else if(state.difficultyChosen === 'Very Medium') {
+  else if(state.difficultyChosen === "Let's Rock") {
     state.healString = randomString(6, 'aA#');
   }
-  else if(state.difficultyChosen === 'Hard') {
+  else if(state.difficultyChosen === "Damn I'm Good") {
     state.healString = randomString(8, 'aA');
   }
-  else if(state.difficultyChosen === 'Very Hard') {
+  else if(state.difficultyChosen === 'Nightmare') {
     state.healString = randomString(8, 'aA#');
   }
-  else if(state.difficultyChosen === 'Extreme') {
+  else if(state.difficultyChosen === 'Mike Tyson') {
     state.healString = randomString(8, 'aA#!');
   }
+  console.log('heal string now', state.healString);
 
   state.playerHP -= 3;
   state.playerSpriteUrls = './images/kenshin-hit.gif';

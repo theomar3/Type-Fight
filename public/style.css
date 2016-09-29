@@ -1242,6 +1242,9 @@ body.stop-scrolling {
 .healString-color {
   color: #1e90ff; }
 
+.healString-size {
+  font-size: 2em; }
+
 input[type='text'] {
   font-size: 1.1em; }
 
