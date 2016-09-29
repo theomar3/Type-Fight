@@ -38207,7 +38207,7 @@
 	                        return _react2.default.createElement(
 	                                'div',
 	                                null,
-	                                _react2.default.createElement('audio', { id: 'mainTheme', src: '/music/enter-the-dragon.mp3', autoPlay: true }),
+	                                _react2.default.createElement('audio', { id: 'mainTheme', src: '/music/enter-the-dragon.mp3', autoPlay: true, muted: true }),
 	                                _react2.default.createElement('audio', { id: 'MKTheme', src: '/music/MK-theme.mp3' }),
 	                                _react2.default.createElement('audio', { id: 'GuileTheme', src: '/music/Guile-theme.mp3' }),
 	                                _react2.default.createElement('audio', { id: 'FF7BossTheme', src: '/music/FF7-boss-theme.mp3' }),
