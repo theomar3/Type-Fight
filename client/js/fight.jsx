@@ -82,7 +82,6 @@ class Fight extends React.Component {
           </div>
     }
 
-    alert('hi');
 
     return (
 
