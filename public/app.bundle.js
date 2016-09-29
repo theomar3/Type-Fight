@@ -27282,7 +27282,7 @@
 	          ),
 	          _react2.default.createElement(
 	            'p',
-	            null,
+	            { className: 'healString-color' },
 	            this.state.healString
 	          )
 	        );
@@ -27292,7 +27292,7 @@
 	      if (this.state.showMissBubble) {
 	        showMissBubble = _react2.default.createElement(
 	          'div',
-	          { className: this.state.showMissBubble },
+	          { className: 'miss-bubble-show' },
 	          _react2.default.createElement(
 	            'p',
 	            null,
@@ -27412,7 +27412,19 @@
 	                  _react2.default.createElement(
 	                    'p',
 	                    { className: 'input-instructions' },
-	                    ' Enter Attack or Heal: ',
+	                    ' Enter ',
+	                    _react2.default.createElement(
+	                      'span',
+	                      { className: 'attack-color' },
+	                      'Attack'
+	                    ),
+	                    ' or ',
+	                    _react2.default.createElement(
+	                      'span',
+	                      { className: 'healString-color' },
+	                      'Heal'
+	                    ),
+	                    ' : ',
 	                    input
 	                  )
 	                ),
@@ -27700,7 +27712,7 @@
 	  state.showRematch = false;
 	  state.showClickForProgress = '';
 	  state.playerHP = 15;
-	  state.cpuHP = 2;
+	  state.cpuHP = 4;
 	  state.playerStatusClass = 'healthyHP';
 	  state.cpuStatusClass = 'healthyHP';
 	

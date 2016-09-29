@@ -1118,12 +1118,6 @@ body.stop-scrolling {
   margin-left: 10%;
   font-size: 1em; }
 
-.player-bubble-hide {
-  display: none; }
-
-.player-bubble-hide:after {
-  display: none; }
-
 .player-bubble-show {
   font-size: 1.2em;
   text-align: center;
@@ -1160,12 +1154,6 @@ body.stop-scrolling {
   z-index: 1;
   right: -31px;
   top: 15px; }
-
-.cpu-bubble-hide {
-  display: none; }
-
-.cpu-bubble-hide:after {
-  display: none; }
 
 .cpu-bubble-show {
   font-size: 1.3em;
@@ -1226,31 +1214,6 @@ body.stop-scrolling {
   left: -30px;
   top: 12px; }
 
-.miss-bubble-hide {
-  text-align: center;
-  line-height: 2em;
-  display: none;
-  position: relative;
-  width: 165px;
-  height: 55px;
-  padding: 0px;
-  background: #FFFFFF;
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  border-radius: 10px; }
-
-.miss-bubble-hide:after {
-  content: '';
-  position: absolute;
-  border-style: solid;
-  border-width: 15px 30px 15px 0;
-  border-color: transparent #FFFFFF;
-  display: none;
-  width: 0;
-  z-index: 1;
-  left: -30px;
-  top: 12px; }
-
 .healthyHP {
   color: green;
   font-size: 3em;
@@ -1273,11 +1236,14 @@ body.stop-scrolling {
   text-align: center;
   font-weight: bold; }
 
+.attack-color {
+  color: black; }
+
+.healString-color {
+  color: #1e90ff; }
+
 input[type='text'] {
   font-size: 1.1em; }
-
-.input-hide {
-  display: none; }
 
 .input-show {
   display: block; }
@@ -1293,7 +1259,8 @@ input[type='text'] {
 .heal-instructions {
   text-decoration: none;
   font-weight: bold;
-  font-family: "Lucida Sans Typewriter","Lucida Console",monaco,"Bitstream Vera Sans Mono",monospace; }
+  font-family: "Lucida Sans Typewriter","Lucida Console",monaco,"Bitstream Vera Sans Mono",monospace;
+  color: #1e90ff; }
 
 .move-list-items {
   background-color: white;

@@ -71,13 +71,13 @@ class Fight extends React.Component {
     if(this.state.showCpuBubble) {
       showCpuBubble = <div className='cpu-bubble-show'>
           <p>{this.state.cpuAttackMessage} </p>
-          <p>{this.state.healString}</p>
+          <p className='healString-color'>{this.state.healString}</p>
         </div>
     }
 
     var showMissBubble;
     if(this.state.showMissBubble) {
-      showMissBubble = <div className={this.state.showMissBubble}>
+      showMissBubble = <div className='miss-bubble-show'>
               <p>{this.state.cpuTauntMessage}</p>
           </div>
     }
@@ -149,7 +149,7 @@ class Fight extends React.Component {
                   </p>
                 </div>
                 <div className='col four'>
-                  <p className='input-instructions'> Enter Attack or Heal: {input}</p>
+                  <p className='input-instructions'> Enter <span className='attack-color'>Attack</span> or <span className='healString-color'>Heal</span> : {input}</p>
                 </div>
                 <div className = 'col two'>
                   <p className={this.state.cpuStatusClass}>
