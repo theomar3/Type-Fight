@@ -280,7 +280,7 @@ store.actions.startFight = function() {
   state.showRematch = false;
   state.showClickForProgress = '';
   state.playerHP = 15;
-  state.cpuHP = 4;
+  state.cpuHP = 24;
   state.playerStatusClass = 'healthyHP';
   state.cpuStatusClass = 'healthyHP';
 
