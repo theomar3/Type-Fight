@@ -82,8 +82,10 @@ class Fight extends React.Component {
           </div>
     }
 
+    alert('hi');
 
     return (
+
       <div className='row'>
         <div className='container col twelve'>
           <AudioFiles />

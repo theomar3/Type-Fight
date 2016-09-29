@@ -60,7 +60,7 @@
 	
 	var _fight2 = _interopRequireDefault(_fight);
 	
-	var _progress = __webpack_require__(254);
+	var _progress = __webpack_require__(236);
 	
 	var _progress2 = _interopRequireDefault(_progress);
 	
@@ -72,7 +72,7 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	__webpack_require__(256);
+	__webpack_require__(241);
 	
 	var App = function (_React$Component) {
 	  _inherits(App, _React$Component);
@@ -27143,33 +27143,33 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _fightStore = __webpack_require__(236);
+	var _fightStore = __webpack_require__(243);
 	
 	var _fightStore2 = _interopRequireDefault(_fightStore);
 	
-	var _audioPlay = __webpack_require__(237);
+	var _audioPlay = __webpack_require__(244);
 	
 	var _audioPlay2 = _interopRequireDefault(_audioPlay);
 	
-	var _moveList = __webpack_require__(241);
+	var _moveList = __webpack_require__(245);
 	
 	var _moveList2 = _interopRequireDefault(_moveList);
 	
-	var _audioFiles = __webpack_require__(242);
+	var _audioFiles = __webpack_require__(246);
 	
 	var _audioFiles2 = _interopRequireDefault(_audioFiles);
 	
-	var _typeFightTitle = __webpack_require__(243);
+	var _typeFightTitle = __webpack_require__(247);
 	
 	var _typeFightTitle2 = _interopRequireDefault(_typeFightTitle);
 	
-	var _cpuDifficulty = __webpack_require__(244);
+	var _cpuDifficulty = __webpack_require__(248);
 	
 	var _cpuDifficulty2 = _interopRequireDefault(_cpuDifficulty);
 	
 	var _reactRouter = __webpack_require__(172);
 	
-	var _sweetalert = __webpack_require__(245);
+	var _sweetalert = __webpack_require__(249);
 	
 	var _sweetalert2 = _interopRequireDefault(_sweetalert);
 	
@@ -27300,6 +27300,8 @@
 	          )
 	        );
 	      }
+	
+	      alert('hi');
 	
 	      return _react2.default.createElement(
 	        'div',
@@ -27459,477 +27461,218 @@
 
 	'use strict';
 	
-	var _audioPlay = __webpack_require__(237);
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
-	var _audioPlay2 = _interopRequireDefault(_audioPlay);
-	
-	var _progressStore = __webpack_require__(238);
+	var _progressStore = __webpack_require__(237);
 	
 	var _progressStore2 = _interopRequireDefault(_progressStore);
 	
-	var _userId = __webpack_require__(239);
+	var _backbutton = __webpack_require__(240);
 	
-	var _userId2 = _interopRequireDefault(_userId);
+	var _backbutton2 = _interopRequireDefault(_backbutton);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	var $ = __webpack_require__(240);
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 	
-	var intervalId;
-	var battleMusic;
-	var battleTheme;
-	var difficulty;
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	var cpuAttacks = ['Web Ball!', 'Web Swing!', 'Spider Sting!'];
+	var React = __webpack_require__(1);
 	
-	function randomIndexing(array) {
-	  var randomIndex = Math.floor(Math.random() * array.length);
-	  return array[randomIndex];
-	}
+	var Progress = function (_React$Component) {
+	  _inherits(Progress, _React$Component);
 	
-	function randomString(length, chars) {
-	  var string = '';
-	  if (chars.indexOf('a') > -1) string += 'abcdefghijklmnopqrstuvwxyz';
-	  if (chars.indexOf('A') > -1) string += 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-	  if (chars.indexOf('#') > -1) string += '0123456789';
-	  if (chars.indexOf('!') > -1) string += '!@#$%&()_+-={}[]:";\'<>?,./|\\';
-	  var result = '';
-	  for (var i = length; i > 0; --i) {
-	    result += string[Math.round(Math.random() * (string.length - 1))];
-	  }return result;
-	}
+	  function Progress() {
+	    _classCallCheck(this, Progress);
 	
-	var state = {
-	  fightScreenTitleText: 'Click to begin',
-	  cpuAttackMessage: '',
-	  playerAttackMessage: '',
-	  playerHP: 15,
-	  playerStatusClass: 'healthyHP',
-	  cpuHP: 24,
-	  cpuStatusClass: 'healthyHP',
-	  healString: '',
-	  cpuTauntMessage: '',
-	  playerSpriteUrls: './images/kenshin-start.gif',
-	  cpuSpriteUrls: './images/spidey-start.gif',
-	  showPlayerInput: false,
-	  showPlayerBubble: false,
-	  showCpuBubble: false,
-	  showMissBubble: false,
-	  showClickForProgress: '',
-	  showRematch: false
+	    var _this = _possibleConstructorReturn(this, (Progress.__proto__ || Object.getPrototypeOf(Progress)).call(this));
 	
-	};
+	    _progressStore2.default.actions.loadProgress();
 	
-	var store = {
-	  listeners: [],
-	  actions: {}
-	};
+	    _this.state = _progressStore2.default.copyState();
 	
-	store.addListener = function (listener) {
-	  store.listeners.push(listener);
-	};
-	
-	store.removeListener = function (listener) {
-	  var index = store.listeners.indexOf(listener);
-	  store.listeners.splice(index, 1);
-	};
-	
-	store.copyState = function () {
-	  return {
-	    data: state.data,
-	    fightScreenTitleText: state.fightScreenTitleText,
-	    cpuAttackMessage: state.cpuAttackMessage,
-	    playerAttackMessage: state.playerAttackMessage,
-	    playerHP: state.playerHP,
-	    playerStatusClass: state.playerStatusClass,
-	    cpuHP: state.cpuHP,
-	    cpuStatusClass: state.cpuStatusClass,
-	    healString: state.healString,
-	    cpuTauntMessage: state.cpuTauntMessage,
-	    playerSpriteUrls: state.playerSpriteUrls,
-	    cpuSpriteUrls: state.cpuSpriteUrls,
-	    showPlayerInput: state.showPlayerInput,
-	    showPlayerBubble: state.showPlayerBubble,
-	    showCpuBubble: state.showCpuBubble,
-	    showMissBubble: state.showMissBubble,
-	    showClickForProgress: state.showClickForProgress,
-	    showRematch: state.showRematch
-	
-	  };
-	};
-	
-	function changed() {
-	  var copiedState = store.copyState();
-	  store.listeners.forEach(function (listener) {
-	    listener(copiedState);
-	  });
-	}
-	
-	//actions
-	
-	function gameState() {
-	
-	  if (state.playerHP < 8) {
-	    state.fightScreenTitleText = 'Warning!';
-	    state.playerStatusClass = 'warningHP';
-	    state.playerSpriteUrls = './images/kenshin-warning.gif';
-	    _audioPlay2.default.playWarning();
-	  }
-	  if (state.playerHP < 5) {
-	    state.fightScreenTitleText = 'Danger!';
-	    state.playerStatusClass = 'dangerHP';
-	    state.playerSpriteUrls = './images/kenshin-danger.gif';
-	    _audioPlay2.default.playDanger();
-	  }
-	
-	  if (state.playerHP <= 0) {
-	    state.playerHP = 0;
-	  }
-	
-	  if (state.cpuHP < 8) {
-	    state.cpuStatusClass = 'warningHP';
-	    state.cpuSpriteUrls = './images/spidey-warning.gif';
-	  }
-	
-	  if (state.cpuHP < 5) {
-	    state.cpuStatusClass = 'dangerHP';
-	    state.cpuSpriteUrls = './images/spidey-danger.gif';
-	  }
-	
-	  if (state.cpuHP <= 0) {
-	    state.cpuHP = 0;
-	  }
-	
-	  if (state.playerHP < 1) {
-	    endFight();
-	  }
-	
-	  if (state.cpuHP < 1) {
-	    endFight();
-	  }
-	
-	  changed();
-	}
-	
-	function intervalRounds() {
-	
-	  state.showCpuBubble = true;
-	  state.cpuAttackMessage = randomIndexing(cpuAttacks);
-	  if (state.cpuAttackMessage === 'Web Ball!') {
-	    state.cpuSpriteUrls = './images/spidey-web-ball.gif';
-	    _audioPlay2.default.webBall();
-	  } else if (state.cpuAttackMessage === 'Web Swing!') {
-	    state.cpuSpriteUrls = './images/spidey-kick.gif';
-	    _audioPlay2.default.webSwing();
-	  } else if (state.cpuAttackMessage === 'Spider Sting!') {
-	    state.cpuSpriteUrls = './images/spidey-sting.gif';
-	    _audioPlay2.default.spiderSting();
-	  }
-	  console.log('difficulty chosen', state.difficultyChosen);
-	  if (state.difficultyChosen === 'Baby') {
-	    state.healString = randomString(4, 'aA');
-	  } else if (state.difficultyChosen === 'Cake Walk') {
-	    state.healString = randomString(4, 'aA#');
-	  } else if (state.difficultyChosen === 'Not Rough') {
-	    state.healString = randomString(6, 'aA');
-	  } else if (state.difficultyChosen === "Let's Rock") {
-	    state.healString = randomString(6, 'aA#');
-	  } else if (state.difficultyChosen === "Damn I'm Good") {
-	    state.healString = randomString(8, 'aA');
-	  } else if (state.difficultyChosen === 'Nightmare') {
-	    state.healString = randomString(8, 'aA#');
-	  } else if (state.difficultyChosen === 'Mike Tyson') {
-	    state.healString = randomString(8, 'aA#!');
-	  }
-	  console.log('heal string now', state.healString);
-	
-	  state.playerHP -= 3;
-	  state.playerSpriteUrls = './images/kenshin-hit.gif';
-	
-	  _audioPlay2.default.playerHit();
-	
-	  gameState();
-	}
-	
-	function endFight() {
-	  clearInterval(intervalId);
-	  var id = (0, _userId2.default)();
-	
-	  if (state.playerHP < 1) {
-	    state.fightScreenTitleText = "You lost! Try again.";
-	    state.showClickForProgress = 'Click to see your Progress!';
-	    state.showRematch = true;
-	    state.playerAttackMessage = 'I was going easy on you.';
-	    state.cpuAttackMessage = 'One for J.J.';
-	    state.playerSpriteUrls = './images/kenshin-dead.gif';
-	    state.cpuSpriteUrls = './images/spidey-win.gif';
-	    state.healString = '';
-	    state.showPlayerInput = false;
-	    state.showMissBubble = false;
-	    battleTheme.pause();
-	    _audioPlay2.default.pauseDanger();
-	    _audioPlay2.default.pauseWarning();
-	    var gameOver = document.getElementById('gameOver');
-	    var dna = document.getElementById('dna');
-	    var kneel = document.getElementById('kneel');
-	    var gameOverSounds = [gameOver, dna, kneel];
-	    randomIndexing(gameOverSounds).play();
-	
-	    _progressStore2.default.actions.saveLoseProgress(state.difficultyChosen);
-	  }
-	
-	  if (state.cpuHP < 1) {
-	    state.fightScreenTitleText = 'Awesome! You won!';
-	    state.showClickForProgress = 'Click to see your Progress!';
-	    state.showRematch = true;
-	    state.playerAttackMessage = "You should keep practicing.";
-	    state.cpuAttackMessage = 'Uncle Ben! I failed you. ';
-	    state.playerSpriteUrls = './images/kenshin-win.gif';
-	    state.cpuSpriteUrls = './images/spidey-dead.gif';
-	    state.healString = '';
-	    state.showPlayerInput = false;
-	    state.showMissBubble = false;
-	    battleTheme.pause();
-	    _audioPlay2.default.victory();
-	
-	    _progressStore2.default.actions.saveWinProgress(state.difficultyChosen);
-	  }
-	}
-	
-	store.actions.startFight = function () {
-	  if (difficulty === undefined) {
-	    swal({
-	      title: "Please select CPU Difficulty",
-	      type: 'warning'
+	    _progressStore2.default.addListener(function (state) {
+	      console.log('progres compononent state', state);
+	      _this.setState(state);
 	    });
+	
+	    return _this;
 	  }
-	  disableDropDown();
 	
-	  state.fightScreenTitleText = 'Type Fight!';
-	  state.playerSpriteUrls = './images/kenshin-ready.gif';
-	  state.cpuSpriteUrls = './images/spidey-ready.gif';
-	  state.showPlayerInput = true;
-	  state.showRematch = false;
-	  state.showClickForProgress = '';
-	  state.playerHP = 15;
-	  state.cpuHP = 4;
-	  state.playerStatusClass = 'healthyHP';
-	  state.cpuStatusClass = 'healthyHP';
-	
-	  var MKTheme = document.getElementById('MKTheme');
-	  var GuileTheme = document.getElementById('GuileTheme');
-	  var FF7BossTheme = document.getElementById('FF7BossTheme');
-	  var OneWingedAngel = document.getElementById('OneWingedAngel');
-	
-	  battleMusic = [MKTheme, GuileTheme, FF7BossTheme, OneWingedAngel];
-	
-	  battleTheme = randomIndexing(battleMusic);
-	  battleTheme.play();
-	  mainTheme.pause();
-	
-	  intervalId = setInterval(intervalRounds, 6000);
-	  changed();
-	};
-	
-	store.actions.attack = function (evt) {
-	
-	  var laughTaunt = document.getElementById('laughTaunt');
-	  var patheticTaunt = document.getElementById('patheticTaunt');
-	  var suckTaunt = document.getElementById('suckTaunt');
-	
-	  var missTaunts = [laughTaunt, patheticTaunt, suckTaunt];
-	
-	  if (evt.keyCode === 13) {
-	    state.showPlayerBubble = true;
-	    var damage = Math.floor(Math.random() * 10);
-	    state.cpuTauntMessage = '';
-	    if (evt.target.value === 'ForwardS') {
-	      state.playerAttackMessage = 'Forward Slash!';
-	      _audioPlay2.default.forwardSlash();
-	      state.playerSpriteUrls = './images/kenshin-forward-slash.gif';
-	      if (damage >= 5) {
-	        state.cpuHP -= 3;
-	        state.cpuSpriteUrls = './images/spidey-hit.gif';
-	        _audioPlay2.default.cpuHit();
-	      } else {
-	        state.cpuHP += 0;
-	        state.showMissBubble = true;
-	        state.cpuTauntMessage = 'Spider Sense tingling.';
-	        randomIndexing(missTaunts).play();
-	      }
-	    } else if (evt.target.value === 'ChargeS') {
-	      state.playerAttackMessage = 'Charging Slash!';
-	      _audioPlay2.default.chargingSlash();
-	      state.playerSpriteUrls = './images/kenshin-chargeslash.gif';
-	
-	      if (damage >= 5) {
-	        state.cpuHP -= 3;
-	        state.cpuSpriteUrls = './images/spidey-hit.gif';
-	        _audioPlay2.default.cpuHit();
-	      } else {
-	        state.cpuHP += 0;
-	        state.showMissBubble = true;
-	        state.cpuTauntMessage = 'Spider Sense tingling.';
-	        randomIndexing(missTaunts).play();
-	      }
-	    } else if (evt.target.value === 'UpwardS') {
-	      state.playerAttackMessage = 'Upward Slash!';
-	      _audioPlay2.default.upwardSlash();
-	      state.playerSpriteUrls = './images/kenshin-upslash.gif';
-	      if (damage >= 5) {
-	        state.cpuHP -= 3;
-	        state.cpuSpriteUrls = './images/spidey-hit.gif';
-	        _audioPlay2.default.cpuHit();
-	      } else {
-	        state.cpuHP += 0;
-	        state.showMissBubble = true;
-	        state.cpuTauntMessage = 'Spider Sense tingling.';
-	        randomIndexing(missTaunts).play();
-	      }
-	    } else if (evt.target.value === state.healString) {
-	      var gokuHeal = document.getElementById('gokuHeal');
-	      var dendeHeal = document.getElementById('dendeHeal');
-	
-	      var healSounds = [gokuHeal, dendeHeal];
-	
-	      state.playerHP += 3;
-	      state.playerAttackMessage = "Just a scratch";
-	      state.playerSpriteUrls = './images/kenshin-ready.gif';
-	      randomIndexing(healSounds).play();
-	    } else {
-	      state.playerAttackMessage = "Sorry, I don't know that move.";
-	      state.showPlayerBubble = true;
-	      state.playerSpriteUrls = './images/kenshin-no-move.gif';
-	      _audioPlay2.default.wrongInput();
+	  _createClass(Progress, [{
+	    key: 'render',
+	    value: function render() {
+	      return React.createElement(
+	        'div',
+	        { className: 'row' },
+	        React.createElement(
+	          'div',
+	          { className: 'container col twelve' },
+	          React.createElement(
+	            'div',
+	            { className: 'row' },
+	            React.createElement('div', { className: 'col one' }),
+	            React.createElement(
+	              'div',
+	              { className: 'col ten' },
+	              React.createElement(
+	                'h1',
+	                { className: 'website-title progress-title animated slideInDown' },
+	                'Your'
+	              ),
+	              React.createElement(
+	                'h1',
+	                { className: 'website-title progress-title animated slideInUp' },
+	                'Progress'
+	              )
+	            ),
+	            React.createElement('div', { className: 'col one' })
+	          ),
+	          React.createElement(
+	            'div',
+	            { className: 'row' },
+	            React.createElement('div', { className: 'col one' }),
+	            React.createElement(
+	              'div',
+	              { className: 'col ten' },
+	              React.createElement(
+	                'h3',
+	                { className: 'progress-tagline animated pulse' },
+	                ' Check how you\'re doing!'
+	              )
+	            ),
+	            React.createElement('div', { className: 'col one' })
+	          ),
+	          React.createElement(
+	            'div',
+	            { className: 'row' },
+	            React.createElement('div', { className: 'col one' }),
+	            React.createElement(
+	              'div',
+	              { className: 'col ten' },
+	              React.createElement(
+	                'h4',
+	                { id: 'stats-heading' },
+	                ' Player Stats'
+	              ),
+	              React.createElement(
+	                'table',
+	                { id: 'stats-table' },
+	                React.createElement(
+	                  'tbody',
+	                  null,
+	                  React.createElement(
+	                    'tr',
+	                    { id: 'HeadRow' },
+	                    React.createElement(
+	                      'td',
+	                      null,
+	                      ' Wins '
+	                    ),
+	                    React.createElement(
+	                      'td',
+	                      null,
+	                      ' Losses '
+	                    ),
+	                    React.createElement(
+	                      'td',
+	                      null,
+	                      ' CPU Difficulty '
+	                    )
+	                  ),
+	                  React.createElement(
+	                    'tr',
+	                    null,
+	                    React.createElement(
+	                      'td',
+	                      null,
+	                      ' ',
+	                      this.state.wins,
+	                      ' '
+	                    ),
+	                    React.createElement(
+	                      'td',
+	                      null,
+	                      ' ',
+	                      this.state.losses,
+	                      ' '
+	                    ),
+	                    React.createElement(
+	                      'td',
+	                      null,
+	                      ' ',
+	                      this.state.difficultyChosen
+	                    )
+	                  )
+	                )
+	              )
+	            ),
+	            React.createElement('div', { className: 'col one' })
+	          ),
+	          React.createElement(
+	            'div',
+	            { className: 'row' },
+	            React.createElement('div', { className: 'col two' }),
+	            React.createElement(
+	              'div',
+	              { className: 'col two' },
+	              React.createElement(_backbutton2.default, null)
+	            ),
+	            React.createElement('div', { className: 'col four' }),
+	            React.createElement(
+	              'div',
+	              { className: 'col two' },
+	              React.createElement(
+	                'a',
+	                { href: 'index.html' },
+	                React.createElement(
+	                  'button',
+	                  { id: 'homepage-link' },
+	                  '*Lemme Google Sign-In!'
+	                )
+	              )
+	            ),
+	            React.createElement('div', { className: 'col two' })
+	          ),
+	          React.createElement(
+	            'div',
+	            { className: 'row' },
+	            React.createElement('div', { className: 'col seven' }),
+	            React.createElement(
+	              'div',
+	              { className: 'col five' },
+	              React.createElement(
+	                'p',
+	                { id: 'sign-in-info' },
+	                ' *(Psst. That way you can check your progress from around the world.)'
+	              )
+	            )
+	          )
+	        )
+	      );
 	    }
-	    evt.target.value = '';
-	    gameState();
-	  }
-	};
+	  }]);
 	
-	// store.actions.load = function() {
-	//   console.log('loading');
-	//
-	//   var id = getUserId();
-	//
-	//
-	//   ProgressStore.actions.loadProgress(id);
-	//
-	//
-	// }
+	  return Progress;
+	}(React.Component);
 	
-	store.actions.cpuDifficulty = function () {
-	  difficulty = document.querySelector('#difficulty');
-	  state.difficultyChosen = difficulty.options[difficulty.selectedIndex].value;
-	};
-	
-	function disableDropDown() {
-	  difficulty.disabled = true;
-	}
-	
-	function enableDropDown() {
-	  difficulty.disabled = false;
-	}
-	
-	module.exports = store;
+	module.exports = Progress;
 
 /***/ },
 /* 237 */
-/***/ function(module, exports) {
-
-	'use strict';
-	
-	var warning;
-	var danger;
-	var audioPlay = {
-	  forwardSlash: function forwardSlash() {
-	    var forwardSlash = document.getElementById('forwardSlash');
-	    forwardSlash.play();
-	  },
-	
-	  chargingSlash: function chargingSlash() {
-	    var chargingSlash = document.getElementById('chargingSlash');
-	    chargingSlash.play();
-	  },
-	
-	  upwardSlash: function upwardSlash() {
-	    var upwardSlash = document.getElementById('upwardSlash');
-	    upwardSlash.play();
-	  },
-	
-	  playWarning: function playWarning() {
-	    warning = document.getElementById('warning');
-	    warning.play();
-	  },
-	
-	  playDanger: function playDanger() {
-	    danger = document.getElementById('danger');
-	    danger.play();
-	  },
-	
-	  pauseWarning: function pauseWarning() {
-	    warning = document.getElementById('warning');
-	    warning.pause();
-	  },
-	
-	  pauseDanger: function pauseDanger() {
-	    danger = document.getElementById('danger');
-	    danger.pause();
-	  },
-	
-	  webBall: function webBall() {
-	    var webBall = document.getElementById('webBall');
-	    webBall.play();
-	  },
-	
-	  webSwing: function webSwing() {
-	    var webSwing = document.getElementById('webSwing');
-	    webSwing.play();
-	  },
-	
-	  spiderSting: function spiderSting() {
-	    var spiderSting = document.getElementById('spiderSting');
-	    spiderSting.play();
-	  },
-	
-	  playerHit: function playerHit() {
-	    var playerHit = document.getElementById('playerHit');
-	    playerHit.play();
-	  },
-	
-	  victory: function victory() {
-	    var victory = document.getElementById('victory');
-	    victory.play();
-	  },
-	
-	  cpuHit: function cpuHit() {
-	    var cpuHit = document.getElementById('cpuHit');
-	    cpuHit.play();
-	  },
-	
-	  wrongInput: function wrongInput() {
-	    var wrongInput = document.getElementById('wrongInput');
-	    wrongInput.play();
-	  }
-	
-	};
-	
-	module.exports = audioPlay;
-
-/***/ },
-/* 238 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var _userId = __webpack_require__(239);
+	var _userId = __webpack_require__(238);
 	
 	var _userId2 = _interopRequireDefault(_userId);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	var $ = __webpack_require__(240);
+	var $ = __webpack_require__(239);
 	
 	
 	var state = {
@@ -28013,7 +27756,7 @@
 	module.exports = store;
 
 /***/ },
-/* 239 */
+/* 238 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -28030,7 +27773,7 @@
 	module.exports = getUserId;
 
 /***/ },
-/* 240 */
+/* 239 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*eslint-disable no-unused-vars*/
@@ -38110,7 +37853,505 @@
 
 
 /***/ },
+/* 240 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var React = __webpack_require__(1);
+	var Router = __webpack_require__(172);
+	
+	var History = Router.History;
+	
+	var BackButton = React.createClass({
+	  displayName: 'BackButton',
+	
+	  mixins: [History],
+	  render: function render() {
+	    return React.createElement(
+	      'button',
+	      { className: 'back', onClick: this.history.goBack },
+	      'Lemme Type Fight!',
+	      this.props.children
+	    );
+	  }
+	});
+	
+	module.exports = BackButton;
+
+/***/ },
 /* 241 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 242 */,
+/* 243 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var _audioPlay = __webpack_require__(244);
+	
+	var _audioPlay2 = _interopRequireDefault(_audioPlay);
+	
+	var _progressStore = __webpack_require__(237);
+	
+	var _progressStore2 = _interopRequireDefault(_progressStore);
+	
+	var _userId = __webpack_require__(238);
+	
+	var _userId2 = _interopRequireDefault(_userId);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var $ = __webpack_require__(239);
+	
+	
+	var intervalId;
+	var battleMusic;
+	var battleTheme;
+	var difficulty;
+	
+	var cpuAttacks = ['Web Ball!', 'Web Swing!', 'Spider Sting!'];
+	
+	function randomIndexing(array) {
+	  var randomIndex = Math.floor(Math.random() * array.length);
+	  return array[randomIndex];
+	}
+	
+	function randomString(length, chars) {
+	  var string = '';
+	  if (chars.indexOf('a') > -1) string += 'abcdefghijklmnopqrstuvwxyz';
+	  if (chars.indexOf('A') > -1) string += 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+	  if (chars.indexOf('#') > -1) string += '0123456789';
+	  if (chars.indexOf('!') > -1) string += '!@#$%&()_+-={}[]:";\'<>?,./|\\';
+	  var result = '';
+	  for (var i = length; i > 0; --i) {
+	    result += string[Math.round(Math.random() * (string.length - 1))];
+	  }return result;
+	}
+	
+	var state = {
+	  fightScreenTitleText: 'Click to begin',
+	  cpuAttackMessage: '',
+	  playerAttackMessage: '',
+	  playerHP: 15,
+	  playerStatusClass: 'healthyHP',
+	  cpuHP: 24,
+	  cpuStatusClass: 'healthyHP',
+	  healString: '',
+	  cpuTauntMessage: '',
+	  playerSpriteUrls: './images/kenshin-start.gif',
+	  cpuSpriteUrls: './images/spidey-start.gif',
+	  showPlayerInput: false,
+	  showPlayerBubble: false,
+	  showCpuBubble: false,
+	  showMissBubble: false,
+	  showClickForProgress: '',
+	  showRematch: false
+	
+	};
+	
+	var store = {
+	  listeners: [],
+	  actions: {}
+	};
+	
+	store.addListener = function (listener) {
+	  store.listeners.push(listener);
+	};
+	
+	store.removeListener = function (listener) {
+	  var index = store.listeners.indexOf(listener);
+	  store.listeners.splice(index, 1);
+	};
+	
+	store.copyState = function () {
+	  return {
+	    data: state.data,
+	    fightScreenTitleText: state.fightScreenTitleText,
+	    cpuAttackMessage: state.cpuAttackMessage,
+	    playerAttackMessage: state.playerAttackMessage,
+	    playerHP: state.playerHP,
+	    playerStatusClass: state.playerStatusClass,
+	    cpuHP: state.cpuHP,
+	    cpuStatusClass: state.cpuStatusClass,
+	    healString: state.healString,
+	    cpuTauntMessage: state.cpuTauntMessage,
+	    playerSpriteUrls: state.playerSpriteUrls,
+	    cpuSpriteUrls: state.cpuSpriteUrls,
+	    showPlayerInput: state.showPlayerInput,
+	    showPlayerBubble: state.showPlayerBubble,
+	    showCpuBubble: state.showCpuBubble,
+	    showMissBubble: state.showMissBubble,
+	    showClickForProgress: state.showClickForProgress,
+	    showRematch: state.showRematch
+	
+	  };
+	};
+	
+	function changed() {
+	  var copiedState = store.copyState();
+	  store.listeners.forEach(function (listener) {
+	    listener(copiedState);
+	  });
+	}
+	
+	//actions
+	
+	function gameState() {
+	
+	  if (state.playerHP < 8) {
+	    state.fightScreenTitleText = 'Warning!';
+	    state.playerStatusClass = 'warningHP';
+	    state.playerSpriteUrls = './images/kenshin-warning.gif';
+	    _audioPlay2.default.playWarning();
+	  }
+	  if (state.playerHP < 5) {
+	    state.fightScreenTitleText = 'Danger!';
+	    state.playerStatusClass = 'dangerHP';
+	    state.playerSpriteUrls = './images/kenshin-danger.gif';
+	    _audioPlay2.default.playDanger();
+	  }
+	
+	  if (state.playerHP <= 0) {
+	    state.playerHP = 0;
+	  }
+	
+	  if (state.cpuHP < 8) {
+	    state.cpuStatusClass = 'warningHP';
+	    state.cpuSpriteUrls = './images/spidey-warning.gif';
+	  }
+	
+	  if (state.cpuHP < 5) {
+	    state.cpuStatusClass = 'dangerHP';
+	    state.cpuSpriteUrls = './images/spidey-danger.gif';
+	  }
+	
+	  if (state.cpuHP <= 0) {
+	    state.cpuHP = 0;
+	  }
+	
+	  if (state.playerHP < 1) {
+	    endFight();
+	  }
+	
+	  if (state.cpuHP < 1) {
+	    endFight();
+	  }
+	
+	  changed();
+	}
+	
+	function intervalRounds() {
+	
+	  state.showCpuBubble = true;
+	  state.cpuAttackMessage = randomIndexing(cpuAttacks);
+	  if (state.cpuAttackMessage === 'Web Ball!') {
+	    state.cpuSpriteUrls = './images/spidey-web-ball.gif';
+	    _audioPlay2.default.webBall();
+	  } else if (state.cpuAttackMessage === 'Web Swing!') {
+	    state.cpuSpriteUrls = './images/spidey-kick.gif';
+	    _audioPlay2.default.webSwing();
+	  } else if (state.cpuAttackMessage === 'Spider Sting!') {
+	    state.cpuSpriteUrls = './images/spidey-sting.gif';
+	    _audioPlay2.default.spiderSting();
+	  }
+	  console.log('difficulty chosen', state.difficultyChosen);
+	  if (state.difficultyChosen === 'Baby') {
+	    state.healString = randomString(4, 'aA');
+	  } else if (state.difficultyChosen === 'Cake Walk') {
+	    state.healString = randomString(4, 'aA#');
+	  } else if (state.difficultyChosen === 'Not Rough') {
+	    state.healString = randomString(6, 'aA');
+	  } else if (state.difficultyChosen === "Let's Rock") {
+	    state.healString = randomString(6, 'aA#');
+	  } else if (state.difficultyChosen === "Damn I'm Good") {
+	    state.healString = randomString(8, 'aA');
+	  } else if (state.difficultyChosen === 'Nightmare') {
+	    state.healString = randomString(8, 'aA#');
+	  } else if (state.difficultyChosen === 'Mike Tyson') {
+	    state.healString = randomString(8, 'aA#!');
+	  }
+	  console.log('heal string now', state.healString);
+	
+	  state.playerHP -= 3;
+	  state.playerSpriteUrls = './images/kenshin-hit.gif';
+	
+	  _audioPlay2.default.playerHit();
+	
+	  gameState();
+	}
+	
+	function endFight() {
+	  clearInterval(intervalId);
+	  var id = (0, _userId2.default)();
+	
+	  if (state.playerHP < 1) {
+	    state.fightScreenTitleText = "You lost! Try again.";
+	    state.showClickForProgress = 'Click to see your Progress!';
+	    state.showRematch = true;
+	    state.playerAttackMessage = 'I was going easy on you.';
+	    state.cpuAttackMessage = 'One for J.J.';
+	    state.playerSpriteUrls = './images/kenshin-dead.gif';
+	    state.cpuSpriteUrls = './images/spidey-win.gif';
+	    state.healString = '';
+	    state.showPlayerInput = false;
+	    state.showMissBubble = false;
+	    battleTheme.pause();
+	    _audioPlay2.default.pauseDanger();
+	    _audioPlay2.default.pauseWarning();
+	    var gameOver = document.getElementById('gameOver');
+	    var dna = document.getElementById('dna');
+	    var kneel = document.getElementById('kneel');
+	    var gameOverSounds = [gameOver, dna, kneel];
+	    randomIndexing(gameOverSounds).play();
+	
+	    _progressStore2.default.actions.saveLoseProgress(state.difficultyChosen);
+	  }
+	
+	  if (state.cpuHP < 1) {
+	    state.fightScreenTitleText = 'Awesome! You won!';
+	    state.showClickForProgress = 'Click to see your Progress!';
+	    state.showRematch = true;
+	    state.playerAttackMessage = "You should keep practicing.";
+	    state.cpuAttackMessage = 'Uncle Ben! I failed you. ';
+	    state.playerSpriteUrls = './images/kenshin-win.gif';
+	    state.cpuSpriteUrls = './images/spidey-dead.gif';
+	    state.healString = '';
+	    state.showPlayerInput = false;
+	    state.showMissBubble = false;
+	    battleTheme.pause();
+	    _audioPlay2.default.victory();
+	
+	    _progressStore2.default.actions.saveWinProgress(state.difficultyChosen);
+	  }
+	}
+	
+	store.actions.startFight = function () {
+	  if (difficulty === undefined) {
+	    swal({
+	      title: "Please select CPU Difficulty",
+	      type: 'warning'
+	    });
+	  }
+	  disableDropDown();
+	
+	  state.fightScreenTitleText = 'Type Fight!';
+	  state.playerSpriteUrls = './images/kenshin-ready.gif';
+	  state.cpuSpriteUrls = './images/spidey-ready.gif';
+	  state.showPlayerInput = true;
+	  state.showRematch = false;
+	  state.showClickForProgress = '';
+	  state.playerHP = 15;
+	  state.cpuHP = 24;
+	  state.playerStatusClass = 'healthyHP';
+	  state.cpuStatusClass = 'healthyHP';
+	
+	  var MKTheme = document.getElementById('MKTheme');
+	  var GuileTheme = document.getElementById('GuileTheme');
+	  var FF7BossTheme = document.getElementById('FF7BossTheme');
+	  var OneWingedAngel = document.getElementById('OneWingedAngel');
+	
+	  battleMusic = [MKTheme, GuileTheme, FF7BossTheme, OneWingedAngel];
+	
+	  battleTheme = randomIndexing(battleMusic);
+	  battleTheme.play();
+	  mainTheme.pause();
+	
+	  intervalId = setInterval(intervalRounds, 6000);
+	  changed();
+	};
+	
+	store.actions.attack = function (evt) {
+	
+	  var laughTaunt = document.getElementById('laughTaunt');
+	  var patheticTaunt = document.getElementById('patheticTaunt');
+	  var suckTaunt = document.getElementById('suckTaunt');
+	
+	  var missTaunts = [laughTaunt, patheticTaunt, suckTaunt];
+	
+	  if (evt.keyCode === 13) {
+	    state.showPlayerBubble = true;
+	    var damage = Math.floor(Math.random() * 10);
+	    state.cpuTauntMessage = '';
+	    if (evt.target.value === 'ForwardS') {
+	      state.playerAttackMessage = 'Forward Slash!';
+	      _audioPlay2.default.forwardSlash();
+	      state.playerSpriteUrls = './images/kenshin-forward-slash.gif';
+	      if (damage >= 5) {
+	        state.cpuHP -= 3;
+	        state.cpuSpriteUrls = './images/spidey-hit.gif';
+	        _audioPlay2.default.cpuHit();
+	      } else {
+	        state.cpuHP += 0;
+	        state.showMissBubble = true;
+	        state.cpuTauntMessage = 'Spider Sense tingling.';
+	        randomIndexing(missTaunts).play();
+	      }
+	    } else if (evt.target.value === 'ChargeS') {
+	      state.playerAttackMessage = 'Charging Slash!';
+	      _audioPlay2.default.chargingSlash();
+	      state.playerSpriteUrls = './images/kenshin-chargeslash.gif';
+	
+	      if (damage >= 5) {
+	        state.cpuHP -= 3;
+	        state.cpuSpriteUrls = './images/spidey-hit.gif';
+	        _audioPlay2.default.cpuHit();
+	      } else {
+	        state.cpuHP += 0;
+	        state.showMissBubble = true;
+	        state.cpuTauntMessage = 'Spider Sense tingling.';
+	        randomIndexing(missTaunts).play();
+	      }
+	    } else if (evt.target.value === 'UpwardS') {
+	      state.playerAttackMessage = 'Upward Slash!';
+	      _audioPlay2.default.upwardSlash();
+	      state.playerSpriteUrls = './images/kenshin-upslash.gif';
+	      if (damage >= 5) {
+	        state.cpuHP -= 3;
+	        state.cpuSpriteUrls = './images/spidey-hit.gif';
+	        _audioPlay2.default.cpuHit();
+	      } else {
+	        state.cpuHP += 0;
+	        state.showMissBubble = true;
+	        state.cpuTauntMessage = 'Spider Sense tingling.';
+	        randomIndexing(missTaunts).play();
+	      }
+	    } else if (evt.target.value === state.healString) {
+	      var gokuHeal = document.getElementById('gokuHeal');
+	      var dendeHeal = document.getElementById('dendeHeal');
+	
+	      var healSounds = [gokuHeal, dendeHeal];
+	
+	      state.playerHP += 3;
+	      state.playerAttackMessage = "Just a scratch";
+	      state.playerSpriteUrls = './images/kenshin-ready.gif';
+	      randomIndexing(healSounds).play();
+	    } else {
+	      state.playerAttackMessage = "Sorry, I don't know that move.";
+	      state.showPlayerBubble = true;
+	      state.playerSpriteUrls = './images/kenshin-no-move.gif';
+	      _audioPlay2.default.wrongInput();
+	    }
+	    evt.target.value = '';
+	    gameState();
+	  }
+	};
+	
+	// store.actions.load = function() {
+	//   console.log('loading');
+	//
+	//   var id = getUserId();
+	//
+	//
+	//   ProgressStore.actions.loadProgress(id);
+	//
+	//
+	// }
+	
+	store.actions.cpuDifficulty = function () {
+	  difficulty = document.querySelector('#difficulty');
+	  state.difficultyChosen = difficulty.options[difficulty.selectedIndex].value;
+	};
+	
+	function disableDropDown() {
+	  difficulty.disabled = true;
+	}
+	
+	function enableDropDown() {
+	  difficulty.disabled = false;
+	}
+	
+	module.exports = store;
+
+/***/ },
+/* 244 */
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	var warning;
+	var danger;
+	var audioPlay = {
+	  forwardSlash: function forwardSlash() {
+	    var forwardSlash = document.getElementById('forwardSlash');
+	    forwardSlash.play();
+	  },
+	
+	  chargingSlash: function chargingSlash() {
+	    var chargingSlash = document.getElementById('chargingSlash');
+	    chargingSlash.play();
+	  },
+	
+	  upwardSlash: function upwardSlash() {
+	    var upwardSlash = document.getElementById('upwardSlash');
+	    upwardSlash.play();
+	  },
+	
+	  playWarning: function playWarning() {
+	    warning = document.getElementById('warning');
+	    warning.play();
+	  },
+	
+	  playDanger: function playDanger() {
+	    danger = document.getElementById('danger');
+	    danger.play();
+	  },
+	
+	  pauseWarning: function pauseWarning() {
+	    warning = document.getElementById('warning');
+	    warning.pause();
+	  },
+	
+	  pauseDanger: function pauseDanger() {
+	    danger = document.getElementById('danger');
+	    danger.pause();
+	  },
+	
+	  webBall: function webBall() {
+	    var webBall = document.getElementById('webBall');
+	    webBall.play();
+	  },
+	
+	  webSwing: function webSwing() {
+	    var webSwing = document.getElementById('webSwing');
+	    webSwing.play();
+	  },
+	
+	  spiderSting: function spiderSting() {
+	    var spiderSting = document.getElementById('spiderSting');
+	    spiderSting.play();
+	  },
+	
+	  playerHit: function playerHit() {
+	    var playerHit = document.getElementById('playerHit');
+	    playerHit.play();
+	  },
+	
+	  victory: function victory() {
+	    var victory = document.getElementById('victory');
+	    victory.play();
+	  },
+	
+	  cpuHit: function cpuHit() {
+	    var cpuHit = document.getElementById('cpuHit');
+	    cpuHit.play();
+	  },
+	
+	  wrongInput: function wrongInput() {
+	    var wrongInput = document.getElementById('wrongInput');
+	    wrongInput.play();
+	  }
+	
+	};
+	
+	module.exports = audioPlay;
+
+/***/ },
+/* 245 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -38190,7 +38431,7 @@
 	module.exports = MoveList;
 
 /***/ },
-/* 242 */
+/* 246 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -38225,7 +38466,7 @@
 	                        return _react2.default.createElement(
 	                                'div',
 	                                null,
-	                                _react2.default.createElement('audio', { id: 'mainTheme', src: '/music/enter-the-dragon.mp3', autoPlay: true, muted: true }),
+	                                _react2.default.createElement('audio', { id: 'mainTheme', src: '/music/enter-the-dragon.mp3', autoPlay: true }),
 	                                _react2.default.createElement('audio', { id: 'MKTheme', src: '/music/MK-theme.mp3' }),
 	                                _react2.default.createElement('audio', { id: 'GuileTheme', src: '/music/Guile-theme.mp3' }),
 	                                _react2.default.createElement('audio', { id: 'FF7BossTheme', src: '/music/FF7-boss-theme.mp3' }),
@@ -38261,7 +38502,7 @@
 	module.exports = AudioFiles;
 
 /***/ },
-/* 243 */
+/* 247 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -38355,7 +38596,7 @@
 	module.exports = TypeFightTitle;
 
 /***/ },
-/* 244 */
+/* 248 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -38366,7 +38607,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _fightStore = __webpack_require__(236);
+	var _fightStore = __webpack_require__(243);
 	
 	var _fightStore2 = _interopRequireDefault(_fightStore);
 	
@@ -38456,7 +38697,7 @@
 	module.exports = CpuDifficulty;
 
 /***/ },
-/* 245 */
+/* 249 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -38474,35 +38715,35 @@
 	 * jQuery-like functions for manipulating the DOM
 	 */
 	
-	var _hasClass$addClass$removeClass$escapeHtml$_show$show$_hide$hide$isDescendant$getTopMargin$fadeIn$fadeOut$fireClick$stopEventPropagation = __webpack_require__(246);
+	var _hasClass$addClass$removeClass$escapeHtml$_show$show$_hide$hide$isDescendant$getTopMargin$fadeIn$fadeOut$fireClick$stopEventPropagation = __webpack_require__(250);
 	
 	/*
 	 * Handy utilities
 	 */
 	
-	var _extend$hexToRgb$isIE8$logStr$colorLuminance = __webpack_require__(247);
+	var _extend$hexToRgb$isIE8$logStr$colorLuminance = __webpack_require__(251);
 	
 	/*
 	 *  Handle sweetAlert's DOM elements
 	 */
 	
-	var _sweetAlertInitialize$getModal$getOverlay$getInput$setFocusStyle$openModal$resetInput$fixVerticalPosition = __webpack_require__(248);
+	var _sweetAlertInitialize$getModal$getOverlay$getInput$setFocusStyle$openModal$resetInput$fixVerticalPosition = __webpack_require__(252);
 	
 	// Handle button events and keyboard events
 	
-	var _handleButton$handleConfirm$handleCancel = __webpack_require__(251);
+	var _handleButton$handleConfirm$handleCancel = __webpack_require__(255);
 	
-	var _handleKeyDown = __webpack_require__(252);
+	var _handleKeyDown = __webpack_require__(256);
 	
 	var _handleKeyDown2 = _interopRequireWildcard(_handleKeyDown);
 	
 	// Default values
 	
-	var _defaultParams = __webpack_require__(249);
+	var _defaultParams = __webpack_require__(253);
 	
 	var _defaultParams2 = _interopRequireWildcard(_defaultParams);
 	
-	var _setParameters = __webpack_require__(253);
+	var _setParameters = __webpack_require__(257);
 	
 	var _setParameters2 = _interopRequireWildcard(_setParameters);
 	
@@ -38764,7 +39005,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 246 */
+/* 250 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -38960,7 +39201,7 @@
 	exports.stopEventPropagation = stopEventPropagation;
 
 /***/ },
-/* 247 */
+/* 251 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -39038,7 +39279,7 @@
 	exports.colorLuminance = colorLuminance;
 
 /***/ },
-/* 248 */
+/* 252 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -39049,11 +39290,11 @@
 	  value: true
 	});
 	
-	var _hexToRgb = __webpack_require__(247);
+	var _hexToRgb = __webpack_require__(251);
 	
-	var _removeClass$getTopMargin$fadeIn$show$addClass = __webpack_require__(246);
+	var _removeClass$getTopMargin$fadeIn$show$addClass = __webpack_require__(250);
 	
-	var _defaultParams = __webpack_require__(249);
+	var _defaultParams = __webpack_require__(253);
 	
 	var _defaultParams2 = _interopRequireWildcard(_defaultParams);
 	
@@ -39061,7 +39302,7 @@
 	 * Add modal + overlay to DOM
 	 */
 	
-	var _injectedHTML = __webpack_require__(250);
+	var _injectedHTML = __webpack_require__(254);
 	
 	var _injectedHTML2 = _interopRequireWildcard(_injectedHTML);
 	
@@ -39210,7 +39451,7 @@
 	exports.fixVerticalPosition = fixVerticalPosition;
 
 /***/ },
-/* 249 */
+/* 253 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -39247,7 +39488,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 250 */
+/* 254 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -39294,7 +39535,7 @@
 	module.exports = exports["default"];
 
 /***/ },
-/* 251 */
+/* 255 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -39303,11 +39544,11 @@
 	  value: true
 	});
 	
-	var _colorLuminance = __webpack_require__(247);
+	var _colorLuminance = __webpack_require__(251);
 	
-	var _getModal = __webpack_require__(248);
+	var _getModal = __webpack_require__(252);
 	
-	var _hasClass$isDescendant = __webpack_require__(246);
+	var _hasClass$isDescendant = __webpack_require__(250);
 	
 	/*
 	 * User clicked on "Confirm"/"OK" or "Cancel"
@@ -39434,7 +39675,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 252 */
+/* 256 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -39443,9 +39684,9 @@
 	  value: true
 	});
 	
-	var _stopEventPropagation$fireClick = __webpack_require__(246);
+	var _stopEventPropagation$fireClick = __webpack_require__(250);
 	
-	var _setFocusStyle = __webpack_require__(248);
+	var _setFocusStyle = __webpack_require__(252);
 	
 	var handleKeyDown = function handleKeyDown(event, params, modal) {
 	  var e = event || window.event;
@@ -39518,7 +39759,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 253 */
+/* 257 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -39527,11 +39768,11 @@
 	  value: true
 	});
 	
-	var _isIE8 = __webpack_require__(247);
+	var _isIE8 = __webpack_require__(251);
 	
-	var _getModal$getInput$setFocusStyle = __webpack_require__(248);
+	var _getModal$getInput$setFocusStyle = __webpack_require__(252);
 	
-	var _hasClass$addClass$removeClass$escapeHtml$_show$show$_hide$hide = __webpack_require__(246);
+	var _hasClass$addClass$removeClass$escapeHtml$_show$show$_hide$hide = __webpack_require__(250);
 	
 	var alertTypes = ['error', 'warning', 'info', 'success', 'input', 'prompt'];
 	
@@ -39746,244 +39987,6 @@
 	
 	exports['default'] = setParameters;
 	module.exports = exports['default'];
-
-/***/ },
-/* 254 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _progressStore = __webpack_require__(238);
-	
-	var _progressStore2 = _interopRequireDefault(_progressStore);
-	
-	var _backbutton = __webpack_require__(255);
-	
-	var _backbutton2 = _interopRequireDefault(_backbutton);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var React = __webpack_require__(1);
-	
-	var Progress = function (_React$Component) {
-	  _inherits(Progress, _React$Component);
-	
-	  function Progress() {
-	    _classCallCheck(this, Progress);
-	
-	    var _this = _possibleConstructorReturn(this, (Progress.__proto__ || Object.getPrototypeOf(Progress)).call(this));
-	
-	    _progressStore2.default.actions.loadProgress();
-	
-	    _this.state = _progressStore2.default.copyState();
-	
-	    _progressStore2.default.addListener(function (state) {
-	      console.log('progres compononent state', state);
-	      _this.setState(state);
-	    });
-	
-	    return _this;
-	  }
-	
-	  _createClass(Progress, [{
-	    key: 'render',
-	    value: function render() {
-	      return React.createElement(
-	        'div',
-	        { className: 'row' },
-	        React.createElement(
-	          'div',
-	          { className: 'container col twelve' },
-	          React.createElement(
-	            'div',
-	            { className: 'row' },
-	            React.createElement('div', { className: 'col one' }),
-	            React.createElement(
-	              'div',
-	              { className: 'col ten' },
-	              React.createElement(
-	                'h1',
-	                { className: 'website-title progress-title animated slideInDown' },
-	                'Your'
-	              ),
-	              React.createElement(
-	                'h1',
-	                { className: 'website-title progress-title animated slideInUp' },
-	                'Progress'
-	              )
-	            ),
-	            React.createElement('div', { className: 'col one' })
-	          ),
-	          React.createElement(
-	            'div',
-	            { className: 'row' },
-	            React.createElement('div', { className: 'col one' }),
-	            React.createElement(
-	              'div',
-	              { className: 'col ten' },
-	              React.createElement(
-	                'h3',
-	                { className: 'progress-tagline animated pulse' },
-	                ' Check how you\'re doing!'
-	              )
-	            ),
-	            React.createElement('div', { className: 'col one' })
-	          ),
-	          React.createElement(
-	            'div',
-	            { className: 'row' },
-	            React.createElement('div', { className: 'col one' }),
-	            React.createElement(
-	              'div',
-	              { className: 'col ten' },
-	              React.createElement(
-	                'h4',
-	                { id: 'stats-heading' },
-	                ' Player Stats'
-	              ),
-	              React.createElement(
-	                'table',
-	                { id: 'stats-table' },
-	                React.createElement(
-	                  'tbody',
-	                  null,
-	                  React.createElement(
-	                    'tr',
-	                    { id: 'HeadRow' },
-	                    React.createElement(
-	                      'td',
-	                      null,
-	                      ' Wins '
-	                    ),
-	                    React.createElement(
-	                      'td',
-	                      null,
-	                      ' Losses '
-	                    ),
-	                    React.createElement(
-	                      'td',
-	                      null,
-	                      ' CPU Difficulty '
-	                    )
-	                  ),
-	                  React.createElement(
-	                    'tr',
-	                    null,
-	                    React.createElement(
-	                      'td',
-	                      null,
-	                      ' ',
-	                      this.state.wins,
-	                      ' '
-	                    ),
-	                    React.createElement(
-	                      'td',
-	                      null,
-	                      ' ',
-	                      this.state.losses,
-	                      ' '
-	                    ),
-	                    React.createElement(
-	                      'td',
-	                      null,
-	                      ' ',
-	                      this.state.difficultyChosen
-	                    )
-	                  )
-	                )
-	              )
-	            ),
-	            React.createElement('div', { className: 'col one' })
-	          ),
-	          React.createElement(
-	            'div',
-	            { className: 'row' },
-	            React.createElement('div', { className: 'col two' }),
-	            React.createElement(
-	              'div',
-	              { className: 'col two' },
-	              React.createElement(_backbutton2.default, null)
-	            ),
-	            React.createElement('div', { className: 'col four' }),
-	            React.createElement(
-	              'div',
-	              { className: 'col two' },
-	              React.createElement(
-	                'a',
-	                { href: 'index.html' },
-	                React.createElement(
-	                  'button',
-	                  { id: 'homepage-link' },
-	                  '*Lemme Google Sign-In!'
-	                )
-	              )
-	            ),
-	            React.createElement('div', { className: 'col two' })
-	          ),
-	          React.createElement(
-	            'div',
-	            { className: 'row' },
-	            React.createElement('div', { className: 'col seven' }),
-	            React.createElement(
-	              'div',
-	              { className: 'col five' },
-	              React.createElement(
-	                'p',
-	                { id: 'sign-in-info' },
-	                ' *(Psst. That way you can check your progress from around the world.)'
-	              )
-	            )
-	          )
-	        )
-	      );
-	    }
-	  }]);
-	
-	  return Progress;
-	}(React.Component);
-	
-	module.exports = Progress;
-
-/***/ },
-/* 255 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var React = __webpack_require__(1);
-	var Router = __webpack_require__(172);
-	
-	var History = Router.History;
-	
-	var BackButton = React.createClass({
-	  displayName: 'BackButton',
-	
-	  mixins: [History],
-	  render: function render() {
-	    return React.createElement(
-	      'button',
-	      { className: 'back', onClick: this.history.goBack },
-	      'Lemme Type Fight!',
-	      this.props.children
-	    );
-	  }
-	});
-	
-	module.exports = BackButton;
-
-/***/ },
-/* 256 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
 
 /***/ }
 /******/ ]);
