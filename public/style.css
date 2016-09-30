@@ -1049,7 +1049,7 @@ body.stop-scrolling {
 .fight-website-title li {
   display: inline-block;
   margin-right: 50px;
-  font-family: Open Sans, Arial;
+  font-family: 'Indie Flower', cursive;
   font-weight: 300;
   color: #fff; }
 
@@ -1072,14 +1072,15 @@ body.stop-scrolling {
   font-size: 2em;
   font-weight: bold;
   text-align: center;
-  cursor: pointer; }
+  cursor: pointer;
+  font-family: 'PT Serif', serif; }
 
 .fight-title:hover {
   color: red; }
 
 .link-text {
   font-size: 1.4em;
-  font-family: cursive;
+  font-family: 'PT Serif', serif;
   text-decoration: none;
   color: black;
   text-align: center; }
@@ -1089,7 +1090,7 @@ body.stop-scrolling {
 
 .rematch {
   font-size: 1.4em;
-  font-family: cursive;
+  font-family: 'PT Serif', serif;
   text-align: center;
   margin-top: 10px;
   text-decoration: none; }
@@ -1101,7 +1102,7 @@ body.stop-scrolling {
   color: purple;
   font-size: 2em;
   font-weight: bold;
-  font-style: italic;
+  font-family: 'PT Serif', serif;
   text-align: center; }
 
 .whose-character-cpu {
@@ -1109,7 +1110,7 @@ body.stop-scrolling {
   text-align: center;
   font-size: 2em;
   font-weight: bold;
-  font-style: italic; }
+  font-family: 'PT Serif', serif; }
 
 #difficulty {
   border-radius: 20px;
@@ -1119,7 +1120,12 @@ body.stop-scrolling {
   margin-left: 5%;
   font-size: 1em; }
 
+input[type='text'] {
+  font-size: 1.1em;
+  font-family: 'PT Serif', serif; }
+
 .player-bubble-show {
+  font-family: 'PT Serif', serif;
   font-size: 1.2em;
   text-align: center;
   position: relative;
@@ -1157,6 +1163,7 @@ body.stop-scrolling {
   top: 15px; }
 
 .cpu-bubble-show {
+  font-family: 'PT Serif', serif;
   font-size: 1.3em;
   text-align: center;
   line-height: 2em;
@@ -1192,6 +1199,7 @@ body.stop-scrolling {
   top: 14px; }
 
 .miss-bubble-show {
+  font-family: 'PT Serif', serif;
   text-align: center;
   line-height: 2em;
   position: relative;
@@ -1218,24 +1226,28 @@ body.stop-scrolling {
 .healthyHP {
   color: green;
   font-size: 3em;
-  font-weight: bold; }
+  font-weight: bold;
+  font-family: 'PT Serif', serif; }
 
 .warningHP {
   font-size: 3em;
   color: orange;
-  font-weight: bold; }
+  font-weight: bold;
+  font-family: 'PT Serif', serif; }
 
 .dangerHP {
   font-size: 3em;
   color: red;
-  font-weight: bold; }
+  font-weight: bold;
+  font-family: 'PT Serif', serif; }
 
 .input-instructions {
   font-size: 1.5em;
   color: red;
-  font-family: TimesNewRoman,"Times New Roman",Times,Baskerville,Georgia,serif;
+  font-family: 'PT Serif', serif;
   text-align: center;
-  font-weight: bold; }
+  font-weight: bold;
+  margin-bottom: 5px; }
 
 .attack-color {
   color: black; }
@@ -1246,9 +1258,6 @@ body.stop-scrolling {
 .healString-size {
   font-size: 2em; }
 
-input[type='text'] {
-  font-size: 1.1em; }
-
 .input-show {
   display: block; }
 
@@ -1257,27 +1266,28 @@ input[type='text'] {
   text-align: center;
   text-decoration: underline;
   font-style: oblique;
-  font-family: Lucida, serif;
+  font-family: 'PT Serif', serif;
   font-size: 1.6em; }
 
 .move-list-items {
   background-color: white;
   text-align: center;
-  font-size: 1.4em; }
+  font-size: 1.4em;
+  font-family: 'PT Serif', serif; }
 
 .instructions {
   padding: 15px;
-  background-color: #ffc0cb;
-  color: red;
   border: 4px solid white;
+  background-color: black;
+  color: white;
   font-size: 1.3em;
   font-weight: bold;
-  font-family: "Trebuchet MS","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Tahoma,sans-serif;
+  font-family: 'Orbitron', sans-serif;
   cursor: pointer; }
 
 .instructions:hover {
-  background-color: black;
-  color: white; }
+  background-color: #ffc0cb;
+  color: red; }
 
 .container {
   margin: 80px;
@@ -1309,7 +1319,7 @@ input[type='text'] {
   border: 4px solid white;
   font-size: 2.3em;
   font-weight: bold;
-  font-family: "Trebuchet MS","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Tahoma,sans-serif;
+  font-family: 'Lobster', cursive;
   cursor: pointer; }
 
 #play:hover {
@@ -1322,7 +1332,7 @@ input[type='text'] {
 .website-title {
   font-size: 4em;
   font-weight: bold;
-  font-family: fantasy;
+  font-family: 'Indie Flower', cursive;
   text-align: center; }
 
 .website-title:hover {
@@ -1330,7 +1340,7 @@ input[type='text'] {
 
 .index-tagline {
   font-size: 1.4em;
-  font-family: cursive;
+  font-family: 'Baloo Bhai', cursive;
   text-align: center;
   margin-bottom: 30px; }
 
@@ -1344,7 +1354,7 @@ input[type='text'] {
 .fly-in-text li {
   display: inline-block;
   margin-right: 50px;
-  font-family: Open Sans, Arial;
+  font-family: 'Indie Flower', cursive;
   font-weight: 300;
   color: #fff;
   opacity: 1;
@@ -1504,24 +1514,27 @@ input[type='text'] {
   width: 120px; }
 
 .progress-title {
-  font-family: cursive;
+  font-family: 'Indie Flower', cursive;
   color: white; }
 
 .progress-tagline {
   font-size: 1.4em;
-  font-family: cursive;
+  font-family: 'Baloo Bhai', cursive;
   text-align: center; }
 
 #stats-heading {
   text-decoration: underline;
   text-align: center;
-  font-size: 1.5em;
-  margin-bottom: 10px; }
+  font-size: 2.5em;
+  margin-bottom: 10px;
+  font-family: 'Josefin Sans', sans-serif; }
 
 #stats-table {
   width: 40%;
   border-collapse: collapse;
-  margin: 0 auto; }
+  margin: 0 auto;
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 2em; }
 
 tr:nth-of-type(odd) {
   background-color: red;
@@ -1534,12 +1547,15 @@ tr:nth-of-type(even) {
 #HeadRow {
   background-color: black;
   font-weight: bold;
-  text-decoration: underline; }
+  text-decoration: underline;
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 1.2em; }
 
 #stats-table td {
   padding: 5px;
   border: 1px solid black;
-  text-align: center; }
+  text-align: center;
+  font-family: 'Josefin Sans', sans-serif; }
 
 .back {
   padding: 15px;
@@ -1548,7 +1564,7 @@ tr:nth-of-type(even) {
   border: 4px solid white;
   font-size: 1.3em;
   font-weight: bold;
-  font-family: "Trebuchet MS","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Tahoma,sans-serif;
+  font-family: 'Orbitron', sans-serif;
   cursor: pointer; }
 
 .back:hover {
@@ -1562,7 +1578,7 @@ tr:nth-of-type(even) {
   border: 4px solid white;
   font-size: 1.3em;
   font-weight: bold;
-  font-family: "Trebuchet MS","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Tahoma,sans-serif;
+  font-family: 'Orbitron', sans-serif;
   cursor: pointer; }
 
 #homepage-link:hover {

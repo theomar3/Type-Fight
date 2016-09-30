@@ -13,7 +13,7 @@
 .fight-website-title li {
 	display: inline-block;
 	margin-right: 50px;
-	font-family: Open Sans, Arial;
+	font-family: 'Indie Flower', cursive;
 	font-weight: 300;
 	color: #fff;
 
@@ -51,6 +51,8 @@
 	font-weight: bold;
 	text-align: center;
 	cursor: pointer;
+	font-family: 'PT Serif', serif;
+
 }
 
 .fight-title:hover {
@@ -59,7 +61,7 @@
 
 .link-text {
 	font-size: 1.4em;
-	font-family:cursive;
+	font-family: 'PT Serif', serif;
 	text-decoration: none;
 	color: black;
 	text-align: center;
@@ -70,7 +72,7 @@
 }
 .rematch {
 	font-size: 1.4em;
-	font-family:cursive;
+	font-family: 'PT Serif', serif;
 	text-align: center;
 	margin-top: 10px;
 	text-decoration: none;
@@ -84,7 +86,7 @@
   color: purple;
   font-size: 2em;
   font-weight: bold;
-  font-style: italic;
+	font-family: 'PT Serif', serif;
 	text-align: center;
 }
 
@@ -93,7 +95,7 @@
   text-align: center;
   font-size: 2em;
   font-weight: bold;
-  font-style: italic;
+	font-family: 'PT Serif', serif;
 }
 
 #difficulty {
@@ -105,9 +107,16 @@
 	font-size: 1em;
 }
 
+input[type='text'] {
+	font-size: 1.1em;
+	font-family: 'PT Serif', serif;
+
+}
+
 
 .player-bubble-show
 {
+	font-family: 'PT Serif', serif;
 	font-size: 1.2em;
 	text-align: center;
 	// line-height: 3em;
@@ -145,6 +154,7 @@
 
 .cpu-bubble-show
 {
+	font-family: 'PT Serif', serif;
 	font-size: 1.3em;
 	text-align: center;
 	line-height: 2em;
@@ -180,6 +190,7 @@
 
 .miss-bubble-show
 {
+	font-family: 'PT Serif', serif;
 	text-align: center;
 	line-height: 2em;
 	position: relative;
@@ -213,26 +224,33 @@
 	color: green;
 	font-size: 3em;
 	font-weight: bold;
+	font-family: 'PT Serif', serif;
+
 }
 
 .warningHP {
 	font-size: 3em;
 	color: orange;
 	font-weight: bold;
+	font-family: 'PT Serif', serif;
+
 }
 
 .dangerHP {
 	font-size: 3em;
 	color: red;
 	font-weight: bold;
+	font-family: 'PT Serif', serif;
+
 }
 
 .input-instructions {
 	font-size: 1.5em;
 	color: red;
-	font-family: TimesNewRoman,"Times New Roman",Times,Baskerville,Georgia,serif;
+	font-family: 'PT Serif', serif;
 	text-align: center;
 	font-weight: bold;
+	margin-bottom: 5px;
 }
 
 
@@ -249,16 +267,10 @@
 }
 
 
-input[type='text'] {
-	font-size: 1.1em;
-}
-
-
 .input-show {
 	display: block;
 
 }
-
 
 
 .move-list-title {
@@ -266,7 +278,7 @@ input[type='text'] {
 	text-align: center;
 	text-decoration: underline;
 	font-style: oblique;
-	font-family: Lucida, serif;
+	font-family: 'PT Serif', serif;
 	font-size: 1.6em;
 }
 
@@ -275,20 +287,24 @@ input[type='text'] {
 	background-color: white;
 	text-align: center;
 	font-size: 1.4em;
+	font-family: 'PT Serif', serif;
+
 }
 
 .instructions {
 	padding: 15px;
-  background-color: #ffc0cb;
-  color: red;
   border: 4px solid white;
+	background-color: black;
+	color: white;
   font-size: 1.3em;
   font-weight: bold;
-  font-family: "Trebuchet MS","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Tahoma,sans-serif;
+	font-family: 'Orbitron', sans-serif;
   cursor: pointer;
 }
 
 .instructions:hover {
-	background-color: black;
-	color: white;
+
+	background-color: #ffc0cb;
+	color: red;
+
 }

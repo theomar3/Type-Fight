@@ -1,25 +1,30 @@
 .progress-title {
-  font-family: cursive;
+  font-family: 'Indie Flower', cursive;
   color: white;
 }
 
 .progress-tagline {
   font-size: 1.4em;
-  font-family:cursive;
+  font-family: 'Baloo Bhai', cursive;
   text-align: center;
 }
 
 #stats-heading {
   text-decoration: underline;
   text-align: center;
-  font-size: 1.5em;
+  font-size: 2.5em;
   margin-bottom: 10px;
+  font-family: 'Josefin Sans', sans-serif;
+
 }
 
 #stats-table {
   width: 40%;
   border-collapse: collapse;
   margin: 0 auto;
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 2em;
+
 }
 
 tr:nth-of-type(odd) {
@@ -36,12 +41,18 @@ tr:nth-of-type(even) {
   background-color: black;
   font-weight: bold;
   text-decoration: underline;
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 1.2em;
+
 }
 
 #stats-table td {
   padding: 5px;
   border: 1px solid black;
   text-align: center;
+  font-family: 'Josefin Sans', sans-serif;
+  // font-size: 1.2em;
+
 }
 
 .back {
@@ -51,7 +62,7 @@ tr:nth-of-type(even) {
   border: 4px solid white;
   font-size: 1.3em;
   font-weight: bold;
-  font-family: "Trebuchet MS","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Tahoma,sans-serif;
+  font-family: 'Orbitron', sans-serif;
   cursor: pointer;
 }
 
@@ -67,7 +78,7 @@ tr:nth-of-type(even) {
   border: 4px solid white;
   font-size: 1.3em;
   font-weight: bold;
-  font-family: "Trebuchet MS","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Tahoma,sans-serif;
+  font-family: 'Orbitron', sans-serif;
   cursor: pointer;
 }
 
