@@ -1,4 +1,4 @@
-var React = require('react');
+ var React = require('react');
 import ProgressStore from './progress-store.js';
 import BackButton from './backbutton.jsx';
 

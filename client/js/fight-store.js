@@ -433,7 +433,7 @@ swal({
   title: "Type Fight Instructions - How To Heal",
   text: "When the CPU attacks, you will see some random BRIGHT BLUE letters. Type those correctly to heal!",
   type: "warning",
-  showCancelButton: true,
+  showCancelButton: false,
   confirmButtonColor: "#DD6B55",
   confirmButtonText: "Lemme at 'em!'",
   closeOnConfirm: false

@@ -83,7 +83,7 @@
 }
 
 .whose-character-player {
-  color: purple;
+  color: black;
   font-size: 2em;
   font-weight: bold;
 	font-family: 'PT Serif', serif;
@@ -91,7 +91,7 @@
 }
 
 .whose-character-cpu {
-	color: yellow;
+	color: white;
   text-align: center;
   font-size: 2em;
   font-weight: bold;
@@ -128,19 +128,13 @@ input[type='text'] {
 	-moz-border-radius: 10px;
 	border-radius: 10px;
 	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#fb83fa+15,e93cec+54 */
-	background: #fb83fa; /* Old browsers */
-	background: -moz-linear-gradient(top,  #fb83fa 15%, #e93cec 54%); /* FF3.6-15 */
-	background: -webkit-linear-gradient(top,  #fb83fa 15%,#e93cec 54%); /* Chrome10-25,Safari5.1-6 */
-	background: linear-gradient(to bottom,  #fb83fa 15%,#e93cec 54%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fb83fa', endColorstr='#e93cec',GradientType=0 ); /* IE6-9 */
-	-webkit-border-radius: 10px;
-	-moz-border-radius: 10px;
-	border-radius: 10px;
+	background-color: black;
+	color: white;
 }
 
 .player-bubble-show:after
 {
-	border-color: transparent #fb83fa;
+	border-color: transparent black;
 	content: '';
 	position: absolute;
 	border-style: solid;
@@ -163,15 +157,8 @@ input[type='text'] {
 	height: 90px;
 	padding: 0px;
 	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#e5e696+18,d1d360+47 */
-	background: #e5e696; /* Old browsers */
-	background: -moz-linear-gradient(top,  #e5e696 18%, #d1d360 47%); /* FF3.6-15 */
-	background: -webkit-linear-gradient(top,  #e5e696 18%,#d1d360 47%); /* Chrome10-25,Safari5.1-6 */
-	background: linear-gradient(to bottom,  #e5e696 18%,#d1d360 47%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e5e696', endColorstr='#d1d360',GradientType=0 ); /* IE6-9 */
+	background-color: white;
 
-	-webkit-border-radius: 9px;
-	-moz-border-radius: 9px;
-	border-radius: 9px;
 }
 
 .cpu-bubble-show:after
@@ -180,7 +167,7 @@ input[type='text'] {
 	position: absolute;
 	border-style: solid;
 	border-width: 13px 0 13px 30px;
-	border-color: transparent #e5e696;
+	border-color: transparent white;
 	display: block;
 	width: 0;
 	z-index: 1;
@@ -192,12 +179,12 @@ input[type='text'] {
 {
 	font-family: 'PT Serif', serif;
 	text-align: center;
-	line-height: 2em;
+	// line-height: 2em;
 	position: relative;
 	width: 145px;
 	height: 55px;
 	padding: 0px;
-	background: #FFFFFF;
+	background: #EEE;
 	-webkit-border-radius: 10px;
 	-moz-border-radius: 10px;
 	border-radius: 10px;
@@ -209,7 +196,7 @@ input[type='text'] {
 	position: absolute;
 	border-style: solid;
 	border-width: 15px 30px 15px 0;
-	border-color: transparent #FFFFFF;
+	border-color: transparent #EEE;
 	display: block;
 	width: 0;
 	z-index: 1;
