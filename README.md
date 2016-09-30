@@ -19,3 +19,7 @@ To run Node.
 ```
 npm run-script server
 ```
+
+##Mongo command prompt on PowerShell
+
+cmd.exe /c "mongo.bat"
