@@ -27480,6 +27480,12 @@
 	var battleTheme;
 	var difficulty;
 	
+	var laughTaunt = document.getElementById('laughTaunt');
+	var patheticTaunt = document.getElementById('patheticTaunt');
+	var suckTaunt = document.getElementById('suckTaunt');
+	
+	var missTaunts = [laughTaunt, patheticTaunt, suckTaunt];
+	
 	var cpuAttacks = ['Web Ball!', 'Web Swing!', 'Spider Sting!'];
 	
 	function randomIndexing(array) {
@@ -27732,12 +27738,6 @@
 	};
 	
 	store.actions.attack = function (evt) {
-	
-	  var laughTaunt = document.getElementById('laughTaunt');
-	  var patheticTaunt = document.getElementById('patheticTaunt');
-	  var suckTaunt = document.getElementById('suckTaunt');
-	
-	  var missTaunts = [laughTaunt, patheticTaunt, suckTaunt];
 	
 	  if (evt.keyCode === 13) {
 	    state.showPlayerBubble = true;
