@@ -14,6 +14,26 @@ var data = {};
 var mongoConnectionURL = 'mongodb://localhost:27017/myproject';
 
 
+app.get('/player-progress/', function(req, res) {
+
+
+  // Use connect method to connect to the Server
+  MongoClient.connect(mongoConnectionURL, function(err, db) {
+    // assert.equal(null, err);
+    console.log('err', err);
+    console.log("Connected correctly to server");
+
+    findDocuments({}, db, function(docs) {
+      db.close();
+      res.send(docs);
+    });
+
+  });
+
+
+
+});
+
 app.get('/player-progress/:id', function(req, res) {
   // if(data[req.params.id] === undefined){
   //
@@ -25,34 +45,39 @@ app.get('/player-progress/:id', function(req, res) {
   // }
   // console.log('get data', req.params.id);
 
+  var userId = req.params.id;
+
   // Use connect method to connect to the Server
   MongoClient.connect(mongoConnectionURL, function(err, db) {
     // assert.equal(null, err);
     console.log('err', err);
     console.log("Connected correctly to server");
 
-    findDocuments(db, function() {
+    var parameters = {
+      userId: userId
+    };
+
+    findDocuments(parameters, db, function(docs) {
       db.close();
-      res.send({
-        stats: data[req.params.id]
-      });
+      res.send(docs);
     });
 
   });
 
-  var findDocuments = function(db, callback) {
-    //Get the documents collection
-    var collection = db.collection('documents');
-    //Find some documents
-    collection.find({}).toArray(function(err, docs) {
-      console.log('Found the following records');
-      console.dir(docs);
-      callback(docs);
-    });
-  }
 
 
 });
+
+var findDocuments = function(parameters, db, callback) {
+  //Get the documents collection
+  var collection = db.collection('documents');
+  //Find some documents
+  collection.find(parameters).toArray(function(err, docs) {
+    console.log('Found the following records');
+    console.dir(docs);
+    callback(docs);
+  });
+}
 
 
 app.post('/player-progress/:id', function(req, res) {
