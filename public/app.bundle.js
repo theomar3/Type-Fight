@@ -27415,13 +27415,13 @@
 	                    _react2.default.createElement(
 	                      'span',
 	                      { className: 'attack-color' },
-	                      'Attack'
+	                      'ATTACK COMMANDS'
 	                    ),
 	                    ' or ',
 	                    _react2.default.createElement(
 	                      'span',
 	                      { className: 'healString-color' },
-	                      'Heal'
+	                      'Heal letters'
 	                    ),
 	                    ' : ',
 	                    input
@@ -27842,7 +27842,7 @@
 	    confirmButtonText: "Lemme at 'em!'",
 	    closeOnConfirm: false
 	  }, function () {
-	    swal("Type Fight Instructions - How To Attack", "Your ATTACK COMMANDS are under your HP. Type those to attack.", "success");
+	    swal("Type Fight Instructions - How To Attack", "Your ATTACK COMMANDS are on the bottom left of your screen, under your HP. Type those to attack.", "success");
 	  });
 	};
 	

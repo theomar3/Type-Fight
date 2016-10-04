@@ -149,7 +149,7 @@ class Fight extends React.Component {
                   </p>
                 </div>
                 <div className='col four'>
-                  <p className='input-instructions'> Enter <span className='attack-color'>Attack</span> or <span className='healString-color'>Heal</span> : {input}</p>
+                  <p className='input-instructions'> Enter <span className='attack-color'>ATTACK COMMANDS</span> or <span className='healString-color'>Heal letters</span> : {input}</p>
                 </div>
                 <div className = 'col two'>
                   <p className={this.state.cpuStatusClass}>

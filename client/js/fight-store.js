@@ -439,7 +439,7 @@ swal({
   closeOnConfirm: false
 },
 function(){
-  swal("Type Fight Instructions - How To Attack", "Your ATTACK COMMANDS are under your HP. Type those to attack.", "success");
+  swal("Type Fight Instructions - How To Attack", "Your ATTACK COMMANDS are on the bottom left of your screen, under your HP. Type those to attack.", "success");
 });
 }
 
