@@ -27480,12 +27480,6 @@
 	var battleTheme;
 	var difficulty;
 	
-	var laughTaunt = document.getElementById('laughTaunt');
-	var patheticTaunt = document.getElementById('patheticTaunt');
-	var suckTaunt = document.getElementById('suckTaunt');
-	
-	var missTaunts = [laughTaunt, patheticTaunt, suckTaunt];
-	
 	var cpuAttacks = ['Web Ball!', 'Web Swing!', 'Spider Sting!'];
 	
 	function randomIndexing(array) {
@@ -27738,6 +27732,12 @@
 	};
 	
 	store.actions.attack = function (evt) {
+	
+	  var laughTaunt = document.getElementById('laughTaunt');
+	  var patheticTaunt = document.getElementById('patheticTaunt');
+	  var suckTaunt = document.getElementById('suckTaunt');
+	
+	  var missTaunts = [laughTaunt, patheticTaunt, suckTaunt];
 	
 	  if (evt.keyCode === 13) {
 	    state.showPlayerBubble = true;
@@ -38296,9 +38296,9 @@
 	                                _react2.default.createElement('audio', { id: 'forwardSlash', src: '/music/forward-slash.mp3' }),
 	                                _react2.default.createElement('audio', { id: 'upwardSlash', src: '/music/upward-slash.mp3' }),
 	                                _react2.default.createElement('audio', { id: 'bradleyTaunt', src: '/music/bradley-miss-taunt.mp3' }),
-	                                _react2.default.createElement('audio', { id: 'laughTaunt', src: '/music/laugh-miss-taunt.wav' }),
-	                                _react2.default.createElement('audio', { id: 'patheticTaunt', src: '/music/pathetic-miss-taunt.wav' }),
-	                                _react2.default.createElement('audio', { id: 'suckTaunt', src: '/music/suck-miss-taunt.wav' })
+	                                _react2.default.createElement('audio', { id: 'laughTaunt', src: '/music/laugh-miss-taunt.mp3' }),
+	                                _react2.default.createElement('audio', { id: 'patheticTaunt', src: '/music/pathetic-miss-taunt.mp3' }),
+	                                _react2.default.createElement('audio', { id: 'suckTaunt', src: '/music/suck-miss-taunt.mp3' })
 	                        );
 	                }
 	        }]);
