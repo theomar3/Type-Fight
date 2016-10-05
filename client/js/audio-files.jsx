@@ -48,9 +48,9 @@ class AudioFiles extends React.Component {
         {/*miss audio*/}
 
       <audio id = 'bradleyTaunt' src="/music/bradley-miss-taunt.mp3" />
-      <audio id = 'laughTaunt' src='/music/laugh-miss-taunt.wav' />
-      <audio id = 'patheticTaunt' src='/music/pathetic-miss-taunt.wav' />
-      <audio id = 'suckTaunt' src='/music/suck-miss-taunt.wav' />
+      <audio id='laughTaunt' src='/music/laugh-miss-taunt.mp3' />
+      <audio id='patheticTaunt' src="/music/pathetic-miss-taunt.mp3" />
+      <audio id='suckTaunt' src='/music/suck-miss-taunt.mp3' />
     </div>
     );
   }
