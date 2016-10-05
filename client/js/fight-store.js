@@ -57,7 +57,7 @@ var state = {
   showCpuBubble: false,
   showMissBubble: false,
   showClickForProgress: '',
-  showRematch: false
+  showStartOver: false
 
 
 }
@@ -95,7 +95,7 @@ store.copyState = function() {
     showCpuBubble: state.showCpuBubble,
     showMissBubble: state.showMissBubble,
     showClickForProgress: state.showClickForProgress,
-    showRematch: state.showRematch
+    showStartOver: state.showStartOver
 
   }
 }
@@ -114,13 +114,13 @@ function changed() {
 function gameState() {
 
   if(state.playerHP < 8) {
-    state.fightScreenTitleText = 'Warning!';
+    state.fightScreenTitleText = 'Warning! (Reset?)';
     state.playerStatusClass = 'warningHP';
     state.playerSpriteUrls = './images/kenshin-warning.gif';
     audioPlay.playWarning();
   }
   if(state.playerHP < 5) {
-    state.fightScreenTitleText = 'Danger!';
+    state.fightScreenTitleText = 'Danger! (Reset?)';
     state.playerStatusClass = 'dangerHP';
     state.playerSpriteUrls = './images/kenshin-danger.gif';
     audioPlay.playDanger();
@@ -212,9 +212,9 @@ function endFight() {
 
 
   if(state.playerHP < 1) {
-    state.fightScreenTitleText = "You lost! Try again.";
+    state.fightScreenTitleText = "You lost! Rematch?";
     state.showClickForProgress = 'Click to see your Progress!';
-    state.showRematch = true;
+    state.showStartOver = true;
     state.playerAttackMessage = 'I was going easy on you.';
     state.cpuAttackMessage = 'One for J.J.';
     state.playerSpriteUrls = './images/kenshin-dead.gif';
@@ -242,9 +242,9 @@ function endFight() {
   }
 
   if(state.cpuHP < 1) {
-    state.fightScreenTitleText = 'Awesome! You won!';
+    state.fightScreenTitleText = 'You Won! Rematch?';
     state.showClickForProgress = 'Click to see your Progress!';
-    state.showRematch = true;
+    state.showStartOver = true;
     state.playerAttackMessage = "You should keep practicing."
     state.cpuAttackMessage = 'Uncle Ben! I failed you. ';
     state.playerSpriteUrls = './images/kenshin-win.gif';
@@ -261,6 +261,10 @@ function endFight() {
 
 }
 
+store.actions.startOver = function() {
+  window.location.reload();
+}
+
 
 
 store.actions.startFight = function() {
@@ -273,11 +277,11 @@ store.actions.startFight = function() {
   disableDropDown();
 
 
-  state.fightScreenTitleText = 'Type Fight!';
+  state.fightScreenTitleText = 'Type Fight! (Reset?)';
   state.playerSpriteUrls = './images/kenshin-ready.gif';
   state.cpuSpriteUrls = './images/spidey-ready.gif';
   state.showPlayerInput = true;
-  state.showRematch = false;
+  state.showStartOver = false;
   state.showClickForProgress = '';
   state.playerHP = 15;
   state.cpuHP = 24;

@@ -27222,6 +27222,11 @@
 	      _fightStore2.default.actions.attack(evt);
 	    }
 	  }, {
+	    key: '_startOver',
+	    value: function _startOver() {
+	      _fightStore2.default.actions.startOver();
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      var _this3 = this;
@@ -27249,14 +27254,14 @@
 	        );
 	      }
 	
-	      var rematch;
-	      if (this.state.showRematch) {
-	        rematch = _react2.default.createElement(
+	      var startOver;
+	      if (this.state.showStartOver) {
+	        startOver = _react2.default.createElement(
 	          'p',
-	          { className: 'rematch', onClick: function onClick() {
-	              return _this3._clickFightTitle();
+	          { className: 'start-over', onClick: function onClick() {
+	              return _this3._startOver();
 	            } },
-	          'Rematch'
+	          'Start Over'
 	        );
 	      }
 	
@@ -27349,7 +27354,7 @@
 	                    this.state.fightScreenTitleText
 	                  ),
 	                  progressLink,
-	                  rematch
+	                  startOver
 	                ),
 	                _react2.default.createElement(
 	                  'div',
@@ -27516,7 +27521,7 @@
 	  showCpuBubble: false,
 	  showMissBubble: false,
 	  showClickForProgress: '',
-	  showRematch: false
+	  showStartOver: false
 	
 	};
 	
@@ -27553,7 +27558,7 @@
 	    showCpuBubble: state.showCpuBubble,
 	    showMissBubble: state.showMissBubble,
 	    showClickForProgress: state.showClickForProgress,
-	    showRematch: state.showRematch
+	    showStartOver: state.showStartOver
 	
 	  };
 	};
@@ -27570,13 +27575,13 @@
 	function gameState() {
 	
 	  if (state.playerHP < 8) {
-	    state.fightScreenTitleText = 'Warning!';
+	    state.fightScreenTitleText = 'Warning! (Reset?)';
 	    state.playerStatusClass = 'warningHP';
 	    state.playerSpriteUrls = './images/kenshin-warning.gif';
 	    _audioPlay2.default.playWarning();
 	  }
 	  if (state.playerHP < 5) {
-	    state.fightScreenTitleText = 'Danger!';
+	    state.fightScreenTitleText = 'Danger! (Reset?)';
 	    state.playerStatusClass = 'dangerHP';
 	    state.playerSpriteUrls = './images/kenshin-danger.gif';
 	    _audioPlay2.default.playDanger();
@@ -27656,9 +27661,9 @@
 	  var id = (0, _userId2.default)();
 	
 	  if (state.playerHP < 1) {
-	    state.fightScreenTitleText = "You lost! Try again.";
+	    state.fightScreenTitleText = "You lost! Rematch?";
 	    state.showClickForProgress = 'Click to see your Progress!';
-	    state.showRematch = true;
+	    state.showStartOver = true;
 	    state.playerAttackMessage = 'I was going easy on you.';
 	    state.cpuAttackMessage = 'One for J.J.';
 	    state.playerSpriteUrls = './images/kenshin-dead.gif';
@@ -27679,9 +27684,9 @@
 	  }
 	
 	  if (state.cpuHP < 1) {
-	    state.fightScreenTitleText = 'Awesome! You won!';
+	    state.fightScreenTitleText = 'You Won! Rematch?';
 	    state.showClickForProgress = 'Click to see your Progress!';
-	    state.showRematch = true;
+	    state.showStartOver = true;
 	    state.playerAttackMessage = "You should keep practicing.";
 	    state.cpuAttackMessage = 'Uncle Ben! I failed you. ';
 	    state.playerSpriteUrls = './images/kenshin-win.gif';
@@ -27696,6 +27701,10 @@
 	  }
 	}
 	
+	store.actions.startOver = function () {
+	  window.location.reload();
+	};
+	
 	store.actions.startFight = function () {
 	  if (difficulty === undefined) {
 	    swal({
@@ -27705,11 +27714,11 @@
 	  }
 	  disableDropDown();
 	
-	  state.fightScreenTitleText = 'Type Fight!';
+	  state.fightScreenTitleText = 'Type Fight! (Reset?)';
 	  state.playerSpriteUrls = './images/kenshin-ready.gif';
 	  state.cpuSpriteUrls = './images/spidey-ready.gif';
 	  state.showPlayerInput = true;
-	  state.showRematch = false;
+	  state.showStartOver = false;
 	  state.showClickForProgress = '';
 	  state.playerHP = 15;
 	  state.cpuHP = 24;

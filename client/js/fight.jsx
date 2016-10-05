@@ -40,6 +40,10 @@ class Fight extends React.Component {
     store.actions.attack(evt);
   }
 
+  _startOver() {
+    store.actions.startOver();
+  }
+
 
 
 
@@ -55,10 +59,10 @@ class Fight extends React.Component {
       </Link>
     }
 
-    var rematch;
-    if(this.state.showRematch) {
-      rematch = <p className='rematch' onClick={() => this._clickFightTitle()}>
-           Rematch
+    var startOver;
+    if(this.state.showStartOver) {
+      startOver = <p className='start-over' onClick={() => this._startOver()}>
+           Start Over
         </p>
     }
 
@@ -113,7 +117,7 @@ class Fight extends React.Component {
                       {this.state.fightScreenTitleText}
                   </p>
                 {progressLink}
-                {rematch}
+                {startOver}
                 </div>
                 <div className='col four'>
                   <h2 className="whose-character-cpu">

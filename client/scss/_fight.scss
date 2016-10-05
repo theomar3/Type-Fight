@@ -70,15 +70,17 @@
 .link-text:hover {
 	color: white;
 }
-.rematch {
+
+.start-over {
 	font-size: 1.4em;
 	font-family: 'PT Serif', serif;
 	text-align: center;
 	margin-top: 10px;
 	text-decoration: none;
+	cursor: pointer;
 }
 
-.rematch:hover {
+.start-over:hover {
 	color: red;
 }
 

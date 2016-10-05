@@ -1088,14 +1088,15 @@ body.stop-scrolling {
 .link-text:hover {
   color: white; }
 
-.rematch {
+.start-over {
   font-size: 1.4em;
   font-family: 'PT Serif', serif;
   text-align: center;
   margin-top: 10px;
-  text-decoration: none; }
+  text-decoration: none;
+  cursor: pointer; }
 
-.rematch:hover {
+.start-over:hover {
   color: red; }
 
 .whose-character-player {
@@ -3949,6 +3950,7 @@ body {
   float: left; }
 
 .col {
+  outline: 1px solid blue;
   min-height: 40px;
   margin-left: 2.4%;
   margin-right: 2.4%;
