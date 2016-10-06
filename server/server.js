@@ -1,3 +1,4 @@
+
 var express = require('express');
 var bodyParser = require('body-parser');
 var MongoClient = require('mongodb').MongoClient
@@ -35,15 +36,6 @@ app.get('/player-progress/', function(req, res) {
 });
 
 app.get('/player-progress/:id', function(req, res) {
-  // if(data[req.params.id] === undefined){
-  //
-  //   data[req.params.id] = {
-  //     wins : 0,
-  //     losses: 0,
-  //     difficultyChosen: ''
-  //   }
-  // }
-  // console.log('get data', req.params.id);
 
   var userId = req.params.id;
 
@@ -70,7 +62,7 @@ app.get('/player-progress/:id', function(req, res) {
 
 var findDocuments = function(parameters, db, callback) {
   //Get the documents collection
-  var collection = db.collection('documents');
+  var collection = db.collection('stats');
   //Find some documents
   collection.find(parameters).toArray(function(err, docs) {
     console.log('Found the following records');
@@ -81,24 +73,15 @@ var findDocuments = function(parameters, db, callback) {
 
 
 app.post('/player-progress/:id', function(req, res) {
-  // if(data[req.params.id] === undefined){
-  //
-  //   data[req.params.id] = {
-  //     wins : 0,
-  //     losses: 0,
-  //     difficultyChosen: ''
-  //   }
-  // }
-  //
-  //
-  // data[req.params.id].wins += Number(req.body.wins);
-  // data[req.params.id].losses += Number(req.body.losses);
-  // data[req.params.id].difficultyChosen = req.body.difficultyChosen;
 
   var dataToInsert = {
     wins: Number(req.body.wins),
     losses: Number(req.body.losses),
     difficultyChosen: req.body.difficultyChosen,
+    userId: req.params.id
+  }
+
+  var query = {
     userId: req.params.id
   }
 
@@ -108,7 +91,7 @@ app.post('/player-progress/:id', function(req, res) {
     console.log('err', err);
     console.log("Connected correctly to server");
 
-    insertDocuments(dataToInsert, db, function() {
+    updateDocuments(query, dataToInsert, db, function() {
       db.close();
       res.sendStatus(204);
     });
@@ -120,7 +103,7 @@ console.log('post data', req.params.body);
 
 var insertDocuments = function(dataToInsert ,db, callback) {
 // Get the documents collection
-var collection = db.collection('documents');
+var collection = db.collection('stats');
 // Insert some documents
 collection.insert(dataToInsert,
   function(err, result) {
@@ -130,6 +113,34 @@ collection.insert(dataToInsert,
   console.log("Added something");
   callback(result);
 });
+}
+
+var updateDocuments = function(query, dataToChange, db, callback) {
+  var collection = db.collection('stats');
+
+  var dataToIncrement = {
+    $inc: {
+      wins: dataToChange.wins,
+      losses: dataToChange.losses
+    }
+  }
+  console.log('data to increment', dataToIncrement);
+
+  collection.update(query, dataToIncrement, db, function(err, mongoResult) {
+    console.log('query', query);
+    console.log('err', err);
+    console.log('nModified', mongoResult.result.nModified);
+    if(mongoResult != undefined) {
+      if(mongoResult.result.nModified === 0) {
+        insertDocuments(dataToChange, db, callback);
+      }
+      else {
+        callback(mongoResult);
+      }
+    }
+
+  });
+
 }
 
 var port = process.env.PORT || 5000
