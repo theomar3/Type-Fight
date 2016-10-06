@@ -27990,9 +27990,9 @@
 	    method: 'GET'
 	  }).done(function (data) {
 	    console.log(data);
-	    state.wins = data.stats.wins;
-	    state.losses = data.stats.losses;
-	    state.difficultyChosen = data.stats.difficultyChosen;
+	    state.wins = data[0].wins;
+	    state.losses = data[0].losses;
+	    state.difficultyChosen = data[0].difficultyChosen;
 	    changed();
 	  });
 	};
