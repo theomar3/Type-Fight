@@ -8,17 +8,33 @@ class Progress extends React.Component {
 
     ProgressStore.actions.loadProgress();
 
-    this.state = ProgressStore.copyState();
+    this.state =
+    {
+      stats: ProgressStore.copyState()
+    }
+    console.log('copy state', ProgressStore.copyState());
 
     ProgressStore.addListener(state => {
       console.log('progres compononent state', state)
-      this.setState(state);
+      this.setState({
+        stats: state
+      });
     });
+
+
 
   }
 
 
   render () {
+    function playerStats(i) {
+      return <tr key={i.difficultyChosen}>
+        <td>{i.wins}</td>
+        <td>{i.losses}</td>
+        <td>{i.difficultyChosen}</td>
+      </tr>
+    }
+
     return (
       <div className = 'row'>
         <div className ='container col twelve'>
@@ -49,18 +65,16 @@ class Progress extends React.Component {
             <div className='col ten'>
               <h4 id="stats-heading"> Player Stats</h4>
               <table id="stats-table">
-                <tbody>
-                  <tr id='HeadRow'>
+                <thead>
+                  <tr>
                     <td> Wins </td>
                     <td> Losses </td>
                     <td> CPU Difficulty </td>
                   </tr>
+                </thead>
 
-                  <tr>
-                    <td > {this.state.wins} </td>
-                    <td> {this.state.losses} </td>
-                    <td> {this.state.difficultyChosen}</td>
-                  </tr>
+                <tbody>
+                  {this.state.stats.map(playerStats)}
                 </tbody>
               </table>
             </div>

@@ -1527,16 +1527,13 @@ input[type='text'] {
   border-collapse: collapse;
   margin: 0 auto; }
 
-tr:nth-of-type(odd) {
-  background-color: red;
-  color: red; }
-
-tr:nth-of-type(even) {
+table tbody tr {
   background-color: white;
   color: red; }
 
-#HeadRow {
+table thead td {
   background-color: black;
+  color: red;
   font-weight: bold;
   text-decoration: underline; }
 

@@ -27919,12 +27919,11 @@
 	var $ = __webpack_require__(240);
 	
 	
-	var state = {
+	var state = [{
 	  wins: 0,
 	  losses: 0,
 	  difficultyChosen: ''
-	
-	};
+	}];
 	
 	var store = {
 	  listeners: [],
@@ -27936,12 +27935,7 @@
 	};
 	
 	store.copyState = function () {
-	  return {
-	    wins: state.wins,
-	    losses: state.losses,
-	    difficultyChosen: state.difficultyChosen
-	
-	  };
+	  return state.slice(0);
 	};
 	
 	function changed() {
@@ -27990,9 +27984,8 @@
 	    method: 'GET'
 	  }).done(function (data) {
 	    console.log(data);
-	    state.wins = data[0].wins;
-	    state.losses = data[0].losses;
-	    state.difficultyChosen = data[0].difficultyChosen;
+	
+	    state = data;
 	    changed();
 	  });
 	};
@@ -39765,11 +39758,16 @@
 	
 	    _progressStore2.default.actions.loadProgress();
 	
-	    _this.state = _progressStore2.default.copyState();
+	    _this.state = {
+	      stats: _progressStore2.default.copyState()
+	    };
+	    console.log('copy state', _progressStore2.default.copyState());
 	
 	    _progressStore2.default.addListener(function (state) {
 	      console.log('progres compononent state', state);
-	      _this.setState(state);
+	      _this.setState({
+	        stats: state
+	      });
 	    });
 	
 	    return _this;
@@ -39778,6 +39776,28 @@
 	  _createClass(Progress, [{
 	    key: 'render',
 	    value: function render() {
+	      function playerStats(i) {
+	        return React.createElement(
+	          'tr',
+	          { key: i.difficultyChosen },
+	          React.createElement(
+	            'td',
+	            null,
+	            i.wins
+	          ),
+	          React.createElement(
+	            'td',
+	            null,
+	            i.losses
+	          ),
+	          React.createElement(
+	            'td',
+	            null,
+	            i.difficultyChosen
+	          )
+	        );
+	      }
+	
 	      return React.createElement(
 	        'div',
 	        { className: 'row' },
@@ -39835,11 +39855,11 @@
 	                'table',
 	                { id: 'stats-table' },
 	                React.createElement(
-	                  'tbody',
+	                  'thead',
 	                  null,
 	                  React.createElement(
 	                    'tr',
-	                    { id: 'HeadRow' },
+	                    null,
 	                    React.createElement(
 	                      'td',
 	                      null,
@@ -39855,31 +39875,12 @@
 	                      null,
 	                      ' CPU Difficulty '
 	                    )
-	                  ),
-	                  React.createElement(
-	                    'tr',
-	                    null,
-	                    React.createElement(
-	                      'td',
-	                      null,
-	                      ' ',
-	                      this.state.wins,
-	                      ' '
-	                    ),
-	                    React.createElement(
-	                      'td',
-	                      null,
-	                      ' ',
-	                      this.state.losses,
-	                      ' '
-	                    ),
-	                    React.createElement(
-	                      'td',
-	                      null,
-	                      ' ',
-	                      this.state.difficultyChosen
-	                    )
 	                  )
+	                ),
+	                React.createElement(
+	                  'tbody',
+	                  null,
+	                  this.state.stats.map(playerStats)
 	                )
 	              )
 	            ),

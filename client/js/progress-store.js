@@ -3,12 +3,13 @@ import getUserId from './user-id.js';
 
 
 
-var state = {
-  wins: 0,
-  losses: 0,
-  difficultyChosen: ''
+var state =
+[  {
+    wins: 0,
+    losses: 0,
+    difficultyChosen: ''
+  }]
 
-}
 
 var store = {
   listeners: [],
@@ -21,12 +22,7 @@ store.addListener = function(listener) {
 }
 
 store.copyState = function() {
-  return {
-    wins: state.wins,
-    losses: state.losses,
-    difficultyChosen: state.difficultyChosen
-
-  };
+  return state.slice(0);
 }
 
 function changed() {
@@ -76,9 +72,8 @@ store.actions.loadProgress = function() {
   })
   .done(function(data) {
     console.log(data);
-    state.wins = data[0].wins;
-    state.losses = data[0].losses;
-    state.difficultyChosen = data[0].difficultyChosen;
+
+    state = data;
     changed();
   });
 

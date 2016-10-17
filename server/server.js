@@ -82,7 +82,8 @@ app.post('/player-progress/:id', function(req, res) {
   }
 
   var query = {
-    userId: req.params.id
+    userId: req.params.id,
+    difficultyChosen: req.body.difficultyChosen
   }
 
   // Use connect method to connect to the Server
