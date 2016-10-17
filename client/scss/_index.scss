@@ -100,9 +100,11 @@
 .fly-in-text li:last-child {
     margin-right: 0;
 }
+
 .fly-in-text.hidden li {
     opacity: 0;
 }
+
 .fly-in-text.hidden li:nth-child(1) { transform: translateX(-200px) translateY(-200px); }
 .fly-in-text.hidden li:nth-child(2) { transform: translateX(20px) translateY(100px); }
 .fly-in-text.hidden li:nth-child(3) { transform: translateX(-150px) translateY(-80px); }
