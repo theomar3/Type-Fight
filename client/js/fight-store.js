@@ -5,6 +5,7 @@ import getUserId from './user-id.js';
 
 
 var intervalId;
+
 var battleMusic;
 var battleTheme;
 var difficulty;
@@ -174,16 +175,16 @@ function intervalRounds() {
   }
 console.log('difficulty chosen', state.difficultyChosen);
   if(state.difficultyChosen === 'Baby') {
-    state.healString = randomString(4, 'aA');
+    state.healString = randomString(4, 'a');
   }
   else if(state.difficultyChosen === 'Cake Walk') {
-    state.healString = randomString(4, 'aA#');
+    state.healString = randomString(4, 'aA');
   }
   else if(state.difficultyChosen === 'Not Rough') {
-    state.healString = randomString(6, 'aA');
+    state.healString = randomString(6, 'a');
   }
   else if(state.difficultyChosen === "Let's Rock") {
-    state.healString = randomString(6, 'aA#');
+    state.healString = randomString(6, 'aA');
   }
   else if(state.difficultyChosen === "Damn I'm Good") {
     state.healString = randomString(8, 'aA');
@@ -403,18 +404,6 @@ store.actions.attack = function(evt) {
   }
 }
 
-
-
-// store.actions.load = function() {
-//   console.log('loading');
-//
-//   var id = getUserId();
-//
-//
-//   ProgressStore.actions.loadProgress(id);
-//
-//
-// }
 
 store.actions.cpuDifficulty = function() {
   difficulty = document.querySelector('#difficulty');
