@@ -27830,19 +27830,20 @@
 	  difficulty.disabled = false;
 	}
 	
-	store.actions.instructionsPopUp = function () {
-	
-	  swal({
-	    title: "Type Fight Instructions - How To Heal",
-	    text: "When the CPU attacks, you will see some random BRIGHT BLUE letters. Type those correctly to heal!",
-	    type: "warning",
-	    showCancelButton: false,
-	    confirmButtonColor: "#DD6B55",
-	    confirmButtonText: "Lemme at 'em!'",
-	    closeOnConfirm: false
-	  }, function () {
-	    swal("Type Fight Instructions - How To Attack", "Your ATTACK COMMANDS are on the bottom left of your screen, under your HP. Type those to attack.", "success");
-	  });
+	window.onload = function () {
+	  setTimeout(function () {
+	    swal({
+	      title: "Type Fight Instructions - How To Heal",
+	      text: "When the CPU attacks, you will see some random BRIGHT BLUE letters. Type those correctly to heal!",
+	      type: "warning",
+	      showCancelButton: false,
+	      confirmButtonColor: "#DD6B55",
+	      confirmButtonText: "Lemme at 'em!'",
+	      closeOnConfirm: false
+	    }, function () {
+	      swal("Type Fight Instructions - How To Attack", "Your ATTACK COMMANDS are on the bottom center of your screen, under your HP. Type those to attack.", "success");
+	    });
+	  }, 1000);
 	};
 	
 	module.exports = store;
@@ -38172,18 +38173,13 @@
 	      _fightStore2.default.removeListener(this.listeningFunc);
 	    }
 	  }, {
-	    key: '_instructionsPopUp',
-	    value: function _instructionsPopUp() {
-	      _fightStore2.default.actions.instructionsPopUp();
-	    }
-	  }, {
 	    key: 'render',
 	    value: function render() {
-	      var _this3 = this;
 	
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'row' },
+	        _react2.default.createElement('div', { className: 'col four' }),
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'col four' },
@@ -38210,17 +38206,6 @@
 	              null,
 	              'UpwardS'
 	            )
-	          )
-	        ),
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'col four' },
-	          _react2.default.createElement(
-	            'button',
-	            { className: 'instructions', onClick: function onClick() {
-	                return _this3._instructionsPopUp();
-	              } },
-	            'CLICK HERE FOR GAME INSTRUCTIONS'
 	          )
 	        ),
 	        _react2.default.createElement('div', { className: 'col four' })

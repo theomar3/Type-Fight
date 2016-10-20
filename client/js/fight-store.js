@@ -419,21 +419,22 @@ function enableDropDown() {
   difficulty.disabled=false;
 }
 
-store.actions.instructionsPopUp = function() {
 
-
-swal({
-  title: "Type Fight Instructions - How To Heal",
-  text: "When the CPU attacks, you will see some random BRIGHT BLUE letters. Type those correctly to heal!",
-  type: "warning",
-  showCancelButton: false,
-  confirmButtonColor: "#DD6B55",
-  confirmButtonText: "Lemme at 'em!'",
-  closeOnConfirm: false
-},
-function(){
-  swal("Type Fight Instructions - How To Attack", "Your ATTACK COMMANDS are on the bottom left of your screen, under your HP. Type those to attack.", "success");
-});
+window.onload = function() {
+  setTimeout(function () {
+    swal({
+      title: "Type Fight Instructions - How To Heal",
+      text: "When the CPU attacks, you will see some random BRIGHT BLUE letters. Type those correctly to heal!",
+      type: "warning",
+      showCancelButton: false,
+      confirmButtonColor: "#DD6B55",
+      confirmButtonText: "Lemme at 'em!'",
+      closeOnConfirm: false
+    },
+    function(){
+      swal("Type Fight Instructions - How To Attack", "Your ATTACK COMMANDS are on the bottom center of your screen, under your HP. Type those to attack.", "success");
+    });
+  }, 1000);
 }
 
 
