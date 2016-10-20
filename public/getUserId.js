@@ -14,6 +14,7 @@ function getUserId() {
     var randomId = Math.ceil(Math.random() * 1000000000);
     localStorage.setItem('randomId', randomId);
     id = randomId;
+    console.log('random id', id);
   }
   window.location = "react.html";
   return id;

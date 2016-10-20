@@ -2,7 +2,7 @@ var React = require('react');
 
 class LogIn extends React.Component {
 
-  //All the API shit
+  //All the API 
 
   render () {
     return (

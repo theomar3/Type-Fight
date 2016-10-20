@@ -27978,6 +27978,7 @@
 	
 	store.actions.saveLoseProgress = function (difficultyChosen) {
 	  var id = (0, _userId2.default)();
+	  console.log("user id", id);
 	  var promise = $.ajax({
 	    url: '/player-progress/' + id,
 	    method: 'POST',
@@ -28030,7 +28031,10 @@
 	  if (userGoogleID) {
 	    console.log('google id', userGoogleID);
 	    return userGoogleID;
-	  } else {}
+	  } else {
+	    var id = localStorage.getItem('randomId');
+	    return id;
+	  }
 	}
 	
 	module.exports = getUserId;

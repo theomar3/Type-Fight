@@ -39,6 +39,7 @@ function changed() {
 
 store.actions.saveLoseProgress = function(difficultyChosen) {
   var id = getUserId();
+  console.log("user id", id);
   var promise = $.ajax({
     url: '/player-progress/' + id,
     method: 'POST',

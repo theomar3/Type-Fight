@@ -1,3 +1,4 @@
+
 function getUserId() {
   var userGoogleID = localStorage.getItem('googleID');
 
@@ -6,7 +7,8 @@ function getUserId() {
     return userGoogleID;
   }
   else {
-
+    var id = localStorage.getItem('randomId');
+    return id;
   }
 }
 
