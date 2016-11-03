@@ -30,12 +30,12 @@ class MoveList extends React.Component {
       <div className = 'row'>
         <div className = 'col four'></div>
         <div className='col four'>
-          <p className='move-list-title'> ATTACK COMMANDS </p>
-          <ul className="move-list-items">
-          <li>ForwardS</li>
-          <li>ChargeS</li>
-          <li>UpwardS</li>
-          </ul>
+          <div className = "attack-command-section">
+            <p className='move-list-title'> ATTACK COMMANDS </p>
+            <div className="move-list-items">
+              {this.state.attackCommand}
+            </div>
+          </div>
         </div>
         <div className = 'col four'></div>
       </div>

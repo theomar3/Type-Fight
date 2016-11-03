@@ -1238,19 +1238,20 @@ input[type='text'] {
 .input-show {
   display: block; }
 
-.move-list-title {
+.attack-command-section {
   background-color: white;
   text-align: center;
+  font-family: 'PT Serif', serif;
+  outline: 2px solid blue; }
+
+.move-list-title {
   text-decoration: underline;
   font-style: oblique;
-  font-family: 'PT Serif', serif;
   font-size: 1.6em; }
 
 .move-list-items {
-  background-color: white;
-  text-align: center;
   font-size: 1.4em;
-  font-family: 'PT Serif', serif; }
+  margin-top: 15px; }
 
 .instructions {
   padding: 15px;

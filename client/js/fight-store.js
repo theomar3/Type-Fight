@@ -20,6 +20,94 @@ var cpuAttacks = [
   'Spider Sting!',
 ];
 
+var easyAttackCommands = [
+  "jazz",
+  "buzz",
+  "fuzz",
+  "fizz",
+  "hajj",
+  "juju",
+  "quiz",
+  "razz",
+  "jamb",
+  "juku",
+  "jibb",
+  "jauk",
+  "phiz",
+  "zouk",
+  'zonk',
+  'juke',
+  'chez',
+  'cozy',
+  'zyme',
+  'mazy',
+  'jouk',
+  'qoph',
+  'jink',
+  'whiz',
+  'fozy',
+  'joke',
+  'zebu',
+  'java',
+  'fuji',
+  'jowl',
+  'puja',
+  'jerk',
+  'jaup',
+  'jive',
+  'jagg',
+  'zeks',
+  'jupe',
+  'fuze',
+  'putz',
+  'hazy',
+  'koji',
+  'zinc',
+  'futz',
+  'juba',
+  'zerk',
+  'juco',
+  'jube',
+  'quip',
+  'waxy',
+  'jehu',
+  'bozo',
+  'mozo',
+  'jugs',
+  'jows',
+  'dozy',
+  'lazy',
+  'jefe',
+  'flux',
+  'maze',
+  'czar',
+  'faze',
+  'pixy',
+  'meze',
+  'boxy',
+  'jibe',
+  'juga',
+  'jibs',
+  'bize',
+  'jury',
+  'jobs',
+  'prez',
+  'jabs',
+  'friz',
+  'poxy',
+  'zeps',
+  'quay',
+  'zany',
+  'yutz',
+  'zaps',
+  'quey',
+  'zarf',
+  'mojo',
+  'quag',
+  'hadj',
+]
+
+
 
 
 
@@ -58,7 +146,8 @@ var state = {
   showCpuBubble: false,
   showMissBubble: false,
   showClickForProgress: '',
-  showStartOver: false
+  showStartOver: false,
+  attackCommand: '',
 
 
 }
@@ -96,7 +185,8 @@ store.copyState = function() {
     showCpuBubble: state.showCpuBubble,
     showMissBubble: state.showMissBubble,
     showClickForProgress: state.showClickForProgress,
-    showStartOver: state.showStartOver
+    showStartOver: state.showStartOver,
+    attackCommand: state.attackCommand
 
   }
 }
@@ -159,8 +249,11 @@ function gameState() {
 
 function intervalRounds() {
 
+  state.attackCommand = randomIndexing(easyAttackCommands);
+
   state.showCpuBubble = true;
   state.cpuAttackMessage = randomIndexing(cpuAttacks);
+
   if(state.cpuAttackMessage === 'Web Ball!') {
     state.cpuSpriteUrls = './images/spidey-web-ball.gif';
     audioPlay.webBall();
@@ -326,8 +419,8 @@ store.actions.attack = function(evt) {
     state.showPlayerBubble = true;
     var damage = Math.floor(Math.random() * 10);
     state.cpuTauntMessage = '';
-    if(evt.target.value === 'ForwardS') {
-      state.playerAttackMessage = 'Forward Slash!';
+    if(evt.target.value === state.attackCommand) {
+      state.playerAttackMessage = 'Feel my fury!';
       audioPlay.forwardSlash();
       state.playerSpriteUrls = './images/kenshin-forward-slash.gif';
       if(damage >= 5) {
@@ -342,43 +435,43 @@ store.actions.attack = function(evt) {
         randomIndexing(missTaunts).play();
       }
     }
-    else if(evt.target.value === 'ChargeS') {
-      state.playerAttackMessage = 'Charging Slash!';
-      audioPlay.chargingSlash();
-      state.playerSpriteUrls = './images/kenshin-chargeslash.gif';
-
-      if(damage >= 5) {
-        state.cpuHP -= 3;
-        state.cpuSpriteUrls = './images/spidey-hit.gif';
-        audioPlay.cpuHit();
-
-      }
-      else {
-        state.cpuHP += 0;
-        state.showMissBubble = true;
-        state.cpuTauntMessage = 'Spider Sense tingling.';
-        randomIndexing(missTaunts).play();
-
-      }
-    }
-    else if(evt.target.value === 'UpwardS') {
-      state.playerAttackMessage = 'Upward Slash!';
-      audioPlay.upwardSlash();
-      state.playerSpriteUrls = './images/kenshin-upslash.gif';
-      if(damage >= 5) {
-        state.cpuHP -= 3;
-        state.cpuSpriteUrls = './images/spidey-hit.gif';
-        audioPlay.cpuHit();
-
-      }
-      else {
-        state.cpuHP += 0;
-        state.showMissBubble = true;
-        state.cpuTauntMessage = 'Spider Sense tingling.';
-        randomIndexing(missTaunts).play();
-
-      }
-    }
+    // else if(evt.target.value === 'ChargeS') {
+    //   state.playerAttackMessage = 'Charging Slash!';
+    //   audioPlay.chargingSlash();
+    //   state.playerSpriteUrls = './images/kenshin-chargeslash.gif';
+    //
+    //   if(damage >= 5) {
+    //     state.cpuHP -= 3;
+    //     state.cpuSpriteUrls = './images/spidey-hit.gif';
+    //     audioPlay.cpuHit();
+    //
+    //   }
+    //   else {
+    //     state.cpuHP += 0;
+    //     state.showMissBubble = true;
+    //     state.cpuTauntMessage = 'Spider Sense tingling.';
+    //     randomIndexing(missTaunts).play();
+    //
+    //   }
+    // }
+    // else if(evt.target.value === 'UpwardS') {
+    //   state.playerAttackMessage = 'Upward Slash!';
+    //   audioPlay.upwardSlash();
+    //   state.playerSpriteUrls = './images/kenshin-upslash.gif';
+    //   if(damage >= 5) {
+    //     state.cpuHP -= 3;
+    //     state.cpuSpriteUrls = './images/spidey-hit.gif';
+    //     audioPlay.cpuHit();
+    //
+    //   }
+    //   else {
+    //     state.cpuHP += 0;
+    //     state.showMissBubble = true;
+    //     state.cpuTauntMessage = 'Spider Sense tingling.';
+    //     randomIndexing(missTaunts).play();
+    //
+    //   }
+    //}
     else if(evt.target.value === state.healString) {
       var gokuHeal = document.getElementById('gokuHeal');
       var dendeHeal = document.getElementById('dendeHeal');
@@ -432,7 +525,7 @@ window.onload = function() {
       closeOnConfirm: false
     },
     function(){
-      swal("Type Fight Instructions - How To Attack", "Your ATTACK COMMANDS are on the bottom center of your screen, under your HP. Type those to attack.", "success");
+      swal("Type Fight Instructions - How To Attack", "Your ATTACK COMMANDS will appear  on the bottom center of your screen. Type those to attack.", "success");
     });
   }, 1000);
 }
