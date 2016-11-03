@@ -2,16 +2,14 @@ var $ = require('jquery');
 import audioPlay from './audio-play.js';
 import ProgressStore from './progress-store.js';
 import getUserId from './user-id.js';
-
+import easyAttackCommands from './easy-attack-commands.js';
+import mediumAttackCommands from './medium-attack-commands.js';
+import hardAttackCommands from './hard-attack-commands.js';
 
 var intervalId;
-
 var battleMusic;
 var battleTheme;
 var difficulty;
-
-
-
 
 
 var cpuAttacks = [
@@ -19,6 +17,7 @@ var cpuAttacks = [
   'Web Swing!',
   'Spider Sting!',
 ];
+
 
 
 
@@ -58,7 +57,8 @@ var state = {
   showCpuBubble: false,
   showMissBubble: false,
   showClickForProgress: '',
-  showStartOver: false
+  showStartOver: false,
+  attackCommand: '',
 
 
 }
@@ -96,7 +96,8 @@ store.copyState = function() {
     showCpuBubble: state.showCpuBubble,
     showMissBubble: state.showMissBubble,
     showClickForProgress: state.showClickForProgress,
-    showStartOver: state.showStartOver
+    showStartOver: state.showStartOver,
+    attackCommand: state.attackCommand
 
   }
 }
@@ -159,8 +160,11 @@ function gameState() {
 
 function intervalRounds() {
 
+  // state.attackCommand = randomIndexing(easyAttackCommands);
+
   state.showCpuBubble = true;
   state.cpuAttackMessage = randomIndexing(cpuAttacks);
+
   if(state.cpuAttackMessage === 'Web Ball!') {
     state.cpuSpriteUrls = './images/spidey-web-ball.gif';
     audioPlay.webBall();
@@ -176,24 +180,37 @@ function intervalRounds() {
 console.log('difficulty chosen', state.difficultyChosen);
   if(state.difficultyChosen === 'Baby') {
     state.healString = randomString(4, 'a');
+    state.attackCommand = randomIndexing(easyAttackCommands);
   }
   else if(state.difficultyChosen === 'Cake Walk') {
     state.healString = randomString(4, 'aA');
+    state.attackCommand = randomIndexing(easyAttackCommands);
+
   }
   else if(state.difficultyChosen === 'Not Rough') {
     state.healString = randomString(6, 'a');
+    state.attackCommand = randomIndexing(mediumAttackCommands);
+
   }
   else if(state.difficultyChosen === "Let's Rock") {
     state.healString = randomString(6, 'aA');
+    state.attackCommand = randomIndexing(mediumAttackCommands);
+
   }
   else if(state.difficultyChosen === "Damn I'm Good") {
     state.healString = randomString(8, 'aA');
+    state.attackCommand = randomIndexing(hardAttackCommands);
+
   }
   else if(state.difficultyChosen === 'Nightmare') {
     state.healString = randomString(8, 'aA#');
+    state.attackCommand = randomIndexing(hardAttackCommands);
+
   }
   else if(state.difficultyChosen === 'Mike Tyson') {
     state.healString = randomString(8, 'aA#!');
+    state.attackCommand = randomIndexing(hardAttackCommands);
+
   }
   console.log('heal string now', state.healString);
 
@@ -326,8 +343,8 @@ store.actions.attack = function(evt) {
     state.showPlayerBubble = true;
     var damage = Math.floor(Math.random() * 10);
     state.cpuTauntMessage = '';
-    if(evt.target.value === 'ForwardS') {
-      state.playerAttackMessage = 'Forward Slash!';
+    if(evt.target.value === state.attackCommand) {
+      state.playerAttackMessage = 'Feel my fury!';
       audioPlay.forwardSlash();
       state.playerSpriteUrls = './images/kenshin-forward-slash.gif';
       if(damage >= 5) {
@@ -342,43 +359,43 @@ store.actions.attack = function(evt) {
         randomIndexing(missTaunts).play();
       }
     }
-    else if(evt.target.value === 'ChargeS') {
-      state.playerAttackMessage = 'Charging Slash!';
-      audioPlay.chargingSlash();
-      state.playerSpriteUrls = './images/kenshin-chargeslash.gif';
-
-      if(damage >= 5) {
-        state.cpuHP -= 3;
-        state.cpuSpriteUrls = './images/spidey-hit.gif';
-        audioPlay.cpuHit();
-
-      }
-      else {
-        state.cpuHP += 0;
-        state.showMissBubble = true;
-        state.cpuTauntMessage = 'Spider Sense tingling.';
-        randomIndexing(missTaunts).play();
-
-      }
-    }
-    else if(evt.target.value === 'UpwardS') {
-      state.playerAttackMessage = 'Upward Slash!';
-      audioPlay.upwardSlash();
-      state.playerSpriteUrls = './images/kenshin-upslash.gif';
-      if(damage >= 5) {
-        state.cpuHP -= 3;
-        state.cpuSpriteUrls = './images/spidey-hit.gif';
-        audioPlay.cpuHit();
-
-      }
-      else {
-        state.cpuHP += 0;
-        state.showMissBubble = true;
-        state.cpuTauntMessage = 'Spider Sense tingling.';
-        randomIndexing(missTaunts).play();
-
-      }
-    }
+    // else if(evt.target.value === 'ChargeS') {
+    //   state.playerAttackMessage = 'Charging Slash!';
+    //   audioPlay.chargingSlash();
+    //   state.playerSpriteUrls = './images/kenshin-chargeslash.gif';
+    //
+    //   if(damage >= 5) {
+    //     state.cpuHP -= 3;
+    //     state.cpuSpriteUrls = './images/spidey-hit.gif';
+    //     audioPlay.cpuHit();
+    //
+    //   }
+    //   else {
+    //     state.cpuHP += 0;
+    //     state.showMissBubble = true;
+    //     state.cpuTauntMessage = 'Spider Sense tingling.';
+    //     randomIndexing(missTaunts).play();
+    //
+    //   }
+    // }
+    // else if(evt.target.value === 'UpwardS') {
+    //   state.playerAttackMessage = 'Upward Slash!';
+    //   audioPlay.upwardSlash();
+    //   state.playerSpriteUrls = './images/kenshin-upslash.gif';
+    //   if(damage >= 5) {
+    //     state.cpuHP -= 3;
+    //     state.cpuSpriteUrls = './images/spidey-hit.gif';
+    //     audioPlay.cpuHit();
+    //
+    //   }
+    //   else {
+    //     state.cpuHP += 0;
+    //     state.showMissBubble = true;
+    //     state.cpuTauntMessage = 'Spider Sense tingling.';
+    //     randomIndexing(missTaunts).play();
+    //
+    //   }
+    //}
     else if(evt.target.value === state.healString) {
       var gokuHeal = document.getElementById('gokuHeal');
       var dendeHeal = document.getElementById('dendeHeal');
@@ -432,7 +449,7 @@ window.onload = function() {
       closeOnConfirm: false
     },
     function(){
-      swal("Type Fight Instructions - How To Attack", "Your ATTACK COMMANDS are on the bottom center of your screen, under your HP. Type those to attack.", "success");
+      swal("Type Fight Instructions - How To Attack", "Your ATTACK COMMANDS will appear  on the bottom center of your screen. Type those to attack.", "success");
     });
   }, 1000);
 }

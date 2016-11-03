@@ -27475,13 +27475,24 @@
 	
 	var _userId2 = _interopRequireDefault(_userId);
 	
+	var _easyAttackCommands = __webpack_require__(258);
+	
+	var _easyAttackCommands2 = _interopRequireDefault(_easyAttackCommands);
+	
+	var _mediumAttackCommands = __webpack_require__(259);
+	
+	var _mediumAttackCommands2 = _interopRequireDefault(_mediumAttackCommands);
+	
+	var _hardAttackCommands = __webpack_require__(260);
+	
+	var _hardAttackCommands2 = _interopRequireDefault(_hardAttackCommands);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var $ = __webpack_require__(240);
 	
 	
 	var intervalId;
-	
 	var battleMusic;
 	var battleTheme;
 	var difficulty;
@@ -27522,7 +27533,8 @@
 	  showCpuBubble: false,
 	  showMissBubble: false,
 	  showClickForProgress: '',
-	  showStartOver: false
+	  showStartOver: false,
+	  attackCommand: ''
 	
 	};
 	
@@ -27559,7 +27571,8 @@
 	    showCpuBubble: state.showCpuBubble,
 	    showMissBubble: state.showMissBubble,
 	    showClickForProgress: state.showClickForProgress,
-	    showStartOver: state.showStartOver
+	    showStartOver: state.showStartOver,
+	    attackCommand: state.attackCommand
 	
 	  };
 	};
@@ -27619,8 +27632,11 @@
 	
 	function intervalRounds() {
 	
+	  // state.attackCommand = randomIndexing(easyAttackCommands);
+	
 	  state.showCpuBubble = true;
 	  state.cpuAttackMessage = randomIndexing(cpuAttacks);
+	
 	  if (state.cpuAttackMessage === 'Web Ball!') {
 	    state.cpuSpriteUrls = './images/spidey-web-ball.gif';
 	    _audioPlay2.default.webBall();
@@ -27634,18 +27650,25 @@
 	  console.log('difficulty chosen', state.difficultyChosen);
 	  if (state.difficultyChosen === 'Baby') {
 	    state.healString = randomString(4, 'a');
+	    state.attackCommand = randomIndexing(_easyAttackCommands2.default);
 	  } else if (state.difficultyChosen === 'Cake Walk') {
 	    state.healString = randomString(4, 'aA');
+	    state.attackCommand = randomIndexing(_easyAttackCommands2.default);
 	  } else if (state.difficultyChosen === 'Not Rough') {
 	    state.healString = randomString(6, 'a');
+	    state.attackCommand = randomIndexing(_mediumAttackCommands2.default);
 	  } else if (state.difficultyChosen === "Let's Rock") {
 	    state.healString = randomString(6, 'aA');
+	    state.attackCommand = randomIndexing(_mediumAttackCommands2.default);
 	  } else if (state.difficultyChosen === "Damn I'm Good") {
 	    state.healString = randomString(8, 'aA');
+	    state.attackCommand = randomIndexing(_hardAttackCommands2.default);
 	  } else if (state.difficultyChosen === 'Nightmare') {
 	    state.healString = randomString(8, 'aA#');
+	    state.attackCommand = randomIndexing(_hardAttackCommands2.default);
 	  } else if (state.difficultyChosen === 'Mike Tyson') {
 	    state.healString = randomString(8, 'aA#!');
+	    state.attackCommand = randomIndexing(_hardAttackCommands2.default);
 	  }
 	  console.log('heal string now', state.healString);
 	
@@ -27753,8 +27776,8 @@
 	    state.showPlayerBubble = true;
 	    var damage = Math.floor(Math.random() * 10);
 	    state.cpuTauntMessage = '';
-	    if (evt.target.value === 'ForwardS') {
-	      state.playerAttackMessage = 'Forward Slash!';
+	    if (evt.target.value === state.attackCommand) {
+	      state.playerAttackMessage = 'Feel my fury!';
 	      _audioPlay2.default.forwardSlash();
 	      state.playerSpriteUrls = './images/kenshin-forward-slash.gif';
 	      if (damage >= 5) {
@@ -27767,51 +27790,60 @@
 	        state.cpuTauntMessage = 'Spider Sense tingling.';
 	        randomIndexing(missTaunts).play();
 	      }
-	    } else if (evt.target.value === 'ChargeS') {
-	      state.playerAttackMessage = 'Charging Slash!';
-	      _audioPlay2.default.chargingSlash();
-	      state.playerSpriteUrls = './images/kenshin-chargeslash.gif';
-	
-	      if (damage >= 5) {
-	        state.cpuHP -= 3;
-	        state.cpuSpriteUrls = './images/spidey-hit.gif';
-	        _audioPlay2.default.cpuHit();
-	      } else {
-	        state.cpuHP += 0;
-	        state.showMissBubble = true;
-	        state.cpuTauntMessage = 'Spider Sense tingling.';
-	        randomIndexing(missTaunts).play();
-	      }
-	    } else if (evt.target.value === 'UpwardS') {
-	      state.playerAttackMessage = 'Upward Slash!';
-	      _audioPlay2.default.upwardSlash();
-	      state.playerSpriteUrls = './images/kenshin-upslash.gif';
-	      if (damage >= 5) {
-	        state.cpuHP -= 3;
-	        state.cpuSpriteUrls = './images/spidey-hit.gif';
-	        _audioPlay2.default.cpuHit();
-	      } else {
-	        state.cpuHP += 0;
-	        state.showMissBubble = true;
-	        state.cpuTauntMessage = 'Spider Sense tingling.';
-	        randomIndexing(missTaunts).play();
-	      }
-	    } else if (evt.target.value === state.healString) {
-	      var gokuHeal = document.getElementById('gokuHeal');
-	      var dendeHeal = document.getElementById('dendeHeal');
-	
-	      var healSounds = [gokuHeal, dendeHeal];
-	
-	      state.playerHP += 3;
-	      state.playerAttackMessage = "Just a scratch";
-	      state.playerSpriteUrls = './images/kenshin-ready.gif';
-	      randomIndexing(healSounds).play();
-	    } else {
-	      state.playerAttackMessage = "Sorry, I don't know that move.";
-	      state.showPlayerBubble = true;
-	      state.playerSpriteUrls = './images/kenshin-no-move.gif';
-	      _audioPlay2.default.wrongInput();
 	    }
+	    // else if(evt.target.value === 'ChargeS') {
+	    //   state.playerAttackMessage = 'Charging Slash!';
+	    //   audioPlay.chargingSlash();
+	    //   state.playerSpriteUrls = './images/kenshin-chargeslash.gif';
+	    //
+	    //   if(damage >= 5) {
+	    //     state.cpuHP -= 3;
+	    //     state.cpuSpriteUrls = './images/spidey-hit.gif';
+	    //     audioPlay.cpuHit();
+	    //
+	    //   }
+	    //   else {
+	    //     state.cpuHP += 0;
+	    //     state.showMissBubble = true;
+	    //     state.cpuTauntMessage = 'Spider Sense tingling.';
+	    //     randomIndexing(missTaunts).play();
+	    //
+	    //   }
+	    // }
+	    // else if(evt.target.value === 'UpwardS') {
+	    //   state.playerAttackMessage = 'Upward Slash!';
+	    //   audioPlay.upwardSlash();
+	    //   state.playerSpriteUrls = './images/kenshin-upslash.gif';
+	    //   if(damage >= 5) {
+	    //     state.cpuHP -= 3;
+	    //     state.cpuSpriteUrls = './images/spidey-hit.gif';
+	    //     audioPlay.cpuHit();
+	    //
+	    //   }
+	    //   else {
+	    //     state.cpuHP += 0;
+	    //     state.showMissBubble = true;
+	    //     state.cpuTauntMessage = 'Spider Sense tingling.';
+	    //     randomIndexing(missTaunts).play();
+	    //
+	    //   }
+	    //}
+	    else if (evt.target.value === state.healString) {
+	        var gokuHeal = document.getElementById('gokuHeal');
+	        var dendeHeal = document.getElementById('dendeHeal');
+	
+	        var healSounds = [gokuHeal, dendeHeal];
+	
+	        state.playerHP += 3;
+	        state.playerAttackMessage = "Just a scratch";
+	        state.playerSpriteUrls = './images/kenshin-ready.gif';
+	        randomIndexing(healSounds).play();
+	      } else {
+	        state.playerAttackMessage = "Sorry, I don't know that move.";
+	        state.showPlayerBubble = true;
+	        state.playerSpriteUrls = './images/kenshin-no-move.gif';
+	        _audioPlay2.default.wrongInput();
+	      }
 	    evt.target.value = '';
 	    gameState();
 	  }
@@ -27841,7 +27873,7 @@
 	      confirmButtonText: "Lemme at 'em!'",
 	      closeOnConfirm: false
 	    }, function () {
-	      swal("Type Fight Instructions - How To Attack", "Your ATTACK COMMANDS are on the bottom center of your screen, under your HP. Type those to attack.", "success");
+	      swal("Type Fight Instructions - How To Attack", "Your ATTACK COMMANDS will appear  on the bottom center of your screen. Type those to attack.", "success");
 	    });
 	  }, 1000);
 	};
@@ -38184,27 +38216,17 @@
 	          'div',
 	          { className: 'col four' },
 	          _react2.default.createElement(
-	            'p',
-	            { className: 'move-list-title' },
-	            ' ATTACK COMMANDS '
-	          ),
-	          _react2.default.createElement(
-	            'ul',
-	            { className: 'move-list-items' },
+	            'div',
+	            { className: 'attack-command-section' },
 	            _react2.default.createElement(
-	              'li',
-	              null,
-	              'ForwardS'
+	              'p',
+	              { className: 'move-list-title' },
+	              ' ATTACK COMMANDS '
 	            ),
 	            _react2.default.createElement(
-	              'li',
-	              null,
-	              'ChargeS'
-	            ),
-	            _react2.default.createElement(
-	              'li',
-	              null,
-	              'UpwardS'
+	              'div',
+	              { className: 'move-list-items' },
+	              this.state.attackCommand
 	            )
 	          )
 	        ),
@@ -40021,6 +40043,37 @@
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 257 */,
+/* 258 */
+/***/ function(module, exports) {
+
+	"use strict";
+	
+	var easyAttackCommands = ["jazz", "buzz", "fuzz", "fizz", "hajj", "juju", "quiz", "razz", "jamb", "juku", "jibb", "jauk", "phiz", "zouk", 'zonk', 'juke', 'chez', 'cozy', 'zyme', 'mazy', 'jouk', 'qoph', 'jink', 'whiz', 'fozy', 'joke', 'zebu', 'java', 'fuji', 'jowl', 'puja', 'jerk', 'jaup', 'jive', 'jagg', 'zeks', 'jupe', 'fuze', 'putz', 'hazy', 'koji', 'zinc', 'futz', 'juba', 'zerk', 'juco', 'jube', 'quip', 'waxy', 'jehu', 'bozo', 'mozo', 'jugs', 'jows', 'dozy', 'lazy', 'jefe', 'flux', 'maze', 'czar', 'faze', 'pixy', 'meze', 'boxy', 'jibe', 'juga', 'jibs', 'bize', 'jury', 'jobs', 'prez', 'jabs', 'friz', 'poxy', 'zeps', 'quay', 'zany', 'yutz', 'zaps', 'quey', 'zarf', 'mojo', 'quag', 'hadj'];
+	
+	module.exports = easyAttackCommands;
+
+/***/ },
+/* 259 */
+/***/ function(module, exports) {
+
+	"use strict";
+	
+	var mediumAttackCommands = ["jazzy", "fuzzy", "muzzy", "whizz", "fezzy", "fizzy", "abuzz", "zuzim", "scuzz", "dizzy", "frizz", "huzza", "mezzo", "pizza", "jujus", "tizzy", "hajji", "zazen", "zanza", "zizit", "jumpy", "tazza", "tazze", "zappy", "jimpy", "jiffy", "zippy", "quick", "jammy", "quack", "junky", "music", "jugum", "zaxes", "jumps", "jumbo", "kudzu", "quiff", "jocks", "kopje", "quaky", "quaff", "jerky", "juicy", "furzy", "zincy", "capiz", "kanzu", "enzym", "klutz", "pujah", "buxom", "azuki", "punji", "mixup", "unzip", "quipu", "boozy", "quirk", "field", "gauzy", "woozy", "kanji", "julep", "qophs", "crazy", "fuzed", "fuzil"];
+	
+	module.exports = mediumAttackCommands;
+
+/***/ },
+/* 260 */
+/***/ function(module, exports) {
+
+	"use strict";
+	
+	var hardAttackCommands = ["pizazz", "jazzbo", "bezazz", "jazzed", "zizzle", "muzjik", "whizzy", "mizzly", "scuzzy", "fuzzed", "puzzle", "muzzle", "buzzed", "huzzah", "frizzy", "jujube", "mizzen", "fizzed", "fizzle", "mezuza", "zigzag", "buzzer", "guzzle", "wizzen", "hazzan", "wizzes", "bizzes", "cozzes", "queazy", "nuzzle", "mezzos", "snazzy", "jojoba", "piazza", "pizzas", "banjax", "zizith", "dazzle", "bijoux", "paxwax", "nozzle", "quartz", "zincky", "razzed", "jezail", "zanzas", "exequy", "izzard", "zebeck", "quacky", "sizzle", "quippy", "rozzer", "jockey", "tzetze", "kuvasz", "kolkoz", "jinxed", "hijack", "buzuki", "bombyx", "tazzas", "jimply", "coccyx", "blowzy", "gazump", "jumble", "syzygy", "jacked", "jackal", "joypop", "frowzy", "pyjama", "jumped"];
+	
+	module.exports = hardAttackCommands;
 
 /***/ }
 /******/ ]);
