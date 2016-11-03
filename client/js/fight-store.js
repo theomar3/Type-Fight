@@ -2,16 +2,14 @@ var $ = require('jquery');
 import audioPlay from './audio-play.js';
 import ProgressStore from './progress-store.js';
 import getUserId from './user-id.js';
-
+import easyAttackCommands from './easy-attack-commands.js';
+import mediumAttackCommands from './medium-attack-commands.js';
+import hardAttackCommands from './hard-attack-commands.js';
 
 var intervalId;
-
 var battleMusic;
 var battleTheme;
 var difficulty;
-
-
-
 
 
 var cpuAttacks = [
@@ -19,93 +17,6 @@ var cpuAttacks = [
   'Web Swing!',
   'Spider Sting!',
 ];
-
-var easyAttackCommands = [
-  "jazz",
-  "buzz",
-  "fuzz",
-  "fizz",
-  "hajj",
-  "juju",
-  "quiz",
-  "razz",
-  "jamb",
-  "juku",
-  "jibb",
-  "jauk",
-  "phiz",
-  "zouk",
-  'zonk',
-  'juke',
-  'chez',
-  'cozy',
-  'zyme',
-  'mazy',
-  'jouk',
-  'qoph',
-  'jink',
-  'whiz',
-  'fozy',
-  'joke',
-  'zebu',
-  'java',
-  'fuji',
-  'jowl',
-  'puja',
-  'jerk',
-  'jaup',
-  'jive',
-  'jagg',
-  'zeks',
-  'jupe',
-  'fuze',
-  'putz',
-  'hazy',
-  'koji',
-  'zinc',
-  'futz',
-  'juba',
-  'zerk',
-  'juco',
-  'jube',
-  'quip',
-  'waxy',
-  'jehu',
-  'bozo',
-  'mozo',
-  'jugs',
-  'jows',
-  'dozy',
-  'lazy',
-  'jefe',
-  'flux',
-  'maze',
-  'czar',
-  'faze',
-  'pixy',
-  'meze',
-  'boxy',
-  'jibe',
-  'juga',
-  'jibs',
-  'bize',
-  'jury',
-  'jobs',
-  'prez',
-  'jabs',
-  'friz',
-  'poxy',
-  'zeps',
-  'quay',
-  'zany',
-  'yutz',
-  'zaps',
-  'quey',
-  'zarf',
-  'mojo',
-  'quag',
-  'hadj',
-]
 
 
 
@@ -249,7 +160,7 @@ function gameState() {
 
 function intervalRounds() {
 
-  state.attackCommand = randomIndexing(easyAttackCommands);
+  // state.attackCommand = randomIndexing(easyAttackCommands);
 
   state.showCpuBubble = true;
   state.cpuAttackMessage = randomIndexing(cpuAttacks);
@@ -269,24 +180,37 @@ function intervalRounds() {
 console.log('difficulty chosen', state.difficultyChosen);
   if(state.difficultyChosen === 'Baby') {
     state.healString = randomString(4, 'a');
+    state.attackCommand = randomIndexing(easyAttackCommands);
   }
   else if(state.difficultyChosen === 'Cake Walk') {
     state.healString = randomString(4, 'aA');
+    state.attackCommand = randomIndexing(easyAttackCommands);
+
   }
   else if(state.difficultyChosen === 'Not Rough') {
     state.healString = randomString(6, 'a');
+    state.attackCommand = randomIndexing(mediumAttackCommands);
+
   }
   else if(state.difficultyChosen === "Let's Rock") {
     state.healString = randomString(6, 'aA');
+    state.attackCommand = randomIndexing(mediumAttackCommands);
+
   }
   else if(state.difficultyChosen === "Damn I'm Good") {
     state.healString = randomString(8, 'aA');
+    state.attackCommand = randomIndexing(hardAttackCommands);
+
   }
   else if(state.difficultyChosen === 'Nightmare') {
     state.healString = randomString(8, 'aA#');
+    state.attackCommand = randomIndexing(hardAttackCommands);
+
   }
   else if(state.difficultyChosen === 'Mike Tyson') {
     state.healString = randomString(8, 'aA#!');
+    state.attackCommand = randomIndexing(hardAttackCommands);
+
   }
   console.log('heal string now', state.healString);
 

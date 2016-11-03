@@ -27475,20 +27475,29 @@
 	
 	var _userId2 = _interopRequireDefault(_userId);
 	
+	var _easyAttackCommands = __webpack_require__(258);
+	
+	var _easyAttackCommands2 = _interopRequireDefault(_easyAttackCommands);
+	
+	var _mediumAttackCommands = __webpack_require__(259);
+	
+	var _mediumAttackCommands2 = _interopRequireDefault(_mediumAttackCommands);
+	
+	var _hardAttackCommands = __webpack_require__(260);
+	
+	var _hardAttackCommands2 = _interopRequireDefault(_hardAttackCommands);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var $ = __webpack_require__(240);
 	
 	
 	var intervalId;
-	
 	var battleMusic;
 	var battleTheme;
 	var difficulty;
 	
 	var cpuAttacks = ['Web Ball!', 'Web Swing!', 'Spider Sting!'];
-	
-	var easyAttackCommands = ["jazz", "buzz", "fuzz", "fizz", "hajj", "juju", "quiz", "razz", "jamb", "juku", "jibb", "jauk", "phiz", "zouk", 'zonk', 'juke', 'chez', 'cozy', 'zyme', 'mazy', 'jouk', 'qoph', 'jink', 'whiz', 'fozy', 'joke', 'zebu', 'java', 'fuji', 'jowl', 'puja', 'jerk', 'jaup', 'jive', 'jagg', 'zeks', 'jupe', 'fuze', 'putz', 'hazy', 'koji', 'zinc', 'futz', 'juba', 'zerk', 'juco', 'jube', 'quip', 'waxy', 'jehu', 'bozo', 'mozo', 'jugs', 'jows', 'dozy', 'lazy', 'jefe', 'flux', 'maze', 'czar', 'faze', 'pixy', 'meze', 'boxy', 'jibe', 'juga', 'jibs', 'bize', 'jury', 'jobs', 'prez', 'jabs', 'friz', 'poxy', 'zeps', 'quay', 'zany', 'yutz', 'zaps', 'quey', 'zarf', 'mojo', 'quag', 'hadj'];
 	
 	function randomIndexing(array) {
 	  var randomIndex = Math.floor(Math.random() * array.length);
@@ -27623,7 +27632,7 @@
 	
 	function intervalRounds() {
 	
-	  state.attackCommand = randomIndexing(easyAttackCommands);
+	  // state.attackCommand = randomIndexing(easyAttackCommands);
 	
 	  state.showCpuBubble = true;
 	  state.cpuAttackMessage = randomIndexing(cpuAttacks);
@@ -27641,18 +27650,25 @@
 	  console.log('difficulty chosen', state.difficultyChosen);
 	  if (state.difficultyChosen === 'Baby') {
 	    state.healString = randomString(4, 'a');
+	    state.attackCommand = randomIndexing(_easyAttackCommands2.default);
 	  } else if (state.difficultyChosen === 'Cake Walk') {
 	    state.healString = randomString(4, 'aA');
+	    state.attackCommand = randomIndexing(_easyAttackCommands2.default);
 	  } else if (state.difficultyChosen === 'Not Rough') {
 	    state.healString = randomString(6, 'a');
+	    state.attackCommand = randomIndexing(_mediumAttackCommands2.default);
 	  } else if (state.difficultyChosen === "Let's Rock") {
 	    state.healString = randomString(6, 'aA');
+	    state.attackCommand = randomIndexing(_mediumAttackCommands2.default);
 	  } else if (state.difficultyChosen === "Damn I'm Good") {
 	    state.healString = randomString(8, 'aA');
+	    state.attackCommand = randomIndexing(_hardAttackCommands2.default);
 	  } else if (state.difficultyChosen === 'Nightmare') {
 	    state.healString = randomString(8, 'aA#');
+	    state.attackCommand = randomIndexing(_hardAttackCommands2.default);
 	  } else if (state.difficultyChosen === 'Mike Tyson') {
 	    state.healString = randomString(8, 'aA#!');
+	    state.attackCommand = randomIndexing(_hardAttackCommands2.default);
 	  }
 	  console.log('heal string now', state.healString);
 	
@@ -38260,7 +38276,7 @@
 	                        return _react2.default.createElement(
 	                                'div',
 	                                null,
-	                                _react2.default.createElement('audio', { id: 'mainTheme', src: '/music/enter-the-dragon.mp3', muted: true, autoPlay: true }),
+	                                _react2.default.createElement('audio', { id: 'mainTheme', src: '/music/enter-the-dragon.mp3', autoPlay: true }),
 	                                _react2.default.createElement('audio', { id: 'MKTheme', src: '/music/MK-theme.mp3' }),
 	                                _react2.default.createElement('audio', { id: 'GuileTheme', src: '/music/Guile-theme.mp3' }),
 	                                _react2.default.createElement('audio', { id: 'FF7BossTheme', src: '/music/FF7-boss-theme.mp3' }),
@@ -40027,6 +40043,37 @@
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 257 */,
+/* 258 */
+/***/ function(module, exports) {
+
+	"use strict";
+	
+	var easyAttackCommands = ["jazz", "buzz", "fuzz", "fizz", "hajj", "juju", "quiz", "razz", "jamb", "juku", "jibb", "jauk", "phiz", "zouk", 'zonk', 'juke', 'chez', 'cozy', 'zyme', 'mazy', 'jouk', 'qoph', 'jink', 'whiz', 'fozy', 'joke', 'zebu', 'java', 'fuji', 'jowl', 'puja', 'jerk', 'jaup', 'jive', 'jagg', 'zeks', 'jupe', 'fuze', 'putz', 'hazy', 'koji', 'zinc', 'futz', 'juba', 'zerk', 'juco', 'jube', 'quip', 'waxy', 'jehu', 'bozo', 'mozo', 'jugs', 'jows', 'dozy', 'lazy', 'jefe', 'flux', 'maze', 'czar', 'faze', 'pixy', 'meze', 'boxy', 'jibe', 'juga', 'jibs', 'bize', 'jury', 'jobs', 'prez', 'jabs', 'friz', 'poxy', 'zeps', 'quay', 'zany', 'yutz', 'zaps', 'quey', 'zarf', 'mojo', 'quag', 'hadj'];
+	
+	module.exports = easyAttackCommands;
+
+/***/ },
+/* 259 */
+/***/ function(module, exports) {
+
+	"use strict";
+	
+	var mediumAttackCommands = ["jazzy", "fuzzy", "muzzy", "whizz", "fezzy", "fizzy", "abuzz", "zuzim", "scuzz", "dizzy", "frizz", "huzza", "mezzo", "pizza", "jujus", "tizzy", "hajji", "zazen", "zanza", "zizit", "jumpy", "tazza", "tazze", "zappy", "jimpy", "jiffy", "zippy", "quick", "jammy", "quack", "junky", "music", "jugum", "zaxes", "jumps", "jumbo", "kudzu", "quiff", "jocks", "kopje", "quaky", "quaff", "jerky", "juicy", "furzy", "zincy", "capiz", "kanzu", "enzym", "klutz", "pujah", "buxom", "azuki", "punji", "mixup", "unzip", "quipu", "boozy", "quirk", "field", "gauzy", "woozy", "kanji", "julep", "qophs", "crazy", "fuzed", "fuzil"];
+	
+	module.exports = mediumAttackCommands;
+
+/***/ },
+/* 260 */
+/***/ function(module, exports) {
+
+	"use strict";
+	
+	var hardAttackCommands = ["pizazz", "jazzbo", "bezazz", "jazzed", "zizzle", "muzjik", "whizzy", "mizzly", "scuzzy", "fuzzed", "puzzle", "muzzle", "buzzed", "huzzah", "frizzy", "jujube", "mizzen", "fizzed", "fizzle", "mezuza", "zigzag", "buzzer", "guzzle", "wizzen", "hazzan", "wizzes", "bizzes", "cozzes", "queazy", "nuzzle", "mezzos", "snazzy", "jojoba", "piazza", "pizzas", "banjax", "zizith", "dazzle", "bijoux", "paxwax", "nozzle", "quartz", "zincky", "razzed", "jezail", "zanzas", "exequy", "izzard", "zebeck", "quacky", "sizzle", "quippy", "rozzer", "jockey", "tzetze", "kuvasz", "kolkoz", "jinxed", "hijack", "buzuki", "bombyx", "tazzas", "jimply", "coccyx", "blowzy", "gazump", "jumble", "syzygy", "jacked", "jackal", "joypop", "frowzy", "pyjama", "jumped"];
+	
+	module.exports = hardAttackCommands;
 
 /***/ }
 /******/ ]);
