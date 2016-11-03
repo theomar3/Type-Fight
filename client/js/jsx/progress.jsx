@@ -1,5 +1,5 @@
  var React = require('react');
-import ProgressStore from './progress-store.js';
+import ProgressStore from '../progress-store.js';
 import BackButton from './backbutton.jsx';
 
 class Progress extends React.Component {

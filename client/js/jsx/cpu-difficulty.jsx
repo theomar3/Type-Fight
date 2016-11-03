@@ -1,5 +1,5 @@
 import React from 'react';
-import store from './fight-store.js';
+import store from '../fight-store.js';
 
 class CpuDifficulty extends React.Component {
 

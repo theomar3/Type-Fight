@@ -56,11 +56,11 @@
 	
 	var _reactRouter = __webpack_require__(172);
 	
-	var _fight = __webpack_require__(235);
+	var _fight = __webpack_require__(261);
 	
 	var _fight2 = _interopRequireDefault(_fight);
 	
-	var _progress = __webpack_require__(254);
+	var _progress = __webpack_require__(266);
 	
 	var _progress2 = _interopRequireDefault(_progress);
 	
@@ -72,7 +72,7 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	__webpack_require__(256);
+	__webpack_require__(259);
 	
 	var App = function (_React$Component) {
 	  _inherits(App, _React$Component);
@@ -27132,332 +27132,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 235 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _fightStore = __webpack_require__(236);
-	
-	var _fightStore2 = _interopRequireDefault(_fightStore);
-	
-	var _audioPlay = __webpack_require__(237);
-	
-	var _audioPlay2 = _interopRequireDefault(_audioPlay);
-	
-	var _moveList = __webpack_require__(241);
-	
-	var _moveList2 = _interopRequireDefault(_moveList);
-	
-	var _audioFiles = __webpack_require__(242);
-	
-	var _audioFiles2 = _interopRequireDefault(_audioFiles);
-	
-	var _typeFightTitle = __webpack_require__(243);
-	
-	var _typeFightTitle2 = _interopRequireDefault(_typeFightTitle);
-	
-	var _cpuDifficulty = __webpack_require__(244);
-	
-	var _cpuDifficulty2 = _interopRequireDefault(_cpuDifficulty);
-	
-	var _reactRouter = __webpack_require__(172);
-	
-	var _sweetalert = __webpack_require__(245);
-	
-	var _sweetalert2 = _interopRequireDefault(_sweetalert);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	console.log(_sweetalert2.default);
-	
-	var Fight = function (_React$Component) {
-	  _inherits(Fight, _React$Component);
-	
-	  function Fight() {
-	    _classCallCheck(this, Fight);
-	
-	    var _this = _possibleConstructorReturn(this, (Fight.__proto__ || Object.getPrototypeOf(Fight)).call(this));
-	
-	    _this.state = _fightStore2.default.copyState();
-	
-	    return _this;
-	  }
-	
-	  _createClass(Fight, [{
-	    key: 'componentWillMount',
-	    value: function componentWillMount() {
-	      var _this2 = this;
-	
-	      this.listeningFunc = function (state) {
-	        _this2.setState(state);
-	      };
-	      _fightStore2.default.addListener(this.listeningFunc);
-	    }
-	  }, {
-	    key: 'componentWillUnmount',
-	    value: function componentWillUnmount() {
-	      _fightStore2.default.removeListener(this.listeningFunc);
-	    }
-	  }, {
-	    key: '_clickFightTitle',
-	    value: function _clickFightTitle() {
-	      _fightStore2.default.actions.startFight();
-	    }
-	  }, {
-	    key: '_playerAttack',
-	    value: function _playerAttack(evt) {
-	      _fightStore2.default.actions.attack(evt);
-	    }
-	  }, {
-	    key: '_startOver',
-	    value: function _startOver() {
-	      _fightStore2.default.actions.startOver();
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      var _this3 = this;
-	
-	      var input;
-	      if (this.state.showPlayerInput) {
-	        input = _react2.default.createElement('input', { type: 'text', autoFocus: true, className: 'input-show', onKeyUp: function onKeyUp(evt) {
-	            return _this3._playerAttack(evt);
-	          }, ref: function ref(input) {
-	            return _this3._input = input;
-	          } });
-	      }
-	
-	      var progressLink;
-	      if (this.state.showClickForProgress !== '') {
-	        progressLink = _react2.default.createElement(
-	          _reactRouter.Link,
-	          { className: 'link-text', to: '/progress' },
-	          '             ',
-	          _react2.default.createElement(
-	            'p',
-	            null,
-	            this.state.showClickForProgress
-	          )
-	        );
-	      }
-	
-	      var startOver;
-	      if (this.state.showStartOver) {
-	        startOver = _react2.default.createElement(
-	          'p',
-	          { className: 'start-over', onClick: function onClick() {
-	              return _this3._startOver();
-	            } },
-	          'Start Over'
-	        );
-	      }
-	
-	      var showPlayerBubble;
-	      if (this.state.showPlayerBubble) {
-	        showPlayerBubble = _react2.default.createElement(
-	          'div',
-	          { className: 'player-bubble-show' },
-	          this.state.playerAttackMessage
-	        );
-	      }
-	
-	      var showCpuBubble;
-	      if (this.state.showCpuBubble) {
-	        showCpuBubble = _react2.default.createElement(
-	          'div',
-	          { className: 'cpu-bubble-show' },
-	          _react2.default.createElement(
-	            'p',
-	            null,
-	            this.state.cpuAttackMessage,
-	            ' '
-	          ),
-	          _react2.default.createElement(
-	            'p',
-	            { className: 'healString-color healString-size' },
-	            this.state.healString
-	          )
-	        );
-	      }
-	
-	      var showMissBubble;
-	      if (this.state.showMissBubble) {
-	        showMissBubble = _react2.default.createElement(
-	          'div',
-	          { className: 'miss-bubble-show' },
-	          _react2.default.createElement(
-	            'p',
-	            null,
-	            this.state.cpuTauntMessage
-	          )
-	        );
-	      }
-	
-	      return _react2.default.createElement(
-	        'div',
-	        { className: 'row' },
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'container col twelve' },
-	          _react2.default.createElement(_audioFiles2.default, null),
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'row' },
-	            _react2.default.createElement('div', { className: 'col one' }),
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'col ten' },
-	              _react2.default.createElement(_typeFightTitle2.default, null)
-	            ),
-	            _react2.default.createElement('div', { className: 'col one' })
-	          ),
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'row' },
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'fight-screen col twelve' },
-	              _react2.default.createElement(
-	                'div',
-	                { className: 'row' },
-	                _react2.default.createElement('div', { className: 'col two' }),
-	                _react2.default.createElement(
-	                  'div',
-	                  { className: 'col two' },
-	                  _react2.default.createElement(
-	                    'h2',
-	                    { className: 'whose-character-player' },
-	                    'You'
-	                  )
-	                ),
-	                _react2.default.createElement(
-	                  'div',
-	                  { className: 'col four' },
-	                  _react2.default.createElement(
-	                    'p',
-	                    { className: 'fight-title', onClick: function onClick() {
-	                        return _this3._clickFightTitle();
-	                      } },
-	                    this.state.fightScreenTitleText
-	                  ),
-	                  progressLink,
-	                  startOver
-	                ),
-	                _react2.default.createElement(
-	                  'div',
-	                  { className: 'col four' },
-	                  _react2.default.createElement(
-	                    'h2',
-	                    { className: 'whose-character-cpu' },
-	                    'CPU'
-	                  ),
-	                  _react2.default.createElement(_cpuDifficulty2.default, null)
-	                )
-	              ),
-	              _react2.default.createElement(
-	                'div',
-	                { className: 'row' },
-	                _react2.default.createElement(
-	                  'div',
-	                  { className: 'col two' },
-	                  showPlayerBubble
-	                ),
-	                _react2.default.createElement(
-	                  'div',
-	                  { className: 'col two' },
-	                  _react2.default.createElement('img', { className: 'player-sprite', src: this.state.playerSpriteUrls })
-	                ),
-	                _react2.default.createElement(
-	                  'div',
-	                  { className: 'col four' },
-	                  showCpuBubble
-	                ),
-	                _react2.default.createElement(
-	                  'div',
-	                  { className: 'col two' },
-	                  _react2.default.createElement('img', { className: 'cpu-sprite', src: this.state.cpuSpriteUrls })
-	                ),
-	                _react2.default.createElement(
-	                  'div',
-	                  { className: 'col two' },
-	                  showMissBubble
-	                )
-	              ),
-	              _react2.default.createElement(
-	                'div',
-	                { className: 'row' },
-	                _react2.default.createElement('div', { className: 'col two' }),
-	                _react2.default.createElement(
-	                  'div',
-	                  { className: 'col two' },
-	                  _react2.default.createElement(
-	                    'p',
-	                    { className: this.state.playerStatusClass },
-	                    'HP:',
-	                    this.state.playerHP
-	                  )
-	                ),
-	                _react2.default.createElement(
-	                  'div',
-	                  { className: 'col four' },
-	                  _react2.default.createElement(
-	                    'p',
-	                    { className: 'input-instructions' },
-	                    ' Enter ',
-	                    _react2.default.createElement(
-	                      'span',
-	                      { className: 'attack-color' },
-	                      'ATTACK COMMANDS'
-	                    ),
-	                    ' or ',
-	                    _react2.default.createElement(
-	                      'span',
-	                      { className: 'healString-color' },
-	                      'Heal letters'
-	                    ),
-	                    ' : ',
-	                    input
-	                  )
-	                ),
-	                _react2.default.createElement(
-	                  'div',
-	                  { className: 'col two' },
-	                  _react2.default.createElement(
-	                    'p',
-	                    { className: this.state.cpuStatusClass },
-	                    'HP:',
-	                    this.state.cpuHP
-	                  )
-	                ),
-	                _react2.default.createElement('div', { className: 'col two' })
-	              ),
-	              _react2.default.createElement(_moveList2.default, null)
-	            )
-	          )
-	        )
-	      );
-	    }
-	  }]);
-	
-	  return Fight;
-	}(_react2.default.Component);
-	
-	module.exports = Fight;
-
-/***/ },
+/* 235 */,
 /* 236 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -27475,15 +27150,15 @@
 	
 	var _userId2 = _interopRequireDefault(_userId);
 	
-	var _easyAttackCommands = __webpack_require__(258);
+	var _easyAttackCommands = __webpack_require__(241);
 	
 	var _easyAttackCommands2 = _interopRequireDefault(_easyAttackCommands);
 	
-	var _mediumAttackCommands = __webpack_require__(259);
+	var _mediumAttackCommands = __webpack_require__(242);
 	
 	var _mediumAttackCommands2 = _interopRequireDefault(_mediumAttackCommands);
 	
-	var _hardAttackCommands = __webpack_require__(260);
+	var _hardAttackCommands = __webpack_require__(243);
 	
 	var _hardAttackCommands2 = _interopRequireDefault(_hardAttackCommands);
 	
@@ -38154,360 +37829,40 @@
 
 /***/ },
 /* 241 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ function(module, exports) {
 
-	'use strict';
+	"use strict";
 	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	var easyAttackCommands = ["jazz", "buzz", "fuzz", "fizz", "hajj", "juju", "quiz", "razz", "jamb", "juku", "jibb", "jauk", "phiz", "zouk", 'zonk', 'juke', 'chez', 'cozy', 'zyme', 'mazy', 'jouk', 'qoph', 'jink', 'whiz', 'fozy', 'joke', 'zebu', 'java', 'fuji', 'jowl', 'puja', 'jerk', 'jaup', 'jive', 'jagg', 'zeks', 'jupe', 'fuze', 'putz', 'hazy', 'koji', 'zinc', 'futz', 'juba', 'zerk', 'juco', 'jube', 'quip', 'waxy', 'jehu', 'bozo', 'mozo', 'jugs', 'jows', 'dozy', 'lazy', 'jefe', 'flux', 'maze', 'czar', 'faze', 'pixy', 'meze', 'boxy', 'jibe', 'juga', 'jibs', 'bize', 'jury', 'jobs', 'prez', 'jabs', 'friz', 'poxy', 'zeps', 'quay', 'zany', 'yutz', 'zaps', 'quey', 'zarf', 'mojo', 'quag', 'hadj'];
 	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _fightStore = __webpack_require__(236);
-	
-	var _fightStore2 = _interopRequireDefault(_fightStore);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var MoveList = function (_React$Component) {
-	  _inherits(MoveList, _React$Component);
-	
-	  function MoveList() {
-	    _classCallCheck(this, MoveList);
-	
-	    var _this = _possibleConstructorReturn(this, (MoveList.__proto__ || Object.getPrototypeOf(MoveList)).call(this));
-	
-	    _this.state = _fightStore2.default.copyState();
-	
-	    return _this;
-	  }
-	
-	  _createClass(MoveList, [{
-	    key: 'componentWillMount',
-	    value: function componentWillMount() {
-	      var _this2 = this;
-	
-	      this.listeningFunc = function (state) {
-	        _this2.setState(state);
-	      };
-	      _fightStore2.default.addListener(this.listeningFunc);
-	    }
-	  }, {
-	    key: 'componentWillUnmount',
-	    value: function componentWillUnmount() {
-	      _fightStore2.default.removeListener(this.listeningFunc);
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	
-	      return _react2.default.createElement(
-	        'div',
-	        { className: 'row' },
-	        _react2.default.createElement('div', { className: 'col four' }),
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'col four' },
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'attack-command-section' },
-	            _react2.default.createElement(
-	              'p',
-	              { className: 'move-list-title' },
-	              ' ATTACK COMMANDS '
-	            ),
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'move-list-items' },
-	              this.state.attackCommand
-	            )
-	          )
-	        ),
-	        _react2.default.createElement('div', { className: 'col four' })
-	      );
-	    }
-	  }]);
-	
-	  return MoveList;
-	}(_react2.default.Component);
-	
-	module.exports = MoveList;
+	module.exports = easyAttackCommands;
 
 /***/ },
 /* 242 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ function(module, exports) {
 
-	'use strict';
+	"use strict";
 	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	var mediumAttackCommands = ["jazzy", "fuzzy", "muzzy", "whizz", "fezzy", "fizzy", "abuzz", "zuzim", "scuzz", "dizzy", "frizz", "huzza", "mezzo", "pizza", "jujus", "tizzy", "hajji", "zazen", "zanza", "zizit", "jumpy", "tazza", "tazze", "zappy", "jimpy", "jiffy", "zippy", "quick", "jammy", "quack", "junky", "music", "jugum", "zaxes", "jumps", "jumbo", "kudzu", "quiff", "jocks", "kopje", "quaky", "quaff", "jerky", "juicy", "furzy", "zincy", "capiz", "kanzu", "enzym", "klutz", "pujah", "buxom", "azuki", "punji", "mixup", "unzip", "quipu", "boozy", "quirk", "field", "gauzy", "woozy", "kanji", "julep", "qophs", "crazy", "fuzed", "fuzil"];
 	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var AudioFiles = function (_React$Component) {
-	        _inherits(AudioFiles, _React$Component);
-	
-	        function AudioFiles() {
-	                _classCallCheck(this, AudioFiles);
-	
-	                return _possibleConstructorReturn(this, (AudioFiles.__proto__ || Object.getPrototypeOf(AudioFiles)).apply(this, arguments));
-	        }
-	
-	        _createClass(AudioFiles, [{
-	                key: 'render',
-	                value: function render() {
-	
-	                        return _react2.default.createElement(
-	                                'div',
-	                                null,
-	                                _react2.default.createElement('audio', { id: 'mainTheme', src: '/music/enter-the-dragon.mp3', autoPlay: true }),
-	                                _react2.default.createElement('audio', { id: 'MKTheme', src: '/music/MK-theme.mp3' }),
-	                                _react2.default.createElement('audio', { id: 'GuileTheme', src: '/music/Guile-theme.mp3' }),
-	                                _react2.default.createElement('audio', { id: 'FF7BossTheme', src: '/music/FF7-boss-theme.mp3' }),
-	                                _react2.default.createElement('audio', { id: 'OneWingedAngel', src: '/music/one-winged-angel2.mp3' }),
-	                                _react2.default.createElement('audio', { id: 'gameOver', src: '/music/game-over-man.mp3' }),
-	                                _react2.default.createElement('audio', { id: 'dna', src: '/music/dna.mp3' }),
-	                                _react2.default.createElement('audio', { id: 'kneel', src: '/music/kneel.mp3' }),
-	                                _react2.default.createElement('audio', { id: 'victory', src: '/music/victory.mp3' }),
-	                                _react2.default.createElement('audio', { id: 'playerHit', src: '/music/player-hit.mp3' }),
-	                                _react2.default.createElement('audio', { id: 'cpuHit', src: '/music/cpu-hit.mp3' }),
-	                                _react2.default.createElement('audio', { id: 'warning', src: '/music/warning.mp3' }),
-	                                _react2.default.createElement('audio', { id: 'danger', src: '/music/danger.mp3' }),
-	                                _react2.default.createElement('audio', { id: 'gokuHeal', src: '/music/goku-heal.mp3' }),
-	                                _react2.default.createElement('audio', { id: 'dendeHeal', src: '/music/dende-heal.mp3' }),
-	                                _react2.default.createElement('audio', { id: 'wrongInput', src: '/music/wrong-input.mp3' }),
-	                                _react2.default.createElement('audio', { id: 'webBall', src: '/music/web-ball.mp3' }),
-	                                _react2.default.createElement('audio', { id: 'spiderSting', src: '/music/spider-sting.mp3' }),
-	                                _react2.default.createElement('audio', { id: 'webSwing', src: '/music/web-swing.mp3' }),
-	                                _react2.default.createElement('audio', { id: 'chargingSlash', src: '/music/charging-slash.mp3' }),
-	                                _react2.default.createElement('audio', { id: 'forwardSlash', src: '/music/forward-slash.mp3' }),
-	                                _react2.default.createElement('audio', { id: 'upwardSlash', src: '/music/upward-slash.mp3' }),
-	                                _react2.default.createElement('audio', { id: 'bradleyTaunt', src: '/music/bradley-miss-taunt.mp3' }),
-	                                _react2.default.createElement('audio', { id: 'laughTaunt', src: '/music/laugh-miss-taunt.mp3' }),
-	                                _react2.default.createElement('audio', { id: 'patheticTaunt', src: '/music/pathetic-miss-taunt.mp3' }),
-	                                _react2.default.createElement('audio', { id: 'suckTaunt', src: '/music/suck-miss-taunt.mp3' })
-	                        );
-	                }
-	        }]);
-	
-	        return AudioFiles;
-	}(_react2.default.Component);
-	
-	module.exports = AudioFiles;
+	module.exports = mediumAttackCommands;
 
 /***/ },
 /* 243 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ function(module, exports) {
 
-	'use strict';
+	"use strict";
 	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	var hardAttackCommands = ["pizazz", "jazzbo", "bezazz", "jazzed", "zizzle", "muzjik", "whizzy", "mizzly", "scuzzy", "fuzzed", "puzzle", "muzzle", "buzzed", "huzzah", "frizzy", "jujube", "mizzen", "fizzed", "fizzle", "mezuza", "zigzag", "buzzer", "guzzle", "wizzen", "hazzan", "wizzes", "bizzes", "cozzes", "queazy", "nuzzle", "mezzos", "snazzy", "jojoba", "piazza", "pizzas", "banjax", "zizith", "dazzle", "bijoux", "paxwax", "nozzle", "quartz", "zincky", "razzed", "jezail", "zanzas", "exequy", "izzard", "zebeck", "quacky", "sizzle", "quippy", "rozzer", "jockey", "tzetze", "kuvasz", "kolkoz", "jinxed", "hijack", "buzuki", "bombyx", "tazzas", "jimply", "coccyx", "blowzy", "gazump", "jumble", "syzygy", "jacked", "jackal", "joypop", "frowzy", "pyjama", "jumped"];
 	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var TypeFightTitle = function (_React$Component) {
-	  _inherits(TypeFightTitle, _React$Component);
-	
-	  function TypeFightTitle() {
-	    _classCallCheck(this, TypeFightTitle);
-	
-	    return _possibleConstructorReturn(this, (TypeFightTitle.__proto__ || Object.getPrototypeOf(TypeFightTitle)).apply(this, arguments));
-	  }
-	
-	  _createClass(TypeFightTitle, [{
-	    key: 'render',
-	    value: function render() {
-	
-	      return _react2.default.createElement(
-	        'a',
-	        { href: 'index.html' },
-	        _react2.default.createElement(
-	          'ul',
-	          { className: 'fight-website-title animated rollIn' },
-	          _react2.default.createElement(
-	            'li',
-	            null,
-	            'T'
-	          ),
-	          _react2.default.createElement(
-	            'li',
-	            null,
-	            'y'
-	          ),
-	          _react2.default.createElement(
-	            'li',
-	            null,
-	            'P'
-	          ),
-	          _react2.default.createElement(
-	            'li',
-	            null,
-	            'e'
-	          ),
-	          _react2.default.createElement(
-	            'li',
-	            null,
-	            'F'
-	          ),
-	          _react2.default.createElement(
-	            'li',
-	            null,
-	            'i'
-	          ),
-	          _react2.default.createElement(
-	            'li',
-	            null,
-	            'G'
-	          ),
-	          _react2.default.createElement(
-	            'li',
-	            null,
-	            'h'
-	          ),
-	          _react2.default.createElement(
-	            'li',
-	            null,
-	            'T'
-	          )
-	        )
-	      );
-	    }
-	  }]);
-	
-	  return TypeFightTitle;
-	}(_react2.default.Component);
-	
-	module.exports = TypeFightTitle;
+	module.exports = hardAttackCommands;
 
 /***/ },
-/* 244 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _fightStore = __webpack_require__(236);
-	
-	var _fightStore2 = _interopRequireDefault(_fightStore);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var CpuDifficulty = function (_React$Component) {
-	  _inherits(CpuDifficulty, _React$Component);
-	
-	  function CpuDifficulty() {
-	    _classCallCheck(this, CpuDifficulty);
-	
-	    return _possibleConstructorReturn(this, (CpuDifficulty.__proto__ || Object.getPrototypeOf(CpuDifficulty)).apply(this, arguments));
-	  }
-	
-	  _createClass(CpuDifficulty, [{
-	    key: '_cpuDifficulty',
-	    value: function _cpuDifficulty() {
-	      _fightStore2.default.actions.cpuDifficulty();
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      var _this2 = this;
-	
-	      return _react2.default.createElement(
-	        'form',
-	        null,
-	        _react2.default.createElement(
-	          'select',
-	          { id: 'difficulty', name: 'cpuDifficulty', onChange: function onChange() {
-	              return _this2._cpuDifficulty();
-	            } },
-	          _react2.default.createElement(
-	            'option',
-	            { value: 'void' },
-	            '- Select CPU Difficulty - '
-	          ),
-	          _react2.default.createElement(
-	            'option',
-	            { value: 'Baby' },
-	            'Baby-Mode (Very Easy)'
-	          ),
-	          _react2.default.createElement(
-	            'option',
-	            { value: 'Cake Walk' },
-	            'Piece Of Cake (Easy)'
-	          ),
-	          _react2.default.createElement(
-	            'option',
-	            { value: 'Not Rough' },
-	            'Not Too Rough (Medium)'
-	          ),
-	          _react2.default.createElement(
-	            'option',
-	            { value: 'Let\'s Rock' },
-	            'Let\'s Rock (Very Medium)'
-	          ),
-	          _react2.default.createElement(
-	            'option',
-	            { value: 'Damn I\'m Good' },
-	            'Damn I\'m Good (Hard)'
-	          ),
-	          _react2.default.createElement(
-	            'option',
-	            { value: 'Nightmare' },
-	            'Nightmare (Very Hard)'
-	          ),
-	          _react2.default.createElement(
-	            'option',
-	            { value: 'Mike Tyson' },
-	            'Mike Tyson from Punch Out (Extreme) '
-	          )
-	        )
-	      );
-	    }
-	  }]);
-	
-	  return CpuDifficulty;
-	}(_react2.default.Component);
-	
-	module.exports = CpuDifficulty;
-
-/***/ },
-/* 245 */
+/* 244 */,
+/* 245 */,
+/* 246 */,
+/* 247 */,
+/* 248 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -38525,35 +37880,35 @@
 	 * jQuery-like functions for manipulating the DOM
 	 */
 	
-	var _hasClass$addClass$removeClass$escapeHtml$_show$show$_hide$hide$isDescendant$getTopMargin$fadeIn$fadeOut$fireClick$stopEventPropagation = __webpack_require__(246);
+	var _hasClass$addClass$removeClass$escapeHtml$_show$show$_hide$hide$isDescendant$getTopMargin$fadeIn$fadeOut$fireClick$stopEventPropagation = __webpack_require__(249);
 	
 	/*
 	 * Handy utilities
 	 */
 	
-	var _extend$hexToRgb$isIE8$logStr$colorLuminance = __webpack_require__(247);
+	var _extend$hexToRgb$isIE8$logStr$colorLuminance = __webpack_require__(250);
 	
 	/*
 	 *  Handle sweetAlert's DOM elements
 	 */
 	
-	var _sweetAlertInitialize$getModal$getOverlay$getInput$setFocusStyle$openModal$resetInput$fixVerticalPosition = __webpack_require__(248);
+	var _sweetAlertInitialize$getModal$getOverlay$getInput$setFocusStyle$openModal$resetInput$fixVerticalPosition = __webpack_require__(251);
 	
 	// Handle button events and keyboard events
 	
-	var _handleButton$handleConfirm$handleCancel = __webpack_require__(251);
+	var _handleButton$handleConfirm$handleCancel = __webpack_require__(254);
 	
-	var _handleKeyDown = __webpack_require__(252);
+	var _handleKeyDown = __webpack_require__(255);
 	
 	var _handleKeyDown2 = _interopRequireWildcard(_handleKeyDown);
 	
 	// Default values
 	
-	var _defaultParams = __webpack_require__(249);
+	var _defaultParams = __webpack_require__(252);
 	
 	var _defaultParams2 = _interopRequireWildcard(_defaultParams);
 	
-	var _setParameters = __webpack_require__(253);
+	var _setParameters = __webpack_require__(256);
 	
 	var _setParameters2 = _interopRequireWildcard(_setParameters);
 	
@@ -38815,7 +38170,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 246 */
+/* 249 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -39011,7 +38366,7 @@
 	exports.stopEventPropagation = stopEventPropagation;
 
 /***/ },
-/* 247 */
+/* 250 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -39089,7 +38444,7 @@
 	exports.colorLuminance = colorLuminance;
 
 /***/ },
-/* 248 */
+/* 251 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -39100,11 +38455,11 @@
 	  value: true
 	});
 	
-	var _hexToRgb = __webpack_require__(247);
+	var _hexToRgb = __webpack_require__(250);
 	
-	var _removeClass$getTopMargin$fadeIn$show$addClass = __webpack_require__(246);
+	var _removeClass$getTopMargin$fadeIn$show$addClass = __webpack_require__(249);
 	
-	var _defaultParams = __webpack_require__(249);
+	var _defaultParams = __webpack_require__(252);
 	
 	var _defaultParams2 = _interopRequireWildcard(_defaultParams);
 	
@@ -39112,7 +38467,7 @@
 	 * Add modal + overlay to DOM
 	 */
 	
-	var _injectedHTML = __webpack_require__(250);
+	var _injectedHTML = __webpack_require__(253);
 	
 	var _injectedHTML2 = _interopRequireWildcard(_injectedHTML);
 	
@@ -39261,7 +38616,7 @@
 	exports.fixVerticalPosition = fixVerticalPosition;
 
 /***/ },
-/* 249 */
+/* 252 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -39298,7 +38653,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 250 */
+/* 253 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -39345,7 +38700,7 @@
 	module.exports = exports["default"];
 
 /***/ },
-/* 251 */
+/* 254 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -39354,11 +38709,11 @@
 	  value: true
 	});
 	
-	var _colorLuminance = __webpack_require__(247);
+	var _colorLuminance = __webpack_require__(250);
 	
-	var _getModal = __webpack_require__(248);
+	var _getModal = __webpack_require__(251);
 	
-	var _hasClass$isDescendant = __webpack_require__(246);
+	var _hasClass$isDescendant = __webpack_require__(249);
 	
 	/*
 	 * User clicked on "Confirm"/"OK" or "Cancel"
@@ -39485,7 +38840,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 252 */
+/* 255 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -39494,9 +38849,9 @@
 	  value: true
 	});
 	
-	var _stopEventPropagation$fireClick = __webpack_require__(246);
+	var _stopEventPropagation$fireClick = __webpack_require__(249);
 	
-	var _setFocusStyle = __webpack_require__(248);
+	var _setFocusStyle = __webpack_require__(251);
 	
 	var handleKeyDown = function handleKeyDown(event, params, modal) {
 	  var e = event || window.event;
@@ -39569,7 +38924,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 253 */
+/* 256 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -39578,11 +38933,11 @@
 	  value: true
 	});
 	
-	var _isIE8 = __webpack_require__(247);
+	var _isIE8 = __webpack_require__(250);
 	
-	var _getModal$getInput$setFocusStyle = __webpack_require__(248);
+	var _getModal$getInput$setFocusStyle = __webpack_require__(251);
 	
-	var _hasClass$addClass$removeClass$escapeHtml$_show$show$_hide$hide = __webpack_require__(246);
+	var _hasClass$addClass$removeClass$escapeHtml$_show$show$_hide$hide = __webpack_require__(249);
 	
 	var alertTypes = ['error', 'warning', 'info', 'success', 'input', 'prompt'];
 	
@@ -39799,7 +39154,696 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 254 */
+/* 257 */,
+/* 258 */,
+/* 259 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 260 */,
+/* 261 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _fightStore = __webpack_require__(236);
+	
+	var _fightStore2 = _interopRequireDefault(_fightStore);
+	
+	var _audioPlay = __webpack_require__(237);
+	
+	var _audioPlay2 = _interopRequireDefault(_audioPlay);
+	
+	var _moveList = __webpack_require__(262);
+	
+	var _moveList2 = _interopRequireDefault(_moveList);
+	
+	var _audioFiles = __webpack_require__(263);
+	
+	var _audioFiles2 = _interopRequireDefault(_audioFiles);
+	
+	var _typeFightTitle = __webpack_require__(264);
+	
+	var _typeFightTitle2 = _interopRequireDefault(_typeFightTitle);
+	
+	var _cpuDifficulty = __webpack_require__(265);
+	
+	var _cpuDifficulty2 = _interopRequireDefault(_cpuDifficulty);
+	
+	var _reactRouter = __webpack_require__(172);
+	
+	var _sweetalert = __webpack_require__(248);
+	
+	var _sweetalert2 = _interopRequireDefault(_sweetalert);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	console.log(_sweetalert2.default);
+	
+	var Fight = function (_React$Component) {
+	  _inherits(Fight, _React$Component);
+	
+	  function Fight() {
+	    _classCallCheck(this, Fight);
+	
+	    var _this = _possibleConstructorReturn(this, (Fight.__proto__ || Object.getPrototypeOf(Fight)).call(this));
+	
+	    _this.state = _fightStore2.default.copyState();
+	
+	    return _this;
+	  }
+	
+	  _createClass(Fight, [{
+	    key: 'componentWillMount',
+	    value: function componentWillMount() {
+	      var _this2 = this;
+	
+	      this.listeningFunc = function (state) {
+	        _this2.setState(state);
+	      };
+	      _fightStore2.default.addListener(this.listeningFunc);
+	    }
+	  }, {
+	    key: 'componentWillUnmount',
+	    value: function componentWillUnmount() {
+	      _fightStore2.default.removeListener(this.listeningFunc);
+	    }
+	  }, {
+	    key: '_clickFightTitle',
+	    value: function _clickFightTitle() {
+	      _fightStore2.default.actions.startFight();
+	    }
+	  }, {
+	    key: '_playerAttack',
+	    value: function _playerAttack(evt) {
+	      _fightStore2.default.actions.attack(evt);
+	    }
+	  }, {
+	    key: '_startOver',
+	    value: function _startOver() {
+	      _fightStore2.default.actions.startOver();
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var _this3 = this;
+	
+	      var input;
+	      if (this.state.showPlayerInput) {
+	        input = _react2.default.createElement('input', { type: 'text', autoFocus: true, className: 'input-show', onKeyUp: function onKeyUp(evt) {
+	            return _this3._playerAttack(evt);
+	          }, ref: function ref(input) {
+	            return _this3._input = input;
+	          } });
+	      }
+	
+	      var progressLink;
+	      if (this.state.showClickForProgress !== '') {
+	        progressLink = _react2.default.createElement(
+	          _reactRouter.Link,
+	          { className: 'link-text', to: '/progress' },
+	          '             ',
+	          _react2.default.createElement(
+	            'p',
+	            null,
+	            this.state.showClickForProgress
+	          )
+	        );
+	      }
+	
+	      var startOver;
+	      if (this.state.showStartOver) {
+	        startOver = _react2.default.createElement(
+	          'p',
+	          { className: 'start-over', onClick: function onClick() {
+	              return _this3._startOver();
+	            } },
+	          'Start Over'
+	        );
+	      }
+	
+	      var showPlayerBubble;
+	      if (this.state.showPlayerBubble) {
+	        showPlayerBubble = _react2.default.createElement(
+	          'div',
+	          { className: 'player-bubble-show' },
+	          this.state.playerAttackMessage
+	        );
+	      }
+	
+	      var showCpuBubble;
+	      if (this.state.showCpuBubble) {
+	        showCpuBubble = _react2.default.createElement(
+	          'div',
+	          { className: 'cpu-bubble-show' },
+	          _react2.default.createElement(
+	            'p',
+	            null,
+	            this.state.cpuAttackMessage,
+	            ' '
+	          ),
+	          _react2.default.createElement(
+	            'p',
+	            { className: 'healString-color healString-size' },
+	            this.state.healString
+	          )
+	        );
+	      }
+	
+	      var showMissBubble;
+	      if (this.state.showMissBubble) {
+	        showMissBubble = _react2.default.createElement(
+	          'div',
+	          { className: 'miss-bubble-show' },
+	          _react2.default.createElement(
+	            'p',
+	            null,
+	            this.state.cpuTauntMessage
+	          )
+	        );
+	      }
+	
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'row' },
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'container col twelve' },
+	          _react2.default.createElement(_audioFiles2.default, null),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'row' },
+	            _react2.default.createElement('div', { className: 'col one' }),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'col ten' },
+	              _react2.default.createElement(_typeFightTitle2.default, null)
+	            ),
+	            _react2.default.createElement('div', { className: 'col one' })
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'row' },
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'fight-screen col twelve' },
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'row' },
+	                _react2.default.createElement('div', { className: 'col two' }),
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'col two' },
+	                  _react2.default.createElement(
+	                    'h2',
+	                    { className: 'whose-character-player' },
+	                    'You'
+	                  )
+	                ),
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'col four' },
+	                  _react2.default.createElement(
+	                    'p',
+	                    { className: 'fight-title', onClick: function onClick() {
+	                        return _this3._clickFightTitle();
+	                      } },
+	                    this.state.fightScreenTitleText
+	                  ),
+	                  progressLink,
+	                  startOver
+	                ),
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'col four' },
+	                  _react2.default.createElement(
+	                    'h2',
+	                    { className: 'whose-character-cpu' },
+	                    'CPU'
+	                  ),
+	                  _react2.default.createElement(_cpuDifficulty2.default, null)
+	                )
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'row' },
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'col two' },
+	                  showPlayerBubble
+	                ),
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'col two' },
+	                  _react2.default.createElement('img', { className: 'player-sprite', src: this.state.playerSpriteUrls })
+	                ),
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'col four' },
+	                  showCpuBubble
+	                ),
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'col two' },
+	                  _react2.default.createElement('img', { className: 'cpu-sprite', src: this.state.cpuSpriteUrls })
+	                ),
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'col two' },
+	                  showMissBubble
+	                )
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'row' },
+	                _react2.default.createElement('div', { className: 'col two' }),
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'col two' },
+	                  _react2.default.createElement(
+	                    'p',
+	                    { className: this.state.playerStatusClass },
+	                    'HP:',
+	                    this.state.playerHP
+	                  )
+	                ),
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'col four' },
+	                  _react2.default.createElement(
+	                    'p',
+	                    { className: 'input-instructions' },
+	                    ' Enter ',
+	                    _react2.default.createElement(
+	                      'span',
+	                      { className: 'attack-color' },
+	                      'ATTACK COMMANDS'
+	                    ),
+	                    ' or ',
+	                    _react2.default.createElement(
+	                      'span',
+	                      { className: 'healString-color' },
+	                      'Heal letters'
+	                    ),
+	                    ' : ',
+	                    input
+	                  )
+	                ),
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'col two' },
+	                  _react2.default.createElement(
+	                    'p',
+	                    { className: this.state.cpuStatusClass },
+	                    'HP:',
+	                    this.state.cpuHP
+	                  )
+	                ),
+	                _react2.default.createElement('div', { className: 'col two' })
+	              ),
+	              _react2.default.createElement(_moveList2.default, null)
+	            )
+	          )
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return Fight;
+	}(_react2.default.Component);
+	
+	module.exports = Fight;
+
+/***/ },
+/* 262 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _fightStore = __webpack_require__(236);
+	
+	var _fightStore2 = _interopRequireDefault(_fightStore);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var MoveList = function (_React$Component) {
+	  _inherits(MoveList, _React$Component);
+	
+	  function MoveList() {
+	    _classCallCheck(this, MoveList);
+	
+	    var _this = _possibleConstructorReturn(this, (MoveList.__proto__ || Object.getPrototypeOf(MoveList)).call(this));
+	
+	    _this.state = _fightStore2.default.copyState();
+	
+	    return _this;
+	  }
+	
+	  _createClass(MoveList, [{
+	    key: 'componentWillMount',
+	    value: function componentWillMount() {
+	      var _this2 = this;
+	
+	      this.listeningFunc = function (state) {
+	        _this2.setState(state);
+	      };
+	      _fightStore2.default.addListener(this.listeningFunc);
+	    }
+	  }, {
+	    key: 'componentWillUnmount',
+	    value: function componentWillUnmount() {
+	      _fightStore2.default.removeListener(this.listeningFunc);
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'row' },
+	        _react2.default.createElement('div', { className: 'col four' }),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'col four' },
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'attack-command-section' },
+	            _react2.default.createElement(
+	              'p',
+	              { className: 'move-list-title' },
+	              ' ATTACK COMMANDS '
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'move-list-items' },
+	              this.state.attackCommand
+	            )
+	          )
+	        ),
+	        _react2.default.createElement('div', { className: 'col four' })
+	      );
+	    }
+	  }]);
+	
+	  return MoveList;
+	}(_react2.default.Component);
+	
+	module.exports = MoveList;
+
+/***/ },
+/* 263 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var AudioFiles = function (_React$Component) {
+	        _inherits(AudioFiles, _React$Component);
+	
+	        function AudioFiles() {
+	                _classCallCheck(this, AudioFiles);
+	
+	                return _possibleConstructorReturn(this, (AudioFiles.__proto__ || Object.getPrototypeOf(AudioFiles)).apply(this, arguments));
+	        }
+	
+	        _createClass(AudioFiles, [{
+	                key: 'render',
+	                value: function render() {
+	
+	                        return _react2.default.createElement(
+	                                'div',
+	                                null,
+	                                _react2.default.createElement('audio', { id: 'mainTheme', src: '/music/enter-the-dragon.mp3', autoPlay: true }),
+	                                _react2.default.createElement('audio', { id: 'MKTheme', src: '/music/MK-theme.mp3' }),
+	                                _react2.default.createElement('audio', { id: 'GuileTheme', src: '/music/Guile-theme.mp3' }),
+	                                _react2.default.createElement('audio', { id: 'FF7BossTheme', src: '/music/FF7-boss-theme.mp3' }),
+	                                _react2.default.createElement('audio', { id: 'OneWingedAngel', src: '/music/one-winged-angel2.mp3' }),
+	                                _react2.default.createElement('audio', { id: 'gameOver', src: '/music/game-over-man.mp3' }),
+	                                _react2.default.createElement('audio', { id: 'dna', src: '/music/dna.mp3' }),
+	                                _react2.default.createElement('audio', { id: 'kneel', src: '/music/kneel.mp3' }),
+	                                _react2.default.createElement('audio', { id: 'victory', src: '/music/victory.mp3' }),
+	                                _react2.default.createElement('audio', { id: 'playerHit', src: '/music/player-hit.mp3' }),
+	                                _react2.default.createElement('audio', { id: 'cpuHit', src: '/music/cpu-hit.mp3' }),
+	                                _react2.default.createElement('audio', { id: 'warning', src: '/music/warning.mp3' }),
+	                                _react2.default.createElement('audio', { id: 'danger', src: '/music/danger.mp3' }),
+	                                _react2.default.createElement('audio', { id: 'gokuHeal', src: '/music/goku-heal.mp3' }),
+	                                _react2.default.createElement('audio', { id: 'dendeHeal', src: '/music/dende-heal.mp3' }),
+	                                _react2.default.createElement('audio', { id: 'wrongInput', src: '/music/wrong-input.mp3' }),
+	                                _react2.default.createElement('audio', { id: 'webBall', src: '/music/web-ball.mp3' }),
+	                                _react2.default.createElement('audio', { id: 'spiderSting', src: '/music/spider-sting.mp3' }),
+	                                _react2.default.createElement('audio', { id: 'webSwing', src: '/music/web-swing.mp3' }),
+	                                _react2.default.createElement('audio', { id: 'chargingSlash', src: '/music/charging-slash.mp3' }),
+	                                _react2.default.createElement('audio', { id: 'forwardSlash', src: '/music/forward-slash.mp3' }),
+	                                _react2.default.createElement('audio', { id: 'upwardSlash', src: '/music/upward-slash.mp3' }),
+	                                _react2.default.createElement('audio', { id: 'bradleyTaunt', src: '/music/bradley-miss-taunt.mp3' }),
+	                                _react2.default.createElement('audio', { id: 'laughTaunt', src: '/music/laugh-miss-taunt.mp3' }),
+	                                _react2.default.createElement('audio', { id: 'patheticTaunt', src: '/music/pathetic-miss-taunt.mp3' }),
+	                                _react2.default.createElement('audio', { id: 'suckTaunt', src: '/music/suck-miss-taunt.mp3' })
+	                        );
+	                }
+	        }]);
+	
+	        return AudioFiles;
+	}(_react2.default.Component);
+	
+	module.exports = AudioFiles;
+
+/***/ },
+/* 264 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var TypeFightTitle = function (_React$Component) {
+	  _inherits(TypeFightTitle, _React$Component);
+	
+	  function TypeFightTitle() {
+	    _classCallCheck(this, TypeFightTitle);
+	
+	    return _possibleConstructorReturn(this, (TypeFightTitle.__proto__ || Object.getPrototypeOf(TypeFightTitle)).apply(this, arguments));
+	  }
+	
+	  _createClass(TypeFightTitle, [{
+	    key: 'render',
+	    value: function render() {
+	
+	      return _react2.default.createElement(
+	        'a',
+	        { href: 'index.html' },
+	        _react2.default.createElement(
+	          'ul',
+	          { className: 'fight-website-title animated rollIn' },
+	          _react2.default.createElement(
+	            'li',
+	            null,
+	            'T'
+	          ),
+	          _react2.default.createElement(
+	            'li',
+	            null,
+	            'y'
+	          ),
+	          _react2.default.createElement(
+	            'li',
+	            null,
+	            'P'
+	          ),
+	          _react2.default.createElement(
+	            'li',
+	            null,
+	            'e'
+	          ),
+	          _react2.default.createElement(
+	            'li',
+	            null,
+	            'F'
+	          ),
+	          _react2.default.createElement(
+	            'li',
+	            null,
+	            'i'
+	          ),
+	          _react2.default.createElement(
+	            'li',
+	            null,
+	            'G'
+	          ),
+	          _react2.default.createElement(
+	            'li',
+	            null,
+	            'h'
+	          ),
+	          _react2.default.createElement(
+	            'li',
+	            null,
+	            'T'
+	          )
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return TypeFightTitle;
+	}(_react2.default.Component);
+	
+	module.exports = TypeFightTitle;
+
+/***/ },
+/* 265 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _fightStore = __webpack_require__(236);
+	
+	var _fightStore2 = _interopRequireDefault(_fightStore);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var CpuDifficulty = function (_React$Component) {
+	  _inherits(CpuDifficulty, _React$Component);
+	
+	  function CpuDifficulty() {
+	    _classCallCheck(this, CpuDifficulty);
+	
+	    return _possibleConstructorReturn(this, (CpuDifficulty.__proto__ || Object.getPrototypeOf(CpuDifficulty)).apply(this, arguments));
+	  }
+	
+	  _createClass(CpuDifficulty, [{
+	    key: '_cpuDifficulty',
+	    value: function _cpuDifficulty() {
+	      _fightStore2.default.actions.cpuDifficulty();
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var _this2 = this;
+	
+	      return _react2.default.createElement(
+	        'form',
+	        null,
+	        _react2.default.createElement(
+	          'select',
+	          { id: 'difficulty', name: 'cpuDifficulty', onChange: function onChange() {
+	              return _this2._cpuDifficulty();
+	            } },
+	          _react2.default.createElement(
+	            'option',
+	            { value: 'void' },
+	            '- Select CPU Difficulty - '
+	          ),
+	          _react2.default.createElement(
+	            'option',
+	            { value: 'Baby' },
+	            'Baby-Mode (Very Easy)'
+	          ),
+	          _react2.default.createElement(
+	            'option',
+	            { value: 'Cake Walk' },
+	            'Piece Of Cake (Easy)'
+	          ),
+	          _react2.default.createElement(
+	            'option',
+	            { value: 'Not Rough' },
+	            'Not Too Rough (Medium)'
+	          ),
+	          _react2.default.createElement(
+	            'option',
+	            { value: 'Let\'s Rock' },
+	            'Let\'s Rock (Very Medium)'
+	          ),
+	          _react2.default.createElement(
+	            'option',
+	            { value: 'Damn I\'m Good' },
+	            'Damn I\'m Good (Hard)'
+	          ),
+	          _react2.default.createElement(
+	            'option',
+	            { value: 'Nightmare' },
+	            'Nightmare (Very Hard)'
+	          ),
+	          _react2.default.createElement(
+	            'option',
+	            { value: 'Mike Tyson' },
+	            'Mike Tyson from Punch Out (Extreme) '
+	          )
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return CpuDifficulty;
+	}(_react2.default.Component);
+	
+	module.exports = CpuDifficulty;
+
+/***/ },
+/* 266 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -39810,7 +39854,7 @@
 	
 	var _progressStore2 = _interopRequireDefault(_progressStore);
 	
-	var _backbutton = __webpack_require__(255);
+	var _backbutton = __webpack_require__(267);
 	
 	var _backbutton2 = _interopRequireDefault(_backbutton);
 	
@@ -40012,7 +40056,7 @@
 	module.exports = Progress;
 
 /***/ },
-/* 255 */
+/* 267 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -40037,43 +40081,6 @@
 	});
 	
 	module.exports = BackButton;
-
-/***/ },
-/* 256 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
-/* 257 */,
-/* 258 */
-/***/ function(module, exports) {
-
-	"use strict";
-	
-	var easyAttackCommands = ["jazz", "buzz", "fuzz", "fizz", "hajj", "juju", "quiz", "razz", "jamb", "juku", "jibb", "jauk", "phiz", "zouk", 'zonk', 'juke', 'chez', 'cozy', 'zyme', 'mazy', 'jouk', 'qoph', 'jink', 'whiz', 'fozy', 'joke', 'zebu', 'java', 'fuji', 'jowl', 'puja', 'jerk', 'jaup', 'jive', 'jagg', 'zeks', 'jupe', 'fuze', 'putz', 'hazy', 'koji', 'zinc', 'futz', 'juba', 'zerk', 'juco', 'jube', 'quip', 'waxy', 'jehu', 'bozo', 'mozo', 'jugs', 'jows', 'dozy', 'lazy', 'jefe', 'flux', 'maze', 'czar', 'faze', 'pixy', 'meze', 'boxy', 'jibe', 'juga', 'jibs', 'bize', 'jury', 'jobs', 'prez', 'jabs', 'friz', 'poxy', 'zeps', 'quay', 'zany', 'yutz', 'zaps', 'quey', 'zarf', 'mojo', 'quag', 'hadj'];
-	
-	module.exports = easyAttackCommands;
-
-/***/ },
-/* 259 */
-/***/ function(module, exports) {
-
-	"use strict";
-	
-	var mediumAttackCommands = ["jazzy", "fuzzy", "muzzy", "whizz", "fezzy", "fizzy", "abuzz", "zuzim", "scuzz", "dizzy", "frizz", "huzza", "mezzo", "pizza", "jujus", "tizzy", "hajji", "zazen", "zanza", "zizit", "jumpy", "tazza", "tazze", "zappy", "jimpy", "jiffy", "zippy", "quick", "jammy", "quack", "junky", "music", "jugum", "zaxes", "jumps", "jumbo", "kudzu", "quiff", "jocks", "kopje", "quaky", "quaff", "jerky", "juicy", "furzy", "zincy", "capiz", "kanzu", "enzym", "klutz", "pujah", "buxom", "azuki", "punji", "mixup", "unzip", "quipu", "boozy", "quirk", "field", "gauzy", "woozy", "kanji", "julep", "qophs", "crazy", "fuzed", "fuzil"];
-	
-	module.exports = mediumAttackCommands;
-
-/***/ },
-/* 260 */
-/***/ function(module, exports) {
-
-	"use strict";
-	
-	var hardAttackCommands = ["pizazz", "jazzbo", "bezazz", "jazzed", "zizzle", "muzjik", "whizzy", "mizzly", "scuzzy", "fuzzed", "puzzle", "muzzle", "buzzed", "huzzah", "frizzy", "jujube", "mizzen", "fizzed", "fizzle", "mezuza", "zigzag", "buzzer", "guzzle", "wizzen", "hazzan", "wizzes", "bizzes", "cozzes", "queazy", "nuzzle", "mezzos", "snazzy", "jojoba", "piazza", "pizzas", "banjax", "zizith", "dazzle", "bijoux", "paxwax", "nozzle", "quartz", "zincky", "razzed", "jezail", "zanzas", "exequy", "izzard", "zebeck", "quacky", "sizzle", "quippy", "rozzer", "jockey", "tzetze", "kuvasz", "kolkoz", "jinxed", "hijack", "buzuki", "bombyx", "tazzas", "jimply", "coccyx", "blowzy", "gazump", "jumble", "syzygy", "jacked", "jackal", "joypop", "frowzy", "pyjama", "jumped"];
-	
-	module.exports = hardAttackCommands;
 
 /***/ }
 /******/ ]);
