@@ -60,7 +60,7 @@
 	
 	var _fight2 = _interopRequireDefault(_fight);
 	
-	var _progress = __webpack_require__(257);
+	var _progress = __webpack_require__(254);
 	
 	var _progress2 = _interopRequireDefault(_progress);
 	
@@ -72,7 +72,7 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	__webpack_require__(259);
+	__webpack_require__(256);
 	
 	var App = function (_React$Component) {
 	  _inherits(App, _React$Component);
@@ -27151,25 +27151,25 @@
 	
 	var _audioPlay2 = _interopRequireDefault(_audioPlay);
 	
-	var _moveList = __webpack_require__(244);
+	var _moveList = __webpack_require__(241);
 	
 	var _moveList2 = _interopRequireDefault(_moveList);
 	
-	var _audioFiles = __webpack_require__(245);
+	var _audioFiles = __webpack_require__(242);
 	
 	var _audioFiles2 = _interopRequireDefault(_audioFiles);
 	
-	var _typeFightTitle = __webpack_require__(246);
+	var _typeFightTitle = __webpack_require__(243);
 	
 	var _typeFightTitle2 = _interopRequireDefault(_typeFightTitle);
 	
-	var _cpuDifficulty = __webpack_require__(247);
+	var _cpuDifficulty = __webpack_require__(244);
 	
 	var _cpuDifficulty2 = _interopRequireDefault(_cpuDifficulty);
 	
 	var _reactRouter = __webpack_require__(172);
 	
-	var _sweetalert = __webpack_require__(248);
+	var _sweetalert = __webpack_require__(245);
 	
 	var _sweetalert2 = _interopRequireDefault(_sweetalert);
 	
@@ -27475,15 +27475,15 @@
 	
 	var _userId2 = _interopRequireDefault(_userId);
 	
-	var _easyAttackCommands = __webpack_require__(241);
+	var _easyAttackCommands = __webpack_require__(258);
 	
 	var _easyAttackCommands2 = _interopRequireDefault(_easyAttackCommands);
 	
-	var _mediumAttackCommands = __webpack_require__(242);
+	var _mediumAttackCommands = __webpack_require__(259);
 	
 	var _mediumAttackCommands2 = _interopRequireDefault(_mediumAttackCommands);
 	
-	var _hardAttackCommands = __webpack_require__(243);
+	var _hardAttackCommands = __webpack_require__(260);
 	
 	var _hardAttackCommands2 = _interopRequireDefault(_hardAttackCommands);
 	
@@ -27526,8 +27526,8 @@
 	  cpuStatusClass: 'healthyHP',
 	  healString: '',
 	  cpuTauntMessage: '',
-	  playerSpriteUrls: './images/fight-sprites/kenshin-start.gif',
-	  cpuSpriteUrls: './images/fight-sprites/spidey-start.gif',
+	  playerSpriteUrls: './images/kenshin-start.gif',
+	  cpuSpriteUrls: './images/spidey-start.gif',
 	  showPlayerInput: false,
 	  showPlayerBubble: false,
 	  showCpuBubble: false,
@@ -27591,13 +27591,13 @@
 	  if (state.playerHP < 8) {
 	    state.fightScreenTitleText = 'Warning! (Reset?)';
 	    state.playerStatusClass = 'warningHP';
-	    state.playerSpriteUrls = './images/fight-sprites/kenshin-warning.gif';
+	    state.playerSpriteUrls = './images/kenshin-warning.gif';
 	    _audioPlay2.default.playWarning();
 	  }
 	  if (state.playerHP < 5) {
 	    state.fightScreenTitleText = 'Danger! (Reset?)';
 	    state.playerStatusClass = 'dangerHP';
-	    state.playerSpriteUrls = './images/fight-sprites/kenshin-danger.gif';
+	    state.playerSpriteUrls = './images/kenshin-danger.gif';
 	    _audioPlay2.default.playDanger();
 	  }
 	
@@ -27607,12 +27607,12 @@
 	
 	  if (state.cpuHP < 8) {
 	    state.cpuStatusClass = 'warningHP';
-	    state.cpuSpriteUrls = './images/fight-sprites/spidey-warning.gif';
+	    state.cpuSpriteUrls = './images/spidey-warning.gif';
 	  }
 	
 	  if (state.cpuHP < 5) {
 	    state.cpuStatusClass = 'dangerHP';
-	    state.cpuSpriteUrls = './images/fight-sprites/spidey-danger.gif';
+	    state.cpuSpriteUrls = './images/spidey-danger.gif';
 	  }
 	
 	  if (state.cpuHP <= 0) {
@@ -27638,13 +27638,13 @@
 	  state.cpuAttackMessage = randomIndexing(cpuAttacks);
 	
 	  if (state.cpuAttackMessage === 'Web Ball!') {
-	    state.cpuSpriteUrls = './images/fight-sprites/spidey-web-ball.gif';
+	    state.cpuSpriteUrls = './images/spidey-web-ball.gif';
 	    _audioPlay2.default.webBall();
 	  } else if (state.cpuAttackMessage === 'Web Swing!') {
-	    state.cpuSpriteUrls = './images/fight-sprites/spidey-kick.gif';
+	    state.cpuSpriteUrls = './images/spidey-kick.gif';
 	    _audioPlay2.default.webSwing();
 	  } else if (state.cpuAttackMessage === 'Spider Sting!') {
-	    state.cpuSpriteUrls = './images/fight-sprites/spidey-sting.gif';
+	    state.cpuSpriteUrls = './images/spidey-sting.gif';
 	    _audioPlay2.default.spiderSting();
 	  }
 	  console.log('difficulty chosen', state.difficultyChosen);
@@ -27673,7 +27673,7 @@
 	  console.log('heal string now', state.healString);
 	
 	  state.playerHP -= 3;
-	  state.playerSpriteUrls = './images/fight-sprites/kenshin-hit.gif';
+	  state.playerSpriteUrls = './images/kenshin-hit.gif';
 	
 	  _audioPlay2.default.playerHit();
 	
@@ -27690,8 +27690,8 @@
 	    state.showStartOver = true;
 	    state.playerAttackMessage = 'I was going easy on you.';
 	    state.cpuAttackMessage = 'One for J.J.';
-	    state.playerSpriteUrls = './images/fight-sprites/kenshin-dead.gif';
-	    state.cpuSpriteUrls = './images/fight-sprites/spidey-win.gif';
+	    state.playerSpriteUrls = './images/kenshin-dead.gif';
+	    state.cpuSpriteUrls = './images/spidey-win.gif';
 	    state.healString = '';
 	    state.showPlayerInput = false;
 	    state.showMissBubble = false;
@@ -27713,8 +27713,8 @@
 	    state.showStartOver = true;
 	    state.playerAttackMessage = "You should keep practicing.";
 	    state.cpuAttackMessage = 'Uncle Ben! I failed you. ';
-	    state.playerSpriteUrls = './images/fight-sprites/kenshin-win.gif';
-	    state.cpuSpriteUrls = './images/fight-sprites/spidey-dead.gif';
+	    state.playerSpriteUrls = './images/kenshin-win.gif';
+	    state.cpuSpriteUrls = './images/spidey-dead.gif';
 	    state.healString = '';
 	    state.showPlayerInput = false;
 	    state.showMissBubble = false;
@@ -27739,8 +27739,8 @@
 	  disableDropDown();
 	
 	  state.fightScreenTitleText = 'Type Fight! (Reset?)';
-	  state.playerSpriteUrls = './images/fight-sprites/kenshin-ready.gif';
-	  state.cpuSpriteUrls = './images/fight-sprites/spidey-ready.gif';
+	  state.playerSpriteUrls = './images/kenshin-ready.gif';
+	  state.cpuSpriteUrls = './images/spidey-ready.gif';
 	  state.showPlayerInput = true;
 	  state.showStartOver = false;
 	  state.showClickForProgress = '';
@@ -27779,10 +27779,10 @@
 	    if (evt.target.value === state.attackCommand) {
 	      state.playerAttackMessage = 'Feel my fury!';
 	      _audioPlay2.default.forwardSlash();
-	      state.playerSpriteUrls = './images/fight-sprites/kenshin-forward-slash.gif';
+	      state.playerSpriteUrls = './images/kenshin-forward-slash.gif';
 	      if (damage >= 5) {
 	        state.cpuHP -= 3;
-	        state.cpuSpriteUrls = './images/fight-sprites/spidey-hit.gif';
+	        state.cpuSpriteUrls = './images/spidey-hit.gif';
 	        _audioPlay2.default.cpuHit();
 	      } else {
 	        state.cpuHP += 0;
@@ -27836,12 +27836,12 @@
 	
 	        state.playerHP += 3;
 	        state.playerAttackMessage = "Just a scratch";
-	        state.playerSpriteUrls = './images/fight-sprites/kenshin-ready.gif';
+	        state.playerSpriteUrls = './images/kenshin-ready.gif';
 	        randomIndexing(healSounds).play();
 	      } else {
 	        state.playerAttackMessage = "Sorry, I don't know that move.";
 	        state.showPlayerBubble = true;
-	        state.playerSpriteUrls = './images/fight-sprites/kenshin-no-move.gif';
+	        state.playerSpriteUrls = './images/kenshin-no-move.gif';
 	        _audioPlay2.default.wrongInput();
 	      }
 	    evt.target.value = '';
@@ -38154,36 +38154,6 @@
 
 /***/ },
 /* 241 */
-/***/ function(module, exports) {
-
-	"use strict";
-	
-	var easyAttackCommands = ["jazz", "buzz", "fuzz", "fizz", "hajj", "juju", "quiz", "razz", "jamb", "juku", "jibb", "jauk", "phiz", "zouk", 'zonk', 'juke', 'chez', 'cozy', 'zyme', 'mazy', 'jouk', 'qoph', 'jink', 'whiz', 'fozy', 'joke', 'zebu', 'java', 'fuji', 'jowl', 'puja', 'jerk', 'jaup', 'jive', 'jagg', 'zeks', 'jupe', 'fuze', 'putz', 'hazy', 'koji', 'zinc', 'futz', 'juba', 'zerk', 'juco', 'jube', 'quip', 'waxy', 'jehu', 'bozo', 'mozo', 'jugs', 'jows', 'dozy', 'lazy', 'jefe', 'flux', 'maze', 'czar', 'faze', 'pixy', 'meze', 'boxy', 'jibe', 'juga', 'jibs', 'bize', 'jury', 'jobs', 'prez', 'jabs', 'friz', 'poxy', 'zeps', 'quay', 'zany', 'yutz', 'zaps', 'quey', 'zarf', 'mojo', 'quag', 'hadj'];
-	
-	module.exports = easyAttackCommands;
-
-/***/ },
-/* 242 */
-/***/ function(module, exports) {
-
-	"use strict";
-	
-	var mediumAttackCommands = ["jazzy", "fuzzy", "muzzy", "whizz", "fezzy", "fizzy", "abuzz", "zuzim", "scuzz", "dizzy", "frizz", "huzza", "mezzo", "pizza", "jujus", "tizzy", "hajji", "zazen", "zanza", "zizit", "jumpy", "tazza", "tazze", "zappy", "jimpy", "jiffy", "zippy", "quick", "jammy", "quack", "junky", "music", "jugum", "zaxes", "jumps", "jumbo", "kudzu", "quiff", "jocks", "kopje", "quaky", "quaff", "jerky", "juicy", "furzy", "zincy", "capiz", "kanzu", "enzym", "klutz", "pujah", "buxom", "azuki", "punji", "mixup", "unzip", "quipu", "boozy", "quirk", "field", "gauzy", "woozy", "kanji", "julep", "qophs", "crazy", "fuzed", "fuzil"];
-	
-	module.exports = mediumAttackCommands;
-
-/***/ },
-/* 243 */
-/***/ function(module, exports) {
-
-	"use strict";
-	
-	var hardAttackCommands = ["pizazz", "jazzbo", "bezazz", "jazzed", "zizzle", "muzjik", "whizzy", "mizzly", "scuzzy", "fuzzed", "puzzle", "muzzle", "buzzed", "huzzah", "frizzy", "jujube", "mizzen", "fizzed", "fizzle", "mezuza", "zigzag", "buzzer", "guzzle", "wizzen", "hazzan", "wizzes", "bizzes", "cozzes", "queazy", "nuzzle", "mezzos", "snazzy", "jojoba", "piazza", "pizzas", "banjax", "zizith", "dazzle", "bijoux", "paxwax", "nozzle", "quartz", "zincky", "razzed", "jezail", "zanzas", "exequy", "izzard", "zebeck", "quacky", "sizzle", "quippy", "rozzer", "jockey", "tzetze", "kuvasz", "kolkoz", "jinxed", "hijack", "buzuki", "bombyx", "tazzas", "jimply", "coccyx", "blowzy", "gazump", "jumble", "syzygy", "jacked", "jackal", "joypop", "frowzy", "pyjama", "jumped"];
-	
-	module.exports = hardAttackCommands;
-
-/***/ },
-/* 244 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -38271,7 +38241,7 @@
 	module.exports = MoveList;
 
 /***/ },
-/* 245 */
+/* 242 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -38306,32 +38276,32 @@
 	                        return _react2.default.createElement(
 	                                'div',
 	                                null,
-	                                _react2.default.createElement('audio', { id: 'mainTheme', src: '/music/fight-music/enter-the-dragon.mp3', autoPlay: true }),
-	                                _react2.default.createElement('audio', { id: 'MKTheme', src: '/music/fight-music/MK-theme.mp3' }),
-	                                _react2.default.createElement('audio', { id: 'GuileTheme', src: '/music/fight-music/Guile-theme.mp3' }),
-	                                _react2.default.createElement('audio', { id: 'FF7BossTheme', src: '/music/fight-music/FF7-boss-theme.mp3' }),
-	                                _react2.default.createElement('audio', { id: 'OneWingedAngel', src: '/music/fight-music/one-winged-angel2.mp3' }),
-	                                _react2.default.createElement('audio', { id: 'gameOver', src: '/music/game-over-audio/game-over-man.mp3' }),
-	                                _react2.default.createElement('audio', { id: 'dna', src: '/music/game-over-audio/dna.mp3' }),
-	                                _react2.default.createElement('audio', { id: 'kneel', src: '/music/game-over-audio/kneel.mp3' }),
-	                                _react2.default.createElement('audio', { id: 'victory', src: '/music/game-over-audio/victory.mp3' }),
-	                                _react2.default.createElement('audio', { id: 'playerHit', src: '/music/hit-audio/player-hit.mp3' }),
-	                                _react2.default.createElement('audio', { id: 'cpuHit', src: '/music/hit-audio/cpu-hit.mp3' }),
-	                                _react2.default.createElement('audio', { id: 'warning', src: '/music/hit-audio/warning.mp3' }),
-	                                _react2.default.createElement('audio', { id: 'danger', src: '/music/hit-audio/danger.mp3' }),
-	                                _react2.default.createElement('audio', { id: 'gokuHeal', src: '/music/heal-audio/goku-heal.mp3' }),
-	                                _react2.default.createElement('audio', { id: 'dendeHeal', src: '/music/heal-audio/dende-heal.mp3' }),
-	                                _react2.default.createElement('audio', { id: 'wrongInput', src: '/music/heal-audio/wrong-input.mp3' }),
-	                                _react2.default.createElement('audio', { id: 'webBall', src: '/music/cpu-attack-audio/web-ball.mp3' }),
-	                                _react2.default.createElement('audio', { id: 'spiderSting', src: '/music/cpu-attack-audio/spider-sting.mp3' }),
-	                                _react2.default.createElement('audio', { id: 'webSwing', src: '/music/cpu-attack-audio/web-swing.mp3' }),
-	                                _react2.default.createElement('audio', { id: 'chargingSlash', src: '/music/player-attack-audio/charging-slash.mp3' }),
-	                                _react2.default.createElement('audio', { id: 'forwardSlash', src: '/music/player-attack-audio/forward-slash.mp3' }),
-	                                _react2.default.createElement('audio', { id: 'upwardSlash', src: '/music/player-attack-audio/upward-slash.mp3' }),
-	                                _react2.default.createElement('audio', { id: 'bradleyTaunt', src: '/music/miss-audio/bradley-miss-taunt.mp3' }),
-	                                _react2.default.createElement('audio', { id: 'laughTaunt', src: '/music/miss-audio/laugh-miss-taunt.mp3' }),
-	                                _react2.default.createElement('audio', { id: 'patheticTaunt', src: '/music/miss-audio/pathetic-miss-taunt.mp3' }),
-	                                _react2.default.createElement('audio', { id: 'suckTaunt', src: '/music/miss-audio/suck-miss-taunt.mp3' })
+	                                _react2.default.createElement('audio', { id: 'mainTheme', src: '/music/enter-the-dragon.mp3', autoPlay: true }),
+	                                _react2.default.createElement('audio', { id: 'MKTheme', src: '/music/MK-theme.mp3' }),
+	                                _react2.default.createElement('audio', { id: 'GuileTheme', src: '/music/Guile-theme.mp3' }),
+	                                _react2.default.createElement('audio', { id: 'FF7BossTheme', src: '/music/FF7-boss-theme.mp3' }),
+	                                _react2.default.createElement('audio', { id: 'OneWingedAngel', src: '/music/one-winged-angel2.mp3' }),
+	                                _react2.default.createElement('audio', { id: 'gameOver', src: '/music/game-over-man.mp3' }),
+	                                _react2.default.createElement('audio', { id: 'dna', src: '/music/dna.mp3' }),
+	                                _react2.default.createElement('audio', { id: 'kneel', src: '/music/kneel.mp3' }),
+	                                _react2.default.createElement('audio', { id: 'victory', src: '/music/victory.mp3' }),
+	                                _react2.default.createElement('audio', { id: 'playerHit', src: '/music/player-hit.mp3' }),
+	                                _react2.default.createElement('audio', { id: 'cpuHit', src: '/music/cpu-hit.mp3' }),
+	                                _react2.default.createElement('audio', { id: 'warning', src: '/music/warning.mp3' }),
+	                                _react2.default.createElement('audio', { id: 'danger', src: '/music/danger.mp3' }),
+	                                _react2.default.createElement('audio', { id: 'gokuHeal', src: '/music/goku-heal.mp3' }),
+	                                _react2.default.createElement('audio', { id: 'dendeHeal', src: '/music/dende-heal.mp3' }),
+	                                _react2.default.createElement('audio', { id: 'wrongInput', src: '/music/wrong-input.mp3' }),
+	                                _react2.default.createElement('audio', { id: 'webBall', src: '/music/web-ball.mp3' }),
+	                                _react2.default.createElement('audio', { id: 'spiderSting', src: '/music/spider-sting.mp3' }),
+	                                _react2.default.createElement('audio', { id: 'webSwing', src: '/music/web-swing.mp3' }),
+	                                _react2.default.createElement('audio', { id: 'chargingSlash', src: '/music/charging-slash.mp3' }),
+	                                _react2.default.createElement('audio', { id: 'forwardSlash', src: '/music/forward-slash.mp3' }),
+	                                _react2.default.createElement('audio', { id: 'upwardSlash', src: '/music/upward-slash.mp3' }),
+	                                _react2.default.createElement('audio', { id: 'bradleyTaunt', src: '/music/bradley-miss-taunt.mp3' }),
+	                                _react2.default.createElement('audio', { id: 'laughTaunt', src: '/music/laugh-miss-taunt.mp3' }),
+	                                _react2.default.createElement('audio', { id: 'patheticTaunt', src: '/music/pathetic-miss-taunt.mp3' }),
+	                                _react2.default.createElement('audio', { id: 'suckTaunt', src: '/music/suck-miss-taunt.mp3' })
 	                        );
 	                }
 	        }]);
@@ -38342,7 +38312,7 @@
 	module.exports = AudioFiles;
 
 /***/ },
-/* 246 */
+/* 243 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -38436,7 +38406,7 @@
 	module.exports = TypeFightTitle;
 
 /***/ },
-/* 247 */
+/* 244 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -38537,7 +38507,7 @@
 	module.exports = CpuDifficulty;
 
 /***/ },
-/* 248 */
+/* 245 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -38555,35 +38525,35 @@
 	 * jQuery-like functions for manipulating the DOM
 	 */
 	
-	var _hasClass$addClass$removeClass$escapeHtml$_show$show$_hide$hide$isDescendant$getTopMargin$fadeIn$fadeOut$fireClick$stopEventPropagation = __webpack_require__(249);
+	var _hasClass$addClass$removeClass$escapeHtml$_show$show$_hide$hide$isDescendant$getTopMargin$fadeIn$fadeOut$fireClick$stopEventPropagation = __webpack_require__(246);
 	
 	/*
 	 * Handy utilities
 	 */
 	
-	var _extend$hexToRgb$isIE8$logStr$colorLuminance = __webpack_require__(250);
+	var _extend$hexToRgb$isIE8$logStr$colorLuminance = __webpack_require__(247);
 	
 	/*
 	 *  Handle sweetAlert's DOM elements
 	 */
 	
-	var _sweetAlertInitialize$getModal$getOverlay$getInput$setFocusStyle$openModal$resetInput$fixVerticalPosition = __webpack_require__(251);
+	var _sweetAlertInitialize$getModal$getOverlay$getInput$setFocusStyle$openModal$resetInput$fixVerticalPosition = __webpack_require__(248);
 	
 	// Handle button events and keyboard events
 	
-	var _handleButton$handleConfirm$handleCancel = __webpack_require__(254);
+	var _handleButton$handleConfirm$handleCancel = __webpack_require__(251);
 	
-	var _handleKeyDown = __webpack_require__(255);
+	var _handleKeyDown = __webpack_require__(252);
 	
 	var _handleKeyDown2 = _interopRequireWildcard(_handleKeyDown);
 	
 	// Default values
 	
-	var _defaultParams = __webpack_require__(252);
+	var _defaultParams = __webpack_require__(249);
 	
 	var _defaultParams2 = _interopRequireWildcard(_defaultParams);
 	
-	var _setParameters = __webpack_require__(256);
+	var _setParameters = __webpack_require__(253);
 	
 	var _setParameters2 = _interopRequireWildcard(_setParameters);
 	
@@ -38845,7 +38815,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 249 */
+/* 246 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -39041,7 +39011,7 @@
 	exports.stopEventPropagation = stopEventPropagation;
 
 /***/ },
-/* 250 */
+/* 247 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -39119,7 +39089,7 @@
 	exports.colorLuminance = colorLuminance;
 
 /***/ },
-/* 251 */
+/* 248 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -39130,11 +39100,11 @@
 	  value: true
 	});
 	
-	var _hexToRgb = __webpack_require__(250);
+	var _hexToRgb = __webpack_require__(247);
 	
-	var _removeClass$getTopMargin$fadeIn$show$addClass = __webpack_require__(249);
+	var _removeClass$getTopMargin$fadeIn$show$addClass = __webpack_require__(246);
 	
-	var _defaultParams = __webpack_require__(252);
+	var _defaultParams = __webpack_require__(249);
 	
 	var _defaultParams2 = _interopRequireWildcard(_defaultParams);
 	
@@ -39142,7 +39112,7 @@
 	 * Add modal + overlay to DOM
 	 */
 	
-	var _injectedHTML = __webpack_require__(253);
+	var _injectedHTML = __webpack_require__(250);
 	
 	var _injectedHTML2 = _interopRequireWildcard(_injectedHTML);
 	
@@ -39291,7 +39261,7 @@
 	exports.fixVerticalPosition = fixVerticalPosition;
 
 /***/ },
-/* 252 */
+/* 249 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -39328,7 +39298,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 253 */
+/* 250 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -39375,7 +39345,7 @@
 	module.exports = exports["default"];
 
 /***/ },
-/* 254 */
+/* 251 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -39384,11 +39354,11 @@
 	  value: true
 	});
 	
-	var _colorLuminance = __webpack_require__(250);
+	var _colorLuminance = __webpack_require__(247);
 	
-	var _getModal = __webpack_require__(251);
+	var _getModal = __webpack_require__(248);
 	
-	var _hasClass$isDescendant = __webpack_require__(249);
+	var _hasClass$isDescendant = __webpack_require__(246);
 	
 	/*
 	 * User clicked on "Confirm"/"OK" or "Cancel"
@@ -39515,7 +39485,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 255 */
+/* 252 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -39524,9 +39494,9 @@
 	  value: true
 	});
 	
-	var _stopEventPropagation$fireClick = __webpack_require__(249);
+	var _stopEventPropagation$fireClick = __webpack_require__(246);
 	
-	var _setFocusStyle = __webpack_require__(251);
+	var _setFocusStyle = __webpack_require__(248);
 	
 	var handleKeyDown = function handleKeyDown(event, params, modal) {
 	  var e = event || window.event;
@@ -39599,7 +39569,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 256 */
+/* 253 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -39608,11 +39578,11 @@
 	  value: true
 	});
 	
-	var _isIE8 = __webpack_require__(250);
+	var _isIE8 = __webpack_require__(247);
 	
-	var _getModal$getInput$setFocusStyle = __webpack_require__(251);
+	var _getModal$getInput$setFocusStyle = __webpack_require__(248);
 	
-	var _hasClass$addClass$removeClass$escapeHtml$_show$show$_hide$hide = __webpack_require__(249);
+	var _hasClass$addClass$removeClass$escapeHtml$_show$show$_hide$hide = __webpack_require__(246);
 	
 	var alertTypes = ['error', 'warning', 'info', 'success', 'input', 'prompt'];
 	
@@ -39829,7 +39799,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 257 */
+/* 254 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -39840,7 +39810,7 @@
 	
 	var _progressStore2 = _interopRequireDefault(_progressStore);
 	
-	var _backbutton = __webpack_require__(258);
+	var _backbutton = __webpack_require__(255);
 	
 	var _backbutton2 = _interopRequireDefault(_backbutton);
 	
@@ -40042,7 +40012,7 @@
 	module.exports = Progress;
 
 /***/ },
-/* 258 */
+/* 255 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -40069,10 +40039,41 @@
 	module.exports = BackButton;
 
 /***/ },
-/* 259 */
+/* 256 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 257 */,
+/* 258 */
+/***/ function(module, exports) {
+
+	"use strict";
+	
+	var easyAttackCommands = ["jazz", "buzz", "fuzz", "fizz", "hajj", "juju", "quiz", "razz", "jamb", "juku", "jibb", "jauk", "phiz", "zouk", 'zonk', 'juke', 'chez', 'cozy', 'zyme', 'mazy', 'jouk', 'qoph', 'jink', 'whiz', 'fozy', 'joke', 'zebu', 'java', 'fuji', 'jowl', 'puja', 'jerk', 'jaup', 'jive', 'jagg', 'zeks', 'jupe', 'fuze', 'putz', 'hazy', 'koji', 'zinc', 'futz', 'juba', 'zerk', 'juco', 'jube', 'quip', 'waxy', 'jehu', 'bozo', 'mozo', 'jugs', 'jows', 'dozy', 'lazy', 'jefe', 'flux', 'maze', 'czar', 'faze', 'pixy', 'meze', 'boxy', 'jibe', 'juga', 'jibs', 'bize', 'jury', 'jobs', 'prez', 'jabs', 'friz', 'poxy', 'zeps', 'quay', 'zany', 'yutz', 'zaps', 'quey', 'zarf', 'mojo', 'quag', 'hadj'];
+	
+	module.exports = easyAttackCommands;
+
+/***/ },
+/* 259 */
+/***/ function(module, exports) {
+
+	"use strict";
+	
+	var mediumAttackCommands = ["jazzy", "fuzzy", "muzzy", "whizz", "fezzy", "fizzy", "abuzz", "zuzim", "scuzz", "dizzy", "frizz", "huzza", "mezzo", "pizza", "jujus", "tizzy", "hajji", "zazen", "zanza", "zizit", "jumpy", "tazza", "tazze", "zappy", "jimpy", "jiffy", "zippy", "quick", "jammy", "quack", "junky", "music", "jugum", "zaxes", "jumps", "jumbo", "kudzu", "quiff", "jocks", "kopje", "quaky", "quaff", "jerky", "juicy", "furzy", "zincy", "capiz", "kanzu", "enzym", "klutz", "pujah", "buxom", "azuki", "punji", "mixup", "unzip", "quipu", "boozy", "quirk", "field", "gauzy", "woozy", "kanji", "julep", "qophs", "crazy", "fuzed", "fuzil"];
+	
+	module.exports = mediumAttackCommands;
+
+/***/ },
+/* 260 */
+/***/ function(module, exports) {
+
+	"use strict";
+	
+	var hardAttackCommands = ["pizazz", "jazzbo", "bezazz", "jazzed", "zizzle", "muzjik", "whizzy", "mizzly", "scuzzy", "fuzzed", "puzzle", "muzzle", "buzzed", "huzzah", "frizzy", "jujube", "mizzen", "fizzed", "fizzle", "mezuza", "zigzag", "buzzer", "guzzle", "wizzen", "hazzan", "wizzes", "bizzes", "cozzes", "queazy", "nuzzle", "mezzos", "snazzy", "jojoba", "piazza", "pizzas", "banjax", "zizith", "dazzle", "bijoux", "paxwax", "nozzle", "quartz", "zincky", "razzed", "jezail", "zanzas", "exequy", "izzard", "zebeck", "quacky", "sizzle", "quippy", "rozzer", "jockey", "tzetze", "kuvasz", "kolkoz", "jinxed", "hijack", "buzuki", "bombyx", "tazzas", "jimply", "coccyx", "blowzy", "gazump", "jumble", "syzygy", "jacked", "jackal", "joypop", "frowzy", "pyjama", "jumped"];
+	
+	module.exports = hardAttackCommands;
 
 /***/ }
 /******/ ]);
