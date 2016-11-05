@@ -27526,8 +27526,8 @@
 	  cpuStatusClass: 'healthyHP',
 	  healString: '',
 	  cpuTauntMessage: '',
-	  playerSpriteUrls: './images/kenshin-start.gif',
-	  cpuSpriteUrls: './images/spidey-start.gif',
+	  playerSpriteUrls: './images/fight-sprites/kenshin-start.gif',
+	  cpuSpriteUrls: './images/fight-sprites/spidey-start.gif',
 	  showPlayerInput: false,
 	  showPlayerBubble: false,
 	  showCpuBubble: false,
@@ -27591,13 +27591,13 @@
 	  if (state.playerHP < 8) {
 	    state.fightScreenTitleText = 'Warning! (Reset?)';
 	    state.playerStatusClass = 'warningHP';
-	    state.playerSpriteUrls = './images/kenshin-warning.gif';
+	    state.playerSpriteUrls = './images/fight-sprites/kenshin-warning.gif';
 	    _audioPlay2.default.playWarning();
 	  }
 	  if (state.playerHP < 5) {
 	    state.fightScreenTitleText = 'Danger! (Reset?)';
 	    state.playerStatusClass = 'dangerHP';
-	    state.playerSpriteUrls = './images/kenshin-danger.gif';
+	    state.playerSpriteUrls = './images/fight-sprites/kenshin-danger.gif';
 	    _audioPlay2.default.playDanger();
 	  }
 	
@@ -27607,12 +27607,12 @@
 	
 	  if (state.cpuHP < 8) {
 	    state.cpuStatusClass = 'warningHP';
-	    state.cpuSpriteUrls = './images/spidey-warning.gif';
+	    state.cpuSpriteUrls = './images/fight-sprites/spidey-warning.gif';
 	  }
 	
 	  if (state.cpuHP < 5) {
 	    state.cpuStatusClass = 'dangerHP';
-	    state.cpuSpriteUrls = './images/spidey-danger.gif';
+	    state.cpuSpriteUrls = './images/fight-sprites/spidey-danger.gif';
 	  }
 	
 	  if (state.cpuHP <= 0) {
@@ -27638,13 +27638,13 @@
 	  state.cpuAttackMessage = randomIndexing(cpuAttacks);
 	
 	  if (state.cpuAttackMessage === 'Web Ball!') {
-	    state.cpuSpriteUrls = './images/spidey-web-ball.gif';
+	    state.cpuSpriteUrls = './images/fight-sprites/spidey-web-ball.gif';
 	    _audioPlay2.default.webBall();
 	  } else if (state.cpuAttackMessage === 'Web Swing!') {
-	    state.cpuSpriteUrls = './images/spidey-kick.gif';
+	    state.cpuSpriteUrls = './images/fight-sprites/spidey-kick.gif';
 	    _audioPlay2.default.webSwing();
 	  } else if (state.cpuAttackMessage === 'Spider Sting!') {
-	    state.cpuSpriteUrls = './images/spidey-sting.gif';
+	    state.cpuSpriteUrls = './images/fight-sprites/spidey-sting.gif';
 	    _audioPlay2.default.spiderSting();
 	  }
 	  console.log('difficulty chosen', state.difficultyChosen);
@@ -27673,7 +27673,7 @@
 	  console.log('heal string now', state.healString);
 	
 	  state.playerHP -= 3;
-	  state.playerSpriteUrls = './images/kenshin-hit.gif';
+	  state.playerSpriteUrls = './images/fight-sprites/kenshin-hit.gif';
 	
 	  _audioPlay2.default.playerHit();
 	
@@ -27690,8 +27690,8 @@
 	    state.showStartOver = true;
 	    state.playerAttackMessage = 'I was going easy on you.';
 	    state.cpuAttackMessage = 'One for J.J.';
-	    state.playerSpriteUrls = './images/kenshin-dead.gif';
-	    state.cpuSpriteUrls = './images/spidey-win.gif';
+	    state.playerSpriteUrls = './images/fight-sprites/kenshin-dead.gif';
+	    state.cpuSpriteUrls = './images/fight-sprites/spidey-win.gif';
 	    state.healString = '';
 	    state.showPlayerInput = false;
 	    state.showMissBubble = false;
@@ -27713,8 +27713,8 @@
 	    state.showStartOver = true;
 	    state.playerAttackMessage = "You should keep practicing.";
 	    state.cpuAttackMessage = 'Uncle Ben! I failed you. ';
-	    state.playerSpriteUrls = './images/kenshin-win.gif';
-	    state.cpuSpriteUrls = './images/spidey-dead.gif';
+	    state.playerSpriteUrls = './images/fight-sprites/kenshin-win.gif';
+	    state.cpuSpriteUrls = './images/fight-sprites/spidey-dead.gif';
 	    state.healString = '';
 	    state.showPlayerInput = false;
 	    state.showMissBubble = false;
@@ -27739,8 +27739,8 @@
 	  disableDropDown();
 	
 	  state.fightScreenTitleText = 'Type Fight! (Reset?)';
-	  state.playerSpriteUrls = './images/kenshin-ready.gif';
-	  state.cpuSpriteUrls = './images/spidey-ready.gif';
+	  state.playerSpriteUrls = './images/fight-sprites/kenshin-ready.gif';
+	  state.cpuSpriteUrls = './images/fight-sprites/spidey-ready.gif';
 	  state.showPlayerInput = true;
 	  state.showStartOver = false;
 	  state.showClickForProgress = '';
@@ -27779,10 +27779,10 @@
 	    if (evt.target.value === state.attackCommand) {
 	      state.playerAttackMessage = 'Feel my fury!';
 	      _audioPlay2.default.forwardSlash();
-	      state.playerSpriteUrls = './images/kenshin-forward-slash.gif';
+	      state.playerSpriteUrls = './images/fight-sprites/kenshin-forward-slash.gif';
 	      if (damage >= 5) {
 	        state.cpuHP -= 3;
-	        state.cpuSpriteUrls = './images/spidey-hit.gif';
+	        state.cpuSpriteUrls = './images/fight-sprites/spidey-hit.gif';
 	        _audioPlay2.default.cpuHit();
 	      } else {
 	        state.cpuHP += 0;
@@ -27836,12 +27836,12 @@
 	
 	        state.playerHP += 3;
 	        state.playerAttackMessage = "Just a scratch";
-	        state.playerSpriteUrls = './images/kenshin-ready.gif';
+	        state.playerSpriteUrls = './images/fight-sprites/kenshin-ready.gif';
 	        randomIndexing(healSounds).play();
 	      } else {
 	        state.playerAttackMessage = "Sorry, I don't know that move.";
 	        state.showPlayerBubble = true;
-	        state.playerSpriteUrls = './images/kenshin-no-move.gif';
+	        state.playerSpriteUrls = './images/fight-sprites/kenshin-no-move.gif';
 	        _audioPlay2.default.wrongInput();
 	      }
 	    evt.target.value = '';
@@ -38306,32 +38306,32 @@
 	                        return _react2.default.createElement(
 	                                'div',
 	                                null,
-	                                _react2.default.createElement('audio', { id: 'mainTheme', src: '/music/enter-the-dragon.mp3', autoPlay: true }),
-	                                _react2.default.createElement('audio', { id: 'MKTheme', src: '/music/MK-theme.mp3' }),
-	                                _react2.default.createElement('audio', { id: 'GuileTheme', src: '/music/Guile-theme.mp3' }),
-	                                _react2.default.createElement('audio', { id: 'FF7BossTheme', src: '/music/FF7-boss-theme.mp3' }),
-	                                _react2.default.createElement('audio', { id: 'OneWingedAngel', src: '/music/one-winged-angel2.mp3' }),
-	                                _react2.default.createElement('audio', { id: 'gameOver', src: '/music/game-over-man.mp3' }),
-	                                _react2.default.createElement('audio', { id: 'dna', src: '/music/dna.mp3' }),
-	                                _react2.default.createElement('audio', { id: 'kneel', src: '/music/kneel.mp3' }),
-	                                _react2.default.createElement('audio', { id: 'victory', src: '/music/victory.mp3' }),
-	                                _react2.default.createElement('audio', { id: 'playerHit', src: '/music/player-hit.mp3' }),
-	                                _react2.default.createElement('audio', { id: 'cpuHit', src: '/music/cpu-hit.mp3' }),
-	                                _react2.default.createElement('audio', { id: 'warning', src: '/music/warning.mp3' }),
-	                                _react2.default.createElement('audio', { id: 'danger', src: '/music/danger.mp3' }),
-	                                _react2.default.createElement('audio', { id: 'gokuHeal', src: '/music/goku-heal.mp3' }),
-	                                _react2.default.createElement('audio', { id: 'dendeHeal', src: '/music/dende-heal.mp3' }),
-	                                _react2.default.createElement('audio', { id: 'wrongInput', src: '/music/wrong-input.mp3' }),
-	                                _react2.default.createElement('audio', { id: 'webBall', src: '/music/web-ball.mp3' }),
-	                                _react2.default.createElement('audio', { id: 'spiderSting', src: '/music/spider-sting.mp3' }),
-	                                _react2.default.createElement('audio', { id: 'webSwing', src: '/music/web-swing.mp3' }),
-	                                _react2.default.createElement('audio', { id: 'chargingSlash', src: '/music/charging-slash.mp3' }),
-	                                _react2.default.createElement('audio', { id: 'forwardSlash', src: '/music/forward-slash.mp3' }),
-	                                _react2.default.createElement('audio', { id: 'upwardSlash', src: '/music/upward-slash.mp3' }),
-	                                _react2.default.createElement('audio', { id: 'bradleyTaunt', src: '/music/bradley-miss-taunt.mp3' }),
-	                                _react2.default.createElement('audio', { id: 'laughTaunt', src: '/music/laugh-miss-taunt.mp3' }),
-	                                _react2.default.createElement('audio', { id: 'patheticTaunt', src: '/music/pathetic-miss-taunt.mp3' }),
-	                                _react2.default.createElement('audio', { id: 'suckTaunt', src: '/music/suck-miss-taunt.mp3' })
+	                                _react2.default.createElement('audio', { id: 'mainTheme', src: '/music/fight-music/enter-the-dragon.mp3', autoPlay: true }),
+	                                _react2.default.createElement('audio', { id: 'MKTheme', src: '/music/fight-music/MK-theme.mp3' }),
+	                                _react2.default.createElement('audio', { id: 'GuileTheme', src: '/music/fight-music/Guile-theme.mp3' }),
+	                                _react2.default.createElement('audio', { id: 'FF7BossTheme', src: '/music/fight-music/FF7-boss-theme.mp3' }),
+	                                _react2.default.createElement('audio', { id: 'OneWingedAngel', src: '/music/fight-music/one-winged-angel2.mp3' }),
+	                                _react2.default.createElement('audio', { id: 'gameOver', src: '/music/game-over-audio/game-over-man.mp3' }),
+	                                _react2.default.createElement('audio', { id: 'dna', src: '/music/game-over-audio/dna.mp3' }),
+	                                _react2.default.createElement('audio', { id: 'kneel', src: '/music/game-over-audio/kneel.mp3' }),
+	                                _react2.default.createElement('audio', { id: 'victory', src: '/music/game-over-audio/victory.mp3' }),
+	                                _react2.default.createElement('audio', { id: 'playerHit', src: '/music/hit-audio/player-hit.mp3' }),
+	                                _react2.default.createElement('audio', { id: 'cpuHit', src: '/music/hit-audio/cpu-hit.mp3' }),
+	                                _react2.default.createElement('audio', { id: 'warning', src: '/music/hit-audio/warning.mp3' }),
+	                                _react2.default.createElement('audio', { id: 'danger', src: '/music/hit-audio/danger.mp3' }),
+	                                _react2.default.createElement('audio', { id: 'gokuHeal', src: '/music/heal-audio/goku-heal.mp3' }),
+	                                _react2.default.createElement('audio', { id: 'dendeHeal', src: '/music/heal-audio/dende-heal.mp3' }),
+	                                _react2.default.createElement('audio', { id: 'wrongInput', src: '/music/heal-audio/wrong-input.mp3' }),
+	                                _react2.default.createElement('audio', { id: 'webBall', src: '/music/cpu-attack-audio/web-ball.mp3' }),
+	                                _react2.default.createElement('audio', { id: 'spiderSting', src: '/music/cpu-attack-audio/spider-sting.mp3' }),
+	                                _react2.default.createElement('audio', { id: 'webSwing', src: '/music/cpu-attack-audio/web-swing.mp3' }),
+	                                _react2.default.createElement('audio', { id: 'chargingSlash', src: '/music/player-attack-audio/charging-slash.mp3' }),
+	                                _react2.default.createElement('audio', { id: 'forwardSlash', src: '/music/player-attack-audio/forward-slash.mp3' }),
+	                                _react2.default.createElement('audio', { id: 'upwardSlash', src: '/music/player-attack-audio/upward-slash.mp3' }),
+	                                _react2.default.createElement('audio', { id: 'bradleyTaunt', src: '/music/miss-audio/bradley-miss-taunt.mp3' }),
+	                                _react2.default.createElement('audio', { id: 'laughTaunt', src: '/music/miss-audio/laugh-miss-taunt.mp3' }),
+	                                _react2.default.createElement('audio', { id: 'patheticTaunt', src: '/music/miss-audio/pathetic-miss-taunt.mp3' }),
+	                                _react2.default.createElement('audio', { id: 'suckTaunt', src: '/music/miss-audio/suck-miss-taunt.mp3' })
 	                        );
 	                }
 	        }]);
