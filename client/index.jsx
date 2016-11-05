@@ -1,9 +1,9 @@
- import React from 'react';
+import React from 'react';
 import { render } from 'react-dom';
 import {Router, Route, Link, hashHistory, IndexRoute} from 'react-router';
 
-import Fight from './js/fight.jsx';
-import Progress from './js/progress.jsx';
+import Fight from './js/jsx/fight.jsx';
+import Progress from './js/jsx/progress.jsx';
 
 require("./scss/style.scss");
 

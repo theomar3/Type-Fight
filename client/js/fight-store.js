@@ -50,8 +50,8 @@ var state = {
   cpuStatusClass: 'healthyHP',
   healString: '',
   cpuTauntMessage: '',
-  playerSpriteUrls: './images/kenshin-start.gif',
-  cpuSpriteUrls: './images/spidey-start.gif',
+  playerSpriteUrls: './images/fight-sprites/kenshin-start.gif',
+  cpuSpriteUrls: './images/fight-sprites/spidey-start.gif',
   showPlayerInput: false,
   showPlayerBubble: false,
   showCpuBubble: false,
@@ -118,13 +118,13 @@ function gameState() {
   if(state.playerHP < 8) {
     state.fightScreenTitleText = 'Warning! (Reset?)';
     state.playerStatusClass = 'warningHP';
-    state.playerSpriteUrls = './images/kenshin-warning.gif';
+    state.playerSpriteUrls = './images/fight-sprites/kenshin-warning.gif';
     audioPlay.playWarning();
   }
   if(state.playerHP < 5) {
     state.fightScreenTitleText = 'Danger! (Reset?)';
     state.playerStatusClass = 'dangerHP';
-    state.playerSpriteUrls = './images/kenshin-danger.gif';
+    state.playerSpriteUrls = './images/fight-sprites/kenshin-danger.gif';
     audioPlay.playDanger();
   }
 
@@ -135,12 +135,12 @@ function gameState() {
 
   if(state.cpuHP < 8) {
     state.cpuStatusClass = 'warningHP';
-    state.cpuSpriteUrls = './images/spidey-warning.gif';
+    state.cpuSpriteUrls = './images/fight-sprites/spidey-warning.gif';
   }
 
   if(state.cpuHP < 5) {
     state.cpuStatusClass = 'dangerHP';
-    state.cpuSpriteUrls = './images/spidey-danger.gif';
+    state.cpuSpriteUrls = './images/fight-sprites/spidey-danger.gif';
   }
 
   if(state.cpuHP <= 0) {
@@ -166,15 +166,15 @@ function intervalRounds() {
   state.cpuAttackMessage = randomIndexing(cpuAttacks);
 
   if(state.cpuAttackMessage === 'Web Ball!') {
-    state.cpuSpriteUrls = './images/spidey-web-ball.gif';
+    state.cpuSpriteUrls = './images/fight-sprites/spidey-web-ball.gif';
     audioPlay.webBall();
   }
   else if(state.cpuAttackMessage === 'Web Swing!') {
-    state.cpuSpriteUrls = './images/spidey-kick.gif';
+    state.cpuSpriteUrls = './images/fight-sprites/spidey-kick.gif';
     audioPlay.webSwing();
   }
   else if(state.cpuAttackMessage === 'Spider Sting!') {
-    state.cpuSpriteUrls = './images/spidey-sting.gif';
+    state.cpuSpriteUrls = './images/fight-sprites/spidey-sting.gif';
     audioPlay.spiderSting();
   }
 console.log('difficulty chosen', state.difficultyChosen);
@@ -215,7 +215,7 @@ console.log('difficulty chosen', state.difficultyChosen);
   console.log('heal string now', state.healString);
 
   state.playerHP -= 3;
-  state.playerSpriteUrls = './images/kenshin-hit.gif';
+  state.playerSpriteUrls = './images/fight-sprites/kenshin-hit.gif';
 
   audioPlay.playerHit();
 
@@ -235,8 +235,8 @@ function endFight() {
     state.showStartOver = true;
     state.playerAttackMessage = 'I was going easy on you.';
     state.cpuAttackMessage = 'One for J.J.';
-    state.playerSpriteUrls = './images/kenshin-dead.gif';
-    state.cpuSpriteUrls = './images/spidey-win.gif';
+    state.playerSpriteUrls = './images/fight-sprites/kenshin-dead.gif';
+    state.cpuSpriteUrls = './images/fight-sprites/spidey-win.gif';
     state.healString = '';
     state.showPlayerInput = false;
     state.showMissBubble =  false;
@@ -265,8 +265,8 @@ function endFight() {
     state.showStartOver = true;
     state.playerAttackMessage = "You should keep practicing."
     state.cpuAttackMessage = 'Uncle Ben! I failed you. ';
-    state.playerSpriteUrls = './images/kenshin-win.gif';
-    state.cpuSpriteUrls = './images/spidey-dead.gif';
+    state.playerSpriteUrls = './images/fight-sprites/kenshin-win.gif';
+    state.cpuSpriteUrls = './images/fight-sprites/spidey-dead.gif';
     state.healString = '';
     state.showPlayerInput = false;
     state.showMissBubble =  false;
@@ -296,8 +296,8 @@ store.actions.startFight = function() {
 
 
   state.fightScreenTitleText = 'Type Fight! (Reset?)';
-  state.playerSpriteUrls = './images/kenshin-ready.gif';
-  state.cpuSpriteUrls = './images/spidey-ready.gif';
+  state.playerSpriteUrls = './images/fight-sprites/kenshin-ready.gif';
+  state.cpuSpriteUrls = './images/fight-sprites/spidey-ready.gif';
   state.showPlayerInput = true;
   state.showStartOver = false;
   state.showClickForProgress = '';
@@ -346,10 +346,10 @@ store.actions.attack = function(evt) {
     if(evt.target.value === state.attackCommand) {
       state.playerAttackMessage = 'Feel my fury!';
       audioPlay.forwardSlash();
-      state.playerSpriteUrls = './images/kenshin-forward-slash.gif';
+      state.playerSpriteUrls = './images/fight-sprites/kenshin-forward-slash.gif';
       if(damage >= 5) {
         state.cpuHP -= 3;
-        state.cpuSpriteUrls = './images/spidey-hit.gif';
+        state.cpuSpriteUrls = './images/fight-sprites/spidey-hit.gif';
         audioPlay.cpuHit();
       }
       else {
@@ -407,13 +407,13 @@ store.actions.attack = function(evt) {
 
         state.playerHP += 3;
         state.playerAttackMessage = "Just a scratch";
-        state.playerSpriteUrls = './images/kenshin-ready.gif';
+        state.playerSpriteUrls = './images/fight-sprites/kenshin-ready.gif';
         randomIndexing(healSounds).play();
       }
     else {
       state.playerAttackMessage = "Sorry, I don't know that move.";
       state.showPlayerBubble = true;
-      state.playerSpriteUrls = './images/kenshin-no-move.gif';
+      state.playerSpriteUrls = './images/fight-sprites/kenshin-no-move.gif';
       audioPlay.wrongInput();
     }
     evt.target.value = '';
